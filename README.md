@@ -1,4 +1,9 @@
+
+
+
 # CodeMind Plataforma de Aprendizaje
+
+![LOGO](https://github.com/4GeeksAcademy/codemind/assets/83560861/d2c8e8df-cd89-4529-bf01-aaa0a61ee2ff)
 
 ¡Bienvenido/a a la Plataforma de Aprendizaje CodeMind! Esta plataforma ha sido diseñada tanto para administradores como para estudiantes, brindando un entorno interactivo y educativo para mejorar tus habilidades en programación y convertirte en un desarrollador fullstack.
 
