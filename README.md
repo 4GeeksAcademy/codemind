@@ -8,6 +8,7 @@
 ¡Bienvenido/a a la Plataforma de Aprendizaje CodeMind! Esta plataforma ha sido diseñada tanto para administradores como para estudiantes, brindando un entorno interactivo y educativo para mejorar tus habilidades en programación y convertirte en un desarrollador fullstack.
 
 
+
 ## Descripción del Proyecto
 
 CodeMind es una plataforma de aprendizaje diseñada para empoderar a los estudiantes en su viaje para convertirse en desarrolladores fullstack. Ya sea que estés dando tus primeros pasos en la programación o buscando mejorar tus habilidades existentes, CodeMind te ofrece una variedad de recursos y ejercicios para estimular tu conocimiento y creatividad.
@@ -51,6 +52,9 @@ Si deseas contribuir a este proyecto, ¡estamos emocionados por tener tu ayuda! 
 3. Realiza los cambios necesarios y realiza commit: `git commit -m "Agrega nueva función"`.
 4. Envía tus cambios a tu repositorio en GitHub: `git push origin nueva-funcion`.
 5. Crea una Pull Request en este repositorio para que podamos revisar tus cambios.
+
+##Figma
+https://www.figma.com/file/g48LF56UejAo4uYpuIMUgV/Untitled?type=design&node-id=0-1&mode=design&t=BDpkpQblPD672V5q-0
 
 ## Contacto
 
