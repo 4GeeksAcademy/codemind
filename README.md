@@ -54,8 +54,8 @@ Si deseas contribuir a este proyecto, ¡estamos emocionados por tener tu ayuda! 
 5. Crea una Pull Request en este repositorio para que podamos revisar tus cambios.
 
 ##Figma
-https://www.figma.com/file/g48LF56UejAo4uYpuIMUgV/Untitled?type=design&node-id=0-1&mode=design&t=BDpkpQblPD672V5q-0
-
+[Figma](https://www.figma.com/file/g48LF56UejAo4uYpuIMUgV/Untitled?type=design&node-id=0-1&mode=design&t=BDpkpQblPD672V5q-0
+)
 ## Contacto
 
 Si tienes preguntas o comentarios sobre la plataforma, no dudes en contactarnos.
