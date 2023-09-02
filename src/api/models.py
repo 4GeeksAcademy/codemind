@@ -3,10 +3,17 @@ from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
 
 class User(db.Model):
+    __tablename__ = 'user'
     id = db.Column(db.Integer, primary_key=True)
+    firstName = db.Column(db.String(40), nullable=False)
+    lastName = db.Column(db.String(40), nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)
-    is_active = db.Column(db.Boolean(), unique=False, nullable=False)
+    img = db.Column(db.String(80), nullable=False)
+    role = db.Column(db.String(15), nullable=False)
+    document=db.Column(db.String(250), nullable=True)
+    
+    module_progress = db.relationship('ModuleProgress', backref='user', lazy=True)
 
     def __repr__(self):
         return f'<User {self.email}>'
@@ -15,5 +22,100 @@ class User(db.Model):
         return {
             "id": self.id,
             "email": self.email,
-            # do not serialize the password, its a security breach
+            "img": self.img,
+            "role": self.role,
+            "document": self.document
+            # No serializar la contraseña, es un problema de seguridad
+        }
+
+class ModuleProgress(db.Model):
+    __tablename__ = 'module_progress'
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    module_id = db.Column(db.Integer, db.ForeignKey('module.id'))
+    progress = db.Column(db.Integer)
+
+    def __repr__(self):
+        return f'<ModuleProgress {self.id}>'
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "user_id": self.user_id,
+            "module_id": self.module_id,
+            "progress": self.progress
+        }
+
+class Exercise(db.Model):
+    __tablename__ = 'exercise'
+    id = db.Column(db.Integer, primary_key=True)
+    answer_type = db.Column(db.String(50))
+    topic = db.Column(db.String(40))
+    type = db.Column(db.String(80))
+    module_id = db.Column(db.Integer, db.ForeignKey('module.id'))
+    questions = db.relationship('ExerciseQuestions', backref='exercise', lazy=True)
+
+    def __repr__(self):
+        return f'<Exercise {self.id}>'
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "answer_type": self.answer_type,
+            "topic": self.topic,
+            "type": self.type,
+            "module_id": self.module_id,
+            "questions": [question.serialize() for question in self.questions]
+        }
+
+class ExerciseQuestions(db.Model):
+    __tablename__ = "exercise_questions"
+    id = db.Column(db.Integer, primary_key=True)
+    exercise_id = db.Column(db.Integer, db.ForeignKey('exercise.id'))
+    question = db.Column(db.String(250))
+    answers = db.relationship('ExerciseAnswer', backref='question', lazy=True)
+
+    def __repr__(self):
+        return f'<ExerciseQuestions {self.id}>'
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "exercise_id": self.exercise_id,
+            "question": self.question,
+            "answers": [answer.serialize() for answer in self.answers]
+        }
+
+class ExerciseAnswer(db.Model):
+    __tablename__ = 'exercise_answers'
+    id = db.Column(db.Integer, primary_key=True)
+    answer = db.Column(db.String(250))
+    exercise_question_id = db.Column(db.Integer, db.ForeignKey('exercise_questions.id'))
+
+    def __repr__(self):
+        return f'<ExerciseAnswer {self.id}>'
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "answer": self.answer,
+            "exercise_question_id": self.exercise_question_id
+        }
+
+class Module(db.Model):
+    __tablename__ = 'module'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100))
+    description = db.Column(db.String(250))
+    type = db.Column(db.String(50))
+
+    def __repr__(self):
+        return f'<Module {self.id}>'
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "description": self.description,
+            "type": self.type
         }
