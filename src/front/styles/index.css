@@ -64,3 +64,14 @@ h2{
     font-family: 'Roboto', sans-serif;
 }
 
+.footer{
+    color:#2EBBF2;
+    font-family: 'Inter', sans-serif;
+    font-weight:lighter;
+    font-size: small;
+}
+.github-ico{
+    width: 15px;
+    height: 15px;
+
+}
