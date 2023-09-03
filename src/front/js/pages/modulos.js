@@ -4,7 +4,7 @@ import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
 import { Navbar } from "../component/navbar.js";
 
-export const Home = () => {
+export const Modulos = () => {
   const { store, actions } = useContext(Context);
 
   return (
