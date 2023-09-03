@@ -8,7 +8,16 @@
 }
 .logout-icon{
     color: #2EBBF2;
+    padding-bottom: 5px;
+    margin-left: 6px;
 }
+
+.nav-link{
+    color: #F2811D;
+    text-decoration: none ;
+    font-weight: 600;
+}
+
  .menuBurger{
     font-size: 30px;
     font-weight: 9px;
@@ -54,3 +63,4 @@ h2{
     font-weight: 900;
     font-family: 'Roboto', sans-serif;
 }
+

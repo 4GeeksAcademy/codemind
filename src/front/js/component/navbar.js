@@ -21,18 +21,18 @@ export const Navbar = () => {
        
         <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
           
-          <ul className="navbar-nav ms-auto mb-2 mb-lg-0 d-flex align-items-center">
+          <ul className="navbar-nav ms-auto mb-2 mb-lg-0 d-flex align-items-end ">
          
           <li className="nav-item">
           <img className="profilephoto-nav me-2" src="https://generation-sessions.s3.amazonaws.com/ad60b588835c42a878fbc4ab00aaadec/img/descarga-1@2x.png" alt="Profile" />
             </li>
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">Road map</a>
+              <a className="nav-link" aria-current="page" href="#">Road map</a>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="#">About us</a>
             </li>
-            <li className="nav-item m-3">
+            <li className="nav-item logout-icon">
             <i className="fa-solid fa-arrow-right-from-bracket logout-icon"></i>
             </li>
           </ul>
