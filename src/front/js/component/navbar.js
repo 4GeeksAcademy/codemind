@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 
 export const Navbar = () => {
   return (
-    <nav className="navbar navbar-expand-lg bg-body-tertiary m-5 p-2">
+    <nav className="navbar navbar-expand-lg bg-body-tertiary ms-4 me-4 mt-3 mb-4 p-2">
       <div className="container-fluid d-flex align-items-center">
         <div>
         <Link to="/">
-          <img src="https://generation-sessions.s3.amazonaws.com/ad60b588835c42a878fbc4ab00aaadec/img/logo-5.png" alt="Logo" />
+          <img src="https://generation-sessions.s3.amazonaws.com/ad60b588835c42a878fbc4ab00aaadec/img/logo-5.png" alt="Logo"  className="img-logo-icon"/>
         </Link>
         </div>
         <div>

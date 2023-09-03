@@ -2,6 +2,12 @@
     General Styles used on every website (Don't Repeat Yourself)
 */
 
+.img-logo-icon{
+    width: 65px;
+    height: 60px;
+}
+
+
 .profilephoto-nav{
     width: 38px;
     height: 37px;
@@ -11,6 +17,9 @@
     padding-bottom: 5px;
     margin-left: 6px;
 }
+
+
+
 
 .nav-link{
     color: #F2811D;
