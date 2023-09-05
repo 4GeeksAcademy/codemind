@@ -18,7 +18,12 @@
     margin-left: 6px;
 }
 
-
+p{
+    color: #F2811D;
+    font-family: 'Inter', sans-serif;
+    font-weight:lighter;
+    font-size: small;  
+}
 
 
 .nav-link{
@@ -103,6 +108,6 @@ h2{
 .wrap, h3, a{
 text-decoration: none;
 color: #F2811D;
-font-family: 'Roboto', sans-serif;
+font-family: 'Inter', sans-serif;
 font-weight: 400;
 }
