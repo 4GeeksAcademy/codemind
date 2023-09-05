@@ -12,6 +12,7 @@ class User(db.Model):
     img = db.Column(db.String(80), nullable=False)
     role = db.Column(db.String(15), nullable=False)
     document=db.Column(db.String(250), nullable=True)
+    teacher = db.Column(db.String(80), nullable=True)
     
     module_progress = db.relationship('ModuleProgress', backref='user', lazy=True)
 
