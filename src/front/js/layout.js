@@ -21,13 +21,13 @@ const Layout = () => {
   
     // Define una función para verificar si la ruta actual es la página de registro
     const isRegistroPage = window.location.pathname === '/registro';
-  
+    const isIndexPage = window.location.pathname === '/';
     return (
       <div>
         <BrowserRouter basename={basename}>
           <ScrollToTop>
             {/* Renderiza el Navbar solo si la ruta actual no es la página de registro */}
-            {!isRegistroPage && <Navbar />}
+            {!isRegistroPage && !isIndexPage && <Navbar />}
             <Routes>
               <Route element={<Registro />} path="/registro" />
               <Route element={<Index />} path="/" />
