@@ -3,7 +3,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 import { BackendURL } from "./component/backendURL";
 
-import { Home } from "./pages/home";
+import { Index } from "./pages/index"
+import { Modulos } from "./pages/modulos";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
@@ -29,7 +30,8 @@ const Layout = () => {
             {!isRegistroPage && <Navbar />}
             <Routes>
               <Route element={<Registro />} path="/registro" />
-              <Route element={<Home />} path="/" />
+              <Route element={<Index />} path="/" />
+              <Route element={<Modulos />} path="/modules" />
               <Route element={<Demo />} path="/demo" />
               <Route element={<Single />} path="/single/:theid" />
               <Route element={<h1>Not found!</h1>} />

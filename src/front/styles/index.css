@@ -1,3 +1,108 @@
 /* 
     General Styles used on every website (Don't Repeat Yourself)
 */
+
+.img-logo-icon{
+    width: 65px;
+    height: 60px;
+}
+
+
+.profilephoto-nav{
+    width: 38px;
+    height: 37px;
+}
+.logout-icon{
+    color: #2EBBF2;
+    padding-bottom: 5px;
+    margin-left: 6px;
+}
+
+
+
+
+.nav-link{
+    color: #F2811D;
+    text-decoration: none ;
+    font-weight: 600;
+}
+
+ .menuBurger{
+    font-size: 30px;
+    font-weight: 9px;
+    color: #2EBBF2;
+}
+.navbar-toggler{
+    color: transparent;
+}
+
+
+body{
+    background-color: #131517;
+}
+
+h2{
+    color: #2EBBF2;
+}
+.text-line{
+    -webkit-text-stroke: 2px #2EBBF2;
+    color: transparent; 
+}
+.card{
+    border-radius: 20px;
+}
+
+.card-footer{
+    border-top: none;
+    background: transparent;
+}
+
+.btn-outline-secondary {
+    color: #6610F2; 
+    border: 2px solid #6610F2;
+
+  }
+  .btn-outline-secondary:hover{
+    background-color: #6610F2;
+    border: 2px solid #6610F2;
+  }
+  .module-title{
+    font-size: 96px;
+    font-style: normal;
+    font-weight: 900;
+    font-family: 'Roboto', sans-serif;
+}
+
+.footer{
+    color:#2EBBF2;
+    font-family: 'Inter', sans-serif;
+    font-weight:lighter;
+    font-size: small;
+}
+.github-ico{
+    width: 15px;
+    height: 15px;
+
+}
+
+
+  .img-logo{
+    width: 150px;
+    height: 180px;
+  }
+
+  h1{
+    font-family: 'Roboto', sans-serif;
+    font-size: 104px;
+    -webkit-text-stroke: 1px #2EBBF2;
+    color: transparent;
+    font-weight: 900;
+    letter-spacing: 0;
+  }
+
+.wrap, h3, a{
+text-decoration: none;
+color: #F2811D;
+font-family: 'Roboto', sans-serif;
+font-weight: 400;
+}
