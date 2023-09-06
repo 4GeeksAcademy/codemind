@@ -7,10 +7,12 @@ import { Index } from "./pages/index"
 import { Modulos } from "./pages/modulos";
 import { Profile } from "./pages/profile";
 import { ChangePassword } from "./pages/changePassword";
+import { Student } from "./pages/student";
+import { Usuarios } from "./pages/usuarios";
+import { Presentacion } from "./pages/presentacion";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
-
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { Registro } from "./pages/registro";
@@ -36,6 +38,9 @@ const Layout = () => {
               <Route element={<Profile />} path="/profile" />
               <Route element={<ChangePassword />} path="/changepassword" />
               <Route element={<Modulos />} path="/modules" />
+              <Route element={<Student />} path="/student" />
+              <Route element={<Usuarios />} path="/usuarios" />
+              <Route element={<Presentacion />} path="/presentacion" />
               <Route element={<Demo />} path="/demo" />
               <Route element={<Single />} path="/single/:theid" />
               <Route element={<h1>Not found!</h1>} />
