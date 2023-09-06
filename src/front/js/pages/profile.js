@@ -67,6 +67,7 @@ export const Profile = () => {
                 </div>
                 <div className="row">
                     <div className="col text-center mb-2 ">
+                        <a href="#" className={`btn btn-outline-secondary me-2 ${!selectedTeacher ? 'disabled' : ''}`}>save changes</a>
                         <a href="#" className="btn btn-outline-secondary">Change Your Password</a>
                     </div>
                 </div>
