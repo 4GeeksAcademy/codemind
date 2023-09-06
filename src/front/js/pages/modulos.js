@@ -26,7 +26,8 @@ export const Modulos = () => {
                   style={{ maxWidth: "150px", maxHeight: "150px" }}
                 />
               </div>
-              <div className="card-footer mb-4"><a href="#" className="btn btn-outline-secondary">start</a></div>
+              <div className="card-footer mb-4">
+                <a href="#" className="btn btn-outline-secondary mb-4">start</a></div>
             </div>
           </div>
           <div className="col-md-4" style={{ width: "18rem" }}>
