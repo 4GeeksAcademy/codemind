@@ -131,3 +131,10 @@ font-weight: 400;
     color: #2EBBF2;
     font-size: 30px;
 }
+
+.seleccion:hover {
+    background-color: white;
+    color : black;
+    
+    }
+
