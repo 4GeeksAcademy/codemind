@@ -7,6 +7,7 @@ import { Index } from "./pages/index"
 import { Modulos } from "./pages/modulos";
 import { Profile } from "./pages/profile";
 import { ChangePassword } from "./pages/changePassword";
+import { ForwotPassword } from "./pages/forwotpassword";
 import { SendPassword } from "./pages/sendpassword";
 import { Student } from "./pages/student";
 import { Usuarios } from "./pages/usuarios";
@@ -38,6 +39,7 @@ const Layout = () => {
               <Route element={<Index />} path="/" />
               <Route element={<Profile />} path="/profile" />
               <Route element={<ChangePassword />} path="/changepassword" />
+              <Route element={<ForwotPassword />} path="/forwotpassword" />
               <Route element={<SendPassword />} path="/sendpassword" />
               <Route element={<Modulos />} path="/modules" />
               <Route element={<Student />} path="/student" />

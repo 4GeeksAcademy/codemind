@@ -29,7 +29,7 @@ export const Index = () => {
                                 <Link to="/registro"><button type="button" className="btn btn-outline-info rounded-pill" style={{ minWidth: "30em" }}>Sign up</button></Link>
                             </div>
                             <div className='text-center mt-5'> 
-                                <p><a href="#">Forgot your password?</a></p>
+                                <Link to={"/forwotpassword"}><p><a>Forgot your password?</a></p></Link>
                             </div>
                         </div>
                     </div>
