@@ -5,6 +5,7 @@ import { BackendURL } from "./component/backendURL";
 
 import { Index } from "./pages/index"
 import { Modulos } from "./pages/modulos";
+import { CreateExcercise } from "./pages/createexcercise";
 import { Profile } from "./pages/profile";
 import { ChangePassword } from "./pages/changePassword";
 import { ForwotPassword } from "./pages/forwotpassword";
@@ -42,6 +43,7 @@ const Layout = () => {
               <Route element={<ForwotPassword />} path="/forwotpassword" />
               <Route element={<SendPassword />} path="/sendpassword" />
               <Route element={<Modulos />} path="/modules" />
+              <Route element={<CreateExcercise />} path="/createexcercise" />
               <Route element={<Student />} path="/student" />
               <Route element={<Usuarios />} path="/usuarios" />
               <Route element={<Presentacion />} path="/presentacion" />
