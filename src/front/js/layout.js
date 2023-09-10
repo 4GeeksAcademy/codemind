@@ -29,12 +29,14 @@ const Layout = () => {
     // Define una función para verificar si la ruta actual es la página de registro
     const isRegistroPage = window.location.pathname === '/registro';
     const isIndexPage = window.location.pathname === '/';
+    const isforwotpassword = window.location.pathname === '/forwotpassword';
+    const isSendpassword = window.location.pathname === '/sendpassword';
     return (
       <div>
         <BrowserRouter basename={basename}>
           <ScrollToTop>
             {/* Renderiza el Navbar solo si la ruta actual no es la página de registro */}
-            {!isRegistroPage && !isIndexPage && <Navbar />}
+            {!isRegistroPage && !isIndexPage && !isforwotpassword && !isSendpassword && <Navbar />}
             <Routes>
               <Route element={<Registro />} path="/registro" />
               <Route element={<Index />} path="/" />
