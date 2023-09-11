@@ -6,31 +6,37 @@ import { Link } from 'react-router-dom';
 
 export const Index = () => {
     return (
-        <div className='container mt-5'>
-            <div className="container-fluid h-100 overflow-hidden mt-5"> 
-                <div className="row h-100 justify-content-center align-items-center mt-5">
-                    <div className="col-12 col-sm-6 d-flex justify-content-center align-items-center"> {/* Usa 'align-items-center' para centrar verticalmente */}
-                        <div className="img-index">
-                            <img src={logoCM} alt="Logo" className="img-fluid" />
-                        </div>
+        <div className="container d-flex justify-content-between">
+            <div className="row vh-100  align-items-center">
+                <div className="col-md-6 text-center">
+                    <div className="embed-responsive embed-responsive-16by9">
+                        <img src={logoCM} alt="Logo" className="embed-responsive-item img-fluid" />
                     </div>
-                    <div className="col-12 col-sm-6 d-flex align-items-center">
-                        <div>
-                            <h1 className="text-start text-wrap me-2">CodeMind </h1>
-                            <div className="">
-                                <h3>
-                                    <a href="" className="typewrite ms-2" data-period="2000" data-type='[ "Aprende", "Disfruta", "Escribe Codigo", "Practica" ]'>
-                                        <span className="wrap ms-3"></span>
-                                    </a>
-                                </h3>
+                </div>
+
+                <div className="col-md-6">
+                    <div className="">
+                        <h1 className="text-center">CodeMind</h1>
+
+                        <h4>
+                            <a href="" className="typewrite ms-2" data-period="2000" data-type='[ "Aprende", "Disfruta", "Escribe Codigo", "Practica" ]'>
+                                <span className="wrap ms-3"></span>
+                            </a>
+                        </h4>
+
+                        <div className='row d-flex'>
+                            <div className='col-sm-12'>
+                                <button type="button" className="btn btn-primary rounded-pill mb-2 w-100 w-md-auto" style={{ maxWidth: "30em" }}>Login</button>
                             </div>
-                            <div className="buttons text-center mt-4 ">
-                                <button type="button" className="btn btn-primary rounded-pill mt-4 mb-2" style={{ minWidth: "30em" }}>Login</button>
-                                <Link to="/registro"><button type="button" className="btn btn-outline-info rounded-pill" style={{ minWidth: "30em" }}>Sign up</button></Link>
+                            <div className="col-sm-12">
+                                <Link to="/registro">
+                                    <button type="button" className="btn btn-outline-info rounded-pill w-100 w-md-auto" style={{ maxWidth: "30em" }}>Sign up</button>
+                                </Link>
                             </div>
-                            <div className='text-center mt-5'> 
-                                <p><a href="#">Forgot your password?</a></p>
-                            </div>
+                        </div>
+
+                        <div className='text-center mt-3'>
+                            <Link to="/forwotpassword"><a>Forgot your password?</a></Link>
                         </div>
                     </div>
                 </div>

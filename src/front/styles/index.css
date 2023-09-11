@@ -105,12 +105,13 @@ h2{
 
   h1{
     font-family: 'Roboto', sans-serif;
-    font-size: 104px;
     -webkit-text-stroke: 1px #2EBBF2;
     color: transparent;
-    font-weight: 900;
-    letter-spacing: 0;
+    font-size: calc(3.225rem + 5.2vw);
+    font-weight: 600;
+    line-height: 1.2;
   }
+
 
 .bigtext{
     font-family: 'Roboto', sans-serif;
@@ -119,6 +120,8 @@ h2{
     letter-spacing: 0;
     
 }
+
+
 
 .wrap, h3, a{
 text-decoration: none;
@@ -137,3 +140,19 @@ font-weight: 400;
     color : black;
     
     }
+
+/* Estilo personalizado para los radio buttons */
+
+
+input[type="radio"]:checked {
+    background-color: #6610F2; /* Cambia el fondo cuando está seleccionado */
+    border-color: #6610F2; /* Cambia el borde cuando está seleccionado */
+}
+input[type="text"]:focus {
+    border-color: #6610F2; /* Cambia el color del borde a azul (#007bff) */
+    /* Otros estilos opcionales, como grosor del borde o sombra */
+    border-width: 2px;
+    border-style: solid;
+    box-shadow: 0 0 5px #6610F2(0, 123, 255, 0.5); /* Sombra cuando está enfocado */
+    outline: none; /* Elimina el contorno predeterminado del enfoque */
+}

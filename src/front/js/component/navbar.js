@@ -33,7 +33,7 @@ export const Navbar = () => {
             <Link to = {"/about"}><a className="nav-link" href="#">About us</a></Link>
             </li>
             <li className="nav-item logout-icon">
-            <i className="fa-solid fa-arrow-right-from-bracket logout-icon"></i>
+            <Link to={"/"}><i className="fa-solid fa-arrow-right-from-bracket logout-icon"></i></Link>
             </li>
           </ul>
         </div>
