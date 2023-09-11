@@ -137,8 +137,3 @@ font-weight: 400;
     color : black;
     
     }
-
-.transformed {
-        /* idéntico a rotateZ(45deg); */
-    transform: rotate(90deg);
-}
