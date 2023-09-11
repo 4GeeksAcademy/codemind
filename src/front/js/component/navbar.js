@@ -27,10 +27,10 @@ export const Navbar = () => {
           <Link to={"/profile"}><img className="profilephoto-nav me-2" src="https://generation-sessions.s3.amazonaws.com/ad60b588835c42a878fbc4ab00aaadec/img/descarga-1@2x.png" alt="Profile" /></Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" aria-current="page" href="#">Road map</a>
+             <Link to = {"/roadmap"}><a className="nav-link" aria-current="page" href="#">Road map</a></Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">About us</a>
+            <Link to = {"/about"}><a className="nav-link" href="#">About us</a></Link>
             </li>
             <li className="nav-item logout-icon">
             <i className="fa-solid fa-arrow-right-from-bracket logout-icon"></i>
