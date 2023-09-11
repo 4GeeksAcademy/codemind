@@ -1,4 +1,7 @@
+import json
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import ARRAY
+from sqlalchemy.dialects.postgresql import JSONB
 
 db = SQLAlchemy()
 
@@ -50,11 +53,13 @@ class ModuleProgress(db.Model):
 class Exercise(db.Model):
     __tablename__ = 'exercise'
     id = db.Column(db.Integer, primary_key=True)
-    answer_type = db.Column(db.String(50))
-    topic = db.Column(db.String(40))
-    type = db.Column(db.String(80))
-    module_id = db.Column(db.Integer, db.ForeignKey('module.id'))
-    questions = db.relationship('ExerciseQuestions', backref='exercise', lazy=True)
+    module = db.Column(db.String(50))
+    type = db.Column(db.String(40))
+    question = db.Column(db.String(250))
+    answers = db.Column(JSONB)
+    info_blog = db.Column(db.String(250))
+    info_youtube = db.Column(db.String(250))
+    
 
     def __repr__(self):
         return f'<Exercise {self.id}>'
@@ -62,11 +67,12 @@ class Exercise(db.Model):
     def serialize(self):
         return {
             "id": self.id,
-            "answer_type": self.answer_type,
-            "topic": self.topic,
+            "module": self.module,
             "type": self.type,
-            "module_id": self.module_id,
-            "questions": [question.serialize() for question in self.questions]
+            "question": self.question,
+            "answers": json.loads(self.answers),
+            "info_blog": self.info_blog,
+            "info_youtube":self.info_youtube
         }
 
 class ExerciseQuestions(db.Model):

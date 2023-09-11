@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User
+from api.models import db, User, Exercise
 from api.utils import generate_sitemap, APIException
 from flask_bcrypt import Bcrypt
 
@@ -96,3 +96,51 @@ def put_user_id(user_id):
     # new_user.is_active = True
     db.session.commit()
     return jsonify({"msg": "El usuario a sido actualizado"}), 201
+
+
+
+@api.route('/exercise', methods=['POST'])
+def create_excercise():
+    module = request.json.get("module")
+    type = request.json.get("type")
+    question = request.json.get("question")
+    answers = request.json.get("answers")
+    info_blog = request.json.get("info_blog")
+    info_youtube = request.json.get("info_youtube")
+    if not isinstance(answers, list):
+        answers = [answers]
+    print(answers)
+    new_excercise = Exercise()
+    new_excercise.module = module
+    new_excercise.type = type
+    new_excercise.question= question
+    new_excercise.answers = answers
+    new_excercise.info_blog = info_blog
+    new_excercise.info_youtube = info_youtube
+    db.session.add(new_excercise)
+    db.session.commit()
+    exercise_id = new_excercise.id
+    exercise = answers
+    
+    return jsonify({"msg": "Exercise created successfully", "statusCode": 201, "exercise_id": exercise_id, "ex" : exercise }), 201
+
+@api.route('/exercise/<int:id>', methods=['GET'])
+def get_uexcercise_id(id):
+
+    exercise = Exercise.query.get(id)
+
+    if exercise is not None:
+        return jsonify(exercise.serialize()), 200
+
+    return jsonify({"msg": "El exercise no existe"}), 400
+
+
+@api.route('/exercises/<string:module>', methods=['GET'])
+def get_exercises_by_module(module):
+    exercises = Exercise.query.filter_by(module=module).all()
+
+    if exercises:
+        serialized_exercises = [exercise.serialize() for exercise in exercises]
+        return jsonify({"exercises": serialized_exercises}), 200
+    else:
+        return jsonify({"msg": "No se encontraron ejercicios para el tipo de módulo especificado"}), 404
