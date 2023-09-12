@@ -13,7 +13,7 @@ export const Profile = () => {
         <div className="container vh-100 align-items-center">
             <div className="row mb-4">
                 <div className="col">
-                    <Link to="/profile"><i className="fa-solid fa-arrow-left arrow-back"></i></Link>
+                    <Link to="/modules"><i className="fa-solid fa-arrow-left arrow-back"></i></Link>
                 </div>
             </div>
             <div className="row justify-content-center d-flex justify-content-between">
