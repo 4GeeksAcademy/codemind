@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Exercise
+from api.models import db, User, Exercise, SingleChoiceAnswers
 from api.utils import generate_sitemap, APIException
 from flask_bcrypt import Bcrypt
 
@@ -83,8 +83,9 @@ def put_user_id(user_id):
     firstName = request.json.get("firstName")
     lastName = request.json.get("lastName")
     email = request.json.get("email")
-    password=request.json.get("password")
-    secure_password = bcrypt.generate_password_hash(password,10).decode("utf-8")
+    password = request.json.get("password")
+    secure_password = bcrypt.generate_password_hash(
+        password, 10).decode("utf-8")
     img = request.json.get("img")
     role = request.json.get("role")
     user.firstName = firstName
@@ -98,41 +99,69 @@ def put_user_id(user_id):
     return jsonify({"msg": "El usuario a sido actualizado"}), 201
 
 
-
 @api.route('/exercise', methods=['POST'])
 def create_excercise():
-    module = request.json.get("module")
-    type = request.json.get("type")
-    question = request.json.get("question")
-    answers = request.json.get("answers")
-    info_blog = request.json.get("info_blog")
-    info_youtube = request.json.get("info_youtube")
-    if not isinstance(answers, list):
-        answers = [answers]
-    print(answers)
-    new_excercise = Exercise()
-    new_excercise.module = module
-    new_excercise.type = type
-    new_excercise.question= question
-    new_excercise.answers = answers
-    new_excercise.info_blog = info_blog
-    new_excercise.info_youtube = info_youtube
-    db.session.add(new_excercise)
-    db.session.commit()
-    exercise_id = new_excercise.id
-    exercise = answers
-    
-    return jsonify({"msg": "Exercise created successfully", "statusCode": 201, "exercise_id": exercise_id, "ex" : exercise }), 201
+    try:
+        new_exercise = Exercise(            
+            module=request.json.get("module"),
+            type=request.json.get("type"),
+            question=request.json.get("question"),
+            info_blog=request.json.get("info_blog"),
+            info_youtube=request.json.get("info_youtube"),
+        )
+
+        db.session.add(new_exercise)
+        db.session.flush()
+        exercise_id = new_exercise.id
+        print(exercise_id)
+
+        if new_exercise.type == 'SC':
+            for answer_data in request.json.get("answers"):
+                new_answer = SingleChoiceAnswers(
+                    answers=answer_data["text"],
+                    exercise_id=exercise_id,
+                    isCorrect=answer_data["isCorrect"]
+                )
+                db.session.add(new_answer)
+
+    # elif type == 'Fill in Blank':
+    #     #Crear las respuestas Fill in Blank
+    # elif type == 'Draw and drop':
+    #     #Crear las r dAd
+
+        db.session.commit()
+
+        return jsonify({"msg": "Exercise created successfully", "statusCode": 201, "exercise_id": exercise_id}), 201
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
+
 
 @api.route('/exercise/<int:id>', methods=['GET'])
-def get_uexcercise_id(id):
+def get_exercise_by_id(id):
+    try:
+        exercise = Exercise.query.get(id)
 
-    exercise = Exercise.query.get(id)
+        if exercise is not None:
+            
+            single_choice_answers = SingleChoiceAnswers.query.filter_by(exercise_id=id).all()
 
-    if exercise is not None:
-        return jsonify(exercise.serialize()), 200
+           
+            serialized_answers = [answer.serialize() for answer in single_choice_answers]
 
-    return jsonify({"msg": "El exercise no existe"}), 400
+            
+            exercise_data = exercise.serialize()
+            exercise_data["single_choice_answers"] = serialized_answers
+
+            return jsonify(exercise_data), 200
+
+        return jsonify({"msg": "El ejercicio no existe"}), 400
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
+
 
 
 @api.route('/exercises/<string:module>', methods=['GET'])
