@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 export const Index = () => {
     return (
-        <div className='container mt-5'>
+        <div className='container mt-5 vh-100'>
             <div className="container-fluid h-100 overflow-hidden mt-5"> 
                 <div className="row h-100 justify-content-center align-items-center mt-5">
                     <div className="col-12 col-sm-6 d-flex justify-content-center align-items-center"> {/* Usa 'align-items-center' para centrar verticalmente */}
@@ -25,7 +25,7 @@ export const Index = () => {
                                 </h3>
                             </div>
                             <div className="buttons text-center mt-4 ">
-                                <button type="button" className="btn btn-primary rounded-pill mt-4 mb-2" style={{ minWidth: "30em" }}>Login</button>
+                                <Link to="/login"><button type="button" className="btn btn-outline-info rounded-pill" style={{ minWidth: "30em" }}>Sign in</button></Link>
                                 <Link to="/registro"><button type="button" className="btn btn-outline-info rounded-pill" style={{ minWidth: "30em" }}>Sign up</button></Link>
                             </div>
                             <div className='text-center mt-5'> 
