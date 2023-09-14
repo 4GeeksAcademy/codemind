@@ -2,9 +2,11 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Exercise, SingleChoiceAnswers
+from api.models import db, User, Exercise, SingleChoiceAnswers, TokenBlockedList
 from api.utils import generate_sitemap, APIException
 from flask_bcrypt import Bcrypt
+from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity, get_jwt
+from datetime import datetime, timezone
 
 api = Blueprint('api', __name__)
 app = Flask(__name__)
@@ -23,81 +25,125 @@ def handle_hello():
 
 @api.route('/user', methods=['POST'])
 def create_user():
-    firstName = request.json.get("firstName")
-    lastName = request.json.get("lastName")
-    email = request.json.get("email")
-    password = request.json.get("password")
-    secure_password = bcrypt.generate_password_hash(
-        password, 10).decode("utf-8")
-    img = request.json.get("img")
-    # role = request.json.get("role")
-    new_user = User()
-    new_user.firstName = firstName
-    new_user.lastName = lastName
-    new_user.email = email
-    new_user.password = secure_password
-    new_user.img = img
-    new_user.role = "alumno"
-    new_user.is_active = True
-    db.session.add(new_user)
-    db.session.commit()
-    return jsonify({"msg": "Usuario registrado"}), 201
+    try:
+        password = request.json.get("password")
+        secure_password = bcrypt.generate_password_hash(
+            password, 10).decode("utf-8")
+        img = request.json.get("img")
+        # role = request.json.get("role")
+        new_user = User()
+        new_user.firstName = request.json.get("firstName")
+        new_user.lastName = request.json.get("lastName")
+        new_user.email = request.json.get("email")
+        new_user.password = secure_password
+        new_user.img = request.json.get("img")
+        new_user.role = "alumno"
+        new_user.is_active = True
+        db.session.add(new_user)
+        db.session.commit()
+        return jsonify({"msg": "Usuario registrado"}), 201
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 
 @api.route('/user', methods=['GET'])
 def get_users():
-
-    users = User.query.all()
-    return jsonify(users=[user.serialize() for user in users]), 200
-
+    try:
+        users = User.query.all()
+        return jsonify(users=[user.serialize() for user in users]), 200
+    except Exception as e:
+        return jsonify({"error":str(e)}),500
 
 @api.route('/user/<int:user_id>', methods=['GET'])
 def get_user_id(user_id):
+    try:
 
-    user = User.query.get(user_id)
+        user = User.query.get(user_id)
 
-    if user is not None:
-        return jsonify(user=[user.serialize()]), 200
+        if user is not None:
+         return jsonify(user=[user.serialize()]), 200
 
-    return jsonify({"msg": "El usuario no existe"}), 400
+        return jsonify({"msg": "El usuario no existe"}), 400
+    
+    except Exception as e:
+        return jsonify({"error":str(e)}),500
 
 
 @api.route('/user/<int:user_id>', methods=['DELETE'])
 def delete_user(user_id):
-
-    user = User.query.get(user_id)
-
-    if user is not None:
-        db.session.delete(user)
-        db.session.commit()
-        return jsonify({"msg": "Usuario eliminado"}), 201
-
-    return jsonify({"msg": "El usuario no existe"}), 400
+    try:
+        user = User.query.get(user_id)
+        if user is not None:
+            db.session.delete(user)
+            db.session.commit()
+            return jsonify({"msg": "Usuario eliminado"}), 201
+        return jsonify({"msg": "El usuario no existe"}), 400
+    
+    except Exception as e:
+        return jsonify({"error":str(e)}),500
 
 
 @api.route('/user/<int:user_id>', methods=['PUT'])
 def put_user_id(user_id):
-
-    user = User.query.get(user_id)
-
-    firstName = request.json.get("firstName")
-    lastName = request.json.get("lastName")
+    try:
+        if user_id is not None:
+            user = User.query.get(user_id)
+            password = request.json.get("password")
+            secure_password = bcrypt.generate_password_hash(
+                    password, 10).decode("utf-8")
+            user.firstName = request.json.get("firstName")
+            user.lastName = request.json.get("lastName")
+            user.email = request.json.get("email")
+            user.password = secure_password
+            user.img = request.json.get("img")
+            user.role = request.json.get("role")
+            # new_user.is_active = True
+            db.session.commit()
+            return jsonify({"msg": "El usuario a sido actualizado"}), 201
+        
+    except Exception as e:
+        return jsonify({"error":str(e)}),500
+    
+@api.route('/login', methods=['POST']) 
+def login_user():
+    # Obtenemos los campos del cuerpo de la petición
     email = request.json.get("email")
     password = request.json.get("password")
-    secure_password = bcrypt.generate_password_hash(
-        password, 10).decode("utf-8")
-    img = request.json.get("img")
-    role = request.json.get("role")
-    user.firstName = firstName
-    user.lastName = lastName
-    user.email = email
-    user.password = secure_password
-    user.img = img
-    user.role = role
-    # new_user.is_active = True
-    db.session.commit()
-    return jsonify({"msg": "El usuario a sido actualizado"}), 201
+    # Busca al ussuario en la base de datos
+    user = User.query.filter_by(email = email).first()
+    # Si el usuario no se encuentra, se retorna error
+    if user is None:
+        return jsonify({"message":"User not found"}),404
+    # Si las claves no son validas, se retorna error
+    if not bcrypt.check_password_hash(user.password,password):
+        return jsonify({"message":"Wrong password"}),401
+    
+    # Si pasan las validaciones, se genera el token
+    token = create_access_token(identity = user.id, additional_claims = {"role":"admin"})
+    return jsonify({"message":"Login successful", "token":token}),200
 
+@api.route('/private') 
+@jwt_required() # Este decorador convierte la ruta en protegida
+def private():
+    user_id = get_jwt_identity()
+    claims = get_jwt()
+    user = User.query.get(user_id)
+    response = {
+        "userId" : user_id,
+        "claims" : claims,
+        # "isActive" : user.is_active
+    }
+    return jsonify(response)
+
+@api.route('/logout', methods=['POST'])
+@jwt_required() 
+def user_logout():
+    jti=get_jwt()["jti"]
+    now=datetime.now(timezone.utc)
+    tokenBlocked=TokenBlockedList(token=jti,created_at=now)
+    db.session.add(tokenBlocked)
+    db.session.commit()
+    return jsonify({"message":"User logged out"}),200
 
 @api.route('/exercise', methods=['POST'])
 def create_excercise():
