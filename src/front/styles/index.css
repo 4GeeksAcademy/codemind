@@ -34,21 +34,21 @@ body{
 /*Text, titules, inputs----------------------------------------------------------------*/
 
 h1{
-font-family: var(--FuentePrincipal);
-font-size: var(--LgFontSize);
--webkit-text-stroke: 1px var(--ColorPrimario);
-color: transparent;
-font-weight: 900;
-letter-spacing: 0;
+    font-family: 'Roboto', sans-serif;
+    -webkit-text-stroke: 1px #2EBBF2;
+    color: transparent;
+    font-size: calc(3.225rem + 5.2vw);
+    font-weight: 600;
+    line-height: 1.2;
 }
 
 h2{
-font-family: 'Roboto', sans-serif;
-font-size: 50px;
--webkit-text-stroke: 1px var(--ColorPrimario);
-color: transparent;
-font-weight: 900;
-letter-spacing: 0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 50px;
+    -webkit-text-stroke: 1px var(--ColorPrimario);
+    color: transparent;
+    font-weight: 900;
+    letter-spacing: 0;
 }
 
 label{
@@ -78,10 +78,10 @@ p{
 }
 
 .wrap, h3, a{
-text-decoration: none;
-color: var(--ColorSecundario);
-font-family: 'Inter', sans-serif;
-font-weight: 400;
+    text-decoration: none;
+    color: #F2811D;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
 }
 .text-color-primary{
     color: var(--ColorPrimario);
@@ -166,9 +166,9 @@ height: 180px;
     border-radius: 8px ;
 }
 .btn-outline-secondary:hover{
-background-color: var(--ColorTerciario);
-border: 2px solid var(--ColorTerciario);
-color: whitesmoke;
+    background-color: var(--ColorTerciario);
+    border: 2px solid var(--ColorTerciario);
+    color: whitesmoke;
 }
 
 /* Footer Cards and modals*/
@@ -189,9 +189,6 @@ color: whitesmoke;
     
 }
 
- 
-
-
 .arrow-back{
     color: var(--ColorPrimario);
     font-size: 30px;
@@ -199,7 +196,21 @@ color: whitesmoke;
 
 .seleccion:hover {
     background-color: white;
-    color : black;
-    
-    }
+    color : black;  
+}
 
+/* Estilo personalizado para los radio buttons */
+
+
+input[type="radio"]:checked {
+    background-color: #6610F2; /* Cambia el fondo cuando está seleccionado */
+    border-color: #6610F2; /* Cambia el borde cuando está seleccionado */
+}
+input[type="text"]:focus {
+    border-color: #6610F2; /* Cambia el color del borde a azul (#007bff) */
+    /* Otros estilos opcionales, como grosor del borde o sombra */
+    border-width: 2px;
+    border-style: solid;
+    box-shadow: 0 0 5px #6610F2(0, 123, 255, 0.5); /* Sombra cuando está enfocado */
+    outline: none; /* Elimina el contorno predeterminado del enfoque */
+}
