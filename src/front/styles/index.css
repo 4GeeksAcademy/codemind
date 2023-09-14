@@ -1,62 +1,177 @@
 /* 
     General Styles used on every website (Don't Repeat Yourself)
 */
+:root {
+    /* Relación de tamaño de fuente */
+    font-size: 16px;
 
+    /* Colors */
+
+    --ColorPrimario: #2EBBF2; /* Define una variable de color personalizada */
+    --ColorSecundario: #F2811D;
+    --ColorTerciario: var(--ColorTerciario);
+    --ColorBackground: black;
+
+    /* Family-fonts */
+    --FuentePrincipal: 'Roboto', sans-serif;
+    --FuenteSecundaria: 'Inter', sans-serif;
+
+    /* Relative Font-size */
+
+    --XlFontSize: 6.563em; /*105px */
+    --LgFontSize: 6em; /*95px */
+    --MdFontSize: 4.375em; /* 70px */
+    --SmFontSize: 3.125em; /* 50px */
+    --XsFontSize: 1.875em;  /* 30px */
+}
+  
+
+/*Estilos Globales--------------------------------------------------------*/
+body{
+    background-color: var(--ColorBackground);
+}
+
+/*Text, titules, inputs----------------------------------------------------------------*/
+
+h1{
+    font-family: 'Roboto', sans-serif;
+    -webkit-text-stroke: 1px #2EBBF2;
+    color: transparent;
+    font-size: calc(3.225rem + 5.2vw);
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+h2{
+    font-family: 'Roboto', sans-serif;
+    font-size: 50px;
+    -webkit-text-stroke: 1px var(--ColorPrimario);
+    color: transparent;
+    font-weight: 900;
+    letter-spacing: 0;
+}
+
+label{
+    color: var(--ColorSecundario);
+    font-family: 'Inter', sans-serif;
+    font-weight:lighter;
+}
+
+p{
+    color: var(--ColorSecundario);
+    font-family: var(--FuenteSecundaria);
+    font-weight:lighter;
+    font-size: small;  
+}
+
+.text-line{
+    -webkit-text-stroke: 2px var(--ColorPrimario);
+    color: transparent; 
+}
+
+.bigtext{
+    font-family: var(--FuentePrincipal);
+    font-size: 70px;
+    font-weight: 800;
+    letter-spacing: 0;
+    
+}
+
+.wrap, h3, a{
+    text-decoration: none;
+    color: #F2811D;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+}
+.text-color-primary{
+    color: var(--ColorPrimario);
+}
+.module-title{
+    font-size: 96px;
+    font-style: normal;
+    font-weight: 900;
+    font-family: 'Roboto', sans-serif;
+}
+input{
+    box-shadow: 0 0 5px var(--ColorPrimario);
+}
+
+/*Scroll bar ----------------------------------------------------------------------------*/
+::-webkit-scrollbar {
+    width: 0.4rem; /* Ancho del scrollbar */
+}
+  
+::-webkit-scrollbar-track {
+    background-color: #ffffff1a; /* Color de fondo del track del scrollbar */
+}
+  
+::-webkit-scrollbar-thumb {
+    background-color: #ffffff47; /* Color del thumb del scrollbar */
+    border-radius: 1rem; /* Borde redondeado del thumb del scrollbar */
+}
+
+
+/*Logos, imagenes e iconos----------------------------------------------------------------------- */
 .img-logo-icon{
     width: 65px;
     height: 60px;
 }
+.img-logo-login{
+    width: 14.625em;
+    height: 14.625em;
+}
 
-
-.text-color-primary{
-    color:#2EBBF2
+.logout-icon{
+    color: var(--ColorPrimario);
+    padding-bottom: 5px;
+    margin-left: 6px;
 }
 
 .profilephoto-nav{
     width: 38px;
     height: 37px;
 }
-.logout-icon{
-    color: #2EBBF2;
-    padding-bottom: 5px;
-    margin-left: 6px;
+
+.github-ico{
+    width: 15px;
+    height: 15px;
+
 }
 
-p{
-    color: #F2811D;
-    font-family: 'Inter', sans-serif;
-    font-weight:lighter;
-    font-size: small;  
+.img-logo{
+width: 150px;
+height: 180px;
 }
 
-
+/*Menu, links and buttons-----------------------------------------------------------------*/
 .nav-link{
-    color: #F2811D;
+    color: var(--ColorSecundario);
     text-decoration: none ;
     font-weight: 600;
 }
 
- .menuBurger{
-    font-size: 30px;
-    font-weight: 9px;
-    color: #2EBBF2;
-}
 .navbar-toggler{
     color: transparent;
 }
 
-
-body{
-    background-color: #131517;
+.menuBurger{
+    font-size: 30px;
+    font-weight: 9px;
+    color: var(--ColorPrimario);
+}
+.btn-outline-secondary {
+    color: var(--ColorTerciario); 
+    border: 2px solid var(--ColorTerciario);
+    background-color: whitesmoke;
+    border-radius: 8px ;
+}
+.btn-outline-secondary:hover{
+    background-color: var(--ColorTerciario);
+    border: 2px solid var(--ColorTerciario);
+    color: whitesmoke;
 }
 
-h2{
-    color: #2EBBF2;
-}
-.text-line{
-    -webkit-text-stroke: 2px #2EBBF2;
-    color: transparent; 
-}
+/* Footer Cards and modals*/
 .card{
     border-radius: 20px;
 }
@@ -66,80 +181,23 @@ h2{
     background: transparent;
 }
 
-.btn-outline-secondary {
-    color: #6610F2; 
-    border: 2px solid #6610F2;
-    background-color: whitesmoke;
-    border-radius: 8px ;
-  }
-  .btn-outline-secondary:hover{
-    background-color: #6610F2;
-    border: 2px solid #6610F2;
-    color: whitesmoke;
-  }
-  .module-title{
-    font-size: 96px;
-    font-style: normal;
-    font-weight: 900;
-    font-family: 'Roboto', sans-serif;
-}
-
 .footer{
-    color:#2EBBF2;
+    color:var(--ColorPrimario);
     font-family: 'Inter', sans-serif;
     font-weight:lighter;
     font-size: small;
     
 }
-.github-ico{
-    width: 15px;
-    height: 15px;
-
-}
-
-
-  .img-logo{
-    width: 150px;
-    height: 180px;
-  }
-
-  h1{
-    font-family: 'Roboto', sans-serif;
-    -webkit-text-stroke: 1px #2EBBF2;
-    color: transparent;
-    font-size: calc(3.225rem + 5.2vw);
-    font-weight: 600;
-    line-height: 1.2;
-  }
-
-
-.bigtext{
-    font-family: 'Roboto', sans-serif;
-    font-size: 70px;
-    font-weight: 800;
-    letter-spacing: 0;
-    
-}
-
-
-
-.wrap, h3, a{
-text-decoration: none;
-color: #F2811D;
-font-family: 'Inter', sans-serif;
-font-weight: 400;
-}
 
 .arrow-back{
-    color: #2EBBF2;
+    color: var(--ColorPrimario);
     font-size: 30px;
 }
 
 .seleccion:hover {
     background-color: white;
-    color : black;
-    
-    }
+    color : black;  
+}
 
 /* Estilo personalizado para los radio buttons */
 
