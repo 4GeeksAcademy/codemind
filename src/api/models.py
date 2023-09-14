@@ -29,6 +29,12 @@ class User(db.Model):
             # No serializar la contraseña, es un problema de seguridad
         }
 
+class TokenBlockedList(db.Model):
+    id=db.Column(db.Integer, primary_key=True)
+    token=db.Column(db.String(1000), unique=True, nullable=False)
+    created_at=db.Column(db.DateTime, nullable=False)
+
+
 class Exercise(db.Model):
     __tablename__ = 'exercise'
     id = db.Column(db.Integer, primary_key=True)

@@ -1,8 +1,6 @@
-import React, { useContext, useState } from "react";
-import { Context } from "../store/appContext";
+import React, { useState } from "react";
+import "../../styles/index.css";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
-import "../../styles/home.css";
-
 
 export const Registro = () => {
   const { store, actions} = useContext(Context)
@@ -66,11 +64,11 @@ export const Registro = () => {
           <form onSubmit={handleSubmit}>
             <div className="mb-3">
               <label htmlFor="firstName" className="form-label">
-                Nombre
+                First Name
               </label>
               <input
                 type="text"
-                className="form-control"
+                className="form-control bg-dark text-white border-primary"
                 id="firstName"
                 name="firstName"
                 value={formData.firstName}
@@ -80,11 +78,11 @@ export const Registro = () => {
             </div>
             <div className="mb-3">
               <label htmlFor="lastName" className="form-label">
-                Apellido
+                Last Name
               </label>
               <input
                 type="text"
-                className="form-control"
+                className="form-control bg-dark text-white border-primary"
                 id="lastName"
                 name="lastName"
                 value={formData.lastName}
@@ -94,11 +92,11 @@ export const Registro = () => {
             </div>
             <div className="mb-3">
               <label htmlFor="email" className="form-label">
-                Correo Electrónico
+                Email
               </label>
               <input
                 type="email"
-                className="form-control"
+                className="form-control bg-dark text-white border-primary"
                 id="email"
                 name="email"
                 value={formData.email}
@@ -108,11 +106,11 @@ export const Registro = () => {
             </div>
             <div className="mb-3">
               <label htmlFor="password" className="form-label">
-                Contraseña
+                Password
               </label>
               <input
                 type="password"
-                className="form-control"
+                className="form-control bg-dark text-white border-primary"
                 id="password"
                 name="password"
                 value={formData.password}
@@ -122,11 +120,11 @@ export const Registro = () => {
             </div>
             <div className="mb-3">
               <label htmlFor="confirmPassword" className="form-label">
-                Confirmar Contraseña
+                Confirm Password
               </label>
               <input
                 type="password"
-                className="form-control"
+                className="form-control bg-dark text-white border-primary"
                 id="confirmPassword"
                 name="confirmPassword"
                 value={formData.confirmPassword}
@@ -134,9 +132,14 @@ export const Registro = () => {
                 required
               />
             </div>
-            <button type="submit" className="btn btn-primary">
-              Registrarse
-            </button>
+            <div className="row">
+              <button
+                type="submit"
+                className="btn btn-lg btn-primary rounded-pill btn-outline-secondary:hover mt-5"
+              >
+                Sign up
+              </button>
+            </div>
           </form>
         </div>
       </div>
