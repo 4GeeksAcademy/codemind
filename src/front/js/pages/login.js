@@ -36,7 +36,7 @@ export const Login = () => {
                                     />
                                 </div>
                                 <div className="text-center">
-                                    <Link to="/login"><button type="button" className="btn btn-outline-info rounded-pill" style={{ minWidth: "15em" }}>Log in</button></Link>
+                                    <Link to="/login"><button type="button" className="btn btn-outline-info rounded-pill mb-2" style={{ minWidth: "15em" }}>Log in</button></Link>
                                     <Link to="/registro"><button type="button" className="btn btn-outline-info rounded-pill" style={{ minWidth: "15em" }}>Sign up</button></Link>
                                 </div>
                                 <div className="text-center mb-3 mt-3">
