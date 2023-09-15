@@ -14,6 +14,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					initial: "white"
 				}
 			],
+			user:null
 			
 		},
 		actions: {
@@ -48,25 +49,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 				//reset the global store
 				setStore({ demo: demo });
 			},
-			addUser: async (newUser) => {
-				
-				const url = process.env.BACKEND_URL + '/api/user'
-				const options = {
-					method:  'POST',
-					body: JSON.stringify(newUser),
-					headers: {'Content-Type': 'application/json'}
-				}
-				try{
-					const resp = await fetch(url, options);
-					if(resp.ok){
-						console.log('La solicitud se realizó con éxito');
-					}else {
-						console.error('La solicitud no se realizó con éxito');
-					  }
-				
-				}catch(error){
-					console.error(error)
-				}
+			addUser:  (newUser) => {
+			const {user} = getStore()
+			const updatedUser = { ...user, ...newUser };
+			setStore({ user: updatedUser });
+        	console.log("USER DESDE EL FLUX", updatedUser);
 			}
 		},
 		

@@ -1,15 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { Context } from "../store/appContext";
+import { Link } from "react-router-dom";
 import "../../styles/index.css";
-import rigoImageUrl from "../../img/rigo-baby.jpg";
+
+
+
+
 
 export const Registro = () => {
   const { store, actions} = useContext(Context)
+  const baseUrl = "https://ui-avatars.com/api";
+  const name = "John Doe"; // Nombre para generar las iniciales
+  const size = 200; // Tamaño del avatar (píxeles)
+  const rounded = true; // Forma redondeada
+  const background = "random"; // Color de fondo aleatorio
   const initialFormData ={
     firstName: '',
     lastName: '',
     email: '',
     password: '',
     confirmPassword: '',
+    img: ''
   }
   const [formData, setFormData] = useState({...initialFormData});
   const [registrationSuccess, setregistrationSuccess] = useState(null)
@@ -17,9 +28,34 @@ export const Registro = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    let updatedValue = value;
+  
+    if (name === "firstName" || name === "lastName") {
+      updatedValue = value
+        .split(" ")
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(" ");
+    }
+  
+    const updatedFormData = { ...formData };
+  
+    if (name === "firstName") {
+      updatedFormData.firstName = updatedValue;
+      updatedFormData.img = `${baseUrl}/?name=${encodeURIComponent(
+        updatedValue
+      )}&size=${size}&rounded=${rounded}&background=${background}`;
+    } else if (name === "lastName") {
+      updatedFormData.lastName = updatedValue;
+      updatedFormData.img = `${baseUrl}/?name=${encodeURIComponent(
+        updatedFormData.firstName + " " + updatedValue
+      )}&size=${size}&rounded=${rounded}&background=${background}`;
+    } else {
+      updatedFormData[name] = updatedValue;
+    }
+  
+    setFormData(updatedFormData);
   };
-
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (formData.password !== formData.confirmPassword){
@@ -27,10 +63,13 @@ export const Registro = () => {
       return;
     }
     try{
-      console.log("enviar action con formData con un await")
+      
+      await actions.addUser(formData);
+      
       setregistrationSuccess(`Se registró con éxito como ${formData.firstName}`)
       setRegistrationError(null)
       setFormData({ ...initialFormData })
+      
     }catch(error){
       console.error('Error al Agregar al usuario: ', error)
 
@@ -38,16 +77,23 @@ export const Registro = () => {
   };
 
   return (
+    <>
+      
     <div className="container mt-5">
+    <div className="row mb-4">
+                <div className="col">
+                    <Link to="/"><i className="fa-solid fa-arrow-left arrow-back"></i></Link>
+                </div>
+            </div>
 
       <div className="row justify-content-center">
 
         <div className="col-md-6">
         {registrationSuccess && (
-            <div class="alert alert-success d-flex align-items-center" role="alert">
+            <div className="alert alert-success d-flex align-items-center" role="alert">
            
             <div>
-            <i class="fa-regular fa-circle-check fs-2 fw-bold text-success"></i>  usuario Creado success
+            <i className="fa-regular fa-circle-check fs-2 fw-bold text-success"></i>  usuario Creado success
             </div>
           </div>
           )}
@@ -144,5 +190,6 @@ export const Registro = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
