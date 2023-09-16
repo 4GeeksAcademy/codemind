@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect }from 'react';
 import logoCM from "../../img/LOGO.png";
 import "../../styles/index.css";
 import "../letras.js";
 import { Link } from 'react-router-dom';
 
 export const Index = () => {
+
     return (
         <div className="container d-flex justify-content-between">
             <div className="row vh-100  align-items-center">

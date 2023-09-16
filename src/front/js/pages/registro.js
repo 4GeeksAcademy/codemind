@@ -10,8 +10,8 @@ import "../../styles/index.css";
 export const Registro = () => {
   const { store, actions} = useContext(Context)
   const baseUrl = "https://ui-avatars.com/api";
-  const name = "John Doe"; // Nombre para generar las iniciales
   const size = 200; // Tamaño del avatar (píxeles)
+  
   const rounded = true; // Forma redondeada
   const background = "random"; // Color de fondo aleatorio
   const initialFormData ={
@@ -28,31 +28,18 @@ export const Registro = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    let updatedValue = value;
-  
-    if (name === "firstName" || name === "lastName") {
-      updatedValue = value
-        .split(" ")
-        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(" ");
-    }
-  
-    const updatedFormData = { ...formData };
-  
-    if (name === "firstName") {
-      updatedFormData.firstName = updatedValue;
-      updatedFormData.img = `${baseUrl}/?name=${encodeURIComponent(
-        updatedValue
-      )}&size=${size}&rounded=${rounded}&background=${background}`;
-    } else if (name === "lastName") {
-      updatedFormData.lastName = updatedValue;
-      updatedFormData.img = `${baseUrl}/?name=${encodeURIComponent(
-        updatedFormData.firstName + " " + updatedValue
-      )}&size=${size}&rounded=${rounded}&background=${background}`;
-    } else {
-      updatedFormData[name] = updatedValue;
-    }
-  
+
+    // Realiza la transformación de la primera letra en mayúscula
+    const updatedValue =
+      name === "firstName" || name === "lastName"
+        ? value
+            .split(" ")
+            .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(" ")
+        : value;
+
+   
+    const updatedFormData = { ...formData, [name]: updatedValue };
     setFormData(updatedFormData);
   };
   
@@ -63,8 +50,10 @@ export const Registro = () => {
       return;
     }
     try{
-      
-      await actions.addUser(formData);
+      const name = formData.firstName + " " + formData.lastName
+      const imgURL = `${baseUrl}/?name=${encodeURIComponent(name)}&size=${size}&rounded=${rounded}&background=${background}`
+      const updatedFormData = { ...formData, img: imgURL };
+      await actions.addUser(updatedFormData);
       
       setregistrationSuccess(`Se registró con éxito como ${formData.firstName}`)
       setRegistrationError(null)
