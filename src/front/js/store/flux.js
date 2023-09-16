@@ -1,4 +1,5 @@
 const getState = ({ getStore, getActions, setStore }) => {
+	const storedUser = JSON.parse(localStorage.getItem('user'));
 	return {
 		store: {
 			message: null,
@@ -14,7 +15,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					initial: "white"
 				}
 			],
-			user:null
+			user:storedUser || null
 			
 		},
 		actions: {
@@ -54,9 +55,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 			const updatedUser = { ...user, ...newUser };
 			setStore({ user: updatedUser });
         	console.log("USER DESDE EL FLUX", updatedUser);
+			localStorage.setItem('user', JSON.stringify(updatedUser))
 			}
-		},
-		
+		}
 	};
 };
 
