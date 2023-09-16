@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
 
 export const Navbar = () => {
+  const { store } = useContext(Context); // Obtén el contexto
+  const { user } = store;
+  console.log("user nav" + user)
+
+
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary ms-4 me-4 mt-3 mb-4 p-2">
       <div className="container-fluid d-flex align-items-center">

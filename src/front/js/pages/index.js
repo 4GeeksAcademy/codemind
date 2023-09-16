@@ -26,7 +26,7 @@ export const Index = () => {
 
                         <div className='row d-flex'>
                             <Link to="/login">
-                                <button type="button" className="btn btn-outline-info rounded-pill w-100 w-md-auto mb-2 mt-2" style={{ maxWidth: "30em" }}>Sign in</button>
+                                <button type="button" className="btn btn-outline-info rounded-pill w-100 w-md-auto mb-2 mt-2" style={{ maxWidth: "30em" }}>Log in</button>
                             </Link>
                             <div className="col-sm-12">
                                 <Link to="/registro">
