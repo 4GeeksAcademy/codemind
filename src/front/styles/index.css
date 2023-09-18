@@ -31,7 +31,7 @@ body{
     background-color: var(--ColorBackground);
 }
 
-/*Text, titules, inputs----------------------------------------------------------------*/
+/*Text, titules, inputs, labels----------------------------------------------------------------*/
 
 h1{
     font-family: 'Roboto', sans-serif;
@@ -95,7 +95,16 @@ p{
 input{
     box-shadow: 0 0 5px var(--ColorPrimario);
 }
-
+/* Elemento de arrastre */
+li {
+    max-width: 50%; /* Limita el ancho máximo para evitar que se vuelvan largos */
+    white-space: nowrap; /* Evita el desbordamiento de texto si es necesario */
+    overflow: hidden; /* Oculta el contenido si es necesario */
+    text-overflow: ellipsis; /* Muestra puntos suspensivos si es necesario */
+    color: var(--ColorSecundario);
+    font-size: var(--XsFontSize);
+  }
+  
 /*Scroll bar ----------------------------------------------------------------------------*/
 ::-webkit-scrollbar {
     width: 0.4rem; /* Ancho del scrollbar */

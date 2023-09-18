@@ -21,6 +21,7 @@ import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { Registro } from "./pages/registro";
 import { Login } from "./pages/login";
+import { DragAndDropList } from "./pages/dragAndDropList";
 
 //create your first component
 const Layout = () => {
@@ -51,6 +52,7 @@ const Layout = () => {
               <Route element={<SendPassword />} path="/sendpassword" />
               <Route element={<Modulos />} path="/modules" />
               <Route element={<CreateExcercise />} path="/createexcercise" />
+              <Route element={<DragAndDropList />} path="/dragAndDropList" />
               <Route element={<Student />} path="/student" />
               <Route element={<Usuarios />} path="/usuarios" />
               <Route element={<AboutUs />} path="/about" />
