@@ -27,7 +27,7 @@ export const Modulos = () => {
           />
         </div>
         <div className="card-footer">
-          <a href="#" className="btn btn-outline-secondary mb-4">start</a></div>
+          <a href="#" className="btn btn-outline-primary mb-4">start</a></div>
       </div>
     </div>
 
@@ -42,7 +42,7 @@ export const Modulos = () => {
           />
         </div>
         <div className="card-footer">
-          <a href="#" className="btn btn-outline-secondary mb-4">start</a></div>
+          <a href="#" className="btn btn-outline-primary mb-4">start</a></div>
       </div>
     </div>
 
@@ -57,7 +57,7 @@ export const Modulos = () => {
           />
         </div>
         <div className="card-footer">
-          <a href="#" className="btn btn-outline-secondary mb-4">start</a></div>
+          <a href="#" className="btn btn-outline-primary mb-4">start</a></div>
       </div>
     </div>
     

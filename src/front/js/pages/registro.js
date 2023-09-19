@@ -18,6 +18,7 @@ export const Registro = () => {
     firstName: '',
     lastName: '',
     email: '',
+    teacherName:null,
     password: '',
     confirmPassword: '',
     img: ''

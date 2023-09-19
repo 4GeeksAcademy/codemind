@@ -9,13 +9,17 @@ export const Navbar = () => {
   const defaultUserImg = "https://ui-avatars.com/api/?name=Code%20Mind&size=200&rounded=true&background=random";
   const [userImg, setUserImg] = useState(user ? user.img : defaultUserImg);
   console.log(user)
-
   const [navActive, setNavActive ] = useState(null)
   useEffect(() => {
     setNavActive(location.pathname)
-    setUserImg(user ? user.img : defaultUserImg);
     
-  },[location.pathname, user]);
+    
+  },[location.pathname]);
+
+  
+  useEffect(() => {
+    setUserImg(user ? user.img : defaultUserImg);
+  }, [user]);
 
   const defaultNavbar = (
     <nav className="navbar navbar-expand-lg bg-body-tertiary ms-4 me-4 mt-3 mb-4 p-2">
