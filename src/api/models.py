@@ -76,6 +76,23 @@ class SingleChoiceAnswers(db.Model):
             "exercise_id": self.exercise_id
         }
 
+class FillInBlankAnswers(db.Model):
+    __tablename__ = 'fill_in_blank_answers'
+    id = db.Column(db.Integer, primary_key=True)
+    answers = db.Column(db.String(250))
+    exercise_id = db.Column(db.Integer, db.ForeignKey('exercise.id'))
+    isCorrect = db.Column(db.Boolean, default=False)
+    
+    def __repr__(self):
+        return f'<ExerciseAnswer {self.id}>'
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "answers": self.answers,
+            "isCorrect": self.isCorrect,
+            "exercise_id": self.exercise_id
+        }
 
 
 

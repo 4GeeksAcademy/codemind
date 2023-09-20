@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Exercise, SingleChoiceAnswers, TokenBlockedList
+from api.models import db, User, Exercise, SingleChoiceAnswers,FillInBlankAnswers, TokenBlockedList
 from api.utils import generate_sitemap, APIException
 from flask_bcrypt import Bcrypt
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity, get_jwt
@@ -170,11 +170,17 @@ def create_excercise():
                 )
                 db.session.add(new_answer)
 
-    # elif type == 'Fill in Blank':
-    #     #Crear las respuestas Fill in Blank
-    # elif type == 'Draw and drop':
-    #     #Crear las r dAd
-
+        elif new_exercise.type == "FIB":
+            answers_data = request.json.get("answers")
+            if answers_data and len(answers_data) > 0:
+                answer_data = answers_data[0]  # Acceder al primer elemento de la lista
+                new_answer = FillInBlankAnswers(
+                    answers=answer_data["text"],
+                    exercise_id=exercise_id,
+                    isCorrect=answer_data["isCorrect"],
+                )
+                db.session.add(new_answer)
+            
         db.session.commit()
 
         return jsonify({"msg": "Exercise created successfully", "statusCode": 201, "exercise_id": exercise_id}), 201
@@ -213,9 +219,24 @@ def get_exercise_by_id(id):
 @api.route('/exercises/<string:module>', methods=['GET'])
 def get_exercises_by_module(module):
     exercises = Exercise.query.filter_by(module=module).all()
+    # answers = FillInBlankAnswers.query.filter_by(module=module).all()
+    # print(answers)
 
     if exercises:
         serialized_exercises = [exercise.serialize() for exercise in exercises]
         return jsonify({"exercises": serialized_exercises}), 200
+    else:
+        return jsonify({"msg": "No se encontraron ejercicios para el tipo de módulo especificado"}), 404
+
+@api.route('/answer/<string:module>', methods=['GET'])
+def get_answer_fib(module):
+    
+    answers = FillInBlankAnswers.query.filter_by().all()
+    print(answers)
+    print(FillInBlankAnswers)
+
+    if answers:
+        serialized_answers = [answer.serialize() for answer in answers]
+        return jsonify({"answers": serialized_answers}), 200
     else:
         return jsonify({"msg": "No se encontraron ejercicios para el tipo de módulo especificado"}), 404

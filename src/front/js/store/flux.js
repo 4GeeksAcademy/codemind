@@ -3,6 +3,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			message: null,
+			fib : [],
+			answers_fib : [],
 			demo: [
 				{
 					title: "FIRST",
@@ -22,6 +24,36 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
+			},
+
+			getFib: async () => {
+				try{
+					// fetching data from the backend
+					const resp = await fetch(process.env.BACKEND_URL + "/api/exercises/HTML")
+					const data = await resp.json()
+					setStore({ fib: data.exercises })
+					console.log(data)
+					console.log(getStore().fib)
+					// don't forget to return something, that is how the async resolves
+					return data;
+				}catch(error){
+					console.log("Error loading message from backend", error)
+				}
+			},
+
+			getAnswers_fib: async () => {
+				try{
+					// fetching data from the backend
+					const resp = await fetch(process.env.BACKEND_URL + "/api/answer/HTML")
+					const data = await resp.json()
+					setStore({ answers_fib: data.answers})
+					console.log(data)
+					console.log(getStore().answers_fib)
+					// don't forget to return something, that is how the async resolves
+					return data;
+				}catch(error){
+					console.log("Error loading message from backend", error)
+				}
 			},
 
 			getMessage: async () => {
