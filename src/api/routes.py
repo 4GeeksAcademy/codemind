@@ -177,7 +177,7 @@ def create_excercise():
                 new_answer = FillInBlankAnswers(
                     answers=answer_data["text"],
                     exercise_id=exercise_id,
-                    isCorrect=answer_data["isCorrect"],
+                    isCorrect=answer_data["isCorrect"]
                 )
                 db.session.add(new_answer)
             
@@ -219,9 +219,6 @@ def get_exercise_by_id(id):
 @api.route('/exercises/<string:module>', methods=['GET'])
 def get_exercises_by_module(module):
     exercises = Exercise.query.filter_by(module=module).all()
-    # answers = FillInBlankAnswers.query.filter_by(module=module).all()
-    # print(answers)
-
     if exercises:
         serialized_exercises = [exercise.serialize() for exercise in exercises]
         return jsonify({"exercises": serialized_exercises}), 200
@@ -240,3 +237,16 @@ def get_answer_fib(module):
         return jsonify({"answers": serialized_answers}), 200
     else:
         return jsonify({"msg": "No se encontraron ejercicios para el tipo de módulo especificado"}), 404
+
+# @api.route('/exercise/<int:id>', methods=['DELETE'])
+# def delete_us(id):
+#     try:
+#         user = Exercise.query.get(id)
+#         if user is not None:
+#             db.session.delete(user)
+#             db.session.commit()
+#             return jsonify({"msg": "Usuario eliminado"}), 201
+#         return jsonify({"msg": "El usuario no existe"}), 400
+    
+#     except Exception as e:
+#         return jsonify({"error":str(e)}),500

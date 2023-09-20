@@ -54,9 +54,9 @@ export const PreguntaCompletar = () => {
 
   return (
     <div className="App">
-      <h2>{answerActual}</h2>
+      {/* <h2>{answerActual}</h2> */}
       {/* <h2>{preguntaActual}</h2> */}
-      {store.fib[indicePregunta] && <h2>{store.fib[indicePregunta].id}.{store.fib[indicePregunta].question}</h2>}
+      {store.fib[indicePregunta] && <h2>{indicePregunta+1}.{store.fib[indicePregunta].question}</h2>}
       <input
         type="text"
         value={respuesta}
