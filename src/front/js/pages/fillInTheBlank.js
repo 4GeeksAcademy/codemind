@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState, useContext  } from 'react';
 import { Context } from "../store/appContext";
-
+import Swal from 'sweetalert2'
 
 export const PreguntaCompletar = () => {
 
@@ -23,7 +23,13 @@ export const PreguntaCompletar = () => {
   // const preguntaActual = store.fib[indicePregunta]?.question;
   const answerActual = store.answers_fib[indicePregunta]?.answers;
   
-
+//  const xd=()=>{
+//   Swal.fire(
+//   'Good job!',
+//   'You clicked the button!',
+//   'success'
+// // )
+//  }
   const handleRespuestaChange = (event) => {
     setRespuesta(event.target.value);
     setRespuestaCorrecta(false); // Reinicia la respuesta correcta al cambiar la respuesta
@@ -32,8 +38,17 @@ export const PreguntaCompletar = () => {
   const verificarRespuesta = () => {
     if (respuesta.toLowerCase() === answerActual.toLowerCase()) {
       setRespuestaCorrecta(true);
+      Swal.fire(
+        'Buen trabajo!',
+        'Continua con la siguiente pregunta',
+        'success'
+      )
     } else {
-      alert('Respuesta incorrecta. Inténtalo de nuevo.');
+      Swal.fire(
+        'Respuesta Incorrecta!',
+        'Sigue intentando',
+        'error'
+      )
     }
   };
 
@@ -45,16 +60,24 @@ export const PreguntaCompletar = () => {
         setRespuesta('');
         setRespuestaCorrecta(false); // Reinicia la respuesta correcta
       } else {
-        alert('Has completado todas las preguntas.');
+        Swal.fire(
+          'Excelente!',
+          'Has completado todas las preguntas.',
+          'success'
+        )
       }
     } else {
-      alert('Debes responder correctamente antes de avanzar.');
+      Swal.fire(
+        'Alto ahí!',
+        'Debes responder correctamente antes de avanzar.',
+        'error'
+      )
     }
   };
 
   return (
     <div className="App">
-      {/* <h2>{answerActual}</h2> */}
+      <h2>{answerActual}</h2>
       {/* <h2>{preguntaActual}</h2> */}
       {store.fib[indicePregunta] && <h2>{indicePregunta+1}.{store.fib[indicePregunta].question}</h2>}
       <input

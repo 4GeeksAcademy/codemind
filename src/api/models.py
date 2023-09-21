@@ -79,9 +79,11 @@ class SingleChoiceAnswers(db.Model):
 class FillInBlankAnswers(db.Model):
     __tablename__ = 'fill_in_blank_answers'
     id = db.Column(db.Integer, primary_key=True)
+    # module = db.Column(db.String(50))
     answers = db.Column(db.String(250))
     exercise_id = db.Column(db.Integer, db.ForeignKey('exercise.id'))
     isCorrect = db.Column(db.Boolean, default=False)
+    
     
     def __repr__(self):
         return f'<ExerciseAnswer {self.id}>'
