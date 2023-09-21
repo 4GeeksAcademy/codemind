@@ -5,68 +5,121 @@ import { Context } from "../store/appContext";
 export const Navbar = () => {
   const { store } = useContext(Context);
   const { user } = store;
-  const location = useLocation()
-  const defaultUserImg = "https://ui-avatars.com/api/?name=Code%20Mind&size=200&rounded=true&background=random";
+  const location = useLocation();
+  const defaultUserImg =
+    "https://ui-avatars.com/api/?name=Code%20Mind&size=200&rounded=true&background=random";
   const [userImg, setUserImg] = useState(user ? user.img : defaultUserImg);
-  console.log(user)
-  const [navActive, setNavActive] = useState(null)
+  const [navActive, setNavActive] = useState(null);
+
   useEffect(() => {
-    setNavActive(location.pathname)
-
-
+    setNavActive(location.pathname);
   }, [location.pathname]);
-
 
   useEffect(() => {
     setUserImg(user ? user.img : defaultUserImg);
   }, [user]);
 
   const defaultNavbar = (
-<div class="container text-center">
-  <div class="row d-flex justify-content-evenly align-items-center">
-    <div class="col">
-      <Link to={"/"} className="logonav">CM_</Link>
-    </div>
-    <div class="col">
-    <Link to={"/roadmap"} className="itemnav mx-2">Road map</Link>
-    <Link to={"/about"} className="itemnav mx-2">About us</Link>
-    </div>
-    <div class="col">
-      
+<nav className="navbar navbar-expand-lg navbar-light bg-light">
+  <div className="container">
+    <Link to={"/"} className="navbar-brand logonav">
+      CM_
+    </Link>
+    <button
+      className="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span className="navbar-toggler-icon"></span>
+    </button>
+    <div className="collapse navbar-collapse justify-content-center" id="navbarNav">
+      <ul className="navbar-nav">
+        <li className="nav-item">
+          <Link to={"/roadmap"} className="nav-link itemnav">
+            Road map
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link to={"/about"} className="nav-link itemnav">
+            About us
+          </Link>
+        </li>
+      </ul>
     </div>
   </div>
-</div>
-  )
+</nav>
+  );
 
   const userNavbar = (
-<div class="container text-center">
-  <div class="row d-flex justify-content-evenly align-items-center">
-    <div class="col">
-    <Link to={"/"} className="logonav">CM_</Link>
-    </div>
-    <div class="col">
-    <Link to={"/roadmap"} className="itemnav mx-2">Road map</Link>
-    <Link to={"/about"} className="itemnav mx-2">About us</Link>
-    </div>
-    <div class="col">
-      <Link to={"/profile"} ><img className="profilephoto-nav" src={userImg}></img></Link>
+<nav className="navbar navbar-expand-lg navbar-light bg-light align-items-center">
+  <div className="container align-items-center">
+    <Link to={"/"} className="navbar-brand logonav">
+      CM_
+    </Link>
+    <button
+      className="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span className="navbar-toggler-icon"></span>
+    </button>
+    <div className="collapse navbar-collapse align-items-center" id="navbarNav">
+      <ul className="navbar-nav mx-auto align-items-center"> 
+        <li className="nav-item">
+          <Link
+            to={"/roadmap"}
+            className={`nav-link ${navActive === "/roadmap" ? "active" : ""}`}
+          >
+            Roadmap
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link
+            to={"/about"}
+            className={`nav-link ${navActive === "/about" ? "active" : ""}`}
+          >
+            About Us
+          </Link>
+        </li>
+      </ul>
+      <ul className="navbar-nav align-items-center">
+        {user && (
+          <li className="nav-item">
+            <Link to={"/profile"} className="nav-link">
+              <img className="profilephoto-nav" src={userImg} alt="User Profile" />
+            </Link>
+          </li>
+        )}
+        {user && (
+          <li className="nav-item">
+            <Link to={"/logout"} className="nav-link">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+            </Link>
+          </li>
+        )}
+      </ul>
     </div>
   </div>
-</div>
-
-  )
-
-  const navbarToRender = ['/registro', '/', '/login', '/forwotpassword', '/sendpassword'].includes(navActive) ? defaultNavbar : userNavbar;
-
-  return (
-    <>
-
-      {
-        navbarToRender
-      }
-      {
-        console.log(navActive)
-      }
-    </>
+</nav>
   );
+
+  const navbarToRender = [
+    "/registro",
+    "/",
+    "/login",
+    "/forwotpassword",
+    "/sendpassword"
+  ].includes(navActive)
+    ? defaultNavbar
+    : userNavbar;
+
+  return <>{navbarToRender}</>;
 };

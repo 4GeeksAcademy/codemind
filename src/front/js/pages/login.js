@@ -33,7 +33,7 @@ export const Login = () => {
   };
 
   return (
-    <section className="vh-100 d-flex align-items-center justify-content-center bg">
+    <div className="d-flex align-items-center justify-content-center bg">
       <div className="container borderlogin">
         <div className="row">
           <div className="col">
@@ -117,6 +117,6 @@ export const Login = () => {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 };

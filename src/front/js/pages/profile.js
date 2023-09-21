@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Context } from "../store/appContext";
 
 export const Profile = () => {
-    const [selectedTeacher, setSelectedTeacher] = useState(null);
+    
     const [showAlert, setShowAlert] = useState(false);
     const { store, actions } = useContext(Context);
     const initialFormData ={
@@ -17,9 +17,17 @@ export const Profile = () => {
     };
     const [formData, setFormData] = useState({...initialFormData});
 
+    const [selectedTeacher, setSelectedTeacher] = useState("");
+
+    useEffect(()=>{
+        if(store.user.teacherName){
+            setSelectedTeacher(store.user.teacherName)
+        }
+    },[store.user.teacherName])
 
     const handleTeacherSelect = (teacherName, e) => {
-        e.preventDefault(); // Prevenir desplazamiento automático
+        e.preventDefault();
+        setSelectedTeacher(teacherName)
         if (!store.user.teacherName) {
             setFormData({ ...formData, teacherName: teacherName });
         }
@@ -61,6 +69,7 @@ export const Profile = () => {
         }
     };
 
+
     return (
         <div className="container vh-100 align-items-center">
             <div className="row mb-4">
@@ -85,24 +94,24 @@ export const Profile = () => {
                         </div>
                     )}
                     <form onSubmit={handleSubmit}>
-                        <div className='d-flex justify-content-between mb-2'>
-                            <p className='my-0 me-4'>First Name:</p>
+                        <div className='d-flex justify-content-around mb-2'>
+                            <label className='my-0 '>First Name:</label>
                             <input type="text" className="form-control" id="firstName" name="firstName" value={formData.firstName} onChange={handleChange} style={{ maxWidth: "60%" }}></input>
                         </div>
-                        <div className='d-flex justify-content-between  mb-2'>
-                            <p className='my-0 me-4'>Last Name:</p>
+                        <div className='d-flex justify-content-around  mb-2'>
+                            <label className='my-0 '>Last Name:</label>
                             <input type="text" className="form-control" id="lastName" name="lastName" value={formData.lastName} onChange={handleChange} style={{ maxWidth: "60%" }}></input>
                         </div>
-                        <div className='d-flex justify-content-between  mb-2'>
-                            <p className='my-0 me-4'>E-mail:</p>
-                            <input type="text" className="form-control" id="email" name="email" value={formData.email} onChange={handleChange} style={{ maxWidth: "60%" }}></input>
+                        <div className='d-flex justify-content-around  mb-2 '>
+                            <label className='my-0 '>E-mail:</label>
+                            <input type="text" className="form-control ms-4" id="email" name="email" value={formData.email} onChange={handleChange} style={{ maxWidth: "60%" }}></input>
                         </div>
-                        <div className='d-flex justify-content-between  mb-2'>
-                            <p className='my-0 '>Teacher:</p>
+                        <div className='d-flex justify-content-center  mb-2 mt-4'>
+                            <label className='my-0 '>Teacher:</label>
                             <div className="h-25 px-5  ">
                                 <div className="btn-group dropdown-center" >
                                     <button className="btn btn-secondary dropdown-toggle " type="button" data-bs-toggle="dropdown" aria-expanded="false" disabled={!!store.user.teacherName} >
-                                    {store.user.teacherName || "Select Your Teacher"}
+                                    {selectedTeacher ? selectedTeacher : "Select Your Teacher"}
                                     </button>
                                     <ul className="dropdown-menu dropdown-menu-dark">
                                     <li><a className="dropdown-item" href="#" onClick={(e) => handleTeacherSelect("Arnaldo Perez", e)}>Arnaldo Perez</a></li>
@@ -117,24 +126,31 @@ export const Profile = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="row  align-items-center mt-4 justify-content-end">
+                        <div className="row  align-items-center mt-4 justify-content-center">
                             <div className=" col-sm-12 col-md-6  text-center">
-                                <button type="submit" className="btn btn-primary">
-                                    Update User
-                                </button>
+                            <button
+                  type="submit"
+                  className="btnsignup btn-lg"
+                  style={{ minWidth: "7em" }}
+                >
+                  Update Changes
+                </button>
                             </div>
                         </div>
                     </form>
-                </div>
-            </div>
-            <div className='row h-25 d-flex justify-content-end align-items-center'>
-                <div className="col-sm-1 col-md-4  text-sm-end justify-content-between">
-                    <div className="d-flex justify-content-between ">
-                        <Link to={"/changepassword"}><a href="#" className="btn btn-outline-secondary">Change password</a></Link>
-                        <a href="#" className="">I'm Professor</a>
+                    <div className="col d-flex justify-content-evenly">
+                    <div className="d-flex justify-content-around  mt-5">
+                        <Link to={"/changepassword"}> <p className='fs-5'> change Password </p> </Link>
+                    
+                        
                     </div>
                 </div>
+           
+                
             </div>
+
+            </div>
+
         </div>
     );
 };

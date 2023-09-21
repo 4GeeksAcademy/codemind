@@ -31,8 +31,9 @@
 
 /*Estilos Globales--------------------------------------------------------*/
 body{
-    
+   
     font-family: var(--FuentePrincipal);
+
 }
 
 /*Text, titules, inputs, labels----------------------------------------------------------------*/
@@ -243,6 +244,7 @@ input[type="text"]:focus {
     background-color: whitesmoke;
     border: 1px solid black;
     color: black;
+    transition: 0.3s;
 }
 .btn-custom-color{
     color: black;
@@ -285,4 +287,13 @@ label{
 .logintitle{
     font-size: 90px;
     font-weight: 900;
+}
+nav{
+    background-color: white;
+}
+
+a{
+    color: black;
+    text-decoration: none;
+    font-size: 24px;
 }

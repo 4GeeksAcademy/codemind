@@ -34,7 +34,7 @@ export const ChangePassword = () => {
                     </div>
                     <div className="row mt-4">
                         <div className="col text-center">
-                            <a href="#" className="btn btn-outline-secondary">Change Your Password</a>
+                        <button type="submit" className="btnsignup mt-2 px-3 " style={{ maxWidth: "15em" }}>Change Password</button>
                         </div>
                     </div>
                 </div>

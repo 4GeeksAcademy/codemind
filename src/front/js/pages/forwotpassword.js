@@ -28,7 +28,7 @@ export const ForwotPassword = () => {
                     <div className="row mt-4">
                         <div className="col text-center">
                             <Link to="/sendpassword">
-                                <a href="#" className="btn btn-outline-secondary">Send password</a>
+                            <button type="submit" className="btnsignup mt-2 px-3 " style={{ maxWidth: "15em" }}>Send Password</button>
                             </Link>
                         </div>
                     </div>
