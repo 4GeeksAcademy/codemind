@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 export const AboutUs = () => {
-    
+
 
     return (
-        <div className="container">
+        <div className="container vh-100 m-5">
+            <div className='p-5'></div>
             <div>
                 <h2 className='bigtext text-line'>
                     Welcome!</h2>
@@ -13,13 +14,13 @@ export const AboutUs = () => {
             </div>
             <div>
                 <h2 className='text-line'>
-                        Our <span className='text-color-primary'>vision</span>
+                    Our <span className='text-color-primary'>vision</span>
                 </h2>
                 <p> Is  to foster a community of passionate learners and educators, where knowledge is accessible to all. We believe in the transformative power of coding and its ability to shape the future. With this in mind, we strive to create a platform that encourages creativity, critical thinking, and collaboration among individuals from diverse backgrounds.</p>
             </div>
             <div>
                 <h2 className='text-line'>
-                        Join <span className='text-color-primary'>Us!</span>
+                    Join <span className='text-color-primary'>Us!</span>
                 </h2>
                 <p> Whether you're just starting your coding journey or looking to refine your skills, CodeMind is here to guide and support you. Join our community today and embark on an exciting path of exploration, creativity, and growth. Together, we're shaping the future of coding education.</p>
             </div>
