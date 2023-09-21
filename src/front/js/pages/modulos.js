@@ -3,6 +3,7 @@ import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/index.css";
 import { Navbar } from "../component/navbar.js";
+import {Link} from "react-router-dom";
 
 export const Modulos = () => {
   const { store, actions } = useContext(Context);
@@ -27,7 +28,10 @@ export const Modulos = () => {
           />
         </div>
         <div className="card-footer">
-          <a href="#" className="btn btn-outline-secondary mb-4">start</a></div>
+        <Link to ={`/preguntas/HTML`}>
+          <button className="btn btn-outline-secondary mb-4">start</button>
+        </Link>
+        </div>
       </div>
     </div>
 
@@ -42,7 +46,10 @@ export const Modulos = () => {
           />
         </div>
         <div className="card-footer">
-          <a href="#" className="btn btn-outline-secondary mb-4">start</a></div>
+        <Link to ={`/preguntas/CSS`}>
+          <button className="btn btn-outline-secondary mb-4">start</button>
+        </Link>
+        </div>
       </div>
     </div>
 
@@ -57,7 +64,10 @@ export const Modulos = () => {
           />
         </div>
         <div className="card-footer">
-          <a href="#" className="btn btn-outline-secondary mb-4">start</a></div>
+        <Link to ={`/preguntas/JS`}>
+          <button className="btn btn-outline-secondary mb-4">start</button>
+        </Link>
+        </div>
       </div>
     </div>
     

@@ -1,19 +1,21 @@
 
 import React, { useEffect, useState, useContext  } from 'react';
 import { Context } from "../store/appContext";
+import { useParams } from "react-router-dom";
 import Swal from 'sweetalert2'
 
 export const PreguntaCompletar = () => {
 
-  
+  const {modulo} = useParams();
   const { store, actions } = useContext(Context);
   console.log(store.fib[0]?.id)
+
   useEffect(()=>{
-    actions.getFib()
+    actions.getFib(modulo)
   },[])
 
   useEffect(()=>{
-    actions.getAnswers_fib()
+    actions.getAnswers_fib(modulo)
   },[])
 
   const [indicePregunta, setIndicePregunta] = useState(0);
@@ -23,13 +25,6 @@ export const PreguntaCompletar = () => {
   // const preguntaActual = store.fib[indicePregunta]?.question;
   const answerActual = store.answers_fib[indicePregunta]?.answers;
   
-//  const xd=()=>{
-//   Swal.fire(
-//   'Good job!',
-//   'You clicked the button!',
-//   'success'
-// // )
-//  }
   const handleRespuestaChange = (event) => {
     setRespuesta(event.target.value);
     setRespuestaCorrecta(false); // Reinicia la respuesta correcta al cambiar la respuesta
@@ -70,7 +65,7 @@ export const PreguntaCompletar = () => {
       Swal.fire(
         'Alto ahí!',
         'Debes responder correctamente antes de avanzar.',
-        'error'
+        'warning'
       )
     }
   };

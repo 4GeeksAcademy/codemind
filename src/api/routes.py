@@ -166,7 +166,8 @@ def create_excercise():
                 new_answer = SingleChoiceAnswers(
                     answers=answer_data["text"],
                     exercise_id=exercise_id,
-                    isCorrect=answer_data["isCorrect"]
+                    isCorrect=answer_data["isCorrect"],
+                     module=answer_data["module"]
                 )
                 db.session.add(new_answer)
 
@@ -177,7 +178,8 @@ def create_excercise():
                 new_answer = FillInBlankAnswers(
                     answers=answer_data["text"],
                     exercise_id=exercise_id,
-                    isCorrect=answer_data["isCorrect"]
+                    isCorrect=answer_data["isCorrect"],
+                    module=answer_data["module"]
                 )
                 db.session.add(new_answer)
             
@@ -228,7 +230,7 @@ def get_exercises_by_module(module):
 @api.route('/answer/<string:module>', methods=['GET'])
 def get_answer_fib(module):
     
-    answers = FillInBlankAnswers.query.filter_by().all()
+    answers = FillInBlankAnswers.query.filter_by(module=module).all()
     print(answers)
     print(FillInBlankAnswers)
 

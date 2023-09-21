@@ -26,10 +26,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				getActions().changeColor(0, "green");
 			},
 
-			getFib: async () => {
+			getFib: async (module="HTML") => {
 				try{
 					// fetching data from the backend
-					const resp = await fetch(process.env.BACKEND_URL + "/api/exercises/HTML")
+					const resp = await fetch(process.env.BACKEND_URL + `/api/exercises/${module}`)
 					const data = await resp.json()
 					setStore({ fib: data.exercises })
 					console.log(data)
@@ -41,10 +41,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-			getAnswers_fib: async () => {
+			getAnswers_fib: async (module) => {
 				try{
 					// fetching data from the backend
-					const resp = await fetch(process.env.BACKEND_URL + "/api/answer/HTML")
+					const resp = await fetch(process.env.BACKEND_URL + `api/answer/${module}`)
 					const data = await resp.json()
 					setStore({ answers_fib: data.answers})
 					console.log(data)

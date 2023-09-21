@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: fbe620bd87ea
+Revision ID: 4e4a99eb1bce
 Revises: 
-Create Date: 2023-09-21 02:23:14.072796
+Create Date: 2023-09-21 17:30:58.453264
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'fbe620bd87ea'
+revision = '4e4a99eb1bce'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -49,6 +49,7 @@ def upgrade():
     )
     op.create_table('fill_in_blank_answers',
     sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('module', sa.String(length=50), nullable=True),
     sa.Column('answers', sa.String(length=250), nullable=True),
     sa.Column('exercise_id', sa.Integer(), nullable=True),
     sa.Column('isCorrect', sa.Boolean(), nullable=True),
@@ -57,6 +58,7 @@ def upgrade():
     )
     op.create_table('multiple_choice_anwers',
     sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('module', sa.String(length=50), nullable=True),
     sa.Column('answers', sa.String(length=250), nullable=True),
     sa.Column('exercise_id', sa.Integer(), nullable=True),
     sa.Column('isCorrect', sa.Boolean(), nullable=True),

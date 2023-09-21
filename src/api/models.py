@@ -61,6 +61,7 @@ class Exercise(db.Model):
 class SingleChoiceAnswers(db.Model):
     __tablename__ = 'multiple_choice_anwers'
     id = db.Column(db.Integer, primary_key=True)
+    module = db.Column(db.String(50))
     answers = db.Column(db.String(250))
     exercise_id = db.Column(db.Integer, db.ForeignKey('exercise.id'))
     isCorrect = db.Column(db.Boolean, default=False)
@@ -79,7 +80,7 @@ class SingleChoiceAnswers(db.Model):
 class FillInBlankAnswers(db.Model):
     __tablename__ = 'fill_in_blank_answers'
     id = db.Column(db.Integer, primary_key=True)
-    # module = db.Column(db.String(50))
+    module = db.Column(db.String(50))
     answers = db.Column(db.String(250))
     exercise_id = db.Column(db.Integer, db.ForeignKey('exercise.id'))
     isCorrect = db.Column(db.Boolean, default=False)
