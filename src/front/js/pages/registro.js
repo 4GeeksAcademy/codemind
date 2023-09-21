@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 import "../../styles/index.css";
-
+import codemindillus from '../../img/codemindillus.png'
 
 
 
@@ -67,17 +67,17 @@ export const Registro = () => {
   };
 
   return (
-    <>
+    <section className="vh-100 d-flex align-items-center justify-content-center bg">
       
-    <div className="container mt-5">
-    <div className="row mb-4">
+    <div className="container">
+    <div className="row">
                 <div className="col">
                     <Link to="/"><i className="fa-solid fa-arrow-left arrow-back"></i></Link>
                 </div>
             </div>
 
-      <div className="row justify-content-center">
-
+      <div className="row justify-content-evenly align-items-center">
+      <h2 className="text-center  text-color-primary">&#60;Sing<span className="text-line">Up/&#62;</span></h2>
         <div className="col-md-6">
         {registrationSuccess && (
             <div className="alert alert-success d-flex align-items-center" role="alert">
@@ -95,16 +95,16 @@ export const Registro = () => {
             </div>
           </div>
           )}
-          <h2>Create Account</h2>
+         
           
           <form onSubmit={handleSubmit}>
-            <div className="mb-3">
+            <div className="">
               <label htmlFor="firstName" className="form-label">
                 First Name
               </label>
               <input
                 type="text"
-                className="form-control bg-dark text-white border-primary"
+                className="form-control border-black"
                 id="firstName"
                 name="firstName"
                 value={formData.firstName}
@@ -118,7 +118,7 @@ export const Registro = () => {
               </label>
               <input
                 type="text"
-                className="form-control bg-dark text-white border-primary"
+                className="form-control border-black"
                 id="lastName"
                 name="lastName"
                 value={formData.lastName}
@@ -132,7 +132,7 @@ export const Registro = () => {
               </label>
               <input
                 type="email"
-                className="form-control bg-dark text-white border-primary"
+                className="form-control  border-black"
                 id="email"
                 name="email"
                 value={formData.email}
@@ -146,7 +146,7 @@ export const Registro = () => {
               </label>
               <input
                 type="password"
-                className="form-control bg-dark text-white border-primary"
+                className="form-control  border-black"
                 id="password"
                 name="password"
                 value={formData.password}
@@ -160,7 +160,7 @@ export const Registro = () => {
               </label>
               <input
                 type="password"
-                className="form-control bg-dark text-white border-primary"
+                className="form-control border-black"
                 id="confirmPassword"
                 name="confirmPassword"
                 value={formData.confirmPassword}
@@ -168,18 +168,18 @@ export const Registro = () => {
                 required
               />
             </div>
-            <div className="row">
-              <button
-                type="submit"
-                className="btn btn-lg btn-primary rounded-pill btn-outline-secondary:hover mt-5"
-              >
-                Sign up
-              </button>
+            <div className="row justify-content-center">
+
+            <button type="submit" className="btnsignup mt-2 " style={{ maxWidth: "15em" }}>Sign up</button>
+           
             </div>
           </form>
         </div>
+        <div className="col-md-6 justify-content-center align-items-center d-flex">
+          <img src={codemindillus} className=" imgsignup mt-4 mb-4"></img>
+          </div>
       </div>
     </div>
-    </>
+    </section>
   );
 };

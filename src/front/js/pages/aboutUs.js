@@ -5,6 +5,7 @@ export const AboutUs = () => {
     
 
     return (
+        <section className="vh-100 d-flex align-items-center justify-content-center bg">
         <div className="container">
             <div>
                 <h2 className='bigtext text-line'>
@@ -30,5 +31,6 @@ export const AboutUs = () => {
                 <p>To be part of our great teachers you have to complete <span className='text-color-primary'>this form</span>, remember to have your academic documents at hand</p>
             </div>
         </div>
+        </section>
     );
 };

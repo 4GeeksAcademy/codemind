@@ -3,8 +3,8 @@ import { Context } from "../store/appContext";
 import pythonLogo from "../../img/Python-logo.png";
 import flaskLogo from "../../img/flask-logo.png";
 import jwtLogo from "../../img/jwt-logo.png";
-import sqlaLogo from "../../img/SQLA.jpeg";
-import reactLogo from "../../img/react-logo.jpg";
+import sqlaLogo from "../../img/SQLA.png";
+import reactLogo from "../../img/react-logo.png";
 import flechaDerecha from "../../img/Arrow15.png";
 import flechaIzquierda from "../../img/Arrow14.png";
 import flechaVertical from "../../img/Arrow13.png";
@@ -15,11 +15,13 @@ export const RoadMap = () => {
   const { store, actions } = useContext(Context);
 
   return (
-    <>
+    <section className="w-100 d-flex align-items-center justify-content-center bg">
       <div className="container">
         <div className="row mb-5">
           <div className="col text-center mb-5">
-            <h2 className="module-title"> Road <span className="text-line">Map</span></h2>
+          <h2 className="text-center text-color-primary mt-4 mb-4 logintitle">
+                &#60;Road<span className="text-line">Map/&#62;</span>
+              </h2>
           </div>
         </div>
           <div className="row">
@@ -125,9 +127,9 @@ export const RoadMap = () => {
         </div>
           
           <div className="row">
-            <div className="col-2 card-body bg-white">
+            <div className="col-2 card-body">
               <img src={flaskLogo}
-                className="card-img-top img-fluid"
+                className="card-img-top img-fluid ms-4"
                 alt="Flask Logo"
                 style={{ maxWidth: "150px", maxHeight: "150px" }}
               />
@@ -150,6 +152,6 @@ export const RoadMap = () => {
             <div className="col-5 card-body"></div>
           </div>
       </div>
-    </>
+      </section>
   );
 };

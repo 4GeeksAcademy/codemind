@@ -1,19 +1,22 @@
 /* 
     General Styles used on every website (Don't Repeat Yourself)
 */
+@import url('https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300;400;500;600;700;800;900&display=swap');
+
+
 :root {
     /* Relación de tamaño de fuente */
     font-size: 16px;
 
     /* Colors */
 
-    --ColorPrimario: #2EBBF2; /* Define una variable de color personalizada */
+    --ColorPrimario: black; /* Define una variable de color personalizada */
     --ColorSecundario: #F2811D;
     --ColorTerciario: var(--ColorTerciario);
     --ColorBackground: black;
 
     /* Family-fonts */
-    --FuentePrincipal: 'Roboto', sans-serif;
+    --FuentePrincipal: 'Darker Grotesque', sans-serif;
     --FuenteSecundaria: 'Inter', sans-serif;
 
     /* Relative Font-size */
@@ -24,17 +27,18 @@
     --SmFontSize: 3.125em; /* 50px */
     --XsFontSize: 1.875em;  /* 30px */
 }
-  
+
 
 /*Estilos Globales--------------------------------------------------------*/
 body{
-    background-color: var(--ColorBackground);
+    
+    font-family: var(--FuentePrincipal);
 }
 
 /*Text, titules, inputs, labels----------------------------------------------------------------*/
 
 h1{
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Darker Grotesque', sans-serif;
     -webkit-text-stroke: 1px #2EBBF2;
     color: transparent;
     font-size: calc(3.225rem + 5.2vw);
@@ -43,30 +47,25 @@ h1{
 }
 
 h2{
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Darker Grotesque', sans-serif;
     font-size: 50px;
-    -webkit-text-stroke: 1px var(--ColorPrimario);
+    -webkit-text-stroke: 1px black;
     color: transparent;
     font-weight: 900;
     letter-spacing: 0;
 }
 
 label{
-    color: var(--ColorSecundario);
-    font-family: 'Inter', sans-serif;
+    color: black;
+    font-family: 'Darker Grotesque', sans-serif;
     font-weight:lighter;
 }
 
-p{
-    color: var(--ColorSecundario);
-    font-family: var(--FuenteSecundaria);
-    font-weight:lighter;
-    font-size: small;  
-}
+
 
 .text-line{
     -webkit-text-stroke: 2px var(--ColorPrimario);
-    color: transparent; 
+    color: whitesmoke; 
 }
 
 .bigtext{
@@ -77,7 +76,7 @@ p{
     
 }
 
-.wrap, h3, a{
+.wrap, h3{
     text-decoration: none;
     color: #F2811D;
     font-family: 'Inter', sans-serif;
@@ -92,19 +91,10 @@ p{
     font-weight: 900;
     font-family: 'Roboto', sans-serif;
 }
-input{
-    box-shadow: 0 0 5px var(--ColorPrimario);
-}
+
 /* Elemento de arrastre */
-li {
-    max-width: 50%; /* Limita el ancho máximo para evitar que se vuelvan largos */
-    white-space: nowrap; /* Evita el desbordamiento de texto si es necesario */
-    overflow: hidden; /* Oculta el contenido si es necesario */
-    text-overflow: ellipsis; /* Muestra puntos suspensivos si es necesario */
-    color: var(--ColorSecundario);
-    font-size: var(--XsFontSize);
-  }
-  
+
+ 
 /*Scroll bar ----------------------------------------------------------------------------*/
 ::-webkit-scrollbar {
     width: 0.4rem; /* Ancho del scrollbar */
@@ -154,30 +144,21 @@ height: 180px;
 
 /*Menu, links and buttons-----------------------------------------------------------------*/
 .nav-link{
-    color: var(--ColorSecundario);
+    color: black;
     text-decoration: none ;
-    font-weight: 600;
 }
 
-.navbar-toggler{
-    color: transparent;
-}
 
-.menuBurger{
-    font-size: 30px;
-    font-weight: 9px;
-    color: var(--ColorPrimario);
-}
 .btn-outline-secondary {
     color: var(--ColorTerciario); 
     border: 2px solid var(--ColorTerciario);
-    background-color: whitesmoke;
+    background-color: rgb(0, 0, 0);
     border-radius: 8px ;
 }
 .btn-outline-secondary:hover{
     background-color: var(--ColorTerciario);
     border: 2px solid var(--ColorTerciario);
-    color: whitesmoke;
+    color: rgb(0, 0, 0);
 }
 
 /* Footer Cards and modals*/
@@ -204,8 +185,8 @@ height: 180px;
 }
 
 .seleccion:hover {
-    background-color: white;
-    color : black;  
+    background-color: rgb(0, 0, 0);
+    color : rgb(255, 255, 255);  
 }
 
 /* Estilo personalizado para los radio buttons */
@@ -216,10 +197,92 @@ input[type="radio"]:checked {
     border-color: #6610F2; /* Cambia el borde cuando está seleccionado */
 }
 input[type="text"]:focus {
-    border-color: #6610F2; /* Cambia el color del borde a azul (#007bff) */
+    border-color: #4f4d53; /* Cambia el color del borde a azul (#007bff) */
     /* Otros estilos opcionales, como grosor del borde o sombra */
     border-width: 2px;
     border-style: solid;
-    box-shadow: 0 0 5px #6610F2(0, 123, 255, 0.5); /* Sombra cuando está enfocado */
+    box-shadow: 0 0 5px #3d3d3d(0, 123, 255, 0.5); /* Sombra cuando está enfocado */
     outline: none; /* Elimina el contorno predeterminado del enfoque */
+}
+
+
+.borderlogin{
+    border: 1px solid black;
+    border-radius: 20px;
+    width: 100%; /* Cambiar el ancho al 100% para que ocupe todo el contenedor padre */
+    max-width: 400px; /* Opcional: Agregar un ancho máximo */
+    margin: 0 auto; /* Centrar horizontalmente */
+    padding: 20px; 
+}
+
+.bg{
+    background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+    
+}
+
+.btnlogin{
+    border: 1px solid black;
+    border-radius: 12px;
+    color: black;
+    padding: 3px;
+    font-size: 20px;
+}
+.btnlogin:hover{
+    background-color: black;
+    color: whitesmoke;
+}
+
+.btnsignup{
+    background-color: black;
+    border-radius: 12px;
+    color: whitesmoke;
+    padding: 3px;
+    font-size: 20px;
+}
+.btnsignup:hover{
+    background-color: whitesmoke;
+    border: 1px solid black;
+    color: black;
+}
+.btn-custom-color{
+    color: black;
+}
+
+.logonav{
+    font-family: var(--FuentePrincipal);
+    font-size: 50px;
+    font-weight: 800;
+    letter-spacing: 0;
+    text-decoration: none;
+    color: black;
+    
+   
+}
+
+.logonav:hover{
+    -webkit-text-stroke: 1px var(--ColorPrimario);
+    color: transparent; 
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+
+.itemnav{
+    font-family: var(--FuentePrincipal);
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+}
+label{
+    font-size: 20px;
+    font-weight: 400;
+}
+.imgsignup{
+    width: 80%;
+    height: 75%;
+}
+
+.logintitle{
+    font-size: 90px;
+    font-weight: 900;
 }
