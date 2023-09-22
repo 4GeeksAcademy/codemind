@@ -167,7 +167,8 @@ def create_excercise():
                     answers=answer_data["text"],
                     exercise_id=exercise_id,
                     isCorrect=answer_data["isCorrect"],
-                     module=answer_data["module"]
+                    module= new_exercise.module,
+                    type= new_exercise.type
                 )
                 db.session.add(new_answer)
 
@@ -179,7 +180,8 @@ def create_excercise():
                     answers=answer_data["text"],
                     exercise_id=exercise_id,
                     isCorrect=answer_data["isCorrect"],
-                    module=answer_data["module"]
+                    module= new_exercise.module,
+                    type= new_exercise.type
                 )
                 db.session.add(new_answer)
             
