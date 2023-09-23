@@ -15,6 +15,8 @@ import { Usuarios } from "./pages/usuarios";
 import { AboutUs } from "./pages/aboutUs";
 import { RoadMap } from "./pages/roadMap";
 import { Demo } from "./pages/demo";
+import { PreguntaCompletar } from "./pages/fillInTheBlank";
+import { MultipleChoice } from "./pages/multipleChoice";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
 import { Navbar } from "./component/navbar2";
@@ -27,6 +29,19 @@ import { Landing } from "./pages/landing";
 //create your first component
 const Layout = () => {
     const basename = process.env.BASENAME || "";
+    const preguntas = [
+      {
+        pregunta: "¿Cuál es el capital de Francia?",
+        alternativas: ["Madrid", "Berlín", "París", "Londres"],
+        respuestaCorrecta: 2,
+      },
+      {
+        pregunta: "¿Cuál es el elemento químico más abundante en la Tierra?",
+        alternativas: ["Oxígeno", "Carbono", "Hierro", "Hidrógeno"],
+        respuestaCorrecta: 0,
+      },
+      // Agrega más preguntas aquí
+    ];
   
     if (!process.env.BACKEND_URL || process.env.BACKEND_URL === "") return <BackendURL />;
   
@@ -61,6 +76,8 @@ const Layout = () => {
               <Route element={<AboutUs />} path="/about" />
               <Route element={<RoadMap />} path="/roadmap" />
               <Route element={<Demo />} path="/demo" />
+              <Route element={<PreguntaCompletar />} path="/preguntasfib/:modulo" />
+              <Route element={<MultipleChoice />} path="/preguntassc/:modulo" />
               <Route element={<Single />} path="/single/:theid" />
               <Route element={<h1>Not found!</h1>} />
             </Routes>
