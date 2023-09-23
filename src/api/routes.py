@@ -161,7 +161,6 @@ def create_excercise():
         exercise_id = new_exercise.id
         print(exercise_id)
 
-        # if new_exercise.type == 'SC':
         for answer_data in request.json.get("answers"):
             new_answer = FillInBlankAnswers(
                 answers=answer_data["text"],
@@ -172,19 +171,6 @@ def create_excercise():
                 )
             db.session.add(new_answer)
 
-        # elif new_exercise.type == "FIB":
-        #     answers_data = request.json.get("answers")
-        #     if answers_data and len(answers_data) > 0:
-        #         answer_data = answers_data[0]  # Acceder al primer elemento de la lista
-        #         new_answer = FillInBlankAnswers(
-        #             answers=answer_data["text"],
-        #             exercise_id=exercise_id,
-        #             isCorrect=answer_data["isCorrect"],
-        #             module= new_exercise.module,
-        #             type= new_exercise.type
-        #         )
-        #         db.session.add(new_answer)
-            
         db.session.commit()
 
         return jsonify({"msg": "Exercise created successfully", "statusCode": 201, "exercise_id": exercise_id}), 201
@@ -218,11 +204,9 @@ def get_exercise_by_id(id):
 
 
 
-
-
 @api.route('/exercises/<string:module>', methods=['GET'])
 def get_exercises_by_module(module):
-    exercises = Exercise.query.filter_by(module=module).all()
+    exercises = Exercise.query.filter_by(module=module.upper()).all()
     if exercises:
         serialized_exercises = [exercise.serialize() for exercise in exercises]
         return jsonify({"exercises": serialized_exercises}), 200
@@ -233,10 +217,7 @@ def get_exercises_by_module(module):
 @api.route('/answer/<string:module>', methods=['GET'])
 def get_answer_fib(module):
     
-    answers= FillInBlankAnswers.query.filter_by(module=module).all()
-    # answers = SingleChoiceAnswers.query.filter_by(module=module).all()
-    print(answers[0].id)
-    # print(FillInBlankAnswers)
+    answers= FillInBlankAnswers.query.filter_by(module=module.upper()).all()
     
     if answers:
         serialized_answers = [answer.serialize() for answer in answers]
@@ -245,17 +226,3 @@ def get_answer_fib(module):
     else:
         return jsonify({"msg": "No se encontraron ejercicios para el tipo de módulo especificado"}), 404
     
-    
-
-# @api.route('/exercise/<int:id>', methods=['DELETE'])
-# def delete_us(id):
-#     try:
-#         user = Exercise.query.get(id)
-#         if user is not None:
-#             db.session.delete(user)
-#             db.session.commit()
-#             return jsonify({"msg": "Usuario eliminado"}), 201
-#         return jsonify({"msg": "El usuario no existe"}), 400
-    
-#     except Exception as e:
-#         return jsonify({"error":str(e)}),500

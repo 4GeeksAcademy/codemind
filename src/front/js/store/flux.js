@@ -28,48 +28,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				getActions().changeColor(0, "green");
 			},
 
-			// getFib: async (module) => {
-			// 	try{
-			// 		// fetching data from the backend
-			// 		const resp = await fetch(process.env.BACKEND_URL + `/api/exercises/${module}`)
-			// 		const data = await resp.json()
-			// 		const exercises = data.exercises
-
-			// 		const fib = exercises.filter(exercise=>exercise.type === "FIB")
-			// 		const simpleChoice = exercises.filter(exercise=>exercise.type === "SC")
-					
-			// 		setStore({ fib })
-			// 		setStore({ simpleChoice })
-			// 		console.log(data)
-			// 		console.log(getStore().fib)
-			// 		// don't forget to return something, that is how the async resolves
-			// 		return data;
-			// 	}catch(error){
-			// 		console.log("Error loading message from backend", error)
-			// 	}
-			// },
-
-
-			// getAnswers_fib: async (module) => {
-			// 	try{
-			// 		// fetching data from the backend
-			// 		const resp = await fetch(process.env.BACKEND_URL + `api/answer/${module}`)
-			// 		const data = await resp.json()
-			// 		const answers = data.answers
-			// 		const fib = answers.filter(answer=>answer.type === "FIB")
-			// 		const simpleChoice = answers.filter(answer=>answer.type === "SC")
-			// 		setStore({ answers_fib: fib})
-			// 		setStore({ answers_SC: simpleChoice})
-			// 		console.log(answers_fib)
-			// 		console.log(getStore().answers_fib)
-			// 		// don't forget to return something, that is how the async resolves
-			// 		return data;
-			// 	}catch(error){
-			// 		console.log("Error loading message from backend", error)
-			// 	}
-			// },
-
-			getFib: async (module="HTML") => {
+			getFib: async (module) => {
 				try{
 					// fetching data from the backend
 					const resp = await fetch(process.env.BACKEND_URL + `/api/exercises/${module}`)
@@ -86,7 +45,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-			getSimpleChoice: async (module="HTML") => {
+			getSimpleChoice: async (module) => {
 				try{
 					// fetching data from the backend
 					const resp = await fetch(process.env.BACKEND_URL + `/api/exercises/${module}`)

@@ -28,7 +28,7 @@ export const Modulos = () => {
           />
         </div>
         <div className="card-footer">
-        <Link to ={`/preguntas/HTML`}>
+        <Link to ={`/preguntas/html`}>
           <button className="btn btn-outline-secondary mb-4">start</button>
         </Link>
         </div>
@@ -46,7 +46,7 @@ export const Modulos = () => {
           />
         </div>
         <div className="card-footer">
-        <Link to ={`/preguntas/CSS`}>
+        <Link to ={`/preguntas/css`}>
           <button className="btn btn-outline-secondary mb-4">start</button>
         </Link>
         </div>
@@ -64,7 +64,7 @@ export const Modulos = () => {
           />
         </div>
         <div className="card-footer">
-        <Link to ={`/preguntas/JS`}>
+        <Link to ={`/preguntas/js`}>
           <button className="btn btn-outline-secondary mb-4">start</button>
         </Link>
         </div>

@@ -12,7 +12,6 @@ export const PreguntaCompletar = () => {
   const [respuesta, setRespuesta] = useState('');
   const [respuestaCorrecta, setRespuestaCorrecta] = useState(false);
   
-
   useEffect(()=>{
     actions.getFib(modulo)
   },[])
