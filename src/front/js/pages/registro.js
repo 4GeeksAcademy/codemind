@@ -4,9 +4,6 @@ import { Link } from "react-router-dom";
 import "../../styles/index.css";
 
 
-
-
-
 export const Registro = () => {
   const { store, actions} = useContext(Context)
   const baseUrl = "https://ui-avatars.com/api";
@@ -18,6 +15,7 @@ export const Registro = () => {
     firstName: '',
     lastName: '',
     email: '',
+    teacherName:null,
     password: '',
     confirmPassword: '',
     img: ''

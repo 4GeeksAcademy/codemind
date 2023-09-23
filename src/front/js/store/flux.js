@@ -129,6 +129,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 			setStore({ user: updatedUser });
         	console.log("USER DESDE EL FLUX", updatedUser);
 			localStorage.setItem('user', JSON.stringify(updatedUser))
+			},
+
+			updateUser: (useredit)=> {
+			const {user} = getStore()
+			const updatedUser = { ...user, ...useredit };
+			setStore({ user: updatedUser });
+			localStorage.setItem('user', JSON.stringify(updatedUser))
+
 			}
 		}
 	};

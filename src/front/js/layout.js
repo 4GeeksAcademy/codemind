@@ -19,11 +19,12 @@ import { PreguntaCompletar } from "./pages/fillInTheBlank";
 import { MultipleChoice } from "./pages/multipleChoice";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
-import { Navbar } from "./component/navbar";
+import { Navbar } from "./component/navbar2";
 import { Footer } from "./component/footer";
 import { Registro } from "./pages/registro";
 import { Login } from "./pages/login";
 import { DragAndDropList } from "./pages/dragAndDropList";
+import { Landing } from "./pages/landing";
 
 //create your first component
 const Layout = () => {
@@ -57,9 +58,10 @@ const Layout = () => {
             {/* Renderiza el Navbar solo si la ruta actual no es la página de registro */}
         
             {/* {!isLoginPage &&!isRegistroPage && !isIndexPage && !isforwotpassword && !isSendpassword && } */}
-            <Navbar />
+            {/* <Navbar /> */}
             <Routes>
-              <Route element={<Index />} path="/" />
+              <Route element={<Landing />} path="/" />
+              <Route element={<Index />} path="/Index" />
               <Route element={<Registro />} path="/registro" />
               <Route element={<Login />} path="/login" />
               <Route element={<Profile />} path="/profile" />

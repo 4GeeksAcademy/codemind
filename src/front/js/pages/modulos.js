@@ -70,13 +70,7 @@ export const Modulos = () => {
         </div>
       </div>
     </div>
-    
     </div>
-
-
-
-
-    
     </div>
 
   );
