@@ -58,6 +58,7 @@ class Exercise(db.Model):
             "info_youtube":self.info_youtube
         }
 
+<<<<<<< HEAD
 # class SingleChoiceAnswers(db.Model):
 #     __tablename__ = 'multiple_choice_anwers'
 #     id = db.Column(db.Integer, primary_key=True)
@@ -66,10 +67,21 @@ class Exercise(db.Model):
 #     answers = db.Column(db.String(250))
 #     exercise_id = db.Column(db.Integer, db.ForeignKey('exercise.id'))
 #     isCorrect = db.Column(db.Boolean, default=False)
+=======
+class SingleChoiceAnswers(db.Model):
+    __tablename__ = 'multiple_choice_anwers'
+    id = db.Column(db.Integer, primary_key=True)
+    module = db.Column(db.String(50))
+    type = db.Column(db.String(40))
+    answers = db.Column(db.String(250))
+    exercise_id = db.Column(db.Integer, db.ForeignKey('exercise.id'))
+    isCorrect = db.Column(db.Boolean, default=False)
+>>>>>>> bc54062d6521e153642a42066be62565cd1dabeb
     
 #     def __repr__(self):
 #         return f'<ExerciseAnswer {self.id}>'
 
+<<<<<<< HEAD
 #     def serialize(self):
 #         return {
 #             "id": self.id,
@@ -78,6 +90,16 @@ class Exercise(db.Model):
 #             "type": self.type,
 #             "exercise_id": self.exercise_id
 #         }
+=======
+    def serialize(self):
+        return {
+            "id": self.id,
+            "answers": self.answers,
+            "isCorrect": self.isCorrect,
+            "exercise_id": self.exercise_id,
+            "type": self.type
+        }
+>>>>>>> bc54062d6521e153642a42066be62565cd1dabeb
 
 class FillInBlankAnswers(db.Model):
     __tablename__ = 'fill_in_blank_answers'
@@ -97,8 +119,13 @@ class FillInBlankAnswers(db.Model):
             "id": self.id,
             "answers": self.answers,
             "isCorrect": self.isCorrect,
+<<<<<<< HEAD
             "type": self.type,
             "exercise_id": self.exercise_id
+=======
+            "exercise_id": self.exercise_id,
+            "type": self.type
+>>>>>>> bc54062d6521e153642a42066be62565cd1dabeb
         }
 
 
