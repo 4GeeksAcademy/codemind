@@ -161,7 +161,6 @@ def create_excercise():
         exercise_id = new_exercise.id
         print(exercise_id)
 
-<<<<<<< HEAD
         # if new_exercise.type == 'SC':
         for answer_data in request.json.get("answers"):
             new_answer = FillInBlankAnswers(
@@ -170,20 +169,9 @@ def create_excercise():
                 isCorrect=answer_data["isCorrect"],
                 module= new_exercise.module,
                 type= new_exercise.type
-=======
-        if new_exercise.type == 'SC':
-            for answer_data in request.json.get("answers"):
-                new_answer = SingleChoiceAnswers(
-                    answers=answer_data["text"],
-                    exercise_id=exercise_id,
-                    isCorrect=answer_data["isCorrect"],
-                    module= new_exercise.module,
-                    type= new_exercise.type
->>>>>>> bc54062d6521e153642a42066be62565cd1dabeb
                 )
             db.session.add(new_answer)
 
-<<<<<<< HEAD
         # elif new_exercise.type == "FIB":
         #     answers_data = request.json.get("answers")
         #     if answers_data and len(answers_data) > 0:
@@ -196,20 +184,6 @@ def create_excercise():
         #             type= new_exercise.type
         #         )
         #         db.session.add(new_answer)
-=======
-        elif new_exercise.type == "FIB":
-            answers_data = request.json.get("answers")
-            if answers_data and len(answers_data) > 0:
-                answer_data = answers_data[0]  # Acceder al primer elemento de la lista
-                new_answer = FillInBlankAnswers(
-                    answers=answer_data["text"],
-                    exercise_id=exercise_id,
-                    isCorrect=answer_data["isCorrect"],
-                    module= new_exercise.module,
-                    type= new_exercise.type
-                )
-                db.session.add(new_answer)
->>>>>>> bc54062d6521e153642a42066be62565cd1dabeb
             
         db.session.commit()
 

@@ -1,14 +1,8 @@
 """empty message
 
-<<<<<<<< HEAD:migrations/versions/7a11bc59fb61_.py
-Revision ID: 7a11bc59fb61
+Revision ID: c5ea493e5ea8
 Revises: 
-Create Date: 2023-09-22 19:42:52.992877
-========
-Revision ID: 0ef82f57f5ec
-Revises: 
-Create Date: 2023-09-22 18:52:33.387978
->>>>>>>> bc54062d6521e153642a42066be62565cd1dabeb:migrations/versions/0ef82f57f5ec_.py
+Create Date: 2023-09-23 04:20:17.369291
 
 """
 from alembic import op
@@ -16,11 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-<<<<<<<< HEAD:migrations/versions/7a11bc59fb61_.py
-revision = '7a11bc59fb61'
-========
-revision = '0ef82f57f5ec'
->>>>>>>> bc54062d6521e153642a42066be62565cd1dabeb:migrations/versions/0ef82f57f5ec_.py
+revision = 'c5ea493e5ea8'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -61,19 +51,6 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('module', sa.String(length=50), nullable=True),
     sa.Column('type', sa.String(length=40), nullable=True),
-<<<<<<<< HEAD:migrations/versions/7a11bc59fb61_.py
-========
-    sa.Column('answers', sa.String(length=250), nullable=True),
-    sa.Column('exercise_id', sa.Integer(), nullable=True),
-    sa.Column('isCorrect', sa.Boolean(), nullable=True),
-    sa.ForeignKeyConstraint(['exercise_id'], ['exercise.id'], ),
-    sa.PrimaryKeyConstraint('id')
-    )
-    op.create_table('multiple_choice_anwers',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('module', sa.String(length=50), nullable=True),
-    sa.Column('type', sa.String(length=40), nullable=True),
->>>>>>>> bc54062d6521e153642a42066be62565cd1dabeb:migrations/versions/0ef82f57f5ec_.py
     sa.Column('answers', sa.String(length=250), nullable=True),
     sa.Column('exercise_id', sa.Integer(), nullable=True),
     sa.Column('isCorrect', sa.Boolean(), nullable=True),
