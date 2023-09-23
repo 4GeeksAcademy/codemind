@@ -58,8 +58,8 @@ class Exercise(db.Model):
             "info_youtube":self.info_youtube
         }
 
-class FillInBlankAnswers(db.Model):
-    __tablename__ = 'fill_in_blank_answers'
+class Answers(db.Model):
+    __tablename__ = 'answers'
     id = db.Column(db.Integer, primary_key=True)
     module = db.Column(db.String(50))
     type = db.Column(db.String(40))

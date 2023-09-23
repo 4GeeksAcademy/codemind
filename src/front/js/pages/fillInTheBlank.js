@@ -20,10 +20,6 @@ export const PreguntaCompletar = () => {
     actions.getAnswers_fib(modulo)
   },[])
 
- 
-
-  // const preguntaActual = store.fib[indicePregunta]?.question;
-  // const answerActual = store.answers_fib[indicePregunta]?.answers;
   
   const handleRespuestaChange = (event) => {
     setRespuesta(event.target.value);
@@ -75,8 +71,6 @@ export const PreguntaCompletar = () => {
 
   return (
     <div className="App">
-      {/* <h2>{answerActual}</h2> */}
-      {/* <h2>{preguntaActual}</h2> */}
       {store.fib[preguntaActual] && <h2>{preguntaActual+1}.{store.fib[preguntaActual].question}</h2>}
       <input
         type="text"

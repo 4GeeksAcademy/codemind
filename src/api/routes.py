@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Exercise,FillInBlankAnswers, TokenBlockedList
+from api.models import db, User, Exercise,Answers, TokenBlockedList
 from api.utils import generate_sitemap, APIException
 from flask_bcrypt import Bcrypt
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity, get_jwt
@@ -162,7 +162,7 @@ def create_excercise():
         print(exercise_id)
 
         for answer_data in request.json.get("answers"):
-            new_answer = FillInBlankAnswers(
+            new_answer = Answers(
                 answers=answer_data["text"],
                 exercise_id=exercise_id,
                 isCorrect=answer_data["isCorrect"],
@@ -217,7 +217,7 @@ def get_exercises_by_module(module):
 @api.route('/answer/<string:module>', methods=['GET'])
 def get_answer_fib(module):
     
-    answers= FillInBlankAnswers.query.filter_by(module=module.upper()).all()
+    answers= Answers.query.filter_by(module=module.upper()).all()
     
     if answers:
         serialized_answers = [answer.serialize() for answer in answers]

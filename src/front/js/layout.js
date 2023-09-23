@@ -74,8 +74,8 @@ const Layout = () => {
               <Route element={<AboutUs />} path="/about" />
               <Route element={<RoadMap />} path="/roadmap" />
               <Route element={<Demo />} path="/demo" />
-              <Route element={<PreguntaCompletar />} path="/preguntas/:modulo" />
-              <Route element={<MultipleChoice />} path="/mc/:modulo" />
+              <Route element={<PreguntaCompletar />} path="/preguntasfib/:modulo" />
+              <Route element={<MultipleChoice />} path="/preguntassc/:modulo" />
               <Route element={<Single />} path="/single/:theid" />
               <Route element={<h1>Not found!</h1>} />
             </Routes>
