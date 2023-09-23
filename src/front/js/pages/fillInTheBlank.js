@@ -8,7 +8,10 @@ export const PreguntaCompletar = () => {
 
   const {modulo} = useParams();
   const { store, actions } = useContext(Context);
-  console.log(store.fib[0]?.id)
+  const [preguntaActual, setPreguntaActual] = useState(0);
+  const [respuesta, setRespuesta] = useState('');
+  const [respuestaCorrecta, setRespuestaCorrecta] = useState(false);
+  
 
   useEffect(()=>{
     actions.getFib(modulo)
@@ -18,12 +21,10 @@ export const PreguntaCompletar = () => {
     actions.getAnswers_fib(modulo)
   },[])
 
-  const [indicePregunta, setIndicePregunta] = useState(0);
-  const [respuesta, setRespuesta] = useState('');
-  const [respuestaCorrecta, setRespuestaCorrecta] = useState(false);
+ 
 
   // const preguntaActual = store.fib[indicePregunta]?.question;
-  const answerActual = store.answers_fib[indicePregunta]?.answers;
+  // const answerActual = store.answers_fib[indicePregunta]?.answers;
   
   const handleRespuestaChange = (event) => {
     setRespuesta(event.target.value);
@@ -31,6 +32,9 @@ export const PreguntaCompletar = () => {
   };
 
   const verificarRespuesta = () => {
+
+    const answerActual = store.answers_fib[preguntaActual]?.answers;
+    
     if (respuesta.toLowerCase() === answerActual.toLowerCase()) {
       setRespuestaCorrecta(true);
       Swal.fire(
@@ -50,8 +54,8 @@ export const PreguntaCompletar = () => {
   const avanzarPregunta = () => {
     // Avanzar a la siguiente pregunta solo si la respuesta es correcta
     if (respuestaCorrecta) {
-      if (indicePregunta < store.fib.length - 1) {
-        setIndicePregunta(indicePregunta + 1);
+      if (preguntaActual < store.fib.length - 1) {
+        setPreguntaActual(preguntaActual + 1);
         setRespuesta('');
         setRespuestaCorrecta(false); // Reinicia la respuesta correcta
       } else {
@@ -72,9 +76,9 @@ export const PreguntaCompletar = () => {
 
   return (
     <div className="App">
-      <h2>{answerActual}</h2>
+      {/* <h2>{answerActual}</h2> */}
       {/* <h2>{preguntaActual}</h2> */}
-      {store.fib[indicePregunta] && <h2>{indicePregunta+1}.{store.fib[indicePregunta].question}</h2>}
+      {store.fib[preguntaActual] && <h2>{preguntaActual+1}.{store.fib[preguntaActual].question}</h2>}
       <input
         type="text"
         value={respuesta}

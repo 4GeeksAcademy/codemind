@@ -58,29 +58,32 @@ class Exercise(db.Model):
             "info_youtube":self.info_youtube
         }
 
-class SingleChoiceAnswers(db.Model):
-    __tablename__ = 'multiple_choice_anwers'
-    id = db.Column(db.Integer, primary_key=True)
-    module = db.Column(db.String(50))
-    answers = db.Column(db.String(250))
-    exercise_id = db.Column(db.Integer, db.ForeignKey('exercise.id'))
-    isCorrect = db.Column(db.Boolean, default=False)
+# class SingleChoiceAnswers(db.Model):
+#     __tablename__ = 'multiple_choice_anwers'
+#     id = db.Column(db.Integer, primary_key=True)
+#     module = db.Column(db.String(50))
+#     type = db.Column(db.String(40))
+#     answers = db.Column(db.String(250))
+#     exercise_id = db.Column(db.Integer, db.ForeignKey('exercise.id'))
+#     isCorrect = db.Column(db.Boolean, default=False)
     
-    def __repr__(self):
-        return f'<ExerciseAnswer {self.id}>'
+#     def __repr__(self):
+#         return f'<ExerciseAnswer {self.id}>'
 
-    def serialize(self):
-        return {
-            "id": self.id,
-            "answers": self.answers,
-            "isCorrect": self.isCorrect,
-            "exercise_id": self.exercise_id
-        }
+#     def serialize(self):
+#         return {
+#             "id": self.id,
+#             "answers": self.answers,
+#             "isCorrect": self.isCorrect,
+#             "type": self.type,
+#             "exercise_id": self.exercise_id
+#         }
 
 class FillInBlankAnswers(db.Model):
     __tablename__ = 'fill_in_blank_answers'
     id = db.Column(db.Integer, primary_key=True)
     module = db.Column(db.String(50))
+    type = db.Column(db.String(40))
     answers = db.Column(db.String(250))
     exercise_id = db.Column(db.Integer, db.ForeignKey('exercise.id'))
     isCorrect = db.Column(db.Boolean, default=False)
@@ -94,6 +97,7 @@ class FillInBlankAnswers(db.Model):
             "id": self.id,
             "answers": self.answers,
             "isCorrect": self.isCorrect,
+            "type": self.type,
             "exercise_id": self.exercise_id
         }
 

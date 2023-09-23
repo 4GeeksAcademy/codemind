@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Exercise, SingleChoiceAnswers,FillInBlankAnswers, TokenBlockedList
+from api.models import db, User, Exercise,FillInBlankAnswers, TokenBlockedList
 from api.utils import generate_sitemap, APIException
 from flask_bcrypt import Bcrypt
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity, get_jwt
@@ -161,27 +161,29 @@ def create_excercise():
         exercise_id = new_exercise.id
         print(exercise_id)
 
-        if new_exercise.type == 'SC':
-            for answer_data in request.json.get("answers"):
-                new_answer = SingleChoiceAnswers(
-                    answers=answer_data["text"],
-                    exercise_id=exercise_id,
-                    isCorrect=answer_data["isCorrect"],
-                     module=answer_data["module"]
+        # if new_exercise.type == 'SC':
+        for answer_data in request.json.get("answers"):
+            new_answer = FillInBlankAnswers(
+                answers=answer_data["text"],
+                exercise_id=exercise_id,
+                isCorrect=answer_data["isCorrect"],
+                module= new_exercise.module,
+                type= new_exercise.type
                 )
-                db.session.add(new_answer)
+            db.session.add(new_answer)
 
-        elif new_exercise.type == "FIB":
-            answers_data = request.json.get("answers")
-            if answers_data and len(answers_data) > 0:
-                answer_data = answers_data[0]  # Acceder al primer elemento de la lista
-                new_answer = FillInBlankAnswers(
-                    answers=answer_data["text"],
-                    exercise_id=exercise_id,
-                    isCorrect=answer_data["isCorrect"],
-                    module=answer_data["module"]
-                )
-                db.session.add(new_answer)
+        # elif new_exercise.type == "FIB":
+        #     answers_data = request.json.get("answers")
+        #     if answers_data and len(answers_data) > 0:
+        #         answer_data = answers_data[0]  # Acceder al primer elemento de la lista
+        #         new_answer = FillInBlankAnswers(
+        #             answers=answer_data["text"],
+        #             exercise_id=exercise_id,
+        #             isCorrect=answer_data["isCorrect"],
+        #             module= new_exercise.module,
+        #             type= new_exercise.type
+        #         )
+        #         db.session.add(new_answer)
             
         db.session.commit()
 
@@ -226,19 +228,24 @@ def get_exercises_by_module(module):
         return jsonify({"exercises": serialized_exercises}), 200
     else:
         return jsonify({"msg": "No se encontraron ejercicios para el tipo de módulo especificado"}), 404
+    
 
 @api.route('/answer/<string:module>', methods=['GET'])
 def get_answer_fib(module):
     
-    answers = FillInBlankAnswers.query.filter_by(module=module).all()
-    print(answers)
-    print(FillInBlankAnswers)
-
+    answers= FillInBlankAnswers.query.filter_by(module=module).all()
+    # answers = SingleChoiceAnswers.query.filter_by(module=module).all()
+    print(answers[0].id)
+    # print(FillInBlankAnswers)
+    
     if answers:
         serialized_answers = [answer.serialize() for answer in answers]
+        
         return jsonify({"answers": serialized_answers}), 200
     else:
         return jsonify({"msg": "No se encontraron ejercicios para el tipo de módulo especificado"}), 404
+    
+    
 
 # @api.route('/exercise/<int:id>', methods=['DELETE'])
 # def delete_us(id):

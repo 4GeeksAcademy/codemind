@@ -1,90 +1,66 @@
 
-// import React, { useEffect, useState, useContext  } from 'react';
-// import { Context } from "../store/appContext";
-// import { useParams } from "react-router-dom";
-// import Swal from 'sweetalert2'
+import React, { useEffect, useState, useContext  } from 'react';
+import { Context } from "../store/appContext";
+import { useParams } from "react-router-dom";
+import Swal from 'sweetalert2'
 
-// export const MultipleChoice = () => {
+export const MultipleChoice = () => {
 
-//   const {modulo} = useParams();
-//   const { store, actions } = useContext(Context);
-//   console.log(store.fib[0]?.id)
+  const {store, actions } = useContext(Context);
+  const [preguntaActual, setPreguntaActual] = useState(0);
+  const [respuestaSeleccionada, setRespuestaSeleccionada] = useState(null);
+  const {modulo} = useParams();
 
-//   useEffect(()=>{
-//     actions.getFib(modulo)
-//   },[])
+  useEffect(()=>{
+    actions.getSimpleChoice(modulo)
+  },[])
 
-//   useEffect(()=>{
-//     actions.getAnswers_fib(modulo)
-//   },[])
+  useEffect(()=>{
+    actions.getAnswers_SC(modulo)
+  },[])
 
-//   const [indicePregunta, setIndicePregunta] = useState(0);
-//   const [respuesta, setRespuesta] = useState('');
-//   const [respuestaCorrecta, setRespuestaCorrecta] = useState(false);
+  const respuestaElegida = (text) => {
+    setRespuestaSeleccionada(text);
+  };
+  console.log(respuestaSeleccionada)
 
-//   // const preguntaActual = store.fib[indicePregunta]?.question;
-//   const answerActual = store.answers_fib[indicePregunta]?.answers;
+  const pregunta_id = store.simpleChoice[preguntaActual]?.id
+
+  const alternativas = store.answers_SC.filter(exercise=>exercise.exercise_id === pregunta_id)
+
+  const avanzarPregunta = () => {
+    setPreguntaActual(preguntaActual + 1);
+  };
   
-//   const handleRespuestaChange = (event) => {
-//     setRespuesta(event.target.value);
-//     setRespuestaCorrecta(false); // Reinicia la respuesta correcta al cambiar la respuesta
-//   };
+  const verificarRespuesta = () => {
 
-//   const verificarRespuesta = () => {
-//     if (respuesta.toLowerCase() === answerActual.toLowerCase()) {
-//       setRespuestaCorrecta(true);
-//       Swal.fire(
-//         'Buen trabajo!',
-//         'Continua con la siguiente pregunta',
-//         'success'
-//       )
-//     } else {
-//       Swal.fire(
-//         'Respuesta Incorrecta!',
-//         'Sigue intentando',
-//         'error'
-//       )
-//     }
-//   };
+    const respuestasCorrectas = store.answers_SC.filter(respCorrecta => respCorrecta.isCorrect === true)
+  
+    const respuestaCorrecta = respuestasCorrectas.filter(res => res.exercise_id === pregunta_id)
 
-//   const avanzarPregunta = () => {
-//     // Avanzar a la siguiente pregunta solo si la respuesta es correcta
-//     if (respuestaCorrecta) {
-//       if (indicePregunta < store.fib.length - 1) {
-//         setIndicePregunta(indicePregunta + 1);
-//         setRespuesta('');
-//         setRespuestaCorrecta(false); // Reinicia la respuesta correcta
-//       } else {
-//         Swal.fire(
-//           'Excelente!',
-//           'Has completado todas las preguntas.',
-//           'success'
-//         )
-//       }
-//     } else {
-//       Swal.fire(
-//         'Alto ahí!',
-//         'Debes responder correctamente antes de avanzar.',
-//         'warning'
-//       )
-//     }
-//   };
+    if (respuestaSeleccionada === respuestaCorrecta[0]?.answers) {
+      avanzarPregunta();
+    } else {
+      alert('Respuesta incorrecta. Inténtalo de nuevo.');
+    }
+  };
 
-//   return (
-//     <div className="App">
-//       <h2>{answerActual}</h2>
-//       {/* <h2>{preguntaActual}</h2> */}
-//       {store.fib[indicePregunta] && <h2>{indicePregunta+1}.{store.fib[indicePregunta].question}</h2>}
-//       <input
-//         type="text"
-//         value={respuesta}
-//         onChange={handleRespuestaChange}
-//         placeholder="Escribe tu respuesta aquí"
-//       />
-//        <button onClick={verificarRespuesta}>Verificar</button>
-//       <button onClick={avanzarPregunta}>Siguiente</button>
-//     </div>
-//   );
-// }
-
+  return (
+    <div>
+      {store.simpleChoice.length>0 ? <div>
+      {preguntaActual < store.simpleChoice.length ? (
+      <div>
+      <h2>{store.simpleChoice[preguntaActual] && <h2>{preguntaActual+1}.{store.simpleChoice[preguntaActual].question}</h2>}</h2>
+      <ul>
+      {alternativas.map((alternativa,indice)=><li key={indice} onClick={() => respuestaElegida(alternativa.answers)}
+            className={respuestaSeleccionada === indice ? 'seleccionada' : ''}>{alternativa.answers}</li>)}
+      </ul>
+      <button onClick={verificarRespuesta}>Verificar respuesta</button>
+      </div>):(
+        <p>¡Felicidades, has completado todas las preguntas!</p>
+      )}
+      </div>:""}
+    </div>
+  );
+}
 
