@@ -72,6 +72,7 @@ export const PreguntaCompletar = () => {
     }
   };
 
+
   return (
     <div className="container-fluid mt-5">
       <div className="mb-3 text-danger fs-1">
@@ -79,7 +80,7 @@ export const PreguntaCompletar = () => {
       </div>
       
       <div className="progress mb-3">
-      <div className="progress-bar" role="progressbar" style={{width: "10%"}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+      <div className="progress-bar" role="progressbar" style={{width: `${(preguntaActual+1)/(store.fib?.length)*100}%`}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{(preguntaActual+1)/(store.fib?.length)*100}%</div>
       </div>
       {store.fib[preguntaActual] && <p className='fs-2 text-white'>{preguntaActual+1}.{store.fib[preguntaActual].question}</p>}
       <form onSubmit={verificarRespuesta}>

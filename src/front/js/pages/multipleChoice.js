@@ -62,7 +62,7 @@ export const MultipleChoice = () => {
       Curso de {modulo.toLocaleUpperCase()}
       </div>
       <div className="progress mb-3">
-      <div className="progress-bar" role="progressbar" style={{width: "10%"}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{(preguntaActual+1)/5*100}%</div>
+      <div className="progress-bar" role="progressbar" style={{width: `${(preguntaActual+1)/(store.simpleChoice?.length)*100}%`}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{(preguntaActual+1)/(store.simpleChoice?.length)*100}%</div>
       </div>
       <div className="mb-3">{store.simpleChoice[preguntaActual] && <p className='fs-2 text-white'>{preguntaActual+1}.{store.simpleChoice[preguntaActual].question}</p>}</div>
       <ul  className="ps-0">
