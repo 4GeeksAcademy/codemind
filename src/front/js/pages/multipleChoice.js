@@ -34,30 +34,41 @@ export const MultipleChoice = () => {
   
   const verificarRespuesta = () => {
 
-    const respuestasCorrectas = store.answers_SC.filter(respCorrecta => respCorrecta.isCorrect === true)
-  
-    const respuestaCorrecta = respuestasCorrectas.filter(res => res.exercise_id === pregunta_id)
+    const respuestaCorrecta = store.answers_SC.filter(respCorrecta => respCorrecta.isCorrect && respCorrecta.exercise_id == pregunta_id)
 
     if (respuestaSeleccionada === respuestaCorrecta[0]?.answers) {
       avanzarPregunta();
     } else {
-      alert('Respuesta incorrecta. Inténtalo de nuevo.');
+      Swal.fire(
+        'Respuesta Incorrecta!',
+        'Intenta otra vez',
+        'error'
+      )
     }
   };
-
+    
   return (
-    <div>
-      {store.simpleChoice.length>0 ? <div>
+    <div className='container-fluid mt-5'>
+      {store.simpleChoice.length>0 ? <div> 
       {preguntaActual < store.simpleChoice.length ? (
       <div>
-      <h2>{store.simpleChoice[preguntaActual] && <h2>{preguntaActual+1}.{store.simpleChoice[preguntaActual].question}</h2>}</h2>
-      <ul>
-      {alternativas.map((alternativa,indice)=><li key={indice} onClick={() => respuestaElegida(alternativa.answers)}
-            className={respuestaSeleccionada === indice ? 'seleccionada' : ''}>{alternativa.answers}</li>)}
+      <div className="mb-3 text-danger fs-1">
+      Curso de {modulo.toLocaleUpperCase()}
+      </div>
+      <div className="progress mb-3">
+        <div className="progress-bar" role="progressbar" style={{width: "10%"}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+        </div>
+      </div>
+      <div className="mb-3">{store.simpleChoice[preguntaActual] && <p className='fs-2 text-white'>{preguntaActual+1}.{store.simpleChoice[preguntaActual].question}</p>}</div>
+      <ul  className="ps-0">
+      {alternativas.map((alternativa,indice)=><p key={indice} onClick={() => respuestaElegida(alternativa.answers)}
+            className= {`card-body rounded seleccionada p-0 ps-4 fs-4`} >{alternativa.answers}</p>)}
       </ul>
-      <button onClick={verificarRespuesta}>Verificar respuesta</button>
+      <div className="d-flex justify-content-end" >
+        <button className="btn btn-primary" onClick={verificarRespuesta}>Siguiente</button>
+      </div>
       </div>):(
-        <p>¡Felicidades, has completado todas las preguntas!</p>
+        <p className='d-flex flex-row justify-content-center alig-items-center'>¡Felicidades, has completado todas las preguntas!</p>
       )}
       </div>:""}
     </div>
