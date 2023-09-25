@@ -22,12 +22,15 @@ export const PreguntaCompletar = () => {
 
   
   const handleRespuestaChange = (event) => {
+    // e.preventDefault()
     setRespuesta(event.target.value);
     setRespuestaCorrecta(false); // Reinicia la respuesta correcta al cambiar la respuesta
   };
 
-  const verificarRespuesta = () => {
+  const verificarRespuesta = (e) => {
 
+    e.preventDefault()
+    
     const answerActual = store.answers_fib[preguntaActual]?.answers;
     
     if (respuesta.toLowerCase() === answerActual.toLowerCase()) {
@@ -70,16 +73,27 @@ export const PreguntaCompletar = () => {
   };
 
   return (
-    <div className="App">
-      {store.fib[preguntaActual] && <h2>{preguntaActual+1}.{store.fib[preguntaActual].question}</h2>}
-      <input
+    <div className="container-fluid mt-5">
+      <div className="mb-3 text-danger fs-1">
+      Curso de {modulo.toLocaleUpperCase()}
+      </div>
+      
+      <div className="progress mb-3">
+      <div className="progress-bar" role="progressbar" style={{width: "10%"}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+      </div>
+      {store.fib[preguntaActual] && <p className='fs-2 text-white'>{preguntaActual+1}.{store.fib[preguntaActual].question}</p>}
+      <form onSubmit={verificarRespuesta}>
+        <input className="mb-3 form-control"
         type="text"
         value={respuesta}
-        onChange={handleRespuestaChange}
+        onChange={e=>handleRespuestaChange(e)}
         placeholder="Escribe tu respuesta aquí"
       />
-       <button onClick={verificarRespuesta}>Verificar</button>
-      <button onClick={avanzarPregunta}>Siguiente</button>
+      </form>
+       {/* <button onClick={verificarRespuesta}>Verificar</button> */}
+       <div className="mt-4 d-flex justify-content-end" >
+        <button className="btn btn-primary" onClick={avanzarPregunta}>Siguiente</button>
+      </div>
     </div>
   );
 }
