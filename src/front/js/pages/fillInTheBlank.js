@@ -71,6 +71,10 @@ export const PreguntaCompletar = () => {
       )
     }
   };
+  const progresoActual = () => {
+    const progreso=(preguntaActual+1)/(store.fib?.length)*100
+    return progreso
+    };
 
 
   return (
@@ -80,7 +84,7 @@ export const PreguntaCompletar = () => {
       </div>
       
       <div className="progress mb-3">
-      <div className="progress-bar" role="progressbar" style={{width: `${(preguntaActual+1)/(store.fib?.length)*100}%`}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{(preguntaActual+1)/(store.fib?.length)*100}%</div>
+      <div className="progress-bar" role="progressbar" style={{width: `${progresoActual()}%`}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{progresoActual()}%</div>
       </div>
       {store.fib[preguntaActual] && <p className='fs-2 text-white'>{preguntaActual+1}.{store.fib[preguntaActual].question}</p>}
       <form onSubmit={verificarRespuesta}>
