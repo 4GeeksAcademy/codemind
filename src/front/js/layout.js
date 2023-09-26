@@ -17,7 +17,7 @@ import { RoadMap } from "./pages/roadMap";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
-import { Navbar } from "./component/navbar2";
+import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { Registro } from "./pages/registro";
 import { Login } from "./pages/login";
@@ -43,7 +43,7 @@ const Layout = () => {
             {/* Renderiza el Navbar solo si la ruta actual no es la página de registro */}
         
             {/* {!isLoginPage &&!isRegistroPage && !isIndexPage && !isforwotpassword && !isSendpassword && } */}
-            {/* <Navbar /> */}
+            <Navbar />
             <Routes>
               <Route element={<Landing />} path="/" />
               <Route element={<Index />} path="/Index" />
