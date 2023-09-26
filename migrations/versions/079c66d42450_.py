@@ -1,14 +1,8 @@
 """empty message
 
-<<<<<<<< HEAD:migrations/versions/9b2cdb27a9eb_.py
-Revision ID: 9b2cdb27a9eb
+Revision ID: 079c66d42450
 Revises: 
-Create Date: 2023-09-23 01:28:32.583521
-========
-Revision ID: b86d2ae4a9e1
-Revises: 
-Create Date: 2023-09-23 21:41:58.005219
->>>>>>>> e7daa099cbda20e86c7abcf59e617b9e57c9706b:migrations/versions/b86d2ae4a9e1_.py
+Create Date: 2023-09-26 21:17:18.059738
 
 """
 from alembic import op
@@ -16,11 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-<<<<<<<< HEAD:migrations/versions/9b2cdb27a9eb_.py
-revision = '9b2cdb27a9eb'
-========
-revision = 'b86d2ae4a9e1'
->>>>>>>> e7daa099cbda20e86c7abcf59e617b9e57c9706b:migrations/versions/b86d2ae4a9e1_.py
+revision = '079c66d42450'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -35,6 +25,13 @@ def upgrade():
     sa.Column('question', sa.String(length=250), nullable=True),
     sa.Column('info_blog', sa.String(length=250), nullable=True),
     sa.Column('info_youtube', sa.String(length=250), nullable=True),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_table('teacher',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('firstName', sa.String(length=40), nullable=False),
+    sa.Column('lastName', sa.String(length=40), nullable=False),
+    sa.Column('students', sa.String(length=50000), nullable=False),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('token_blocked_list',
@@ -52,8 +49,9 @@ def upgrade():
     sa.Column('password', sa.String(length=400), nullable=False),
     sa.Column('img', sa.String(length=400), nullable=False),
     sa.Column('role', sa.String(length=15), nullable=False),
-    sa.Column('document', sa.String(length=250), nullable=True),
-    sa.Column('teacher', sa.String(length=80), nullable=True),
+    sa.Column('document', sa.String(length=1000), nullable=True),
+    sa.Column('teacher', sa.String(length=280), nullable=True),
+    sa.Column('teacher_id', sa.String(length=80), nullable=True),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email')
     )
@@ -75,5 +73,6 @@ def downgrade():
     op.drop_table('answers')
     op.drop_table('user')
     op.drop_table('token_blocked_list')
+    op.drop_table('teacher')
     op.drop_table('exercise')
     # ### end Alembic commands ###

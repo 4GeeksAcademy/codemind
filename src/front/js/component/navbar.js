@@ -95,10 +95,10 @@ export const Navbar = () => {
           </div>
           <div id="nav-footer-titlebox d-flex justify-content-center ms-2">
             <a id="nav-footer-title d-flex justify-content-end ms-2" href="#" target="_blank">
-              {user.firstName +  " " + user.lastName}
+            {user && user.firstName ? user.firstName : null} {user && user.lastName ? user.lastName : null}
             </a>
             <div>
-            <span id="nav-footer-subtitle">{user.role}</span>
+            <span id="nav-footer-subtitle">{user && user.role ? user.role : null}</span>
             </div>
           </div>
           <label htmlFor="nav-footer-toggle">
