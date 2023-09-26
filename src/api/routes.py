@@ -43,6 +43,7 @@ def create_user():
         db.session.commit()
         return jsonify({"msg": "Usuario registrado"}), 201
     except Exception as e:
+        print(e)
         return jsonify({"error": str(e)}), 500
 
 
@@ -120,7 +121,15 @@ def login_user():
     
     # Si pasan las validaciones, se genera el token
     token = create_access_token(identity = user.id, additional_claims = {"role":"admin"})
-    return jsonify({"message":"Login successful", "token":token}),200
+    user_data = {
+        "id": user.id,
+        "firstName": user.firstName,
+        "lastName": user.lastName,
+        "email": user.email,
+        "role": user.role,
+        "img": user.img
+    }
+    return jsonify({"message":"Login successful", "token":token, "user": user_data}),200
 
 @api.route('/private') 
 @jwt_required() # Este decorador convierte la ruta en protegida

@@ -12,14 +12,13 @@ export const Navbar = () => {
   const [navActive, setNavActive] = useState(null)
   useEffect(() => {
     setNavActive(location.pathname)
-
-
-  }, [location.pathname]);
-
-
-  useEffect(() => {
-    setUserImg(user ? user.img : defaultUserImg);
-  }, [user]);
+    if(user){
+      setUserImg(user.img || defaultUserImg)
+    }else{
+      setUserImg(defaultUserImg);
+    }
+    
+  },[location.pathname, user, store.user]);
 
   const defaultNavbar = (
     <nav className="navbar navbar-expand-lg bg-body-tertiary ms-4 me-4 mt-3 mb-4 p-2">
@@ -94,11 +93,13 @@ export const Navbar = () => {
           <div id="nav-footer-avatar">
             <img src={userImg} alt="Avatar" />
           </div>
-          <div id="nav-footer-titlebox">
-            <a id="nav-footer-title" href="#" target="_blank">
-              User_Name
+          <div id="nav-footer-titlebox d-flex justify-content-center ms-2">
+            <a id="nav-footer-title d-flex justify-content-end ms-2" href="#" target="_blank">
+              {user.firstName +  " " + user.lastName}
             </a>
-            <span id="nav-footer-subtitle">Admin</span>
+            <div>
+            <span id="nav-footer-subtitle">{user.role}</span>
+            </div>
           </div>
           <label htmlFor="nav-footer-toggle">
             <i className="fas fa-caret-up"></i>
@@ -106,7 +107,7 @@ export const Navbar = () => {
         </div>
         <div id="nav-footer-content">
           <div className="nav-item">
-            <Link to={"/about"}><a className="btn btn-outline-primary " href="#">Log out</a></Link>
+            <Link to={"/"} className="btn btn-outline-primary">Log out</Link>
           </div>
         </div>
       </div>

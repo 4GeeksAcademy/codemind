@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Context } from "../store/appContext";
 
 export const Login = () => {
-    const { store } = useContext(Context);
+    const { store, actions } = useContext(Context);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errorLogin, setErrorLogin] = useState(null);
@@ -19,17 +19,26 @@ export const Login = () => {
         setPassword(e.target.value);
     };
 
-    const handleLogin = (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
-        // Aquí debes comparar el email y la contraseña con los datos almacenados en el store.
-        const { user } = store;
-        if (user && user.email === email && user.password === password) {
-            // Iniciar sesión exitosa
-            navigate("/modules");
-        } else {
-            // Iniciar sesión fallida
-            setErrorLogin("Inicio de sesión fallido. Verifique sus credenciales.");
+        console.log("Handle Login called");
+        const credentials = {
+            "email": email,
+            "password": password
         }
+        try {
+            const response = await actions.loginUser(credentials);
+
+            if (response.success){
+                navigate("/modules")
+            }else{
+                setErrorLogin("Inicio de sesión fallido. Verifique sus credenciales.");
+            }
+
+        } catch (error) {
+            console.log(error)
+        }
+
     };
 
     return (

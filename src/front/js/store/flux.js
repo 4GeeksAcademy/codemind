@@ -1,5 +1,6 @@
 const getState = ({ getStore, getActions, setStore }) => {
-	const storedUser = JSON.parse(localStorage.getItem('user'));
+	const storedUser = JSON.parse(localStorage.getItem('userData'));
+	
 	return {
 		store: {
 			message: null,
@@ -19,7 +20,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					initial: "white"
 				}
 			],
-			user:storedUser || null
+			user: storedUser || null
 			
 		},
 		actions: {
@@ -123,23 +124,61 @@ const getState = ({ getStore, getActions, setStore }) => {
 				//reset the global store
 				setStore({ demo: demo });
 			},
-			addUser:  (newUser) => {
-			const {user} = getStore()
-			const updatedUser = { ...user, ...newUser };
-			setStore({ user: updatedUser });
-        	console.log("USER DESDE EL FLUX", updatedUser);
-			localStorage.setItem('user', JSON.stringify(updatedUser))
-			},
-
-			updateUser: (useredit)=> {
-			const {user} = getStore()
-			const updatedUser = { ...user, ...useredit };
-			setStore({ user: updatedUser });
-			localStorage.setItem('user', JSON.stringify(updatedUser))
-
+			addUser:  async (newUser) => {
+			const url = process.env.BACKEND_URL + '/api/user'
+			const options = {
+				method:  'POST',
+				body: JSON.stringify(newUser),
+				headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'}
 			}
-		}
-	};
-};
+			try {
+				const resp = await fetch(url, options)
+				if(resp.ok){
+					console.log('La solicitud se realizó con éxito');
+				}else {
+					console.error('La solicitud no se realizó con éxito');
+			 }
+			} catch (error) {
+				console.error(error)
+			}
+			},
+		
+			loginUser: async (userCredentials) => {
+                
+                
+                const url = process.env.BACKEND_URL + '/api/login';
+                const options = {
+                    method: 'POST',
+                    body: JSON.stringify(userCredentials),
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Access-Control-Allow-Origin': '*'
+                    }
+                };
+                try {
+                    const resp = await fetch(url, options);
+                    if (resp.ok) {
+                        const data = await resp.json();
+                        console.log('La solicitud se realizó con éxito');
+                        localStorage.setItem('userToken', data.token);
+						await setStore({ user: data.user })
+						localStorage.setItem('userData', JSON.stringify(data.user));
+						let { user } = getStore()
+						console.log("loginuserdata" + JSON.stringify(user) )
+						return { success: true };
+						
+						
+                    } else {
+                        console.log('La solicitud de login no se realizó con éxito');
+           				return { success: false, error: 'Contraseña incorrecta' };
+                    }
+                } catch (error) {
+                    console.error(error);
+					return { success: false, error: 'Error de red' };
+                }
+            },
 
+        }
+    };
+};
 export default getState;
