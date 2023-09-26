@@ -6,6 +6,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faCode, faPaintBrush, faLaptopCode } from "@fortawesome/free-solid-svg-icons";
 
+import {Link} from "react-router-dom";
+
+
 export const Modulos = () => {
   const { store, actions } = useContext(Context);
 
@@ -98,6 +101,7 @@ export const Modulos = () => {
           </div>
         </div>
 
+
         {/* Módulo JavaScript */}
         <div className="col-sm-12 col-md-4" style={{ width: "16rem" }}>
           <div className="card text-center mb-3">
@@ -129,5 +133,6 @@ export const Modulos = () => {
         </div>
       </div>
     </div>
+
   );
 };

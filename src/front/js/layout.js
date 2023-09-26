@@ -15,6 +15,8 @@ import { Usuarios } from "./pages/usuarios";
 import { AboutUs } from "./pages/aboutUs";
 import { RoadMap } from "./pages/roadMap";
 import { Demo } from "./pages/demo";
+import { PreguntaCompletar } from "./pages/fillInTheBlank";
+import { MultipleChoice } from "./pages/multipleChoice";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
 import { Navbar } from "./component/navbar";
@@ -26,6 +28,7 @@ import { Landing } from "./pages/landing";
 
 //create your first component
 const Layout = () => {
+
     const basename = process.env.BASENAME || "";
   
     if (!process.env.BACKEND_URL || process.env.BACKEND_URL === "") return <BackendURL />;
@@ -60,6 +63,8 @@ const Layout = () => {
               <Route element={<Usuarios />} path="/usuarios" />
               <Route element={<AboutUs />} path="/about" />
               <Route element={<RoadMap />} path="/roadmap" />
+              <Route element={<PreguntaCompletar />} path="/preguntasfib/:modulo" />
+              <Route element={<MultipleChoice />} path="/preguntassc/:modulo" />
               <Route element={<Demo />} path="/demo" />
               <Route element={<Single />} path="/single/:theid" />
               <Route element={<h1>Not found!</h1>} />
@@ -72,3 +77,4 @@ const Layout = () => {
   };
   
   export default injectContext(Layout);
+
