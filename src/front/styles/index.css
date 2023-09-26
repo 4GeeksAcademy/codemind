@@ -9,7 +9,7 @@
 
     --ColorPrimario: #2EBBF2; /* Define una variable de color personalizada */
     --ColorSecundario: #F2811D;
-    --ColorTerciario: var(--ColorTerciario);
+    --ColorTerciario:  #E6E6FA;
     --ColorBackground: black;
 
     /* Family-fonts */
@@ -189,8 +189,10 @@ height: 180px;
 }
 
 /* Footer Cards and modals*/
+
 .card{
     border-radius: 20px;
+    background-color: var(--ColorTerciario);
 }
 
 .card-footer{
@@ -240,7 +242,57 @@ input[type="text"]:focus {
     outline: none; /* Elimina el contorno predeterminado del enfoque */
 }
 
-/* Navbar2 */
+/* Animations */
+
+/* Card Animation
+ */
+.card-animation {
+  --g: 4px;     /* the gap */
+  --b: 12px;    /* border thickness*/
+  --c: #a003c7; /* the color */
+  
+  
+  padding: calc(var(--g) + var(--b));
+  --_c: #00000000 0 25%, var(--c) 0 50%;
+  --_g1: repeating-linear-gradient(90deg ,var(--_c)) repeat-x;
+  --_g2: repeating-linear-gradient(180deg,var(--_c)) repeat-y;
+  background:
+    var(--_g1) var(--_p, 25%) 0   ,var(--_g2) 0    var(--_p,125%),
+    var(--_g1) var(--_p,125%) 100%,var(--_g2) 100% var(--_p, 25%);
+  background-size: 200% var(--b),var(--b) 200%;
+  cursor: pointer;
+  filter: grayscale(50%);
+  transition: .3s;
+}
+.card-animation:hover {
+  --_p: 75%;
+  filter: grayscale(0%);
+}
+
+/* Buttons animation  */
+.css-button-shadow-border--black {
+  min-width: 130px;
+  height: 40px;
+  color: #fff;
+  padding: 5px 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  outline: none;
+  border-radius: 5px;
+  border: none;
+  box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5), 7px 7px 20px 0px rgba(0,0,0,.1), 4px 4px 5px 0px rgba(0,0,0,.1);
+  background: #212529;
+}
+.css-button-shadow-border--black:hover {
+  background-color: #343a40;
+}
+.css-button-shadow-border--black:active {
+  top: 2px;
+}
+/* Navbar */
 
 :root {
     --background: rgba(1, 1, 255, 0.973);
@@ -250,6 +302,9 @@ input[type="text"]:focus {
     --navbar-dark-secondary: #2c3e50;
     --navbar-light-primary: #f5f6fa;
     --navbar-light-secondary: #8392a5;
+  }
+  #nav-bar{
+    z-index: 1;
   }
   
   #nav-toggle:checked ~ #nav-header {
