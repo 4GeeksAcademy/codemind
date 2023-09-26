@@ -1,8 +1,13 @@
 const getState = ({ getStore, getActions, setStore }) => {
+	const storedUser = JSON.parse(localStorage.getItem('userData'));
 	
 	return {
 		store: {
 			message: null,
+			fib : [],
+			simpleChoice:[],
+			answers_SC : [],
+			answers_fib : [],
 			demo: [
 				{
 					title: "FIRST",
@@ -15,13 +20,82 @@ const getState = ({ getStore, getActions, setStore }) => {
 					initial: "white"
 				}
 			],
-			user: null
+			user: storedUser || null
 			
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
+			},
+
+			getFib: async (module) => {
+				try{
+					// fetching data from the backend
+					const resp = await fetch(process.env.BACKEND_URL + `/api/exercises/${module}`)
+					const data = await resp.json()
+					const exercises = data.exercises
+					const fib = exercises.filter(exercise=>exercise.type === "FIB")
+					setStore({ fib })
+					console.log(data)
+					console.log(getStore().fib)
+					// don't forget to return something, that is how the async resolves
+					return data;
+				}catch(error){
+					console.log("Error loading message from backend", error)
+				}
+			},
+
+			getSimpleChoice: async (module) => {
+				try{
+					// fetching data from the backend
+					const resp = await fetch(process.env.BACKEND_URL + `/api/exercises/${module}`)
+					const data = await resp.json()
+					const exercises = data.exercises
+					const simpleChoice = exercises.filter(exercise=>exercise.type === "SC")
+					setStore({ simpleChoice})
+					console.log(data)
+					console.log(getStore().simpleChoice)
+					// don't forget to return something, that is how the async resolves
+					return data;
+				}catch(error){
+					console.log("Error loading message from backend", error)
+				}
+			},
+			
+
+			getAnswers_fib: async (module) => {
+				try{
+					// fetching data from the backend
+					const resp = await fetch(process.env.BACKEND_URL + `api/answer/${module}`)
+					const data = await resp.json()
+					const answers = data.answers
+					const fib = answers.filter(answer=>answer.type === "FIB")
+					setStore({ answers_fib: fib})
+					console.log(data)
+					console.log(getStore().answers_fib)
+					// don't forget to return something, that is how the async resolves
+					return data;
+				}catch(error){
+					console.log("Error loading message from backend", error)
+				}
+			},
+
+			getAnswers_SC: async (module) => {
+				try{
+					// fetching data from the backend
+					const resp = await fetch(process.env.BACKEND_URL + `api/answer/${module}`)
+					const data = await resp.json()
+					const answers = data.answers
+					const SC = answers.filter(answer=>answer.type === "SC")
+					setStore({ answers_SC: SC})
+					console.log(data)
+					console.log(getStore().answers_SC)
+					// don't forget to return something, that is how the async resolves
+					return data;
+				}catch(error){
+					console.log("Error loading message from backend", error)
+				}
 			},
 
 			getMessage: async () => {
@@ -88,6 +162,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                         console.log('La solicitud se realizó con éxito');
                         localStorage.setItem('userToken', data.token);
 						await setStore({ user: data.user })
+						localStorage.setItem('userData', JSON.stringify(data.user));
 						let { user } = getStore()
 						console.log("loginuserdata" + JSON.stringify(user) )
 						return { success: true };
