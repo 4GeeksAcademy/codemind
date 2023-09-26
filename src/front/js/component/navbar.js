@@ -13,9 +13,13 @@ export const Navbar = () => {
   const [navActive, setNavActive ] = useState(null)
   useEffect(() => {
     setNavActive(location.pathname)
-    setUserImg(user ? user.img : defaultUserImg);
+    if(user){
+      setUserImg(user.img || defaultUserImg)
+    }else{
+      setUserImg(defaultUserImg);
+    }
     
-  },[location.pathname, user]);
+  },[location.pathname, user, store.user]);
 
   const defaultNavbar = (
     <nav className="navbar navbar-expand-lg bg-body-tertiary ms-4 me-4 mt-3 mb-4 p-2">

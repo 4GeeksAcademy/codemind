@@ -51,7 +51,7 @@ export const Registro = () => {
     }
     try{
       const name = formData.firstName + " " + formData.lastName
-      const imgURL = `${baseUrl}/?name=${encodeURIComponent(name)}&size=${size}&rounded=${rounded}&background=${background}`
+      const imgURL = `${baseUrl}/?name=${name}&size=${size}&rounded=${rounded}&background=${background}`
       const updatedFormData = { ...formData, img: imgURL };
       await actions.addUser(updatedFormData);
       
