@@ -94,12 +94,12 @@ export const Navbar = () => {
             <img src={userImg} alt="Avatar" />
           </div>
           <div id="nav-footer-titlebox d-flex justify-content-center ms-2">
-            <a id="nav-footer-title d-flex justify-content-end ms-2" href="#" target="_blank">
+            {/* <a id="nav-footer-title d-flex justify-content-end ms-2" href="#" target="_blank">
               {user.firstName +  " " + user.lastName}
-            </a>
-            <div>
+            </a> */}
+            {/* <div>
             <span id="nav-footer-subtitle">{user.role}</span>
-            </div>
+            </div> */}
           </div>
           <label htmlFor="nav-footer-toggle">
             <i className="fas fa-caret-up"></i>
