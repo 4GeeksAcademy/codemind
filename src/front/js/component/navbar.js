@@ -87,15 +87,16 @@ export const Navbar = () => {
         </div> */}
         <div id="nav-content-highlight"></div>
       </div>
+      
       <input id="nav-footer-toggle" type="checkbox" />
       <div id="nav-footer">
         <div id="nav-footer-heading">
           <div id="nav-footer-avatar">
-            <img src={userImg} alt="Avatar" />
+            <Link to={"/profile"}><img src={userImg} alt="Avatar" /></Link>
           </div>
           <div id="nav-footer-titlebox d-flex justify-content-center ms-2">
             <a id="nav-footer-title d-flex justify-content-end ms-2" href="#" target="_blank">
-            {user && user.firstName ? user.firstName : null} {user && user.lastName ? user.lastName : null}
+            <Link to={"/profile"}>{user && user.firstName ? user.firstName : null} {user && user.lastName ? user.lastName : null}</Link>
             </a>
             <div>
             <span id="nav-footer-subtitle">{user && user.role ? user.role : null}</span>

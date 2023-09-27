@@ -20,7 +20,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					initial: "white"
 				}
 			],
-			user: storedUser || null
+			user: storedUser || null ,
+			teachers: null
 			
 		},
 		actions: {
@@ -144,8 +145,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 		
 			loginUser: async (userCredentials) => {
-                
-                
                 const url = process.env.BACKEND_URL + '/api/login';
                 const options = {
                     method: 'POST',
@@ -177,6 +176,27 @@ const getState = ({ getStore, getActions, setStore }) => {
 					return { success: false, error: 'Error de red' };
                 }
             },
+			getTeachers: async () =>{
+				const url = process.env.BACKEND_URL + '/api/teachers';
+				const options = {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Access-Control-Allow-Origin': '*'
+                    }
+				}
+
+				try {
+					const resp = await fetch(url, options);
+					if(resp.ok){
+						const data = await resp.json()
+						await setStore({ teachers: data.teachers })
+						return data
+					}
+				} catch (error) {
+					console.error(error)
+				}
+			},
 
         }
     };
