@@ -19,6 +19,25 @@ const getState = ({ getStore, getActions, setStore }) => {
 					initial: "white"
 				}
 			],
+			tipoPreguntas: [
+				{
+					name: "Fill In The Blank",
+					siglas: "fib",
+					description: "white"
+				},
+				{
+					name: "Simple Choice",
+					siglas: "sc",
+					description: "white"
+				},
+				{
+					name: "Drag and Drop",
+					siglas: "dd",
+					description: "white"
+				},
+				
+			],
+
 			user:storedUser || null
 			
 		},
