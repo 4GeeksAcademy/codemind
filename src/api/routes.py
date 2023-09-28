@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Exercise,Answers, TokenBlockedList
+from api.models import db, User, Exercise,Answers, TokenBlockedList, Teacher
 from api.utils import generate_sitemap, APIException
 from flask_bcrypt import Bcrypt
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity, get_jwt
@@ -235,3 +235,27 @@ def get_answer_fib(module):
     else:
         return jsonify({"msg": "No se encontraron ejercicios para el tipo de módulo especificado"}), 404
     
+@api.route('/teachers', methods=['POST'])
+def create_teacher():
+    try:
+        data = request.json
+        new_teacher = Teacher(
+            firstName=data['firstName'],
+            lastName=data['lastName'],
+            email=data['email'],
+            role=data['role']
+        )
+        db.session.add(new_teacher)
+        db.session.commit()
+        return jsonify({"message": "Profesor creado con éxito"}), 201
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+@api.route('/teachers', methods=['GET'])
+def get_teachers():
+    try:
+        teachers = Teacher.query.all()
+        teacher_list = [teacher.serialize() for teacher in teachers]
+        return jsonify({"teachers": teacher_list}), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
