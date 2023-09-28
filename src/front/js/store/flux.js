@@ -20,6 +20,27 @@ const getState = ({ getStore, getActions, setStore }) => {
 					initial: "white"
 				}
 			],
+			tipoPreguntas: [
+				{
+					name: "Fill In The Blank",
+					siglas: "fib",
+					description: "Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.",
+					src : "http://3.bp.blogspot.com/--d_5KLDVwUI/Vls88yeweUI/AAAAAAAAAqg/ISientf4PTM/s1600/DragAndDrop.png"
+				},
+				{
+					name: "Simple Choice",
+					siglas: "sc",
+					description: "Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.",
+					src : "http://3.bp.blogspot.com/--d_5KLDVwUI/Vls88yeweUI/AAAAAAAAAqg/ISientf4PTM/s1600/DragAndDrop.png"
+				},
+				{
+					name: "Drag and Drop",
+					siglas: "dd",
+					description: "Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.",
+					src : "http://3.bp.blogspot.com/--d_5KLDVwUI/Vls88yeweUI/AAAAAAAAAqg/ISientf4PTM/s1600/DragAndDrop.png"
+				},
+				
+			],
 			user: storedUser || null ,
 			teachers: null
 			
