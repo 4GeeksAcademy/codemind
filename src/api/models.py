@@ -12,8 +12,8 @@ class User(db.Model):
     password = db.Column(db.String(400), unique=False, nullable=False)
     img = db.Column(db.String(400), nullable=False)
     role = db.Column(db.String(15), nullable=False)
-    document=db.Column(db.String(250), nullable=True)
-    teacher = db.Column(db.String(80), nullable=True)
+    teacher = db.Column(db.String(280), nullable=True)
+    teacher_id = db.Column(db.String(80), nullable=True)
     # module_progress = db.relationship('ModuleProgress', backref='user', lazy=True)
 
     def __repr__(self):
@@ -25,9 +25,32 @@ class User(db.Model):
             "email": self.email,
             "img": self.img,
             "role": self.role,
-            "document": self.document
             # No serializar la contraseña, es un problema de seguridad
         }
+
+class Teacher(db.Model):
+    __tablename__ = 'Teacher'
+    id=db.Column(db.Integer, primary_key=True)
+    firstName = db.Column(db.String(40), nullable=False)
+    lastName = db.Column(db.String(40), nullable=False)
+    students = db.Column(db.String(50000), nullable=True)
+    email = db.Column(db.String(250), nullable=False)
+    role= db.Column(db.String(250), nullable=False)
+
+
+    def __repr__(self):
+        return f'<Teacher {self.email}>'
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "firstName": self.firstName,
+            "lastName": self.lastName,
+            "students": self.students,
+            "role": self.role
+        }
+
+
 
 class TokenBlockedList(db.Model):
     id=db.Column(db.Integer, primary_key=True)

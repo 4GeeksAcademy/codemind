@@ -61,6 +61,17 @@ export const Profile = () => {
         }
     };
 
+    useEffect(()=>{
+        
+        actions.getTeachers()
+       
+    },[])
+
+ 
+
+
+
+
     return (
         <div className="container vh-100 align-items-center">
             <div className="row mb-4">
@@ -105,14 +116,13 @@ export const Profile = () => {
                                     {store.user.teacherName || "Select Your Teacher"}
                                     </button>
                                     <ul className="dropdown-menu dropdown-menu-dark">
-                                    <li><a className="dropdown-item" href="#" onClick={(e) => handleTeacherSelect("Arnaldo Perez", e)}>Arnaldo Perez</a></li>
-                            <li><a className="dropdown-item" href="#" onClick={(e) => handleTeacherSelect("Martin Coimbra", e)}>Martin Coimbra</a></li>
-                            <li><a className="dropdown-item" href="#" onClick={(e) => handleTeacherSelect("Nicola Tesla", e)}>Nicola Tesla</a></li>
-                            <li><a className="dropdown-item" href="#" onClick={(e) => handleTeacherSelect("Albert Einstein", e)}>Albert Einstein</a></li>
-                            <li><a className="dropdown-item" href="#" onClick={(e) => handleTeacherSelect("Isaac Newton", e)}>Isaac Newton</a></li>
-                            <li><a className="dropdown-item" href="#" onClick={(e) => handleTeacherSelect("Aristoteles", e)}>Aristoteles</a></li>
-                            <li><a className="dropdown-item" href="#" onClick={(e) => handleTeacherSelect("Galileo Galilei", e)}>Galileo Galilei</a></li>
-                            <li><a className="dropdown-item" href="#" onClick={(e) => handleTeacherSelect("Marie Curie", e)}>Marie Curie</a></li>
+                                    {store.teachers && store.teachers.map((teacher, index) => (
+                                            <li key={index}>
+                                                <a className="dropdown-item" href="#" onClick={(e) => handleTeacherSelect(teacher.name, e)}>
+                                                    {teacher.name}
+                                                </a>
+                                            </li>
+                                        ))}
                                     </ul>
                                 </div>
                             </div>
@@ -131,7 +141,7 @@ export const Profile = () => {
                 <div className="col-sm-1 col-md-4  text-sm-end justify-content-between">
                     <div className="d-flex justify-content-between ">
                         <Link to={"/changepassword"}><a href="#" className="btn btn-outline-secondary">Change password</a></Link>
-                        <a href="#" className="">I'm Professor</a>
+                        <Link to={"/iamteacher"} className="">I'm Professor</Link>
                     </div>
                 </div>
             </div>
