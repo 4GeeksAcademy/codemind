@@ -53,9 +53,11 @@ export const Modulos = () => {
               />
             </div>
             <div className="card-footer">
-              <a href="#" className="css-button-shadow-border--black px-5 py-2 mb-4">
+            <Link to ={`/preguntas/html`}>
+              <button className="css-button-shadow-border--black px-5 py-2 mb-4">
                 Start
-              </a>
+              </button>
+            </Link>
               <button
                 onClick={() => toggleDescription("html5")}
                 className="btn btn-link"
@@ -83,9 +85,11 @@ export const Modulos = () => {
               />
             </div>
             <div className="card-footer">
-              <a href="#" className="css-button-shadow-border--black px-5 py-2 mb-4">
+            <Link to ={`/preguntas/css`}>
+              <button className="css-button-shadow-border--black px-5 py-2 mb-4">
                 Start
-              </a>
+              </button>
+            </Link>
               <button
                 onClick={() => toggleDescription("css")}
                 className="btn btn-link"
@@ -114,9 +118,11 @@ export const Modulos = () => {
               />
             </div>
             <div className="card-footer">
-              <a href="#" className="css-button-shadow-border--black px-5 py-2 mb-4">
+            <Link to ={`/preguntas/js`}>
+              <button className="css-button-shadow-border--black px-5 py-2 mb-4">
                 Start
-              </a>
+              </button>
+            </Link>
               <button
                 onClick={() => toggleDescription("javascript")}
                 className="btn btn-link"

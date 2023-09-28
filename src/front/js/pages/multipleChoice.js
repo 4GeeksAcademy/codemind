@@ -24,9 +24,9 @@ export const MultipleChoice = () => {
   };
   console.log(respuestaSeleccionada)
 
-  const pregunta_id = store.simpleChoice[preguntaActual]?.id
+  let pregunta_id = store.simpleChoice[preguntaActual]?.id
 
-  const alternativas = store.answers_SC.filter(exercise => exercise.exercise_id === pregunta_id)
+  let alternativas = store.answers_SC.filter(exercise => exercise.exercise_id === pregunta_id)
 
   const avanzarPregunta = () => {
     setPreguntaActual(preguntaActual + 1);
@@ -54,12 +54,14 @@ export const MultipleChoice = () => {
   };
 
   const progresoActual = () => {
-    const progreso = (preguntaActual+1) / (store.simpleChoice?.length) * 100
+    let progreso = (preguntaActual+1) / (store.simpleChoice?.length) * 100
     return progreso
   };
 
 
   return (
+    <div className="row d-flex justify-content-end">
+      <div className='col-lg-10 col-sm-10 '>
     <div className='container-fluid mt-5'>
       {store.simpleChoice.length > 0 ? <div>
         {preguntaActual < store.simpleChoice.length ? (
@@ -82,6 +84,8 @@ export const MultipleChoice = () => {
           <p className='d-flex flex-row justify-content-center alig-items-center'>¡Felicidades, has completado todas las preguntas!</p>
         )}
       </div> : ""}
+    </div>
+   </div> 
     </div>
   );
 }
