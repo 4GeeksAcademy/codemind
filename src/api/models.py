@@ -66,19 +66,23 @@ class Exercise(db.Model):
     question = db.Column(db.String(250))
     info_blog = db.Column(db.String(250))
     info_youtube = db.Column(db.String(250))
-    
+    answers = db.relationship('Answers', back_populates='exercise' )
+
 
     def __repr__(self):
-        return f'<Exercise {self.id}>'
+        return f'<Exercise {self.question}>'
 
     def serialize(self):
+        answers = list(map  (lambda a:  a.serialize(), self.answers))
         return {
             "id": self.id,
             "module": self.module,
             "type": self.type,
             "question": self.question,
             "info_blog": self.info_blog,
-            "info_youtube":self.info_youtube
+            "info_youtube":self.info_youtube,
+            "answers": answers
+
         }
 
 class Answers(db.Model):
@@ -88,13 +92,17 @@ class Answers(db.Model):
     type = db.Column(db.String(40))
     answers = db.Column(db.String(250))
     exercise_id = db.Column(db.Integer, db.ForeignKey('exercise.id'))
+    exercise = db.relationship(Exercise, back_populates='answers')
     isCorrect = db.Column(db.Boolean, default=False)
+
     
     
     def __repr__(self):
         return f'<ExerciseAnswer {self.id}>'
 
+
     def serialize(self):
+        #self.exercise.serialize()
         return {
             "id": self.id,
             "answers": self.answers,
