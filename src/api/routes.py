@@ -154,6 +154,7 @@ def user_logout():
     db.session.commit()
     return jsonify({"message":"User logged out"}),200
 
+
 @api.route('/exercise', methods=['POST'])
 def create_excercise():
     try:
@@ -187,53 +188,66 @@ def create_excercise():
         return jsonify({"error": str(e)}), 500
 
 
-
-
 @api.route('/exercise/<int:id>', methods=['GET'])
 def get_exercise_by_id(id):
     try:
-        exercise = Exercise.query.get(id)
 
-        if exercise is not None:
-            
-            single_choice_answers = SingleChoiceAnswers.query.filter_by(exercise_id=id).all()
+        exercises= Exercise.query.filter_by(id=id).all()
+    
+        if exercises:
+            serialized_exercises = [exercise.serialize() for exercise in exercises]
+        
+            return jsonify({"exercises": serialized_exercises}), 200
+       
+        return jsonify({"msg": "El ejercicio no existe"}), 404
 
-           
-            serialized_answers = [answer.serialize() for answer in single_choice_answers]
-
-            
-            exercise_data = exercise.serialize()
-            exercise_data["single_choice_answers"] = serialized_answers
-
-            return jsonify(exercise_data), 200
-
-        return jsonify({"msg": "El ejercicio no existe"}), 400
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
 
 
-@api.route('/exercises/<string:module>', methods=['GET'])
-def get_exercises_by_module(module):
-    exercises = Exercise.query.filter_by(module=module.upper()).all()
+@api.route('/exercises/<string:module>/<string:type>', methods=['GET'])
+def get_exercises_by_module(module,type):
+    exercises = Exercise.query.filter_by(module=module.upper()).filter_by(type=type.upper()).all()
+    print(exercises)
     if exercises:
-        serialized_exercises = [exercise.serialize() for exercise in exercises]
-        return jsonify({"exercises": serialized_exercises}), 200
+        if type == "fib":
+            fib_exercises = [exercise.fill() for exercise in exercises]
+            return jsonify({"exercises": fib_exercises}), 200
+        elif type == "sc":
+            simple_choice_exercises = [exercise.serialize() for exercise in exercises]
+            return jsonify({"exercises": simple_choice_exercises}), 200
     else:
         return jsonify({"msg": "No se encontraron ejercicios para el tipo de módulo especificado"}), 404
     
 
-@api.route('/answer/<string:module>', methods=['GET'])
-def get_answer_fib(module):
+# @api.route('/answer/<string:module>', methods=['GET'])
+# def get_answer_fib(module):
     
-    answers= Answers.query.filter_by(module=module.upper()).all()
+#     answers= Answers.query.filter_by(module=module.upper()).all()
     
-    if answers:
-        serialized_answers = [answer.serialize() for answer in answers]
+#     if answers:
+#         serialized_answers = [answer.serialize() for answer in answers]
         
-        return jsonify({"answers": serialized_answers}), 200
-    else:
-        return jsonify({"msg": "No se encontraron ejercicios para el tipo de módulo especificado"}), 404
+#         return jsonify({"answers": serialized_answers}), 200
+#     else:
+#         return jsonify({"msg": "No se encontraron ejercicios para el tipo de módulo especificado"}), 404
+    
+
+@api.route('/verificar-respuesta/<int:id>', methods=['GET'])
+def verificar_respuesta(id):
+
+    try: 
+        new_respuesta = Answers.query.get(id)
+
+        if new_respuesta.type == "SC":
+            return {"correct": new_respuesta.isCorrect},200
+
+        elif new_respuesta.type == "FIB":
+            return {"correct": new_respuesta.answers},200
+    
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
     
 @api.route('/teachers', methods=['POST'])
 def create_teacher():

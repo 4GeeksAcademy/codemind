@@ -6,8 +6,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			message: null,
 			fib : [],
 			simpleChoice:[],
-			answers_SC : [],
-			answers_fib : [],
 			demo: [
 				{
 					title: "FIRST",
@@ -50,17 +48,25 @@ const getState = ({ getStore, getActions, setStore }) => {
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
 			},
+			
+			getVerificar : async(id)=>{	
+			try{
+					// fetching data from the backend
+					const resp = await fetch(process.env.BACKEND_URL + `/api/verificar-respuesta/${id}`)
+					const data = await resp.json()
+					return data.correct;
+				}catch(error){
+					console.log("Error loading message from backend", error)
+				}
+			},
 
 			getFib: async (module) => {
 				try{
 					// fetching data from the backend
-					const resp = await fetch(process.env.BACKEND_URL + `/api/exercises/${module}`)
+					const resp = await fetch(process.env.BACKEND_URL + `/api/exercises/${module}/fib`)
 					const data = await resp.json()
 					const exercises = data.exercises
-					const fib = exercises.filter(exercise=>exercise.type === "FIB")
-					setStore({ fib })
-					console.log(data)
-					console.log(getStore().fib)
+					setStore({ fib:exercises })
 					// don't forget to return something, that is how the async resolves
 					return data;
 				}catch(error){
@@ -71,13 +77,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 			getSimpleChoice: async (module) => {
 				try{
 					// fetching data from the backend
-					const resp = await fetch(process.env.BACKEND_URL + `/api/exercises/${module}`)
+					const resp = await fetch(process.env.BACKEND_URL + `/api/exercises/${module}/sc`)
 					const data = await resp.json()
 					const exercises = data.exercises
-					const simpleChoice = exercises.filter(exercise=>exercise.type === "SC")
-					setStore({ simpleChoice})
-					console.log(data)
-					console.log(getStore().simpleChoice)
+					setStore({ simpleChoice:exercises})
 					// don't forget to return something, that is how the async resolves
 					return data;
 				}catch(error){
@@ -85,41 +88,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 			
-
-			getAnswers_fib: async (module) => {
-				try{
-					// fetching data from the backend
-					const resp = await fetch(process.env.BACKEND_URL + `api/answer/${module}`)
-					const data = await resp.json()
-					const answers = data.answers
-					const fib = answers.filter(answer=>answer.type === "FIB")
-					setStore({ answers_fib: fib})
-					console.log(data)
-					console.log(getStore().answers_fib)
-					// don't forget to return something, that is how the async resolves
-					return data;
-				}catch(error){
-					console.log("Error loading message from backend", error)
-				}
-			},
-
-			getAnswers_SC: async (module) => {
-				try{
-					// fetching data from the backend
-					const resp = await fetch(process.env.BACKEND_URL + `api/answer/${module}`)
-					const data = await resp.json()
-					const answers = data.answers
-					const SC = answers.filter(answer=>answer.type === "SC")
-					setStore({ answers_SC: SC})
-					console.log(data)
-					console.log(getStore().answers_SC)
-					// don't forget to return something, that is how the async resolves
-					return data;
-				}catch(error){
-					console.log("Error loading message from backend", error)
-				}
-			},
-
 			getMessage: async () => {
 				try{
 					// fetching data from the backend

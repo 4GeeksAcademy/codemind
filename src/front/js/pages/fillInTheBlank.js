@@ -16,10 +16,6 @@ export const PreguntaCompletar = () => {
     actions.getFib(modulo)
   },[])
 
-  useEffect(()=>{
-    actions.getAnswers_fib(modulo)
-  },[])
-
   
   const handleRespuestaChange = (event) => {
     // e.preventDefault()
@@ -27,23 +23,22 @@ export const PreguntaCompletar = () => {
     setRespuestaCorrecta(false); // Reinicia la respuesta correcta al cambiar la respuesta
   };
 
-  const verificarRespuesta = (e) => {
-
+  const verificarRespuesta = async (e) => {
     e.preventDefault()
-    
-    const answerActual = store.answers_fib[preguntaActual]?.answers;
-    
-    if (respuesta.toLowerCase() === answerActual.toLowerCase()) {
+    let verificacion = await actions.getVerificar(store.fib[preguntaActual].id)
+
+    if (verificacion === respuesta.toLowerCase()) {
       setRespuestaCorrecta(true);
       Swal.fire(
-        'Buen trabajo!',
-        'Continua con la siguiente pregunta',
+        'Respuesta Correcta!',
+        'Buen trabajo! Continua con la siguiente pregunta',
         'success'
       )
+
     } else {
       Swal.fire(
         'Respuesta Incorrecta!',
-        'Sigue intentando',
+        'Intenta otra vez',
         'error'
       )
     }
@@ -78,15 +73,26 @@ export const PreguntaCompletar = () => {
 
 
   return (
+    <div className="row d-flex justify-content-end">
+      <div className='col-lg-10 col-sm-10 '>
     <div className="container-fluid mt-5">
       <div className="mb-3 text-danger fs-1">
       Curso de {modulo.toLocaleUpperCase()}
       </div>
-      
       <div className="progress mb-3">
       <div className="progress-bar" role="progressbar" style={{width: `${progresoActual()}%`}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{progresoActual()}%</div>
       </div>
-      {store.fib[preguntaActual] && <p className='fs-2 text-white'>{preguntaActual+1}.{store.fib[preguntaActual].question}</p>}
+      {store.fib[preguntaActual] && <div className="d-flex">
+        <p className='fs-2 text-white'>{preguntaActual+1}.{store.fib[preguntaActual].question}</p>
+        <div className="d-grid gap-5">
+        <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top">
+        Tooltip on top
+        </button>
+        <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top">
+        Tooltip on top
+        </button>
+         </div> 
+        </div>}
       <form onSubmit={verificarRespuesta}>
         <input className="mb-3 form-control"
         type="text"
@@ -95,10 +101,11 @@ export const PreguntaCompletar = () => {
         placeholder="Escribe tu respuesta aquí"
       />
       </form>
-       {/* <button onClick={verificarRespuesta}>Verificar</button> */}
        <div className="mt-4 d-flex justify-content-end" >
         <button className="btn btn-primary" onClick={avanzarPregunta}>Siguiente</button>
       </div>
+    </div>
+    </div>
     </div>
   );
 }
