@@ -3,26 +3,33 @@ import { Link } from 'react-router-dom';
 import { Context } from "../store/appContext";
 
 export const Profile = () => {
-    const [selectedTeacher, setSelectedTeacher] = useState(null);
+    const [selectedTeacher, setSelectedTeacher] = useState({
+        id: null,
+        firstName: null,
+        lastName: null
+    });;
     const [showAlert, setShowAlert] = useState(false);
     const { store, actions } = useContext(Context);
-    const initialFormData ={
+    const initialFormData = {
+        id: store.user.id,
         firstName: store.user.firstName,
         lastName: store.user.lastName,
         email: store.user.email,
-        teacherName: store.user.teacherName || "",
-        password: store.user.password,
-        confirmPassword: store.user.confirmPassword,
+        teacher: store.user.teacher ? parseInt(store.user.teacher) : null,
         img: store.user.img
     };
-    const [formData, setFormData] = useState({...initialFormData});
+    const [formData, setFormData] = useState({ ...initialFormData });
 
 
-    const handleTeacherSelect = (teacherName, e) => {
+    const handleTeacherSelect = (teacher, e) => {
         e.preventDefault(); // Prevenir desplazamiento automático
-        if (!store.user.teacherName) {
-            setFormData({ ...formData, teacherName: teacherName });
-        }
+        setSelectedTeacher({
+            id: parseInt(teacher.id),
+            firstName: teacher.firstName,
+            lastName: teacher.lastName
+        })
+        setFormData({ ...formData, teacher: teacher.id });
+
     };
 
     const handleChange = (e) => {
@@ -45,29 +52,37 @@ export const Profile = () => {
         e.preventDefault();
 
         try {
-        const baseUrl = "https://ui-avatars.com/api";
-        const size = 200; // Tamaño del avatar (píxeles)
-        const rounded = true; // Forma redondeada
-        const background = "random"; // Color de fondo aleatorio
-        const name = formData.firstName + " " + formData.lastName
-        const imgURL = `${baseUrl}/?name=${encodeURIComponent(name)}&size=${size}&rounded=${rounded}&background=${background}`
-        const updatedFormData = { ...formData, img: imgURL };
-        console.log(updatedFormData)
+            const baseUrl = "https://ui-avatars.com/api";
+            const size = 200; // Tamaño del avatar (píxeles)
+            const rounded = true; // Forma redondeada
+            const background = "random"; // Color de fondo aleatorio
+            const name = formData.firstName + " " + formData.lastName
+            const imgURL = `${baseUrl}/?name=${encodeURIComponent(name)}&size=${size}&rounded=${rounded}&background=${background}`
+            const updatedFormData = { ...formData, img: imgURL, teacher: selectedTeacher.id  };
+            console.log(updatedFormData)
             await actions.updateUser(updatedFormData);
             setShowAlert(true);
-            console.log("Datos actualizados:", formData);
         } catch (error) {
             console.error('Error al actualizar el usuario: ', error)
         }
     };
 
-    useEffect(()=>{
-        
-        actions.getTeachers()
-       
-    },[])
+    useEffect(() => {
+        if (store.user.teacher && store.teachers) {
+            const assignedTeacher = store.teachers.find(
+                teacher => teacher.id === parseInt(store.user.teacher)
+            );
+            if (assignedTeacher) {
+                setSelectedTeacher({
+                    id: assignedTeacher.id,
+                    firstName: assignedTeacher.firstName,
+                    lastName: assignedTeacher.lastName
+                });
+            }
+        }
+    }, [store.user.teacher, store.teachers]);
 
- 
+
 
 
 
@@ -88,8 +103,8 @@ export const Profile = () => {
                     </div>
                 </div>
                 <div className="col-sm-12 col-md-6 mt-4 align-items-start">
-                                        
-                                        {showAlert && (
+
+                    {showAlert && (
                         <div className="alert alert-success alert-dismissible fade show" role="alert">
                             User updated successfully!
                             <button type="button" className="btn-close" onClick={() => setShowAlert(false)}></button>
@@ -112,15 +127,17 @@ export const Profile = () => {
                             <p className='my-0 '>Teacher:</p>
                             <div className="h-25 px-5  ">
                                 <div className="btn-group dropdown-center" >
-                                    <button className="btn btn-secondary dropdown-toggle " type="button" data-bs-toggle="dropdown" aria-expanded="false" disabled={!!store.user.teacherName} >
-                                    {store.user.teacherName || "Select Your Teacher"}
+                                    <button className="btn btn-secondary dropdown-toggle " type="button" data-bs-toggle="dropdown" aria-expanded="false" disabled={!!store.user.teacher} >
+                                        {selectedTeacher.firstName && selectedTeacher.lastName
+                                            ? `${selectedTeacher.firstName} ${selectedTeacher.lastName}`
+                                            : "Select Your Teacher"}
                                     </button>
                                     <ul className="dropdown-menu dropdown-menu-dark">
-                                    {store.teachers && store.teachers.map((teacher, index) => (
+                                        {store.teachers && store.teachers.map((teacher, index) => (
                                             <li key={index}>
-                                                <a className="dropdown-item" href="#" onClick={(e) => handleTeacherSelect(teacher.name, e)}>
-                                                    {teacher.name}
-                                                </a>
+                                                <p className="dropdown-item" onClick={(e) => handleTeacherSelect(teacher, e)}>
+                                                    {teacher.firstName + " " + teacher.lastName}
+                                                </p>
                                             </li>
                                         ))}
                                     </ul>
