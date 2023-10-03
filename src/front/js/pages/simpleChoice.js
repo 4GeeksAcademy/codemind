@@ -63,7 +63,17 @@ export const SimpleChoice = () => {
                 <div className="progress mb-3">
                   <div className="progress-bar" role="progressbar" style={{ width: `${progresoActual()}%` }} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{progresoActual()}%</div>
                 </div>
-                <div className="mb-3">{store.simpleChoice[preguntaActual] && <p className='fs-2 text-white'>{preguntaActual + 1}.{store.simpleChoice[preguntaActual].question}</p>}</div>
+                {store.simpleChoice[preguntaActual] && <div className='fs-2 text-white d-flex mb-4'>
+                  <div className="text-white me-3">{preguntaActual + 1}.{store.simpleChoice[preguntaActual].question} </div>
+                  <div className="d-flex align-items-center gap-2">
+                  <button type="button" className="rounded-circle btn btn-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top">
+                  <i className="fab fa-youtube p-0"></i>
+                  </button>
+                  <button type="button" className="rounded-circle btn btn-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top">
+                  <i className="far fa-file-alt"></i>
+                  </button>
+                  </div>
+                </div>}
                 <ul className="ps-0">
                   {store.simpleChoice[preguntaActual].answers.map((alternativa, indice) => <p key={indice} onClick={() => respuestaElegida(alternativa)}
                     className={`card-body rounded p-0 ps-4 fs-4 ${respuestaSeleccionada === alternativa ? "seleccionada":"bg-white text-dark"}`} >{alternativa.answers}</p>)}
