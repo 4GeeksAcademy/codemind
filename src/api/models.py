@@ -37,6 +37,8 @@ class User(db.Model):
             # No serializar la contraseña, es un problema de seguridad
         }
 
+
+
 class Teacher(db.Model):
     __tablename__ = 'teacher'
     id = db.Column(db.Integer, primary_key=True)
@@ -93,7 +95,20 @@ class Exercise(db.Model):
         return f'<Exercise {self.question}>'
 
     def serialize(self):
-        answers = list(map  (lambda a:  a.serialize(), self.answers))
+        answers = list(map(lambda a: a.serialize(), self.answers))
+        return {
+            "id": self.id,
+            "module": self.module,
+            "type": self.type,
+            "question": self.question,
+            "info_blog": self.info_blog,
+            "info_youtube":self.info_youtube,
+            "answers": answers
+
+        }
+    
+    def fill(self):
+        answers = list(map(lambda a: a.serializes(), self.answers))
         return {
             "id": self.id,
             "module": self.module,
@@ -114,8 +129,6 @@ class Answers(db.Model):
     exercise_id = db.Column(db.Integer, db.ForeignKey('exercise.id'))
     exercise = db.relationship(Exercise, back_populates='answers')
     isCorrect = db.Column(db.Boolean, default=False)
-
-    
     
     def __repr__(self):
         return f'<ExerciseAnswer {self.id}>'
@@ -126,10 +139,21 @@ class Answers(db.Model):
         return {
             "id": self.id,
             "answers": self.answers,
-            "isCorrect": self.isCorrect,
-            "type": self.type,
+            # "isCorrect": self.isCorrect,
+            # "type": self.type,
             "exercise_id": self.exercise_id
         }
+    
+    def serializes(self):
+        #self.exercise.serialize()
+        return {
+            "id": self.id,
+            # "answers": self.answers,
+            # "isCorrect": self.isCorrect,
+            # "type": self.type,
+            "exercise_id": self.exercise_id
+        }
+    
 
 
 

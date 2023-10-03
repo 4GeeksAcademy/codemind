@@ -16,7 +16,8 @@ import { AboutUs } from "./pages/aboutUs";
 import { RoadMap } from "./pages/roadMap";
 import { Demo } from "./pages/demo";
 import { PreguntaCompletar } from "./pages/fillInTheBlank";
-import { MultipleChoice } from "./pages/multipleChoice";
+import { SimpleChoice } from "./pages/simpleChoice";
+import { Ejercicios} from "./pages/ejercicios";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
 import { Navbar } from "./component/navbar";
@@ -64,8 +65,9 @@ const Layout = () => {
               <Route element={<Usuarios />} path="/usuarios" />
               <Route element={<AboutUs />} path="/about" />
               <Route element={<RoadMap />} path="/roadmap" />
-              <Route element={<PreguntaCompletar />} path="/preguntasfib/:modulo" />
-              <Route element={<MultipleChoice />} path="/preguntassc/:modulo" />
+              <Route element={<PreguntaCompletar />} path="/preguntas/:modulo/fib/"/>
+              <Route element={<SimpleChoice />} path="/preguntas/:modulo/sc" />
+              <Route element={<Ejercicios />} path="/preguntas/:modulo" />
               <Route element={<Demo />} path="/demo" />
               <Route element={<Single />} path="/single/:theid" />
               <Route element={<h1>Not found!</h1>} />

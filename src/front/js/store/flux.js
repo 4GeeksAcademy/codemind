@@ -4,10 +4,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			message: null,
-			fib: [],
-			simpleChoice: [],
-			answers_SC: [],
-			answers_fib: [],
+
+
+			fib : [],
+			simpleChoice:[],
+
 			demo: [
 				{
 					title: "FIRST",
@@ -20,7 +21,31 @@ const getState = ({ getStore, getActions, setStore }) => {
 					initial: "white"
 				}
 			],
-			user: storedUser || null,
+
+
+			tipoPreguntas: [
+				{
+					name: "Fill In The Blank",
+					siglas: "fib",
+					description: "Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.",
+					src : "http://3.bp.blogspot.com/--d_5KLDVwUI/Vls88yeweUI/AAAAAAAAAqg/ISientf4PTM/s1600/DragAndDrop.png"
+				},
+				{
+					name: "Simple Choice",
+					siglas: "sc",
+					description: "Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.",
+					src : "http://3.bp.blogspot.com/--d_5KLDVwUI/Vls88yeweUI/AAAAAAAAAqg/ISientf4PTM/s1600/DragAndDrop.png"
+				},
+				{
+					name: "Drag and Drop",
+					siglas: "dd",
+					description: "Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.",
+					src : "http://3.bp.blogspot.com/--d_5KLDVwUI/Vls88yeweUI/AAAAAAAAAqg/ISientf4PTM/s1600/DragAndDrop.png"
+				},
+				
+			],
+			user: storedUser || null ,
+
 			teachers: null
 
 		},
@@ -30,75 +55,59 @@ const getState = ({ getStore, getActions, setStore }) => {
 				getActions().changeColor(0, "green");
 			},
 
-			getFib: async (module) => {
-				try {
+			getVerificar : async(id)=>{	
+			try{
+
 					// fetching data from the backend
-					const resp = await fetch(process.env.BACKEND_URL + `/api/exercises/${module}`)
+					const resp = await fetch(process.env.BACKEND_URL + `/api/verificar-respuesta/${id}`)
+					const data = await resp.json()
+
+
+					return data.correct;
+				}catch(error){
+
+					console.log("Error loading message from backend", error)
+				}
+			},
+
+
+			getFib: async (module) => {
+				try{
+
+					// fetching data from the backend
+					const resp = await fetch(process.env.BACKEND_URL + `/api/exercises/${module}/fib`)
 					const data = await resp.json()
 					const exercises = data.exercises
-					const fib = exercises.filter(exercise => exercise.type === "FIB")
-					setStore({ fib })
-					console.log(data)
-					console.log(getStore().fib)
+
+
+					setStore({ fib:exercises })
+
 					// don't forget to return something, that is how the async resolves
 					return data;
 				} catch (error) {
 					console.log("Error loading message from backend", error)
 				}
 			},
+
+
 
 			getSimpleChoice: async (module) => {
-				try {
+				try{
+
 					// fetching data from the backend
-					const resp = await fetch(process.env.BACKEND_URL + `/api/exercises/${module}`)
+					const resp = await fetch(process.env.BACKEND_URL + `/api/exercises/${module}/sc`)
 					const data = await resp.json()
+
 					const exercises = data.exercises
-					const simpleChoice = exercises.filter(exercise => exercise.type === "SC")
-					setStore({ simpleChoice })
-					console.log(data)
-					console.log(getStore().simpleChoice)
+					setStore({ simpleChoice:exercises})
+
 					// don't forget to return something, that is how the async resolves
 					return data;
 				} catch (error) {
 					console.log("Error loading message from backend", error)
 				}
 			},
-
-
-			getAnswers_fib: async (module) => {
-				try {
-					// fetching data from the backend
-					const resp = await fetch(process.env.BACKEND_URL + `api/answer/${module}`)
-					const data = await resp.json()
-					const answers = data.answers
-					const fib = answers.filter(answer => answer.type === "FIB")
-					setStore({ answers_fib: fib })
-					console.log(data)
-					console.log(getStore().answers_fib)
-					// don't forget to return something, that is how the async resolves
-					return data;
-				} catch (error) {
-					console.log("Error loading message from backend", error)
-				}
-			},
-
-			getAnswers_SC: async (module) => {
-				try {
-					// fetching data from the backend
-					const resp = await fetch(process.env.BACKEND_URL + `api/answer/${module}`)
-					const data = await resp.json()
-					const answers = data.answers
-					const SC = answers.filter(answer => answer.type === "SC")
-					setStore({ answers_SC: SC })
-					console.log(data)
-					console.log(getStore().answers_SC)
-					// don't forget to return something, that is how the async resolves
-					return data;
-				} catch (error) {
-					console.log("Error loading message from backend", error)
-				}
-			},
-
+			
 			getMessage: async () => {
 				try {
 					// fetching data from the backend
