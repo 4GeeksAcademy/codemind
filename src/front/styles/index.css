@@ -219,13 +219,10 @@ height: 180px;
 }
 
 .seleccionada { 
-  background-color: white;
-  color : black
-}
-.seleccionada:hover {
   background-color: #6610F2;
-  color : white;  
+  color : white;
 }
+
 /* Estilo personalizado para los radio buttons */
 
 

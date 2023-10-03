@@ -16,7 +16,7 @@ import { AboutUs } from "./pages/aboutUs";
 import { RoadMap } from "./pages/roadMap";
 import { Demo } from "./pages/demo";
 import { PreguntaCompletar } from "./pages/fillInTheBlank";
-import { MultipleChoice } from "./pages/multipleChoice";
+import { SimpleChoice } from "./pages/simpleChoice";
 import { Ejercicios} from "./pages/ejercicios";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
@@ -66,7 +66,7 @@ const Layout = () => {
               <Route element={<AboutUs />} path="/about" />
               <Route element={<RoadMap />} path="/roadmap" />
               <Route element={<PreguntaCompletar />} path="/preguntas/:modulo/fib/"/>
-              <Route element={<MultipleChoice />} path="/preguntas/:modulo/sc" />
+              <Route element={<SimpleChoice />} path="/preguntas/:modulo/sc" />
               <Route element={<Ejercicios />} path="/preguntas/:modulo" />
               <Route element={<Demo />} path="/demo" />
               <Route element={<Single />} path="/single/:theid" />

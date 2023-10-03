@@ -3,6 +3,7 @@ import React, { useEffect, useState, useContext  } from 'react';
 import { Context } from "../store/appContext";
 import { useParams } from "react-router-dom";
 import Swal from 'sweetalert2'
+import {Link} from "react-router-dom";
 
 export const PreguntaCompletar = () => {
 
@@ -16,10 +17,6 @@ export const PreguntaCompletar = () => {
     actions.getFib(modulo)
   },[])
 
-  useEffect(()=>{
-    actions.getAnswers_fib(modulo)
-  },[])
-
   
   const handleRespuestaChange = (event) => {
     // e.preventDefault()
@@ -27,23 +24,22 @@ export const PreguntaCompletar = () => {
     setRespuestaCorrecta(false); // Reinicia la respuesta correcta al cambiar la respuesta
   };
 
-  const verificarRespuesta = (e) => {
-
+  const verificarRespuesta = async (e) => {
     e.preventDefault()
-    
-    const answerActual = store.answers_fib[preguntaActual]?.answers;
-    
-    if (respuesta.toLowerCase() === answerActual.toLowerCase()) {
+    let verificacion = await actions.getVerificar(store.fib[preguntaActual].id)
+
+    if (verificacion === respuesta.toLowerCase()) {
       setRespuestaCorrecta(true);
       Swal.fire(
-        'Buen trabajo!',
-        'Continua con la siguiente pregunta',
+        'Respuesta Correcta!',
+        'Buen trabajo! Continua con la siguiente pregunta',
         'success'
       )
+
     } else {
       Swal.fire(
         'Respuesta Incorrecta!',
-        'Sigue intentando',
+        'Intenta otra vez',
         'error'
       )
     }
@@ -78,15 +74,26 @@ export const PreguntaCompletar = () => {
 
 
   return (
+    <div className="row d-flex justify-content-end">
+      <div className='col-lg-10 col-sm-10 '>
     <div className="container-fluid mt-5">
       <div className="mb-3 text-danger fs-1">
       Curso de {modulo.toLocaleUpperCase()}
       </div>
-      
       <div className="progress mb-3">
       <div className="progress-bar" role="progressbar" style={{width: `${progresoActual()}%`}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{progresoActual()}%</div>
       </div>
-      {store.fib[preguntaActual] && <p className='fs-2 text-white'>{preguntaActual+1}.{store.fib[preguntaActual].question}</p>}
+      {store.fib[preguntaActual] && <div className="d-flex mb-4">
+        <div className='fs-2 text-white me-3'>{preguntaActual+1}.{store.fib[preguntaActual].question}</div>
+        <div className="d-flex align-items-center gap-2">
+        <a href={store.fib[preguntaActual].info_youtube} target="_blank" type="button" className="rounded-circle btn btn-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top">
+        <i className="fab fa-youtube p-0"></i>
+        </a>
+        <a href={store.fib[preguntaActual].info_blog} target="_blank" type="button" className="rounded-circle btn btn-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top">
+        <i className="far fa-file-alt"></i>
+        </a>
+         </div> 
+        </div>}
       <form onSubmit={verificarRespuesta}>
         <input className="mb-3 form-control"
         type="text"
@@ -95,10 +102,11 @@ export const PreguntaCompletar = () => {
         placeholder="Escribe tu respuesta aquí"
       />
       </form>
-       {/* <button onClick={verificarRespuesta}>Verificar</button> */}
        <div className="mt-4 d-flex justify-content-end" >
         <button className="btn btn-primary" onClick={avanzarPregunta}>Siguiente</button>
       </div>
+    </div>
+    </div>
     </div>
   );
 }
