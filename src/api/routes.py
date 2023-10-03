@@ -84,26 +84,35 @@ def delete_user(user_id):
         return jsonify({"error":str(e)}),500
 
 
-@api.route('/user/<int:user_id>', methods=['PUT'])
+@api.route('/user/<int:user_id>', methods=['PATCH'])
 def put_user_id(user_id):
     try:
-        if user_id is not None:
-            user = User.query.get(user_id)
-            password = request.json.get("password")
-            secure_password = bcrypt.generate_password_hash(
-                    password, 10).decode("utf-8")
-            user.firstName = request.json.get("firstName")
-            user.lastName = request.json.get("lastName")
-            user.email = request.json.get("email")
-            user.password = secure_password
-            user.img = request.json.get("img")
-            user.role = request.json.get("role")
-            # new_user.is_active = True
-            db.session.commit()
-            return jsonify({"msg": "El usuario a sido actualizado"}), 201
+        if user_id is  None:
+            return jsonify({"msg": "El usuario no existe"}), 400
         
+        
+
+        user = User.query.get(user_id)
+
+        if user is None:
+            return jsonify({"msg": "El usuario no existe"}), 400
+            
+        fields_to_update = request.json
+
+        for field, value in fields_to_update.items():
+            if field == 'teacher':
+                setattr(user, "teacher_id", value)
+            else: 
+                print(field, value)
+                setattr(user, field, value)
+
+        print(user.serialize())
+        
+        db.session.commit()
+        return jsonify({"msg": "El usuario ha sido actualizado"}), 201
+
     except Exception as e:
-        return jsonify({"error":str(e)}),500
+        return jsonify({"error": str(e)}), 500
     
 @api.route('/login', methods=['POST']) 
 def login_user():
@@ -127,7 +136,8 @@ def login_user():
         "lastName": user.lastName,
         "email": user.email,
         "role": user.role,
-        "img": user.img
+        "img": user.img,
+        "teacher": user.teacher
     }
     return jsonify({"message":"Login successful", "token":token, "user": user_data}),200
 
@@ -253,6 +263,15 @@ def create_teacher():
 
 @api.route('/teachers', methods=['GET'])
 def get_teachers():
+    try:
+        teachers = Teacher.query.all()
+        teacher_list = [teacher.list_teachers() for teacher in teachers]
+        return jsonify({"teachers": teacher_list}), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+@api.route('/teachers/students', methods=['GET'])
+def get_teachers_students():
     try:
         teachers = Teacher.query.all()
         teacher_list = [teacher.serialize() for teacher in teachers]
