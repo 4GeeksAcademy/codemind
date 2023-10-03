@@ -86,12 +86,12 @@ export const PreguntaCompletar = () => {
       {store.fib[preguntaActual] && <div className="d-flex mb-4">
         <div className='fs-2 text-white me-3'>{preguntaActual+1}.{store.fib[preguntaActual].question}</div>
         <div className="d-flex align-items-center gap-2">
-        <button type="button" className="rounded-circle btn btn-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top">
+        <a href={store.fib[preguntaActual].info_youtube} target="_blank" type="button" className="rounded-circle btn btn-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top">
         <i className="fab fa-youtube p-0"></i>
-        </button>
-        <button type="button" className="rounded-circle btn btn-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top">
+        </a>
+        <a href={store.fib[preguntaActual].info_blog} target="_blank" type="button" className="rounded-circle btn btn-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top">
         <i className="far fa-file-alt"></i>
-        </button>
+        </a>
          </div> 
         </div>}
       <form onSubmit={verificarRespuesta}>
