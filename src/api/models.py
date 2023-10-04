@@ -3,6 +3,8 @@ from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
+
+
 class User(db.Model):
     __tablename__ = 'user'
     id = db.Column(db.Integer, primary_key=True)
@@ -11,46 +13,64 @@ class User(db.Model):
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(400), unique=False, nullable=False)
     img = db.Column(db.String(400), nullable=False)
-    role = db.Column(db.String(15), nullable=False)
-    teacher = db.Column(db.String(280), nullable=True)
-    teacher_id = db.Column(db.String(80), nullable=True)
+    role = db.Column(db.String(150), nullable=False)
+    teacher_id = db.Column(db.Integer, db.ForeignKey('teacher.id'))
+    teacher = db.relationship('Teacher', back_populates='students') 
+      
+
     # module_progress = db.relationship('ModuleProgress', backref='user', lazy=True)
 
     def __repr__(self):
         return f'<User {self.email}>'
-
+    
+    
     def serialize(self):
+        
         return {
             "id": self.id,
             "email": self.email,
+            "firstName": self.firstName,
+            "lastName": self.lastName,
             "img": self.img,
             "role": self.role,
+            "teacher": self.teacher_id
             # No serializar la contraseña, es un problema de seguridad
         }
 
 
 
 class Teacher(db.Model):
-    __tablename__ = 'Teacher'
-    id=db.Column(db.Integer, primary_key=True)
+    __tablename__ = 'teacher'
+    id = db.Column(db.Integer, primary_key=True)
     firstName = db.Column(db.String(40), nullable=False)
     lastName = db.Column(db.String(40), nullable=False)
-    students = db.Column(db.String(50000), nullable=True)
     email = db.Column(db.String(250), nullable=False)
     role= db.Column(db.String(250), nullable=False)
-
+    students = db.relationship('User', back_populates='teacher')
 
     def __repr__(self):
-        return f'<Teacher {self.email}>'
+        return f'{self.firstName} {self.lastName}'
 
     def serialize(self):
+        students = list(map  (lambda a:  a.serialize(), self.students))
+        
         return {
             "id": self.id,
             "firstName": self.firstName,
             "lastName": self.lastName,
-            "students": self.students,
+            "role": self.role,
+            "students": students
+            
+        }
+
+    def list_teachers(self):
+        return {
+            "id": self.id,
+            "firstName": self.firstName,
+            "lastName": self.lastName,
             "role": self.role
         }
+
 
 
 
