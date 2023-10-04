@@ -231,31 +231,27 @@ def get_exercises_by_module(module,type):
         return jsonify({"msg": "No se encontraron ejercicios para el tipo de módulo especificado"}), 404
     
 
-# @api.route('/answer/<string:module>', methods=['GET'])
-# def get_answer_fib(module):
-    
-#     answers= Answers.query.filter_by(module=module.upper()).all()
-    
-#     if answers:
-#         serialized_answers = [answer.serialize() for answer in answers]
-        
-#         return jsonify({"answers": serialized_answers}), 200
-#     else:
-#         return jsonify({"msg": "No se encontraron ejercicios para el tipo de módulo especificado"}), 404
-    
-
-@api.route('/verificar-respuesta/<int:id>', methods=['GET'])
+@api.route('/verificar-respuesta/<int:id>', methods=['POST']) 
 def verificar_respuesta(id):
 
     try: 
-        new_respuesta = Answers.query.get(id)
+        
+        correctAnswers = Answers.query.filter_by(exercise_id=id).filter_by(isCorrect=True).first()
+        data = request.json
+        correct = data["respuesta"] == correctAnswers.answers
+        print(correct)
+        # if correct:
+        # # aqui va el registro de la persona
+        #     user_answer = AnswerUser(            
+        #     answer= data["respuesta"]
+        #     )
 
-        if new_respuesta.type == "SC":
-            return {"correct": new_respuesta.isCorrect},200
-
-        elif new_respuesta.type == "FIB":
-            return {"correct": new_respuesta.answers},200
-    
+        # db.session.add(user_answer)
+        # db.session.flush()
+        # exercise_id = user_answer.id
+        # print(exercise_id)
+        return {"correct": correct},200
+        
     except Exception as e:
         return jsonify({"error": str(e)}), 500
     

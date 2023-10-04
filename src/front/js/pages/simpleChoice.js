@@ -25,7 +25,8 @@ export const SimpleChoice = () => {
 
   const verificarRespuesta = async () => {
 
-    let verificacion = await actions.getVerificar(respuestaSeleccionada.id)
+    let verificacion = await actions.getVerificar(respuestaSeleccionada.exercise_id,respuestaSeleccionada.answers)
+    console.log(respuestaSeleccionada.exercise_id)
 
     if (verificacion) {
       Swal.fire(

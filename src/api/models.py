@@ -89,7 +89,7 @@ class Exercise(db.Model):
     info_blog = db.Column(db.String(250))
     info_youtube = db.Column(db.String(250))
     answers = db.relationship('Answers', back_populates='exercise' )
-
+    answersuser = db.relationship('AnswersUser', back_populates='exercise' )
 
     def __repr__(self):
         return f'<Exercise {self.question}>'
@@ -154,9 +154,30 @@ class Answers(db.Model):
             "exercise_id": self.exercise_id
         }
     
+class AnswersUser(db.Model):
+    __tablename__ = 'answersuser'
+    id = db.Column(db.Integer, primary_key=True)
+    module = db.Column(db.String(50))
+    type = db.Column(db.String(40))
+    answers = db.Column(db.String(250))
+    exercise_id = db.Column(db.Integer, db.ForeignKey('exercise.id'))
+    exercise = db.relationship(Exercise, back_populates='answersuser')
+    isCorrect = db.Column(db.Boolean, default=False)
+    
+    def __repr__(self):
+        return f'<AnswerUser {self.id}>'
 
-
-
+    def serialize(self):
+        #self.exercise.serialize()
+        return {
+            "id": self.id,
+            "answers": self.answers,
+            # "isCorrect": self.isCorrect,
+            # "type": self.type,
+            "exercise_id": self.exercise_id
+        }
+    
+  
 
 
 # class Module(db.Model):
