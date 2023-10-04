@@ -4,6 +4,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			message: null,
+			respuestaUser:"",
 			fib : [],
 			simpleChoice:[],
 			demo: [
@@ -49,16 +50,29 @@ const getState = ({ getStore, getActions, setStore }) => {
 				getActions().changeColor(0, "green");
 			},
 			
-			getVerificar : async(id)=>{	
-			try{
-					// fetching data from the backend
-					const resp = await fetch(process.env.BACKEND_URL + `/api/verificar-respuesta/${id}`)
-					const data = await resp.json()
-					return data.correct;
-				}catch(error){
-					console.log("Error loading message from backend", error)
-				}
-			},
+			getVerificar : async(id,respuesta)=>{	
+
+				const url = process.env.BACKEND_URL + `api/verificar-respuesta/${id}`
+				const options = {
+						method:  'POST',
+						body: JSON.stringify({respuesta}),
+						headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'}
+					}
+				try {
+					const resp = await fetch(url, options)
+					if(resp.ok){
+						const data = await resp.json()
+						console.log(data)
+						const respuesta = data.correct
+					// don't forget to return something, that is how the async resolves
+					return respuesta;
+					}else {
+						console.error('La solicitud no se realizó con éxito');
+					}
+				} catch (error) {
+						console.error(error)
+					}
+				},
 
 			getFib: async (module) => {
 				try{

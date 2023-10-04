@@ -26,9 +26,10 @@ export const PreguntaCompletar = () => {
 
   const verificarRespuesta = async (e) => {
     e.preventDefault()
-    let verificacion = await actions.getVerificar(store.fib[preguntaActual].id)
+    let verificacion = await actions.getVerificar(store.fib[preguntaActual].id,respuesta)
+    console.log(store.fib[preguntaActual].id)
 
-    if (verificacion === respuesta.toLowerCase()) {
+    if (verificacion) {
       setRespuestaCorrecta(true);
       Swal.fire(
         'Respuesta Correcta!',
