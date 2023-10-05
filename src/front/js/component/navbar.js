@@ -50,9 +50,9 @@ export const Navbar = () => {
     <div id="nav-bar">
       <input id="nav-toggle" type="checkbox" />
       <div id="nav-header">
-        <a id="nav-title" target="_blank">
+        <div id="nav-title" target="_blank">
           <Link to={"/modules"}><a className="text-primary font-weight-bold" aria-current="page" href="#">CodeMind</a></Link>
-        </a>
+        </div>
         <label htmlFor="nav-toggle">
           <span id="nav-toggle-burger"></span>
         </label>

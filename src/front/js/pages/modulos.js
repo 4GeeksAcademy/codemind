@@ -5,9 +5,7 @@ import { Navbar } from "../component/navbar.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faCode, faPaintBrush, faLaptopCode } from "@fortawesome/free-solid-svg-icons";
-
-import {Link} from "react-router-dom";
-
+import { Link } from "react-router-dom";
 
 export const Modulos = () => {
   const { store, actions } = useContext(Context);
@@ -40,9 +38,9 @@ export const Modulos = () => {
         </div>
       </div>
 
-      <div className="row justify-content-center d-flex justify-content-around align-items-center">
+      <div className="modules-container row align-items-start justify-content-center d-flex justify-content-around">
         {/* Módulo HTML5 */}
-        <div className="col-sm-12 col-md-4" style={{ width: "16rem" }}>
+        <div className={`col-sm-12 col-md-4 ${descriptionsVisible.html5 ? 'show-description' : ''}`} style={{ width: "16rem" }}>
           <div className="card text-center mb-3">
             <div className="card-body d-flex justify-content-center align-items-center">
               <img
@@ -53,11 +51,11 @@ export const Modulos = () => {
               />
             </div>
             <div className="card-footer">
-            <Link to ={`/preguntas/html`}>
-              <button className="css-button-shadow-border--black px-5 py-2 mb-4">
-                Start
-              </button>
-            </Link>
+              <Link to={`/preguntas/html`}>
+                <button className="css-button-shadow-border--black px-5 py-2 mb-4">
+                  Start
+                </button>
+              </Link>
               <button
                 onClick={() => toggleDescription("html5")}
                 className="btn btn-link"
@@ -66,7 +64,7 @@ export const Modulos = () => {
               </button>
             </div>
             {descriptionsVisible.html5 && (
-              <div className="card-body">
+              <div className="card-description">
                 <p>Descripción breve del módulo HTML5.</p>
               </div>
             )}
@@ -74,7 +72,7 @@ export const Modulos = () => {
         </div>
 
         {/* Módulo CSS */}
-        <div className="col-sm-12 col-md-4" style={{ width: "16rem" }}>
+        <div className={`col-sm-12 col-md-4 ${descriptionsVisible.css ? 'show-description' : ''}`} style={{ width: "16rem" }}>
           <div className="card text-center mb-3">
             <div className="card-body d-flex justify-content-center align-items-center">
               <img
@@ -85,11 +83,11 @@ export const Modulos = () => {
               />
             </div>
             <div className="card-footer">
-            <Link to ={`/preguntas/css`}>
-              <button className="css-button-shadow-border--black px-5 py-2 mb-4">
-                Start
-              </button>
-            </Link>
+              <Link to={`/preguntas/css`}>
+                <button className="css-button-shadow-border--black px-5 py-2 mb-4">
+                  Start
+                </button>
+              </Link>
               <button
                 onClick={() => toggleDescription("css")}
                 className="btn btn-link"
@@ -98,16 +96,15 @@ export const Modulos = () => {
               </button>
             </div>
             {descriptionsVisible.css && (
-              <div className="card-body">
+              <div className="card-description">
                 <p>Descripción breve del módulo CSS.</p>
               </div>
             )}
           </div>
         </div>
 
-
         {/* Módulo JavaScript */}
-        <div className="col-sm-12 col-md-4" style={{ width: "16rem" }}>
+        <div className={`col-sm-12 col-md-4 ${descriptionsVisible.javascript ? 'show-description' : ''}`} style={{ width: "16rem" }}>
           <div className="card text-center mb-3">
             <div className="card-body d-flex justify-content-center align-items-center">
               <img
@@ -118,11 +115,11 @@ export const Modulos = () => {
               />
             </div>
             <div className="card-footer">
-            <Link to ={`/preguntas/js`}>
-              <button className="css-button-shadow-border--black px-5 py-2 mb-4">
-                Start
-              </button>
-            </Link>
+              <Link to={`/preguntas/js`}>
+                <button className="css-button-shadow-border--black px-5 py-2 mb-4">
+                  Start
+                </button>
+              </Link>
               <button
                 onClick={() => toggleDescription("javascript")}
                 className="btn btn-link"
@@ -131,7 +128,7 @@ export const Modulos = () => {
               </button>
             </div>
             {descriptionsVisible.javascript && (
-              <div className="card-body">
+              <div className="card-description">
                 <p>Descripción breve del módulo JavaScript.</p>
               </div>
             )}
@@ -139,6 +136,5 @@ export const Modulos = () => {
         </div>
       </div>
     </div>
-
   );
 };
