@@ -189,10 +189,19 @@ height: 180px;
 }
 
 /* Footer Cards and modals*/
+.modules-container{
+  min-height: 500px;
+}
 
 .card{
-    border-radius: 20px;
-    background-color: var(--ColorTerciario);
+  border-radius: 20px;
+  background-color: var(--ColorTerciario);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.show-description {
+  max-height: 1000px; /* O el valor máximo que desees para mostrar la descripción */
 }
 
 .card-footer{

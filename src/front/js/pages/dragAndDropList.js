@@ -1,73 +1,137 @@
 import React, { useState } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import { exercisesData } from '../store/data'; // Asegúrate de que la ruta sea correcta
-import "../../styles/index.css";
 
 export function DragAndDropList() {
-  const [data, setData] = useState(exercisesData); // Usar un estado para los datos
+  const initialQuestions = [
+    {
+      id: 1,
+      content: '¿Cuál es el orden correcto de la estructura básica de un documento HTML?',
+      elements: [
+        { id: 101, content: '<!DOCTYPE html>' },
+        { id: 102, content: '<html>' },
+        { id: 103, content: '<head>' },
+        { id: 104, content: '<body>' },
+      ],
+      correctOrder: [
+        '<!DOCTYPE html>',
+        '<html>',
+        '<head>',
+        '<body>',
+      ],
+    },
+    {
+      id: 2,
+      content: 'Ordena las etiquetas de encabezado HTML de menor a mayor importancia:',
+      elements: [
+        { id: 201, content: '<h6>' },
+        { id: 202, content: '<h3>' },
+        { id: 203, content: '<h1>' },
+        { id: 204, content: '<h2>' },
+      ],
+      correctOrder: [
+        '<h1>',
+        '<h2>',
+        '<h3>',
+        '<h6>',
+      ],
+    },
+    {
+      id: 3,
+      content: '¿Cuál es el orden correcto de las etiquetas para crear una lista desordenada en HTML?',
+      elements: [
+        { id: 301, content: '<ul>' },
+        { id: 302, content: '<li>' },
+        { id: 303, content: '</ul>' },
+        { id: 304, content: '</li>' },
+      ],
+      correctOrder: [
+        '<ul>',
+        '<li>',
+        '</li>',
+        '</ul>',
+      ],
+    },
+  ];
 
-  const onDragEnd = (result) => {
+  const [questions, setQuestions] = useState(initialQuestions);
+
+  const onDragEnd = (result, questionId) => {
     if (!result.destination) return; // No se soltó en una ubicación válida
 
-    const { source, destination } = result;
+    const newQuestions = [...questions];
+    const questionIndex = newQuestions.findIndex((q) => q.id === questionId);
 
-    // Copiar el arreglo de datos actual
-    const newData = [...data];
+    if (questionIndex !== -1) {
+      const question = newQuestions[questionIndex];
+      const newElements = [...question.elements];
+      const [reorderedElement] = newElements.splice(result.source.index, 1);
+      newElements.splice(result.destination.index, 0, reorderedElement);
 
-    // Encontrar la pregunta de origen y el elemento arrastrado
-    const sourceQuestion = newData.find((question) => question.questionId === source.droppableId);
-    const draggedElement = sourceQuestion.elements[source.index];
+      question.elements = newElements;
+      newQuestions[questionIndex] = question;
 
-    // Quitar el elemento de la pregunta de origen
-    sourceQuestion.elements.splice(source.index, 1);
+      setQuestions(newQuestions);
+    }
+  };
 
-    // Encontrar la pregunta de destino
-    const destinationQuestion = newData.find((question) => question.questionId === destination.droppableId);
+  const verificarRespuesta = (questionId) => {
+    const question = questions.find((q) => q.id === questionId);
 
-    // Insertar el elemento en la pregunta de destino en la posición adecuada
-    destinationQuestion.elements.splice(destination.index, 0, draggedElement);
+    if (!question) {
+      return; // La pregunta no se encontró
+    }
 
-    // Actualizar el estado con los nuevos datos reordenados
-    setData(newData);
+    const currentOrder = question.elements.map((element) => element.content);
+    const isOrderCorrect = JSON.stringify(currentOrder) === JSON.stringify(question.correctOrder);
+
+    if (isOrderCorrect) {
+      alert(`¡Respuesta Correcta para la pregunta ${questionId}! El orden es correcto.`);
+    } else {
+      alert(`Respuesta Incorrecta para la pregunta ${questionId}. El orden es incorrecto. Inténtalo de nuevo.`);
+    }
   };
 
   return (
-    <div className="d-flex justify-content-end align-items-center vh-100">
-      <div className="w-50">
-        <DragDropContext onDragEnd={onDragEnd}>
-          {data.map((question, questionIndex) => (
-            <div key={question.questionId}>
-              <div className="h2 text-primary">
-                {question.question}
-              </div>
-              <Droppable droppableId={`droppable-${question.questionId}`} key={questionIndex}>
-                {(provided) => (
-                  <ul {...provided.droppableProps} ref={provided.innerRef}>
-                    {question.elements.map((element, elementIndex) => (
-                      <Draggable
-                        key={element.id}
-                        draggableId={element.id.toString()}
-                        index={elementIndex}
-                      >
-                        {(provided, snapshot) => (
-                          <li
-                            {...provided.draggableProps}
-                            {...provided.dragHandleProps}
-                            ref={provided.innerRef}
-                            className='m-4'
-                          >
-                            {element.content}
-                          </li>
-                        )}
-                      </Draggable>
-                    ))}
-                    {provided.placeholder}
-                  </ul>
-                )}
-              </Droppable>
+    <div className="d-flex justify-content-center align-items-center ">
+      <div className="row">
+        <h2 className="text-center offset-3 col-6">Arrastra y Suelta los Elementos</h2>
+        <div className="offset-3 col-6">
+          {questions.map((question) => (
+            <div key={question.id}>
+              <h3>{question.content}</h3>
+              <DragDropContext onDragEnd={(result) => onDragEnd(result, question.id)}>
+                <Droppable droppableId={`droppable-${question.id}`}>
+                  {(provided) => (
+                    <ul {...provided.droppableProps} ref={provided.innerRef} className="list-unstyled">
+                      {question.elements.map((element, index) => (
+                        <Draggable
+                          key={element.id}
+                          draggableId={element.id.toString()}
+                          index={index}
+                        >
+                          {(provided, snapshot) => (
+                            <li
+                              {...provided.draggableProps}
+                              {...provided.dragHandleProps}
+                              ref={provided.innerRef}
+                              className="m-2 p-3 border"
+                            >
+                              {element.content}
+                            </li>
+                          )}
+                        </Draggable>
+                      ))}
+                      {provided.placeholder}
+                    </ul>
+                  )}
+                </Droppable>
+              </DragDropContext>
+              <button onClick={() => verificarRespuesta(question.id)} className="btn btn-primary mt-3">
+                Verificar
+              </button>
             </div>
           ))}
-        </DragDropContext>
+        </div>
       </div>
     </div>
   );
