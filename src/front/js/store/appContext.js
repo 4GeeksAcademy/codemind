@@ -32,6 +32,11 @@ const injectContext = PassedComponent => {
 			state.store.user
 			state.actions.getMessage(); // <---- calling this function from the flux.js actions
 			state.actions.getTeachers()
+			// if(state.store.user.role === 'teacher'){
+			// 	state.actions.getTeachersStudents(state.store.user.id)
+				
+			// }
+			
 		}, [state.store.user]);
 
 		// The initial value for the context is not null anymore, but the current state of this component,

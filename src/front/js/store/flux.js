@@ -46,7 +46,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			],
 			user: storedUser || null ,
 
-			teachers: null
+			teachers: null, 
+			teacherData: null,
 
 		},
 		actions: {
@@ -209,8 +210,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 			updateUser: async (data) => {
 
 				console.log("new User Data " + JSON.stringify(data) + "userId " + data.id)
-
-				const url = process.env.BACKEND_URL + '/api/user/' + data.id;
+				const role = data.role;
+				console.log(role)
+				let url;
+				if (role === 'teacher') {
+					
+					url = process.env.BACKEND_URL + '/api/teacher/' + data.id;
+				} else if (role === 'alumno') {
+					
+					url = process.env.BACKEND_URL + '/api/user/' + data.id;
+				} else {
+					console.error('Rol de usuario no válido');
+					return; 
+				}
+				
 				const options = {
 					method: 'PATCH',
 					body: JSON.stringify(data),
@@ -229,6 +242,30 @@ const getState = ({ getStore, getActions, setStore }) => {
 						localStorage.setItem('userData', JSON.stringify(updatedUser));
 					} else {
 						console.error('La solicitud no se realizó con éxito');
+					}
+				} catch (error) {
+					console.error(error)
+				}
+			},
+			getTeachersStudents: async (userid) => {
+				let { teacherData } = getStore()
+				const url = process.env.BACKEND_URL + '/api/teacher/' + userid;
+				const options = {
+					method: 'GET',
+					headers: {
+						'Content-Type': 'application/json',
+						'Access-Control-Allow-Origin': '*'
+					}
+				}
+
+				try {
+					const resp = await fetch(url, options);
+					if (resp.ok) {
+						const data = await resp.json()
+						const updatedTeacherData = { ...teacherData, ...data };
+						await setStore({ teacherData: updatedTeacherData })
+						console.log("getTeacherStflux" + JSON.stringify(updatedTeacherData));
+						return data
 					}
 				} catch (error) {
 					console.error(error)

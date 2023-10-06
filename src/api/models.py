@@ -45,6 +45,7 @@ class Teacher(db.Model):
     firstName = db.Column(db.String(40), nullable=False)
     lastName = db.Column(db.String(40), nullable=False)
     email = db.Column(db.String(250), nullable=False)
+    password = db.Column(db.String(250), nullable=False)
     role= db.Column(db.String(250), nullable=False)
     students = db.relationship('User', back_populates='teacher')
 
