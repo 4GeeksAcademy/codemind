@@ -3,6 +3,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 	return {
 		store: {
+			token: null,
 			message: null,
 			fib : [],
 			simpleChoice:[],
@@ -54,12 +55,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			
 			getVerificar : async(id,respuesta)=>{	
-
+			
 				const url = process.env.BACKEND_URL + `api/verificar-respuesta/${id}`
+				const token= localStorage.getItem('userToken')
+				console.log(JSON.stringify(token))
 				const options = {
 						method:  'POST',
 						body: JSON.stringify({respuesta}),
-						headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'}
+						headers: {
+							'Content-Type': 'application/json', 
+							'Access-Control-Allow-Origin': '*',
+							'Authorization': `Bearer ${token}`
+						}
+						
 					}
 				try {
 					const resp = await fetch(url, options)
@@ -84,8 +92,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					const resp = await fetch(process.env.BACKEND_URL + `/api/exercises/${module}/fib`)
 					const data = await resp.json()
 					const exercises = data.exercises
-
-
 					setStore({ fib:exercises })
 
 					// don't forget to return something, that is how the async resolves

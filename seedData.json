@@ -1,0 +1,69 @@
+[
+	{
+	"target_class":"Exercise",
+	"data":[
+		{
+			"id": 1,
+			"module": "HTML",
+    		"type": "FIB",
+    		"question": "Cuanto es 3+3",
+    		"info_blog": "https://blog.hubspot.es/website/html",
+    		"info_youtube": "https://www.youtube.com/watch?v=rkxHd9SUBGU"
+		},
+		{
+			"id": 2,
+			"module": "CSS",
+    		"type": "FIB",
+    		"question": "Cuanto es 2+3",
+    		"info_blog": "https://blog.hubspot.es/website/html",
+    		"info_youtube": "https://www.youtube.com/watch?v=rkxHd9SUBGU"
+		},
+		{
+			"id":3,
+			"module": "HTML",
+			"type": "SC",
+			"question": "Cuanto es 1+4",
+			"info_blog": "https://support.microsoft.com/es-es/topic/c%C3%B3mo-habilitar-javascript-en-windows-88d27b37-6484-7fc0-17df-872f65168279",
+			"info_youtube": "https://www.youtube.com/watch?v=f-lBx9Bc5HA"
+		}
+	]
+	},
+	{
+	"target_class":"Answers",
+	"data":[
+		{
+			"id":1,
+			"answers": "6",
+			"isCorrect": true,
+			"exercise_id":1
+		 },
+		 {
+			"id":2,
+			"answers": "5",
+			"isCorrect": true,
+			"exercise_id":2
+		 },
+		
+		{
+			"id":3,
+			"answers": "5",
+			"isCorrect": true,
+			"exercise_id":3
+		},
+		{
+			"id":4,
+			"answers": "3",
+			"isCorrect": false,
+			"exercise_id":3
+		},
+		{
+			"id":5,
+			"answers": "6",
+			"isCorrect": false,
+			"exercise_id":3
+		}
+		 
+	]
+
+	}
+]

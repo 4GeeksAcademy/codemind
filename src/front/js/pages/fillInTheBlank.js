@@ -16,18 +16,19 @@ export const PreguntaCompletar = () => {
   useEffect(()=>{
     actions.getFib(modulo)
   },[])
-
+						
   
   const handleRespuestaChange = (event) => {
     // e.preventDefault()
     setRespuesta(event.target.value);
     setRespuestaCorrecta(false); // Reinicia la respuesta correcta al cambiar la respuesta
   };
+  
 
   const verificarRespuesta = async (e) => {
     e.preventDefault()
     let verificacion = await actions.getVerificar(store.fib[preguntaActual].id,respuesta)
-    console.log(store.fib[preguntaActual].id)
+    console.log(store.user.id)
 
     if (verificacion) {
       setRespuestaCorrecta(true);

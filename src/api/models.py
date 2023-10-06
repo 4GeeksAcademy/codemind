@@ -1,5 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
-
+from sqlalchemyseeder import ResolvingSeeder
 
 db = SQLAlchemy()
 
@@ -16,6 +16,7 @@ class User(db.Model):
     role = db.Column(db.String(150), nullable=False)
     teacher_id = db.Column(db.Integer, db.ForeignKey('teacher.id'))
     teacher = db.relationship('Teacher', back_populates='students') 
+    answersuser = db.relationship('AnswersUser', back_populates='user' )
       
 
     # module_progress = db.relationship('ModuleProgress', backref='user', lazy=True)
@@ -88,7 +89,7 @@ class Exercise(db.Model):
     question = db.Column(db.String(250))
     info_blog = db.Column(db.String(250))
     info_youtube = db.Column(db.String(250))
-    answers = db.relationship('Answers', back_populates='exercise' )
+    answers = db.relationship('Answers', back_populates='exercise')
     answersuser = db.relationship('AnswersUser', back_populates='exercise' )
 
     def __repr__(self):
@@ -157,27 +158,27 @@ class Answers(db.Model):
 class AnswersUser(db.Model):
     __tablename__ = 'answersuser'
     id = db.Column(db.Integer, primary_key=True)
-    module = db.Column(db.String(50))
-    type = db.Column(db.String(40))
-    answers = db.Column(db.String(250))
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    user = db.relationship(User, back_populates='answersuser')
     exercise_id = db.Column(db.Integer, db.ForeignKey('exercise.id'))
     exercise = db.relationship(Exercise, back_populates='answersuser')
-    isCorrect = db.Column(db.Boolean, default=False)
     
     def __repr__(self):
         return f'<AnswerUser {self.id}>'
 
     def serialize(self):
-        #self.exercise.serialize()
         return {
             "id": self.id,
-            "answers": self.answers,
-            # "isCorrect": self.isCorrect,
-            # "type": self.type,
-            "exercise_id": self.exercise_id
+            "user_id" : self.user_id,
+            "exercise_id" : self.exercise_id
         }
     
-  
+def seed():
+    seeder = ResolvingSeeder(db.session)
+    seeder.register(Exercise)
+    seeder.register(Answers)
+    seeder.load_entities_from_json_file("seedData.json")
+    db.session.commit()
 
 
 # class Module(db.Model):

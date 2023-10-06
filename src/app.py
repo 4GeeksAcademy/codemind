@@ -23,7 +23,7 @@ app.url_map.strict_slashes = False
 
 jwt = JWTManager(app)
 app.config["JWT_SECRET_KEY"] = os.getenv("FLASK_APP_KEY")
-app.config["JWT_ACCESS_TOKEN_EXPIRES"] = 300
+app.config["JWT_ACCESS_TOKEN_EXPIRES"] = 500000
 
 # Verificar los tokens bloqueados
 @jwt.token_in_blocklist_loader

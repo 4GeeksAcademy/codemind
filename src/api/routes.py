@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Exercise,Answers, TokenBlockedList, Teacher
+from api.models import db, User, Exercise,Answers, TokenBlockedList, Teacher, AnswersUser, seed
 from api.utils import generate_sitemap, APIException
 from flask_bcrypt import Bcrypt
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity, get_jwt
@@ -181,15 +181,15 @@ def create_excercise():
         exercise_id = new_exercise.id
         print(exercise_id)
 
-        for answer_data in request.json.get("answers"):
-            new_answer = Answers(
-                answers=answer_data["text"],
-                exercise_id=exercise_id,
-                isCorrect=answer_data["isCorrect"],
-                module= new_exercise.module,
-                type= new_exercise.type
-                )
-            db.session.add(new_answer)
+        # for answer_data in request.json.get("answers"):
+        #     new_answer = Answers(
+        #         answers=answer_data["text"],
+        #         exercise_id=exercise_id,
+        #         isCorrect=answer_data["isCorrect"],
+        #         module= new_exercise.module,
+        #         type= new_exercise.type
+        #         )
+        #     db.session.add(new_answer)
 
         db.session.commit()
 
@@ -232,29 +232,42 @@ def get_exercises_by_module(module,type):
     
 
 @api.route('/verificar-respuesta/<int:id>', methods=['POST']) 
+@jwt_required()
 def verificar_respuesta(id):
-
     try: 
-        
+        user_id = get_jwt_identity()
+        print(user_id)
         correctAnswers = Answers.query.filter_by(exercise_id=id).filter_by(isCorrect=True).first()
-        data = request.json
-        correct = data["respuesta"] == correctAnswers.answers
-        print(correct)
-        # if correct:
-        # # aqui va el registro de la persona
-        #     user_answer = AnswerUser(            
-        #     answer= data["respuesta"]
-        #     )
+        
+        if correctAnswers is None:
+            return {"msg": "No existe el ejercicio"}
 
-        # db.session.add(user_answer)
-        # db.session.flush()
-        # exercise_id = user_answer.id
-        # print(exercise_id)
-        return {"correct": correct},200
+        data = request.json
+        print(data)
+        correct = data["respuesta"] == correctAnswers.answers
+        if correct:
+            user_answer = AnswersUser()
+            user_answer.user_id = user_id,
+            user_answer.exercise_id = id
+            db.session.add(user_answer)
+            db.session.commit()
+            print(user_id)
+            print(id)
+            print("AnswersUser.user_id")
+        
+        return {"correct":correct},200
         
     except Exception as e:
         return jsonify({"error": str(e)}), 500
     
+@api.route('/respuestauser/<int:id>', methods=['GET']) 
+def verifica(id):
+    try:
+        users = AnswersUser.query.all()
+        return jsonify(users=[user.serialize() for user in users]), 200
+    except Exception as e:
+        return jsonify({"error":str(e)}),500
+
 @api.route('/teachers', methods=['POST'])
 def create_teacher():
     try:
@@ -288,3 +301,12 @@ def get_teachers_students():
         return jsonify({"teachers": teacher_list}), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
+@api.route('/seed', methods=['POST', 'GET'])
+def handle():
+    seed()
+    response_body = {
+        "message": "Data cargada"
+    }
+
+    return jsonify(response_body), 200
