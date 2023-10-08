@@ -114,7 +114,89 @@ export const Navbar = () => {
       </div>
     </div>)
 
-  const navbarToRender = ['/registro', '/', '/login', '/forwotpassword', '/sendpassword'].includes(navActive) ? defaultNavbar : userNavbar;
+
+  const teacherNavbar = (
+    <div id="nav-bar">
+    <input id="nav-toggle" type="checkbox" />
+    <div id="nav-header">
+      <div id="nav-title" target="_blank">
+        <Link to={"/modules"}><a className="text-primary font-weight-bold" aria-current="page" href="#">CodeMind</a></Link>
+      </div>
+      <label htmlFor="nav-toggle">
+        <span id="nav-toggle-burger"></span>
+      </label>
+      <hr />
+    </div>
+    <div id="nav-content">
+      <div className="nav-button">
+        <i className="fas fa-palette"></i><span>Modules</span>
+      </div>
+      <div className="nav-button">
+        <i className="fas fa-images"></i><span>Library</span>
+      </div>
+      <div className="nav-button">
+        <Link to={"/student"}><i class="fa-solid fa-user-group p-3"></i><span>Students</span></Link>
+      </div> 
+      <hr />
+      <div className="nav-button">
+        <i className="fas fa-chart-line"></i><span>Progress</span>
+      </div>
+      <div className="nav-button">
+        <i className="fas fa-fire"></i><span>Road Map</span>
+      </div>
+      <div className="nav-button">
+        <i className="fas fa-heart"></i><span>About Us</span>
+      </div>
+      <div className="nav-button">
+        <i className="fas fa-magic"></i><span>Spark</span>
+      </div> 
+      <hr />
+      {/* <div className="nav-button">
+        <i className="fas fa-gem"></i><span>Codepen Pro</span>
+      </div> */}
+      <div id="nav-content-highlight"></div>
+    </div>
+    
+    <input id="nav-footer-toggle" type="checkbox" />
+    <div id="nav-footer">
+      <div id="nav-footer-heading">
+        <div id="nav-footer-avatar">
+          <Link to={"/profile"}><img src={userImg} alt="Avatar" /></Link>
+        </div>
+        <div id="nav-footer-titlebox d-flex justify-content-center ms-2">
+          <a id="nav-footer-title d-flex justify-content-end ms-2" href="#" target="_blank">
+          <Link to={"/profile"}>{user && user.firstName ? user.firstName : null} {user && user.lastName ? user.lastName : null}</Link>
+          </a>
+          <div>
+          <span id="nav-footer-subtitle">{user && user.role ? user.role : null}</span>
+          </div>
+        </div>
+        <label htmlFor="nav-footer-toggle">
+          <i className="fas fa-caret-up"></i>
+        </label>
+      </div>
+      <div id="nav-footer-content">
+        <div className="nav-item">
+          <Link to={"/"} className="btn btn-outline-primary">Log out</Link>
+        </div>
+      </div>
+    </div>
+  </div>
+  )
+
+
+  let  navbarToRender; 
+
+      if(['/registro', '/', '/login', '/forwotpassword', '/sendpassword'].includes(navActive)){
+        navbarToRender = defaultNavbar;
+
+      }else if (user && user.role==='alumno'){
+        navbarToRender = userNavbar     
+      }else if( user && user.role==='teacher'){
+        navbarToRender = teacherNavbar
+      }
+    
+      
 
   return (
     <>
