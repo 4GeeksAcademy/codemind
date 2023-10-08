@@ -119,17 +119,39 @@ def login_user():
     # Obtenemos los campos del cuerpo de la petición
     email = request.json.get("email")
     password = request.json.get("password")
-    # Busca al ussuario en la base de datos
-    user = User.query.filter_by(email = email).first()
-    # Si el usuario no se encuentra, se retorna error
-    if user is None:
-        return jsonify({"message":"User not found"}),404
-    # Si las claves no son validas, se retorna error
-    if not bcrypt.check_password_hash(user.password,password):
-        return jsonify({"message":"Wrong password"}),401
     
-    # Si pasan las validaciones, se genera el token
-    token = create_access_token(identity = user.id, additional_claims = {"role":"admin"})
+    # Busca al usuario en la tabla de usuarios
+    user = User.query.filter_by(email=email).first()
+    
+    # Si el usuario no se encuentra en la tabla de usuarios, busca en la tabla de profesores
+    if user is None:
+        teacher = Teacher.query.filter_by(email=email).first()
+        
+        # Si tampoco se encuentra en la tabla de profesores, retorna un error
+        if teacher is None:
+            return jsonify({"message": "User not found"}), 404
+        
+        # Si se encuentra en la tabla de profesores, verifica la contraseña
+        if not bcrypt.check_password_hash(teacher.password, password):
+            return jsonify({"message": "Wrong password"}), 401
+        
+        # Si las credenciales son correctas, genera el token
+        token = create_access_token(identity=teacher.id, additional_claims={"role": "teacher"})
+        teacher_data = {
+            "id": teacher.id,
+            "firstName": teacher.firstName,
+            "lastName": teacher.lastName,
+            "email": teacher.email,
+            "role": teacher.role
+        }
+        return jsonify({"message": "Login successful", "token": token, "user": teacher_data}), 200
+    
+    # Si el usuario se encuentra en la tabla de usuarios, verifica la contraseña
+    if not bcrypt.check_password_hash(user.password, password):
+        return jsonify({"message": "Wrong password"}), 401
+    
+    # Si las credenciales son correctas, genera el token para el usuario
+    token = create_access_token(identity=user.id, additional_claims={"role": "admin"})
     user_data = {
         "id": user.id,
         "firstName": user.firstName,
@@ -139,7 +161,7 @@ def login_user():
         "img": user.img,
         "teacher": user.teacher
     }
-    return jsonify({"message":"Login successful", "token":token, "user": user_data}),200
+    return jsonify({"message": "Login successful", "token": token, "user": user_data}), 200
 
 @api.route('/private') 
 @jwt_required() # Este decorador convierte la ruta en protegida
@@ -258,11 +280,15 @@ def verificar_respuesta(id):
 @api.route('/teachers', methods=['POST'])
 def create_teacher():
     try:
+        password = request.json.get("password")
+        secure_password = bcrypt.generate_password_hash(
+            password, 10).decode("utf-8")
         data = request.json
         new_teacher = Teacher(
             firstName=data['firstName'],
             lastName=data['lastName'],
             email=data['email'],
+            password = secure_password,
             role=data['role']
         )
         db.session.add(new_teacher)
@@ -288,3 +314,46 @@ def get_teachers_students():
         return jsonify({"teachers": teacher_list}), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
+
+@api.route('/teacher/<int:user_id>', methods=['PATCH'])
+def put_teacher_id(user_id):
+    try:
+        if user_id is  None:
+            return jsonify({"msg": "El usuario no existe"}), 400
+        
+
+        teacher = Teacher.query.get(user_id)
+
+        if teacher is None:
+            return jsonify({"msg": "El usuario no existe"}), 400
+            
+        fields_to_update = request.json
+
+        for field, value in fields_to_update.items():
+            if field == 'teacher':
+                setattr(teacher, "teacher_id", value)
+            else: 
+                print(field, value)
+                setattr(teacher, field, value)
+
+        print(teacher.serialize())
+        
+        db.session.commit()
+        return jsonify({"msg": "El usuario ha sido actualizado"}), 201
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+@api.route('/teacher/<int:teacher_id>', methods=['GET'])
+def get_teacher_id(teacher_id):
+    try:
+        teacher = Teacher.query.get(teacher_id)
+
+        if teacher is not None:
+         return jsonify(teacher=[teacher.serialize()]), 200
+
+        return jsonify({"msg": "El usuario no existe"}), 400
+    
+    except Exception as e:
+        return jsonify({"error":str(e)}),500

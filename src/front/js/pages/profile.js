@@ -9,6 +9,7 @@ export const Profile = () => {
         lastName: null
     });;
     const [showAlert, setShowAlert] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
     const { store, actions } = useContext(Context);
     const initialFormData = {
         id: store.user.id,
@@ -16,7 +17,8 @@ export const Profile = () => {
         lastName: store.user.lastName,
         email: store.user.email,
         teacher: store.user.teacher ? parseInt(store.user.teacher) : null,
-        img: store.user.img
+        img: store.user.img,
+        role: store.user.role
     };
     const [formData, setFormData] = useState({ ...initialFormData });
 
@@ -50,6 +52,12 @@ export const Profile = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if (!formData.firstName || !formData.lastName) {
+
+            setErrorMessage("First Name and Last Name are required");
+            setShowAlert(true);
+            return;
+        }
 
         try {
             const baseUrl = "https://ui-avatars.com/api";
@@ -58,10 +66,12 @@ export const Profile = () => {
             const background = "random"; // Color de fondo aleatorio
             const name = formData.firstName + " " + formData.lastName
             const imgURL = `${baseUrl}/?name=${encodeURIComponent(name)}&size=${size}&rounded=${rounded}&background=${background}`
-            const updatedFormData = { ...formData, img: imgURL, teacher: selectedTeacher.id  };
+            const updatedFormData = { ...formData, img: imgURL, teacher: selectedTeacher.id };
             console.log(updatedFormData)
             await actions.updateUser(updatedFormData);
+            setErrorMessage("");
             setShowAlert(true);
+
         } catch (error) {
             console.error('Error al actualizar el usuario: ', error)
         }
@@ -105,9 +115,9 @@ export const Profile = () => {
                 <div className="col-sm-12 col-md-6 mt-4 align-items-start">
 
                     {showAlert && (
-                        <div className="alert alert-success alert-dismissible fade show" role="alert">
-                            User updated successfully!
-                            <button type="button" className="btn-close" onClick={() => setShowAlert(false)}></button>
+                        <div className={`alert ${errorMessage ? 'alert-danger' : 'alert-success'} alert-dismissible fade show`} role="alert">
+                            {errorMessage ? errorMessage : "User updated successfully!"}
+                            <button type="button" className="btn-close" onClick={() => { setShowAlert(false); setErrorMessage(""); }}></button>
                         </div>
                     )}
                     <form onSubmit={handleSubmit}>
@@ -121,29 +131,33 @@ export const Profile = () => {
                         </div>
                         <div className='d-flex justify-content-between  mb-2'>
                             <p className='my-0 me-4'>E-mail:</p>
-                            <input type="text" className="form-control" id="email" name="email" value={formData.email} onChange={handleChange} style={{ maxWidth: "60%" }}></input>
+                            <input type="text" className="form-control" id="email" name="email" value={formData.email} onChange={handleChange} style={{ maxWidth: "60%" }} disabled={true}></input>
                         </div>
-                        <div className='d-flex justify-content-between  mb-2'>
-                            <p className='my-0 '>Teacher:</p>
-                            <div className="h-25 px-5  ">
-                                <div className="btn-group dropdown-center" >
-                                    <button className="btn btn-secondary dropdown-toggle " type="button" data-bs-toggle="dropdown" aria-expanded="false" disabled={!!store.user.teacher} >
-                                        {selectedTeacher.firstName && selectedTeacher.lastName
-                                            ? `${selectedTeacher.firstName} ${selectedTeacher.lastName}`
-                                            : "Select Your Teacher"}
-                                    </button>
-                                    <ul className="dropdown-menu dropdown-menu-dark">
-                                        {store.teachers && store.teachers.map((teacher, index) => (
-                                            <li key={index}>
-                                                <p className="dropdown-item" onClick={(e) => handleTeacherSelect(teacher, e)}>
-                                                    {teacher.firstName + " " + teacher.lastName}
-                                                </p>
-                                            </li>
-                                        ))}
-                                    </ul>
+                        {
+                            store.user.role === "alumno" &&(
+                                <div className='d-flex justify-content-between  mb-2'>
+                                <p className='my-0 '>Teacher:</p>
+                                <div className="h-25 px-5  ">
+                                    <div className="btn-group dropdown-center" >
+                                        <button className="btn btn-secondary dropdown-toggle " type="button" data-bs-toggle="dropdown" aria-expanded="false" disabled={!!store.user.teacher} >
+                                            {selectedTeacher.firstName && selectedTeacher.lastName
+                                                ? `${selectedTeacher.firstName} ${selectedTeacher.lastName}`
+                                                : "Select Your Teacher"}
+                                        </button>
+                                        <ul className="dropdown-menu dropdown-menu-dark">
+                                            {store.teachers && store.teachers.map((teacher, index) => (
+                                                <li key={index}>
+                                                    <p className="dropdown-item" onClick={(e) => handleTeacherSelect(teacher, e)}>
+                                                        {teacher.firstName + " " + teacher.lastName}
+                                                    </p>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                            )
+                        }
                         <div className="row  align-items-center mt-4 justify-content-end">
                             <div className=" col-sm-12 col-md-6  text-center">
                                 <button type="submit" className="btn btn-primary">
@@ -158,7 +172,7 @@ export const Profile = () => {
                 <div className="col-sm-1 col-md-4  text-sm-end justify-content-between">
                     <div className="d-flex justify-content-between ">
                         <Link to={"/changepassword"}><a href="#" className="btn btn-outline-secondary">Change password</a></Link>
-                        <Link to={"/iamteacher"} className="">I'm Professor</Link>
+                        <Link to={"/student"} className="">Student</Link>
                     </div>
                 </div>
             </div>
