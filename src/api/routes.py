@@ -2,11 +2,12 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Exercise,Answers, TokenBlockedList, Teacher
+from api.models import db, User, Exercise,Answers, TokenBlockedList, Teacher,AnswersUser,seed
 from api.utils import generate_sitemap, APIException
 from flask_bcrypt import Bcrypt
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity, get_jwt
 from datetime import datetime, timezone
+
 
 api = Blueprint('api', __name__)
 app = Flask(__name__)
@@ -90,8 +91,6 @@ def put_user_id(user_id):
         if user_id is  None:
             return jsonify({"msg": "El usuario no existe"}), 400
         
-        
-
         user = User.query.get(user_id)
 
         if user is None:
@@ -219,24 +218,14 @@ def create_excercise():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-
-@api.route('/exercise/<int:id>', methods=['GET'])
-def get_exercise_by_id(id):
+@api.route('/exercise/', methods=['GET'])
+def get_exercise():
     try:
-
-        exercises= Exercise.query.filter_by(id=id).all()
-    
-        if exercises:
-            serialized_exercises = [exercise.serialize() for exercise in exercises]
-        
-            return jsonify({"exercises": serialized_exercises}), 200
-       
-        return jsonify({"msg": "El ejercicio no existe"}), 404
-
+        exercises = Exercise.query.all()
+        exercise_list = [exercise.serialize() for exercise in exercises]
+        return jsonify({"exercise": exercise_list}), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
-
-
 
 @api.route('/exercises/<string:module>/<string:type>', methods=['GET'])
 def get_exercises_by_module(module,type):
@@ -254,28 +243,41 @@ def get_exercises_by_module(module,type):
     
 
 @api.route('/verificar-respuesta/<int:id>', methods=['POST']) 
+@jwt_required()
 def verificar_respuesta(id):
-
     try: 
-        
+        user_id = get_jwt_identity()
+        # print(user_id)
         correctAnswers = Answers.query.filter_by(exercise_id=id).filter_by(isCorrect=True).first()
-        data = request.json
-        correct = data["respuesta"] == correctAnswers.answers
-        print(correct)
-        # if correct:
-        # # aqui va el registro de la persona
-        #     user_answer = AnswerUser(            
-        #     answer= data["respuesta"]
-        #     )
+        user_answer_exist = AnswersUser.query.filter_by(user_id=user_id).filter_by(exercise_id=id).first()
+        print(user_answer_exist)
+        
+        if correctAnswers is None:
+            return {"msg": "No existe el ejercicio"}
 
-        # db.session.add(user_answer)
-        # db.session.flush()
-        # exercise_id = user_answer.id
-        # print(exercise_id)
-        return {"correct": correct},200
+        data = request.json
+        # print(data)
+        correct = data["respuesta"] == correctAnswers.answers
+       
+        if user_answer_exist is None and correct is True:
+            user_answer = AnswersUser()
+            user_answer.user_id = user_id,
+            user_answer.exercise_id = id,
+            db.session.add(user_answer)
+            db.session.commit()
+        
+        return {"correct":correct},200
         
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+    
+@api.route('/respuestauser/<int:id>', methods=['GET']) 
+def verifica(id):
+    try:
+        users = AnswersUser.query.filter_by(user_id=id).all()
+        return jsonify(users=[user.serialize() for user in users]), 200
+    except Exception as e:
+        return jsonify({"error":str(e)}),500
     
 @api.route('/teachers', methods=['POST'])
 def create_teacher():
@@ -355,5 +357,27 @@ def get_teacher_id(teacher_id):
 
         return jsonify({"msg": "El usuario no existe"}), 400
     
+    except Exception as e:
+        return jsonify({"error":str(e)}),500
+
+@api.route('/seed', methods=['POST', 'GET'])
+def handle():
+    seed()
+    response_body = {
+        "message": "Data cargada"
+    }
+
+    return jsonify(response_body), 200
+
+@api.route('/progress/<int:id>', methods=['GET'])
+def progress_users(id):
+    try:
+        answers_user = AnswersUser.query.filter_by(user_id=id)
+        answers_number = answers_user.count()
+        last_answer = answers_user.order_by(AnswersUser.id.desc()).first()
+        print(last_answer)
+        question_all = Exercise.query.count()
+        progreso = answers_number/question_all * 100
+        return jsonify({"progress":progreso,"last_answer": last_answer.serialize()}), 200
     except Exception as e:
         return jsonify({"error":str(e)}),500
