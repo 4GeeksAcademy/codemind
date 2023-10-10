@@ -6,7 +6,7 @@ export const Navbar = () => {
   const { store } = useContext(Context);
   const { user } = store;
   const location = useLocation()
-  const defaultUserImg = "https://ui-avatars.com/api/?name=Code%20Mind&size=200&rounded=true&background=random";
+  const defaultUserImg = "https://images.squarespace-cdn.com/content/v1/5e6cfa89c315535aba12ee9d/1620070500897-0BUOX95Q8M9ZB3WQQPPR/Logo+-+Einstein+%282%29.png";
   const [userImg, setUserImg] = useState(user ? user.img : defaultUserImg);
   console.log(user)
   const [navActive, setNavActive] = useState(null)
@@ -92,7 +92,7 @@ export const Navbar = () => {
       <div id="nav-footer">
         <div id="nav-footer-heading">
           <div id="nav-footer-avatar">
-            <Link to={"/profile"}><img src={userImg} alt="Avatar" /></Link>
+            <Link to={"/profile"}><img src={userImg} alt="Avatar" className="rounded-circle"/></Link>
           </div>
           <div id="nav-footer-titlebox d-flex justify-content-center ms-2">
             <a id="nav-footer-title d-flex justify-content-end ms-2" href="#" target="_blank">
@@ -161,7 +161,7 @@ export const Navbar = () => {
     <div id="nav-footer">
       <div id="nav-footer-heading">
         <div id="nav-footer-avatar">
-          <Link to={"/profile"}><img src={userImg} alt="Avatar" /></Link>
+          <Link to={"/profile"}><img src={userImg} alt="Avatar" className="rounded-circle" /></Link>
         </div>
         <div id="nav-footer-titlebox d-flex justify-content-center ms-2">
           <a id="nav-footer-title d-flex justify-content-end ms-2" href="#" target="_blank">

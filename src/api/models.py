@@ -48,6 +48,7 @@ class Teacher(db.Model):
     password = db.Column(db.String(250), nullable=False)
     role= db.Column(db.String(250), nullable=False)
     students = db.relationship('User', back_populates='teacher')
+    
 
     def __repr__(self):
         return f'{self.firstName} {self.lastName}'
@@ -60,6 +61,7 @@ class Teacher(db.Model):
             "firstName": self.firstName,
             "lastName": self.lastName,
             "role": self.role,
+            
             "students": students
             
         }
@@ -69,7 +71,8 @@ class Teacher(db.Model):
             "id": self.id,
             "firstName": self.firstName,
             "lastName": self.lastName,
-            "role": self.role
+            "role": self.role,
+            
         }
 
 
