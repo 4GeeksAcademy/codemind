@@ -1,14 +1,15 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation , useNavigate} from "react-router-dom";
 import { Context } from "../store/appContext";
 
 export const Navbar = () => {
-  const { store } = useContext(Context);
+  const { store , actions } = useContext(Context);
   const { user } = store;
   const location = useLocation()
+  const navigate = useNavigate();
   const defaultUserImg = "https://images.squarespace-cdn.com/content/v1/5e6cfa89c315535aba12ee9d/1620070500897-0BUOX95Q8M9ZB3WQQPPR/Logo+-+Einstein+%282%29.png";
   const [userImg, setUserImg] = useState(user ? user.img : defaultUserImg);
-  console.log(user)
+ 
   const [navActive, setNavActive] = useState(null)
   useEffect(() => {
     setNavActive(location.pathname)
@@ -16,9 +17,34 @@ export const Navbar = () => {
       setUserImg(user.img || defaultUserImg)
     }else{
       setUserImg(defaultUserImg);
+      
     }
     
   },[location.pathname, user, store.user]);
+
+
+const handleLogout = async (e) => {
+    e.preventDefault();
+    console.log("Handle logout called");
+    
+    try {
+        const response = await actions.logout();
+
+        if (response.success){
+            navigate("/")
+
+        }else{
+            setErrorLogin("logout fallido.");
+        }
+
+    } catch (error) {
+        console.log(error)
+    }
+
+};
+
+
+
 
   const defaultNavbar = (
     <nav className="navbar navbar-expand-lg bg-body-tertiary ms-4 me-4 mt-3 mb-4 p-2">
@@ -107,10 +133,10 @@ export const Navbar = () => {
           </label>
         </div>
         <div id="nav-footer-content">
-          <div className="nav-item">
-            <Link to={"/"} className="btn btn-outline-primary">Log out</Link>
-          </div>
-        </div>
+  <div className="nav-item">
+    <Link to={"/"} className="btn btn-outline-primary" onClick={handleLogout} >Log out</Link>
+  </div>
+</div>
       </div>
     </div>)
 
@@ -175,38 +201,32 @@ export const Navbar = () => {
           <i className="fas fa-caret-up"></i>
         </label>
       </div>
-      <div id="nav-footer-content">
-        <div className="nav-item">
-          <Link to={"/"} className="btn btn-outline-primary">Log out</Link>
-        </div>
+   <div id="nav-footer-content">
+  <div className="nav-item">
+    <Link to={"/"} className="btn btn-outline-primary" onClick={handleLogout} >Log out</Link>
+  </div>
+
       </div>
     </div>
   </div>
   )
 
 
-  let  navbarToRender; 
-
-      if(['/registro', '/', '/login', '/forwotpassword', '/sendpassword'].includes(navActive)){
-        navbarToRender = defaultNavbar;
-
-      }else if (user && user.role==='alumno'){
-        navbarToRender = userNavbar     
-      }else if( user && user.role==='teacher'){
-        navbarToRender = teacherNavbar
-      }
-    
-      
+  const renderNavbarBasedOnRole = () => {
+    if (['/registro', '/', '/login', '/forwotpassword', '/sendpassword'].includes(navActive)) {
+      return defaultNavbar;
+    } else if (user && user.role === 'alumno') {
+      return userNavbar;
+    } else if (user && user.role === 'teacher') {
+      return teacherNavbar;
+    }
+  };
 
   return (
     <>
-
-      {
-        navbarToRender
-      }
-      {
-        console.log(navActive)
-      }
+{renderNavbarBasedOnRole()}
+    
+{console.log(navActive)}
     </>
   );
 };

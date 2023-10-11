@@ -1,7 +1,7 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import "../../styles/index.css";
 import logoCM from "../../img/LOGO.png";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation} from 'react-router-dom';
 import { Context } from "../store/appContext";
 
 export const Login = () => {
@@ -10,6 +10,7 @@ export const Login = () => {
     const [password, setPassword] = useState("");
     const [errorLogin, setErrorLogin] = useState(null);
     const navigate = useNavigate();
+    const location = useLocation()
 
     const handleEmailChange = (e) => {
         setEmail(e.target.value);
@@ -40,6 +41,11 @@ export const Login = () => {
         }
 
     };
+    const storedUserToken = localStorage.getItem('userToken')
+
+
+
+
 
     return (
         <>
