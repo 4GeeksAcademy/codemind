@@ -65,6 +65,22 @@
 			"question": "Cuanto es 1+4",
 			"info_blog": "https://support.microsoft.com/es-es/topic/c%C3%B3mo-habilitar-javascript-en-windows-88d27b37-6484-7fc0-17df-872f65168279",
 			"info_youtube": "https://www.youtube.com/watch?v=f-lBx9Bc5HA"
+		},
+		{
+			"id":9,
+			"module": "HTML",
+			"type": "SC",
+			"question": "Cuanto es 1x4",
+			"info_blog": "https://support.microsoft.com/es-es/topic/c%C3%B3mo-habilitar-javascript-en-windows-88d27b37-6484-7fc0-17df-872f65168279",
+			"info_youtube": "https://www.youtube.com/watch?v=f-lBx9Bc5HA"
+		},
+		{
+			"id":10,
+			"module": "HTML",
+			"type": "SC",
+			"question": "Cuanto es 2x4",
+			"info_blog": "https://support.microsoft.com/es-es/topic/c%C3%B3mo-habilitar-javascript-en-windows-88d27b37-6484-7fc0-17df-872f65168279",
+			"info_youtube": "https://www.youtube.com/watch?v=f-lBx9Bc5HA"
 		}
 	]
 	},
@@ -98,30 +114,65 @@
 		},
 		{
 			"id":5,
-			"answers": "3",
+			"answers": "6",
 			"isCorrect": true,
 			"exercise_id":5
 		},
 		{
 			"id":6,
-			"answers": "6",
+			"answers": "9",
 			"isCorrect": true,
 			"exercise_id":6
 		},
 
 		{
 			"id":7,
-			"answers": "6",
+			"answers": "5",
 			"isCorrect": true,
 			"exercise_id":7
 		 },
 		 {
 			"id":8,
-			"answers": "9",
+			"answers": "5",
 			"isCorrect": true,
 			"exercise_id":8
+		 },
+		 {
+			"id":9,
+			"answers": "5",
+			"isCorrect": false,
+			"exercise_id":9
+		 },
+		 {
+			"id":10,
+			"answers": "6",
+			"isCorrect": false,
+			"exercise_id":9
+		 },
+		 {
+			"id":11,
+			"answers": "4",
+			"isCorrect": true,
+			"exercise_id":9
+		 },
+		 {
+			"id":12,
+			"answers": "5",
+			"isCorrect": false,
+			"exercise_id":10
+		 },
+		 {
+			"id":13,
+			"answers": "8",
+			"isCorrect": true,
+			"exercise_id":10
+		 },
+		 {
+			"id":14,
+			"answers": "4",
+			"isCorrect": false,
+			"exercise_id":10
 		 }
-		 
 	]
 
 	},
@@ -232,26 +283,6 @@
 					"id":4,
 					"user_id": "1",
 					"exercise_id":4
-				 },
-				{
-					"id":5,
-					"user_id": "1",
-					"exercise_id":5
-				 },
-				{
-					"id":6,
-					"user_id": "1",
-					"exercise_id":6
-				 },
-				{
-					"id":7,
-					"user_id": "1",
-					"exercise_id":7
-				 },
-				 {
-					"id":8,
-					"user_id": "1",
-					"exercise_id":8
 				 }
 				 
 			]

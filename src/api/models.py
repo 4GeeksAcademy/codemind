@@ -113,18 +113,18 @@ class Exercise(db.Model):
 
         }
     
-    def fill(self):
-        answers = list(map(lambda a: a.serializes(), self.answers))
-        return {
-            "id": self.id,
-            "module": self.module,
-            "type": self.type,
-            "question": self.question,
-            "info_blog": self.info_blog,
-            "info_youtube":self.info_youtube,
-            "answers": answers
+    # def fill(self):
+    #     answers = list(map(lambda a: a.serializes(), self.answers))
+    #     return {
+    #         "id": self.id,
+    #         "module": self.module,
+    #         "type": self.type,
+    #         "question": self.question,
+    #         "info_blog": self.info_blog,
+    #         "info_youtube":self.info_youtube,
+    #         "answers": answers
 
-        }
+    #     }
 
 class Answers(db.Model):
     __tablename__ = 'answers'
@@ -147,17 +147,9 @@ class Answers(db.Model):
             "answers": self.answers,
             # "isCorrect": self.isCorrect,
             # "type": self.type,
-            "exercise_id": self.exercise_id
-        }
-    
-    def serializes(self):
-        #self.exercise.serialize()
-        return {
-            "id": self.id,
-            # "answers": self.answers,
-            # "isCorrect": self.isCorrect,
-            # "type": self.type,
-            "exercise_id": self.exercise_id
+            "exercise_id": self.exercise_id,
+            # "module" : self.exercise.module,
+            # "type" : self.exercise.type
         }
     
 class AnswersUser(db.Model):
@@ -179,6 +171,8 @@ class AnswersUser(db.Model):
             "id": self.id,
             "user_id" : self.user_id,
             "exercise_id" : self.exercise_id,
+            "module" : self.exercise.module,
+            "type" : self.exercise.type
         }
     
 def seed():

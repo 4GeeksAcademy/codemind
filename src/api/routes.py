@@ -227,8 +227,26 @@ def get_exercise():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
+@api.route('/exercises/<string:module>', methods=['GET'])
+def get_exercises_by_module(module):
+    try:
+        exercises = Exercise.query.filter_by(module=module.upper()).all()
+        type = list(map(lambda a: a.type, exercises))
+        print(type)
+        if exercises:
+            # if type == "FIB":
+                # fib_exercises = [exercise.fill() for exercise in exercises]
+                # return jsonify({"exercises": fib_exercises}), 200
+            # elif exercises.type == "SC":
+                exercises = [exercise.serialize() for exercise in exercises]
+                return jsonify({"exercises": exercises}), 200
+        else:
+            return jsonify({"msg": "No se encontraron ejercicios para el tipo de módulo especificado"}), 404
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
 @api.route('/exercises/<string:module>/<string:type>', methods=['GET'])
-def get_exercises_by_module(module,type):
+def get_exercises_by_moduletype(module,type):
     exercises = Exercise.query.filter_by(module=module.upper()).filter_by(type=type.upper()).all()
     print(exercises)
     if exercises:
