@@ -281,6 +281,8 @@ def verificar_respuesta(id):
             user_answer = AnswersUser()
             user_answer.user_id = user_id,
             user_answer.exercise_id = id,
+            user_answer.module = correctAnswers.module,
+            user_answer.type = correctAnswers.type,
             db.session.add(user_answer)
             db.session.commit()
         
@@ -396,6 +398,18 @@ def progress_users(id):
         print(last_answer)
         question_all = Exercise.query.count()
         progreso = answers_number/question_all * 100
+        return jsonify({"progress":progreso,"last_answer": last_answer.serialize()}), 200
+    except Exception as e:
+        return jsonify({"error":str(e)}),500
+
+@api.route('/progress/<string:module>/<int:id>', methods=['GET'])
+def progress_users_module(id,module):
+    try:
+        answers_user = AnswersUser.query.filter_by(user_id=id).filter_by(module=module.upper())
+        answers_number = answers_user.count()
+        last_answer = answers_user.order_by(AnswersUser.id.desc()).first()
+        question_all_module = Exercise.query.filter_by(module=module.upper()).count()
+        progreso = answers_number/question_all_module * 100
         return jsonify({"progress":progreso,"last_answer": last_answer.serialize()}), 200
     except Exception as e:
         return jsonify({"error":str(e)}),500

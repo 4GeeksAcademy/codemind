@@ -91,87 +91,115 @@
 			"id":1,
 			"answers": "6",
 			"isCorrect": true,
-			"exercise_id":1
+			"exercise_id":1,
+			"module": "HTML",
+    		"type": "FIB"
 		 },
 		 {
 			"id":2,
 			"answers": "9",
 			"isCorrect": true,
-			"exercise_id":2
+			"exercise_id":2,
+			"module": "HTML",
+    		"type": "FIB"
 		 },
 		 {
 			"id":3,
 			"answers": "5",
 			"isCorrect": true,
-			"exercise_id":3
+			"exercise_id":3,
+			"module": "CSS",
+    		"type": "FIB"
 		 },
 		
 		{
 			"id":4,
 			"answers": "5",
 			"isCorrect": true,
-			"exercise_id":4
+			"exercise_id":4,
+			"module": "HTML",
+			"type": "FIB"
 		},
 		{
 			"id":5,
 			"answers": "6",
 			"isCorrect": true,
-			"exercise_id":5
+			"exercise_id":5,
+			"module": "HTML",
+    		"type": "FIB"
 		},
 		{
 			"id":6,
 			"answers": "9",
 			"isCorrect": true,
-			"exercise_id":6
+			"exercise_id":6,
+			"module": "HTML",
+    		"type": "FIB"
 		},
 
 		{
 			"id":7,
 			"answers": "5",
 			"isCorrect": true,
-			"exercise_id":7
+			"exercise_id":7,
+			"module": "CSS",
+    		"type": "FIB"
 		 },
 		 {
 			"id":8,
 			"answers": "5",
 			"isCorrect": true,
-			"exercise_id":8
+			"exercise_id":8,
+			"module": "HTML",
+			"type": "FIB"
 		 },
 		 {
 			"id":9,
 			"answers": "5",
 			"isCorrect": false,
-			"exercise_id":9
+			"exercise_id":9,
+			"module": "HTML",
+			"type": "SC"
 		 },
 		 {
 			"id":10,
 			"answers": "6",
 			"isCorrect": false,
-			"exercise_id":9
+			"exercise_id":9,
+			"module": "HTML",
+			"type": "SC"
 		 },
 		 {
 			"id":11,
 			"answers": "4",
 			"isCorrect": true,
-			"exercise_id":9
+			"exercise_id":9,
+			"module": "HTML",
+			"type": "SC"
 		 },
 		 {
 			"id":12,
 			"answers": "5",
 			"isCorrect": false,
-			"exercise_id":10
+			"exercise_id":10,
+			"module": "HTML",
+			"type": "SC"
 		 },
 		 {
 			"id":13,
 			"answers": "8",
 			"isCorrect": true,
-			"exercise_id":10
+			"exercise_id":10,
+			"module": "HTML",
+			"type": "SC"
 		 },
 		 {
 			"id":14,
 			"answers": "4",
 			"isCorrect": false,
-			"exercise_id":10
+			"exercise_id":10,
+			"module": "HTML",
+			"type": "SC"
 		 }
 	]
 
@@ -283,6 +311,7 @@
 					"id":4,
 					"user_id": "1",
 					"exercise_id":4
+
 				 }
 				 
 			]
