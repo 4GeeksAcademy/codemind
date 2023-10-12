@@ -9,6 +9,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			exercises : [],
 			simpleChoice:[],
 			last_answer:[],
+			respuestaUser : [],
 			progress: null,
 			progressModule: null,
 
@@ -59,6 +60,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 				getActions().changeColor(0, "green");
 			},
 
+			getRespuestaUser: async (id) => {
+				try{
+
+					// fetching data from the backend
+					const resp = await fetch(process.env.BACKEND_URL + `/api/respuestauser/${id}`)
+					const data = await resp.json()
+					const respuestaUser = data.respuestas
+					setStore({respuestaUser})
+					console.log(respuestaUser)
+					// don't forget to return something, that is how the async resolves
+					return data;
+				} catch (error) {
+					console.log("Error loading message from backend", error)
+				}
+			},
+
 			getProgreso: async (id) => {
 				try{
 
@@ -105,6 +122,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				} catch (error) {
 					console.log("Error loading message from backend", error)
 				}
+			},
+
+			UpdateLastAnswer: (pregunta) =>{
+					setStore({last_answer : pregunta})
 			},
 			
 			getVerificar : async(id,respuesta)=>{	
@@ -154,25 +175,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log("Error loading message from backend", error)
 				}
 			},
-
-
-
-			// getSimpleChoice: async (module) => {
-			// 	try{
-
-			// 		// fetching data from the backend
-			// 		const resp = await fetch(process.env.BACKEND_URL + `/api/exercises/${module}/sc`)
-			// 		const data = await resp.json()
-
-			// 		const exercises = data.exercises
-			// 		setStore({ simpleChoice:exercises})
-
-			// 		// don't forget to return something, that is how the async resolves
-			// 		return data;
-			// 	} catch (error) {
-			// 		console.log("Error loading message from backend", error)
-			// 	}
-			// },
 			
 			getMessage: async () => {
 				try {

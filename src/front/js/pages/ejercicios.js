@@ -3,13 +3,13 @@ import { Context } from "../store/appContext";
 import "../../styles/index.css";
 import { Link,useParams } from "react-router-dom";
 import {PreguntaCompletar} from "./fillInTheBlank.js"
-// import {SimpleChoice} from "./simpleChoice.js"
 
 
 export const Ejercicios = () => {
   const {modulo} = useParams();
   const { store, actions } = useContext(Context);
-  const last_answer= store.last_answer.exercise_id
+  const last_answer= store.exercises.findIndex((exercise)=>exercise.id=== store.last_answer.exercise_id)+2
+
   useEffect(()=>{
     actions.getExercises(modulo)
   },[])
@@ -22,6 +22,15 @@ export const Ejercicios = () => {
     actions.getLastAnswerModule(store.user.id,modulo)
   },[])
 
+  useEffect(()=>{
+    actions.getRespuestaUser(store.user.id)
+  },[])
+  
+
+  const respuestaCorrecta = (exercise_id) => {
+    const respuesta = store.respuestaUser.includes(exercise_id)
+    return respuesta
+    };
  
   const progresoActual = () => {
     const progreso = store.progressModule
@@ -46,24 +55,19 @@ export const Ejercicios = () => {
       Preguntas
       </div>
     {store.exercises.map((exercise, indice) =>
-        // <Link to = {`./${indice+1}`}>
           <div key={indice} className="form-control my-2 d-flex justify-content-between">
         <span>{indice+1} - {exercise.question}</span>
-        <span><i className="fas fa-check-circle" style={{color: `#1f5122`}}></i></span>
+        {respuestaCorrecta(exercise.id) && (<span><i className="fas fa-check-circle" style={{color: `#1f5122`}}></i></span>)}
       </div>
-      // </Link>
       )}
       <div className="d-flex justify-content-between">
       <Link to="/modules" >
         <button className="btn btn-primary mt-5">Regresar a módulos</button>
       </Link>
-      <Link to= {`./${last_answer}`}>
+      <Link to={ last_answer < store.exercises.length ? `./${last_answer}` : `./${store.exercises.length}`}>
         <button className="btn btn-primary mt-5">Continuar</button>
       </Link>
       </div>
-      
-    {/* <PreguntaCompletar/> */}
-    {/* <SimpleChoice/> */}
     </div>
     </div>
     </div>

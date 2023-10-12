@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext  } from 'react';
 import { Context } from "../store/appContext";
-import { useParams} from "react-router-dom";
+import { useParams ,useNavigate} from "react-router-dom";
 import Swal from 'sweetalert2'
 import {Link} from "react-router-dom";
 
@@ -11,6 +11,7 @@ export const PreguntaCompletar = () => {
   const [respuesta, setRespuesta] = useState('');
   const [respuestaCorrecta, setRespuestaCorrecta] = useState(false);
   const exercise_actual = store.exercises.find((exercise,indice)=>(indice+1)=== parseInt(theid))
+  const navigate = useNavigate()
   
   useEffect(()=>{
     actions.getExercises(modulo)
@@ -19,7 +20,7 @@ export const PreguntaCompletar = () => {
   useEffect(()=>{
     actions.getLastAnswerModule(store.user.id,modulo)
   },[])
-  console.log(store.last_answer.exercise_id)
+  console.log(store.last_answer.id)
 
 
   const handleRespuestaChange = (event) => {
@@ -57,21 +58,17 @@ export const PreguntaCompletar = () => {
       if (respuestaCorrecta && theid < store.exercises.length) {
         setRespuesta('');
         setRespuestaCorrecta(false); // Reinicia la respuesta correcta
+        actions.UpdateLastAnswer(exercise_actual);
+        navigate( `/preguntas/${modulo}/${parseInt(theid) + 1}`)
       } else {
         Swal.fire(
           'Excelente!',
           'Has completado todas las preguntas.',
           'success'
-        )
-      }
+          )
+          navigate('/modules')
+        }
     }
-    
-  // const progresoActual = () => {
-  //   const progreso=(preguntaActual+1)/(store.fib?.length)*100
-  //   return progreso
-  //   };
-
-  
   
   return (
     <div className="container-fluid">
@@ -106,14 +103,11 @@ export const PreguntaCompletar = () => {
         </Link>
         <button className="btn btn-success" onClick={verificarRespuesta}>Verificar</button>
         <div>
-       
-        <Link to={parseInt(theid) + 1 <= store.exercises.length ? `/preguntas/${modulo}/${parseInt(theid) + 1}` : '#'}>
           {respuestaCorrecta && (
            <button className="btn btn-primary" onClick={avanzarPregunta}>
             Siguiente
           </button>
           )}
-        </Link>
         </div>
         </div>
        </div>
