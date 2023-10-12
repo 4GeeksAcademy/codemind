@@ -20,7 +20,7 @@
 		},
 		{
 			"id": 3,
-			"module": "CSS",
+			"module": "HTML",
     		"type": "FIB",
     		"question": "Cuanto es 2+3",
     		"info_blog": "https://blog.hubspot.es/website/html",
@@ -52,7 +52,7 @@
 		},
 		{
 			"id": 7,
-			"module": "CSS",
+			"module": "HTML",
     		"type": "FIB",
     		"question": "Cuanto es 2+3",
     		"info_blog": "https://blog.hubspot.es/website/html",
@@ -77,6 +77,38 @@
 		{
 			"id":10,
 			"module": "HTML",
+			"type": "SC",
+			"question": "Cuanto es 2x4",
+			"info_blog": "https://support.microsoft.com/es-es/topic/c%C3%B3mo-habilitar-javascript-en-windows-88d27b37-6484-7fc0-17df-872f65168279",
+			"info_youtube": "https://www.youtube.com/watch?v=f-lBx9Bc5HA"
+		},
+		{
+			"id": 11,
+			"module": "CSS",
+    		"type": "FIB",
+    		"question": "Cuanto es 3+3",
+    		"info_blog": "https://blog.hubspot.es/website/html",
+    		"info_youtube": "https://www.youtube.com/watch?v=rkxHd9SUBGU"
+		},
+		{
+			"id": 12,
+			"module": "CSS",
+    		"type": "FIB",
+    		"question": "Cuanto es 3x3",
+    		"info_blog": "https://blog.hubspot.es/website/html",
+    		"info_youtube": "https://www.youtube.com/watch?v=rkxHd9SUBGU"
+		},
+		{
+			"id":13,
+			"module": "CSS",
+			"type": "SC",
+			"question": "Cuanto es 1x4",
+			"info_blog": "https://support.microsoft.com/es-es/topic/c%C3%B3mo-habilitar-javascript-en-windows-88d27b37-6484-7fc0-17df-872f65168279",
+			"info_youtube": "https://www.youtube.com/watch?v=f-lBx9Bc5HA"
+		},
+		{
+			"id":14,
+			"module": "CSS",
 			"type": "SC",
 			"question": "Cuanto es 2x4",
 			"info_blog": "https://support.microsoft.com/es-es/topic/c%C3%B3mo-habilitar-javascript-en-windows-88d27b37-6484-7fc0-17df-872f65168279",
@@ -108,7 +140,7 @@
 			"answers": "5",
 			"isCorrect": true,
 			"exercise_id":3,
-			"module": "CSS",
+			"module": "HTML",
     		"type": "FIB"
 		 },
 		
@@ -142,7 +174,7 @@
 			"answers": "5",
 			"isCorrect": true,
 			"exercise_id":7,
-			"module": "CSS",
+			"module": "HTML",
     		"type": "FIB"
 		 },
 		 {
@@ -199,6 +231,70 @@
 			"isCorrect": false,
 			"exercise_id":10,
 			"module": "HTML",
+			"type": "SC"
+		 },
+		 {
+			"id":15,
+			"answers": "6",
+			"isCorrect": true,
+			"exercise_id":11,
+			"module": "CSS",
+    		"type": "FIB"
+		 },
+		 {
+			"id":16,
+			"answers": "9",
+			"isCorrect": true,
+			"exercise_id":12,
+			"module": "CSS",
+    		"type": "FIB"
+		 },
+		 {
+			"id":17,
+			"answers": "5",
+			"isCorrect": false,
+			"exercise_id":13,
+			"module": "CSS",
+			"type": "SC"
+		 },
+		 {
+			"id":18,
+			"answers": "6",
+			"isCorrect": false,
+			"exercise_id":13,
+			"module": "CSS",
+			"type": "SC"
+		 },
+		 {
+			"id":19,
+			"answers": "4",
+			"isCorrect": true,
+			"exercise_id":13,
+			"module": "CSS",
+			"type": "SC"
+		 },
+		 {
+			"id":20,
+			"answers": "5",
+			"isCorrect": false,
+			"exercise_id":14,
+			"module": "CSS",
+			"type": "SC"
+		 },
+		 {
+			"id":21,
+			"answers": "8",
+			"isCorrect": true,
+			"exercise_id":14,
+			"module": "CSS",
+			"type": "SC"
+		 },
+		 {
+			"id":22,
+			"answers": "4",
+			"isCorrect": false,
+			"exercise_id":14,
+			"module": "CSS",
 			"type": "SC"
 		 }
 	]

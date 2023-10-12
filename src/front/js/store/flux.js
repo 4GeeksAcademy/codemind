@@ -96,7 +96,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					// fetching data from the backend
 					const resp = await fetch(process.env.BACKEND_URL + `/api/progress/${module}/${id}`)
 					const data = await resp.json()
-					const progressModule = data.last_answer
+					const last_answer = data.last_answer
 					setStore({last_answer})
 					console.log(last_answer)
 					// don't forget to return something, that is how the async resolves
