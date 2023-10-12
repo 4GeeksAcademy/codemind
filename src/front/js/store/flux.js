@@ -4,9 +4,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 	return {
 		store: {
+			token: null,
 			message: null,
 			fib : [],
 			simpleChoice:[],
+			progress: null,
 
 			demo: [
 				{
@@ -54,14 +56,36 @@ const getState = ({ getStore, getActions, setStore }) => {
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
 			},
+
+			getProgreso: async (id) => {
+				try{
+
+					// fetching data from the backend
+					const resp = await fetch(process.env.BACKEND_URL + `/api/progress/${id}`)
+					const data = await resp.json()
+					const progress = data.progress
+					setStore({progress})
+					console.log(progress)
+					// don't forget to return something, that is how the async resolves
+					return data;
+				} catch (error) {
+					console.log("Error loading message from backend", error)
+				}
+			},
 			
 			getVerificar : async(id,respuesta)=>{	
 
 				const url = process.env.BACKEND_URL + `api/verificar-respuesta/${id}`
+				const token= localStorage.getItem('userToken')
+				console.log(JSON.stringify(token))
 				const options = {
 						method:  'POST',
 						body: JSON.stringify({respuesta}),
-						headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'}
+						headers: {
+							'Content-Type': 'application/json', 
+							'Access-Control-Allow-Origin': '*',
+							'Authorization': `Bearer ${token}`
+						}
 					}
 				try {
 					const resp = await fetch(url, options)

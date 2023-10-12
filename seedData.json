@@ -1,0 +1,260 @@
+[
+	{
+	"target_class":"Exercise",
+	"data":[
+		{
+			"id": 1,
+			"module": "HTML",
+    		"type": "FIB",
+    		"question": "Cuanto es 3+3",
+    		"info_blog": "https://blog.hubspot.es/website/html",
+    		"info_youtube": "https://www.youtube.com/watch?v=rkxHd9SUBGU"
+		},
+		{
+			"id": 2,
+			"module": "HTML",
+    		"type": "FIB",
+    		"question": "Cuanto es 3x3",
+    		"info_blog": "https://blog.hubspot.es/website/html",
+    		"info_youtube": "https://www.youtube.com/watch?v=rkxHd9SUBGU"
+		},
+		{
+			"id": 3,
+			"module": "CSS",
+    		"type": "FIB",
+    		"question": "Cuanto es 2+3",
+    		"info_blog": "https://blog.hubspot.es/website/html",
+    		"info_youtube": "https://www.youtube.com/watch?v=rkxHd9SUBGU"
+		},
+		{
+			"id":4,
+			"module": "HTML",
+			"type": "FIB",
+			"question": "Cuanto es 1+4",
+			"info_blog": "https://support.microsoft.com/es-es/topic/c%C3%B3mo-habilitar-javascript-en-windows-88d27b37-6484-7fc0-17df-872f65168279",
+			"info_youtube": "https://www.youtube.com/watch?v=f-lBx9Bc5HA"
+		},
+		{
+			"id": 5,
+			"module": "HTML",
+    		"type": "FIB",
+    		"question": "Cuanto es 3+3",
+    		"info_blog": "https://blog.hubspot.es/website/html",
+    		"info_youtube": "https://www.youtube.com/watch?v=rkxHd9SUBGU"
+		},
+		{
+			"id": 6,
+			"module": "HTML",
+    		"type": "FIB",
+    		"question": "Cuanto es 3x3",
+    		"info_blog": "https://blog.hubspot.es/website/html",
+    		"info_youtube": "https://www.youtube.com/watch?v=rkxHd9SUBGU"
+		},
+		{
+			"id": 7,
+			"module": "CSS",
+    		"type": "FIB",
+    		"question": "Cuanto es 2+3",
+    		"info_blog": "https://blog.hubspot.es/website/html",
+    		"info_youtube": "https://www.youtube.com/watch?v=rkxHd9SUBGU"
+		},
+		{
+			"id":8,
+			"module": "HTML",
+			"type": "FIB",
+			"question": "Cuanto es 1+4",
+			"info_blog": "https://support.microsoft.com/es-es/topic/c%C3%B3mo-habilitar-javascript-en-windows-88d27b37-6484-7fc0-17df-872f65168279",
+			"info_youtube": "https://www.youtube.com/watch?v=f-lBx9Bc5HA"
+		}
+	]
+	},
+	{
+	"target_class":"Answers",
+	"data":[
+		{
+			"id":1,
+			"answers": "6",
+			"isCorrect": true,
+			"exercise_id":1
+		 },
+		 {
+			"id":2,
+			"answers": "9",
+			"isCorrect": true,
+			"exercise_id":2
+		 },
+		 {
+			"id":3,
+			"answers": "5",
+			"isCorrect": true,
+			"exercise_id":3
+		 },
+		
+		{
+			"id":4,
+			"answers": "5",
+			"isCorrect": true,
+			"exercise_id":4
+		},
+		{
+			"id":5,
+			"answers": "3",
+			"isCorrect": true,
+			"exercise_id":5
+		},
+		{
+			"id":6,
+			"answers": "6",
+			"isCorrect": true,
+			"exercise_id":6
+		},
+
+		{
+			"id":7,
+			"answers": "6",
+			"isCorrect": true,
+			"exercise_id":7
+		 },
+		 {
+			"id":8,
+			"answers": "9",
+			"isCorrect": true,
+			"exercise_id":8
+		 }
+		 
+	]
+
+	},
+
+	{
+		"target_class":"User",
+		"data":[
+			{
+				"firstName":"JJ",
+				"lastName": "aaa",
+				"email": "j@gmail.com",
+				"password":"$2b$10$9g2w9XOeW9US6yiMXu/ReO2foc6hl9HN4FjRPBgO7gR801II524LS",
+				"role" : "alumno",
+				"img" : "x"
+			 },
+			 {
+				"firstName":"JdJ",
+				"lastName": "aaaa",
+				"email": "ja@gmail.com",
+				"password":"$2b$10$9g2w9XOeW9US6yiMXu/ReO2foc6hl9HN4FjRPBgO7gR801II524LS",
+				"role" : "alumno",
+				"img" : "x"
+			 },
+			 {
+				"firstName":"JaaJ",
+				"lastName": "aaa",
+				"email": "jp@gmail.com",
+				"password":"$2b$10$9g2w9XOeW9US6yiMXu/ReO2foc6hl9HN4FjRPBgO7gR801II524LS",
+				"role" : "alumno",
+				"img" : "x"
+			 },
+			 {
+				"firstName":"JaaaJ",
+				"lastName": "aaa",
+				"email": "j1@gmail.com",
+				"password":"$2b$10$9g2w9XOeW9US6yiMXu/ReO2foc6hl9HN4FjRPBgO7gR801II524LS",
+				"role" : "alumno",
+				"img" : "x"
+			 }
+			 
+		]
+	
+		},
+
+		{
+		"target_class":"User",
+		"data":[
+			{
+				"id" : "1",
+				"firstName":"JJ",
+				"lastName": "aaa",
+				"email": "a@gmail.com",
+				"password":"$2b$10$9g2w9XOeW9US6yiMXu/ReO2foc6hl9HN4FjRPBgO7gR801II524LS",
+				"role" : "alumno",
+				"img" : "x"
+			 },
+			 {
+				"id" : "2",
+				"firstName":"JdJ",
+				"lastName": "aaaa",
+				"email": "b@gmail.com",
+				"password":"$2b$10$9g2w9XOeW9US6yiMXu/ReO2foc6hl9HN4FjRPBgO7gR801II524LS",
+				"role" : "alumno",
+				"img" : "x"
+			 },
+			 {
+				"id" : "3",
+				"firstName":"JaaJ",
+				"lastName": "aaa",
+				"email": "c@gmail.com",
+				"password":"$2b$10$9g2w9XOeW9US6yiMXu/ReO2foc6hl9HN4FjRPBgO7gR801II524LS",
+				"role" : "alumno",
+				"img" : "x"
+			 },
+			 {
+				"id" : "4",
+				"firstName":"JaaaJ",
+				"lastName": "aaa",
+				"email": "d@gmail.com",
+				"password":"$2b$10$9g2w9XOeW9US6yiMXu/ReO2foc6hl9HN4FjRPBgO7gR801II524LS",
+				"role" : "alumno",
+				"img" : "x"
+			 }
+			 
+		]
+	
+		},
+
+		{
+			"target_class":"AnswersUser",
+			"data":[
+				{
+					"id":1,
+					"user_id": "1",
+					"exercise_id":1
+				 },
+				{
+					"id":2,
+					"user_id": "1",
+					"exercise_id":2
+				 },
+				{
+					"id":3,
+					"user_id": "1",
+					"exercise_id":3
+				 },
+				{
+					"id":4,
+					"user_id": "1",
+					"exercise_id":4
+				 },
+				{
+					"id":5,
+					"user_id": "1",
+					"exercise_id":5
+				 },
+				{
+					"id":6,
+					"user_id": "1",
+					"exercise_id":6
+				 },
+				{
+					"id":7,
+					"user_id": "1",
+					"exercise_id":7
+				 },
+				 {
+					"id":8,
+					"user_id": "1",
+					"exercise_id":8
+				 }
+				 
+			]
+		
+			}
+]
