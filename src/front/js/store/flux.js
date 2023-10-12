@@ -1,5 +1,6 @@
 const getState = ({ getStore, getActions, setStore }) => {
-	const storedUser = JSON.parse(localStorage.getItem('userData'));
+	const storedUserData = localStorage.getItem('userData');
+  const initialUser = storedUserData ? JSON.parse(storedUserData) : null;
 
 	return {
 		store: {
@@ -46,7 +47,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				},
 				
 			],
-			user: storedUser || null ,
+			user: initialUser ,
 
 			teachers: null, 
 			teacherData: null,
@@ -304,6 +305,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						const updatedUser = { ...user, ...data };
 						await setStore({ user: updatedUser });
 						localStorage.setItem('userData', JSON.stringify(updatedUser));
+						console.log(user)
 					} else {
 						console.error('La solicitud no se realizó con éxito');
 					}
@@ -335,7 +337,59 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.error(error)
 				}
 			},
+			logout: async()=>{
+				const token = localStorage.getItem('userToken');
+				if (!token) {
+					console.error('No se encontró un token en localStorage');
+					return;
+				}
+				const url = process.env.BACKEND_URL + '/api/logout';
+				const options = {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+						'Access-Control-Allow-Origin': '*',
+						'Authorization' : 'Bearer ' + token
+					}
+					
+				}
+				try {
+					const resp = await fetch(url, options);
+					if (resp.ok) {
+						localStorage.removeItem('userToken');
+						localStorage.removeItem('userData');
+						return { success: true };
+					} else {
+						console.error('La solicitud de logout no se realizó con éxito');
+					}
+				} catch (error) {
+					console.error(error);
+				}
+			},
+			checkToken: async(token)=>{
 
+				const url = process.env.BACKEND_URL + '/api/check-token';
+				const options = {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+						'Access-Control-Allow-Origin': '*',
+						'Authorization' : 'Bearer ' + token
+					}
+					
+				}
+				try {
+					const resp = await fetch(url, options);
+					if (resp.ok) {
+						const data = JSON.stringify(resp.json)
+						return data;
+					} else {
+						console.error('La solicitud de logout no se realizó con éxito');
+					}
+				} catch (error) {
+					console.error(error);
+				}
+			}
 		}
 	};
 };

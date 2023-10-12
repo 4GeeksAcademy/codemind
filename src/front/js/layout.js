@@ -49,6 +49,7 @@ const Layout = () => {
         
             {/* {!isLoginPage &&!isRegistroPage && !isIndexPage && !isforwotpassword && !isSendpassword && } */}
             <Navbar />
+            
             <Routes>
               <Route element={<Landing />} path="/" />
               <Route element={<Index />} path="/Index" />
