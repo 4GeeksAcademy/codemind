@@ -3,7 +3,6 @@ import { Context } from "../store/appContext";
 import "../../styles/index.css";
 import { Link,useParams } from "react-router-dom";
 import {PreguntaCompletar} from "./fillInTheBlank.js"
-// import {SimpleChoice} from "./simpleChoice.js"
 
 
 export const Ejercicios = () => {
@@ -66,13 +65,9 @@ export const Ejercicios = () => {
         <button className="btn btn-primary mt-5">Regresar a módulos</button>
       </Link>
       <Link to={ last_answer < store.exercises.length ? `./${last_answer}` : `./${store.exercises.length}`}>
-      {/* <Link to= {`./${last_answer}`}> */}
         <button className="btn btn-primary mt-5">Continuar</button>
       </Link>
       </div>
-      
-    {/* <PreguntaCompletar/> */}
-    {/* <SimpleChoice/> */}
     </div>
     </div>
     </div>
