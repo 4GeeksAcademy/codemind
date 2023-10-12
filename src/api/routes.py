@@ -14,6 +14,7 @@ app = Flask(__name__)
 bcrypt = Bcrypt(app)
 
 
+
 @api.route('/hello', methods=['POST', 'GET'])
 def handle_hello():
 
@@ -55,6 +56,8 @@ def get_users():
         return jsonify(users=[user.serialize() for user in users]), 200
     except Exception as e:
         return jsonify({"error":str(e)}),500
+    
+
 
 @api.route('/user/<int:user_id>', methods=['GET'])
 def get_user_id(user_id):
@@ -113,53 +116,53 @@ def put_user_id(user_id):
     except Exception as e:
         return jsonify({"error": str(e)}), 500
     
+
 @api.route('/login', methods=['POST']) 
-def login_user():
+def login():
     # Obtenemos los campos del cuerpo de la petición
     email = request.json.get("email")
     password = request.json.get("password")
     
     # Busca al usuario en la tabla de usuarios
     user = User.query.filter_by(email=email).first()
+    teacher = Teacher.query.filter_by(email=email).first()
     
-    # Si el usuario no se encuentra en la tabla de usuarios, busca en la tabla de profesores
-    if user is None:
-        teacher = Teacher.query.filter_by(email=email).first()
-        
-        # Si tampoco se encuentra en la tabla de profesores, retorna un error
-        if teacher is None:
-            return jsonify({"message": "User not found"}), 404
-        
-        # Si se encuentra en la tabla de profesores, verifica la contraseña
-        if not bcrypt.check_password_hash(teacher.password, password):
-            return jsonify({"message": "Wrong password"}), 401
-        
-        # Si las credenciales son correctas, genera el token
-        token = create_access_token(identity=teacher.id, additional_claims={"role": "teacher"})
-        teacher_data = {
-            "id": teacher.id,
-            "firstName": teacher.firstName,
-            "lastName": teacher.lastName,
-            "email": teacher.email,
-            "role": teacher.role
-        }
-        return jsonify({"message": "Login successful", "token": token, "user": teacher_data}), 200
-    
-    # Si el usuario se encuentra en la tabla de usuarios, verifica la contraseña
-    if not bcrypt.check_password_hash(user.password, password):
-        return jsonify({"message": "Wrong password"}), 401
-    
-    # Si las credenciales son correctas, genera el token para el usuario
-    token = create_access_token(identity=user.id, additional_claims={"role": "admin"})
-    user_data = {
-        "id": user.id,
-        "firstName": user.firstName,
-        "lastName": user.lastName,
-        "email": user.email,
-        "role": user.role,
-        "img": user.img,
-        "teacher": user.teacher
-    }
+    if user:
+        # Verifica la contraseña para usuarios
+        if bcrypt.check_password_hash(user.password, password):
+            identity = user.id
+            user_data = {
+                "id": user.id,
+                "firstName": user.firstName,
+                "lastName": user.lastName,
+                "email": user.email,
+                "role": user.role,
+                "img": user.img,
+                "teacher": user.teacher
+            }
+        else:
+            return jsonify({"message": "Wrong password"}, 401)
+    elif teacher:
+        # Verifica la contraseña para profesores
+        if bcrypt.check_password_hash(teacher.password, password):
+            identity = teacher.id
+            user_data = {
+                "id": teacher.id,
+                "firstName": teacher.firstName,
+                "lastName": teacher.lastName,
+                "email": teacher.email,
+                "role": teacher.role
+            }
+        else:
+            return jsonify({"message": "Wrong password"}, 401)
+    else:
+        return jsonify({"message": "User not found"}, 404)
+
+    # Genera el token basado en el rol
+    role = "teacher" if teacher else "user"
+    token = create_access_token(identity=identity, additional_claims={"role": role , "email": email})
+
+
     return jsonify({"message": "Login successful", "token": token, "user": user_data}), 200
 
 @api.route('/private') 
@@ -360,6 +363,18 @@ def get_teacher_id(teacher_id):
     except Exception as e:
         return jsonify({"error":str(e)}),500
 
+@api.route('/check-token', methods=['POST'])
+@jwt_required()
+def check_token():
+    jti = get_jwt()["jti"]
+    # Verificar si el jti está en la tabla TokenBlockList
+    blocked_token = TokenBlockedList.query.filter_by(token=jti).first()
+
+    if blocked_token:
+        return jsonify({"Success": True, "msg": "Token bloqueado"}), 200
+    else:
+        return jsonify({"Success": False, "msg": "Token no bloqueado"}), 200
+
 @api.route('/seed', methods=['POST', 'GET'])
 def handle():
     seed()
@@ -381,3 +396,4 @@ def progress_users(id):
         return jsonify({"progress":progreso,"last_answer": last_answer.serialize()}), 200
     except Exception as e:
         return jsonify({"error":str(e)}),500
+
