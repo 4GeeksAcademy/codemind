@@ -20,7 +20,7 @@
 		},
 		{
 			"id": 3,
-			"module": "CSS",
+			"module": "HTML",
     		"type": "FIB",
     		"question": "Cuanto es 2+3",
     		"info_blog": "https://blog.hubspot.es/website/html",
@@ -52,7 +52,7 @@
 		},
 		{
 			"id": 7,
-			"module": "CSS",
+			"module": "HTML",
     		"type": "FIB",
     		"question": "Cuanto es 2+3",
     		"info_blog": "https://blog.hubspot.es/website/html",
@@ -65,6 +65,54 @@
 			"question": "Cuanto es 1+4",
 			"info_blog": "https://support.microsoft.com/es-es/topic/c%C3%B3mo-habilitar-javascript-en-windows-88d27b37-6484-7fc0-17df-872f65168279",
 			"info_youtube": "https://www.youtube.com/watch?v=f-lBx9Bc5HA"
+		},
+		{
+			"id":9,
+			"module": "HTML",
+			"type": "SC",
+			"question": "Cuanto es 1x4",
+			"info_blog": "https://support.microsoft.com/es-es/topic/c%C3%B3mo-habilitar-javascript-en-windows-88d27b37-6484-7fc0-17df-872f65168279",
+			"info_youtube": "https://www.youtube.com/watch?v=f-lBx9Bc5HA"
+		},
+		{
+			"id":10,
+			"module": "HTML",
+			"type": "SC",
+			"question": "Cuanto es 2x4",
+			"info_blog": "https://support.microsoft.com/es-es/topic/c%C3%B3mo-habilitar-javascript-en-windows-88d27b37-6484-7fc0-17df-872f65168279",
+			"info_youtube": "https://www.youtube.com/watch?v=f-lBx9Bc5HA"
+		},
+		{
+			"id": 11,
+			"module": "CSS",
+    		"type": "FIB",
+    		"question": "Cuanto es 3+3",
+    		"info_blog": "https://blog.hubspot.es/website/html",
+    		"info_youtube": "https://www.youtube.com/watch?v=rkxHd9SUBGU"
+		},
+		{
+			"id": 12,
+			"module": "CSS",
+    		"type": "FIB",
+    		"question": "Cuanto es 3x3",
+    		"info_blog": "https://blog.hubspot.es/website/html",
+    		"info_youtube": "https://www.youtube.com/watch?v=rkxHd9SUBGU"
+		},
+		{
+			"id":13,
+			"module": "CSS",
+			"type": "SC",
+			"question": "Cuanto es 1x4",
+			"info_blog": "https://support.microsoft.com/es-es/topic/c%C3%B3mo-habilitar-javascript-en-windows-88d27b37-6484-7fc0-17df-872f65168279",
+			"info_youtube": "https://www.youtube.com/watch?v=f-lBx9Bc5HA"
+		},
+		{
+			"id":14,
+			"module": "CSS",
+			"type": "SC",
+			"question": "Cuanto es 2x4",
+			"info_blog": "https://support.microsoft.com/es-es/topic/c%C3%B3mo-habilitar-javascript-en-windows-88d27b37-6484-7fc0-17df-872f65168279",
+			"info_youtube": "https://www.youtube.com/watch?v=f-lBx9Bc5HA"
 		}
 	]
 	},
@@ -75,53 +123,180 @@
 			"id":1,
 			"answers": "6",
 			"isCorrect": true,
-			"exercise_id":1
+			"exercise_id":1,
+			"module": "HTML",
+    		"type": "FIB"
 		 },
 		 {
 			"id":2,
 			"answers": "9",
 			"isCorrect": true,
-			"exercise_id":2
+			"exercise_id":2,
+			"module": "HTML",
+    		"type": "FIB"
 		 },
 		 {
 			"id":3,
 			"answers": "5",
 			"isCorrect": true,
-			"exercise_id":3
+			"exercise_id":3,
+			"module": "HTML",
+    		"type": "FIB"
 		 },
 		
 		{
 			"id":4,
 			"answers": "5",
 			"isCorrect": true,
-			"exercise_id":4
+			"exercise_id":4,
+			"module": "HTML",
+			"type": "FIB"
 		},
 		{
 			"id":5,
-			"answers": "3",
+			"answers": "6",
 			"isCorrect": true,
-			"exercise_id":5
+			"exercise_id":5,
+			"module": "HTML",
+    		"type": "FIB"
 		},
 		{
 			"id":6,
-			"answers": "6",
+			"answers": "9",
 			"isCorrect": true,
-			"exercise_id":6
+			"exercise_id":6,
+			"module": "HTML",
+    		"type": "FIB"
 		},
 
 		{
 			"id":7,
-			"answers": "6",
+			"answers": "5",
 			"isCorrect": true,
-			"exercise_id":7
+			"exercise_id":7,
+			"module": "HTML",
+    		"type": "FIB"
 		 },
 		 {
 			"id":8,
+			"answers": "5",
+			"isCorrect": true,
+			"exercise_id":8,
+			"module": "HTML",
+			"type": "FIB"
+		 },
+		 {
+			"id":9,
+			"answers": "5",
+			"isCorrect": false,
+			"exercise_id":9,
+			"module": "HTML",
+			"type": "SC"
+		 },
+		 {
+			"id":10,
+			"answers": "6",
+			"isCorrect": false,
+			"exercise_id":9,
+			"module": "HTML",
+			"type": "SC"
+		 },
+		 {
+			"id":11,
+			"answers": "4",
+			"isCorrect": true,
+			"exercise_id":9,
+			"module": "HTML",
+			"type": "SC"
+		 },
+		 {
+			"id":12,
+			"answers": "5",
+			"isCorrect": false,
+			"exercise_id":10,
+			"module": "HTML",
+			"type": "SC"
+		 },
+		 {
+			"id":13,
+			"answers": "8",
+			"isCorrect": true,
+			"exercise_id":10,
+			"module": "HTML",
+			"type": "SC"
+		 },
+		 {
+			"id":14,
+			"answers": "4",
+			"isCorrect": false,
+			"exercise_id":10,
+			"module": "HTML",
+			"type": "SC"
+		 },
+		 {
+			"id":15,
+			"answers": "6",
+			"isCorrect": true,
+			"exercise_id":11,
+			"module": "CSS",
+    		"type": "FIB"
+		 },
+		 {
+			"id":16,
 			"answers": "9",
 			"isCorrect": true,
-			"exercise_id":8
+			"exercise_id":12,
+			"module": "CSS",
+    		"type": "FIB"
+		 },
+		 {
+			"id":17,
+			"answers": "5",
+			"isCorrect": false,
+			"exercise_id":13,
+			"module": "CSS",
+			"type": "SC"
+		 },
+		 {
+			"id":18,
+			"answers": "6",
+			"isCorrect": false,
+			"exercise_id":13,
+			"module": "CSS",
+			"type": "SC"
+		 },
+		 {
+			"id":19,
+			"answers": "4",
+			"isCorrect": true,
+			"exercise_id":13,
+			"module": "CSS",
+			"type": "SC"
+		 },
+		 {
+			"id":20,
+			"answers": "5",
+			"isCorrect": false,
+			"exercise_id":14,
+			"module": "CSS",
+			"type": "SC"
+		 },
+		 {
+			"id":21,
+			"answers": "8",
+			"isCorrect": true,
+			"exercise_id":14,
+			"module": "CSS",
+			"type": "SC"
+		 },
+		 {
+			"id":22,
+			"answers": "4",
+			"isCorrect": false,
+			"exercise_id":14,
+			"module": "CSS",
+			"type": "SC"
 		 }
-		 
 	]
 
 	},
@@ -232,26 +407,7 @@
 					"id":4,
 					"user_id": "1",
 					"exercise_id":4
-				 },
-				{
-					"id":5,
-					"user_id": "1",
-					"exercise_id":5
-				 },
-				{
-					"id":6,
-					"user_id": "1",
-					"exercise_id":6
-				 },
-				{
-					"id":7,
-					"user_id": "1",
-					"exercise_id":7
-				 },
-				 {
-					"id":8,
-					"user_id": "1",
-					"exercise_id":8
+
 				 }
 				 
 			]
