@@ -302,7 +302,7 @@ input[type="text"]:focus {
 
 :root {
     --background: rgba(1, 1, 255, 0.973);
-    --navbar-width: 256px;
+    --navbar-width: 150px;
     --navbar-width-min: 80px;
     --navbar-dark-primary: #18283b;
     --navbar-dark-secondary: #2c3e50;

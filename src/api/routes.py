@@ -298,7 +298,8 @@ def verificar_respuesta(id):
 def verifica(id):
     try:
         users = AnswersUser.query.filter_by(user_id=id).all()
-        return jsonify(users=[user.serialize() for user in users]), 200
+        id_respuestas = list(map(lambda respuesta: respuesta.exercise_id, users))
+        return jsonify({"respuestas": id_respuestas}), 200
     except Exception as e:
         return jsonify({"error":str(e)}),500
     
@@ -409,6 +410,8 @@ def progress_users(id):
     try:
         answers_user = AnswersUser.query.filter_by(user_id=id)
         answers_number = answers_user.count()
+        if answers_number == 0 :
+            return jsonify({"progress":0}), 200
         last_answer = answers_user.order_by(AnswersUser.id.desc()).first()
         print(last_answer)
         question_all = Exercise.query.count()
@@ -422,6 +425,10 @@ def progress_users_module(id,module):
     try:
         answers_user = AnswersUser.query.filter_by(user_id=id).filter_by(module=module.upper())
         answers_number = answers_user.count()
+        if answers_number == 0 :
+            last_answer = Exercise.query.filter_by(module=module.upper()).first()
+            print(last_answer)
+            return jsonify({"progress":0,"last_answer": last_answer.serialize()}), 200
         last_answer = answers_user.order_by(AnswersUser.id.desc()).first()
         question_all_module = Exercise.query.filter_by(module=module.upper()).count()
         progreso = answers_number/question_all_module * 100
