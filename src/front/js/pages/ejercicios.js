@@ -23,7 +23,7 @@ export const Ejercicios = () => {
   },[])
 
   useEffect(()=>{
-    actions.getRespuestaUser(store.user.id)
+    actions.getRespuestaUser()
   },[])
   
 

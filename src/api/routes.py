@@ -294,10 +294,13 @@ def verificar_respuesta(id):
     except Exception as e:
         return jsonify({"error": str(e)}), 500
     
-@api.route('/respuestauser/<int:id>', methods=['GET']) 
-def verifica(id):
+@api.route('/respuestauser', methods=['GET'])
+@jwt_required()
+def verifica():
     try:
-        users = AnswersUser.query.filter_by(user_id=id).all()
+        user_id = get_jwt_identity()
+        # print(user_id)
+        users = AnswersUser.query.filter_by(user_id=user_id).all()
         id_respuestas = list(map(lambda respuesta: respuesta.exercise_id, users))
         return jsonify({"respuestas": id_respuestas}), 200
     except Exception as e:

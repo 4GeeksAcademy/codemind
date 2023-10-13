@@ -29,8 +29,8 @@ export const PreguntaCompletar = () => {
     setRespuestaCorrecta(false); // Reinicia la respuesta correcta al cambiar la respuesta
   };
   console.log(exercise_actual?.id)
-  
   console.log(respuesta)
+  
   const verificarRespuesta = async (e) => {
     e.preventDefault()
     
