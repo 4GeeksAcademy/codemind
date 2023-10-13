@@ -6,13 +6,11 @@ from flask import Flask, request, jsonify, url_for, send_from_directory
 from flask_migrate import Migrate
 from flask_swagger import swagger
 from flask_cors import CORS
-from flask_jwt_extended import JWTManager
 from api.utils import APIException, generate_sitemap
-from api.models import db, TokenBlockedList
+from api.models import db
 from api.routes import api
 from api.admin import setup_admin
 from api.commands import setup_commands
-
 
 #from models import Person
 
@@ -20,24 +18,6 @@ ENV = "development" if os.getenv("FLASK_DEBUG") == "1" else "production"
 static_file_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), '../public/')
 app = Flask(__name__)
 app.url_map.strict_slashes = False
-
-jwt = JWTManager(app)
-app.config["JWT_SECRET_KEY"] = os.getenv("FLASK_APP_KEY")
-app.config["JWT_ACCESS_TOKEN_EXPIRES"] = 5000000
-
-# Verificar los tokens bloqueados
-@jwt.token_in_blocklist_loader
-def check_token_blocklist(jwt_header,jwt_payload) -> bool:
-    print(request.path)
-    jti=jwt_payload["jti"]
-    token= TokenBlockedList.query.filter_by(token=jti).first()
-    if token is not None:
-        return True
-    
-    if request.path=="/api/private" and jwt_payload["role"]!= "admin":
-        return True
-    return False
-
 
 # database condiguration
 db_url = os.getenv("DATABASE_URL")

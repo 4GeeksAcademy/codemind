@@ -1,10 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemyseeder import ResolvingSeeder
-
 
 db = SQLAlchemy()
-
-
 
 class User(db.Model):
     __tablename__ = 'user'
@@ -12,211 +8,114 @@ class User(db.Model):
     firstName = db.Column(db.String(40), nullable=False)
     lastName = db.Column(db.String(40), nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
-    password = db.Column(db.String(400), unique=False, nullable=False)
-    img = db.Column(db.String(400), nullable=False)
-    role = db.Column(db.String(150), nullable=False)
-    teacher_id = db.Column(db.Integer, db.ForeignKey('teacher.id'))
-    teacher = db.relationship('Teacher', back_populates='students')
-    answersuser = db.relationship('AnswersUser', back_populates='user' ) 
-      
-
-    # module_progress = db.relationship('ModuleProgress', backref='user', lazy=True)
+    password = db.Column(db.String(80), unique=False, nullable=False)
+    img = db.Column(db.String(80), nullable=False)
+    role = db.Column(db.String(15), nullable=False)
+    document=db.Column(db.String(250), nullable=True)
+    
+    module_progress = db.relationship('ModuleProgress', backref='user', lazy=True)
 
     def __repr__(self):
         return f'<User {self.email}>'
-    
-    
+
     def serialize(self):
-        
         return {
             "id": self.id,
             "email": self.email,
-            "firstName": self.firstName,
-            "lastName": self.lastName,
             "img": self.img,
             "role": self.role,
-            "teacher": self.teacher_id
+            "document": self.document
             # No serializar la contraseña, es un problema de seguridad
         }
 
-
-
-class Teacher(db.Model):
-    __tablename__ = 'teacher'
+class ModuleProgress(db.Model):
+    __tablename__ = 'module_progress'
     id = db.Column(db.Integer, primary_key=True)
-    firstName = db.Column(db.String(40), nullable=False)
-    lastName = db.Column(db.String(40), nullable=False)
-    email = db.Column(db.String(250), nullable=False)
-    password = db.Column(db.String(250), nullable=False)
-    role= db.Column(db.String(250), nullable=False)
-    students = db.relationship('User', back_populates='teacher')
-    
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    module_id = db.Column(db.Integer, db.ForeignKey('module.id'))
+    progress = db.Column(db.Integer)
 
     def __repr__(self):
-        return f'{self.firstName} {self.lastName}'
+        return f'<ModuleProgress {self.id}>'
 
     def serialize(self):
-        students = list(map  (lambda a:  a.serialize(), self.students))
-        
         return {
             "id": self.id,
-            "firstName": self.firstName,
-            "lastName": self.lastName,
-            "role": self.role,
-            
-            "students": students
-            
+            "user_id": self.user_id,
+            "module_id": self.module_id,
+            "progress": self.progress
         }
-
-    def list_teachers(self):
-        return {
-            "id": self.id,
-            "firstName": self.firstName,
-            "lastName": self.lastName,
-            "role": self.role,
-            
-        }
-
-
-
-
-class TokenBlockedList(db.Model):
-    id=db.Column(db.Integer, primary_key=True)
-    token=db.Column(db.String(1000), unique=True, nullable=False)
-    created_at=db.Column(db.DateTime, nullable=False)
-
 
 class Exercise(db.Model):
     __tablename__ = 'exercise'
     id = db.Column(db.Integer, primary_key=True)
-    module = db.Column(db.String(50))
-    type = db.Column(db.String(40))
-    question = db.Column(db.String(250))
-    info_blog = db.Column(db.String(250))
-    info_youtube = db.Column(db.String(250))
-    answers = db.relationship('Answers', back_populates='exercise' )
-    answersuser = db.relationship('AnswersUser', back_populates='exercise' )
+    answer_type = db.Column(db.String(50))
+    topic = db.Column(db.String(40))
+    type = db.Column(db.String(80))
+    module_id = db.Column(db.Integer, db.ForeignKey('module.id'))
+    questions = db.relationship('ExerciseQuestions', backref='exercise', lazy=True)
 
     def __repr__(self):
-        return f'<Exercise {self.question}>'
+        return f'<Exercise {self.id}>'
 
     def serialize(self):
-        answers = list(map(lambda a: a.serialize(), self.answers))
         return {
             "id": self.id,
-            "module": self.module,
+            "answer_type": self.answer_type,
+            "topic": self.topic,
             "type": self.type,
-            "question": self.question,
-            "info_blog": self.info_blog,
-            "info_youtube":self.info_youtube,
-            "answers": answers
-
+            "module_id": self.module_id,
+            "questions": [question.serialize() for question in self.questions]
         }
-    
-    # def fill(self):
-    #     answers = list(map(lambda a: a.serializes(), self.answers))
-    #     return {
-    #         "id": self.id,
-    #         "module": self.module,
-    #         "type": self.type,
-    #         "question": self.question,
-    #         "info_blog": self.info_blog,
-    #         "info_youtube":self.info_youtube,
-    #         "answers": answers
 
-    #     }
-
-class Answers(db.Model):
-    __tablename__ = 'answers'
+class ExerciseQuestions(db.Model):
+    __tablename__ = "exercise_questions"
     id = db.Column(db.Integer, primary_key=True)
-    module = db.Column(db.String(50))
-    type = db.Column(db.String(40))
-    answers = db.Column(db.String(250))
     exercise_id = db.Column(db.Integer, db.ForeignKey('exercise.id'))
-    exercise = db.relationship(Exercise, back_populates='answers')
-    isCorrect = db.Column(db.Boolean, default=False)
-    
+    question = db.Column(db.String(250))
+    answers = db.relationship('ExerciseAnswer', backref='question', lazy=True)
+
+    def __repr__(self):
+        return f'<ExerciseQuestions {self.id}>'
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "exercise_id": self.exercise_id,
+            "question": self.question,
+            "answers": [answer.serialize() for answer in self.answers]
+        }
+
+class ExerciseAnswer(db.Model):
+    __tablename__ = 'exercise_answers'
+    id = db.Column(db.Integer, primary_key=True)
+    answer = db.Column(db.String(250))
+    exercise_question_id = db.Column(db.Integer, db.ForeignKey('exercise_questions.id'))
+
     def __repr__(self):
         return f'<ExerciseAnswer {self.id}>'
 
-
     def serialize(self):
-        #self.exercise.serialize()
         return {
             "id": self.id,
-            "answers": self.answers,
-            # "isCorrect": self.isCorrect,
-            # "type": self.type,
-            "exercise_id": self.exercise_id,
-            # "module" : self.exercise.module,
-            # "type" : self.exercise.type
+            "answer": self.answer,
+            "exercise_question_id": self.exercise_question_id
         }
-    
-class AnswersUser(db.Model):
-    __tablename__ = 'answersuser'
+
+class Module(db.Model):
+    __tablename__ = 'module'
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    module = db.Column(db.String(50))
-    type = db.Column(db.String(40))
-    user = db.relationship(User, back_populates='answersuser')
-    exercise_id = db.Column(db.Integer, db.ForeignKey('exercise.id'))
-    exercise = db.relationship(Exercise, back_populates='answersuser')
-    
+    name = db.Column(db.String(100))
+    description = db.Column(db.String(250))
+    type = db.Column(db.String(50))
+
     def __repr__(self):
-        return f'<AnswerUser {self.id}>'
+        return f'<Module {self.id}>'
 
     def serialize(self):
-        #self.exercise.serialize()
         return {
             "id": self.id,
-            "user_id" : self.user_id,
-            "exercise_id" : self.exercise_id,
-            "module" : self.exercise.module,
-            "type" : self.exercise.type
+            "name": self.name,
+            "description": self.description,
+            "type": self.type
         }
-    
-def seed():
-    seeder = ResolvingSeeder(db.session)
-    seeder.register(Exercise)
-    seeder.register(Answers)
-    seeder.register(AnswersUser)
-    seeder.register(User)
-    seeder.load_entities_from_json_file("seedData.json")
-    db.session.commit()
-
-
-# class Module(db.Model):
-#     __tablename__ = 'module'
-#     id = db.Column(db.Integer, primary_key=True)
-#     name = db.Column(db.String(100))
-#     description = db.Column(db.String(250))
-#     type = db.Column(db.String(50))
-
-#     def __repr__(self):
-#         return f'<Module {self.id}>'
-
-#     def serialize(self):
-#         return {
-#             "id": self.id,
-#             "name": self.name,
-#             "description": self.description,
-#             "type": self.type
-#         }
-
-#class ModuleProgress(db.Model):
-#    __tablename__ = 'module_progress'
-#      id = db.Column(db.Integer, primary_key=True)
-#     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-#     module_id = db.Column(db.Integer, db.ForeignKey('module.id'))
-#      progress = db.Column(db.Integer)
-
-#     def __repr__(self):
-#         return f'<ModuleProgress {self.id}>'
-
-#     def serialize(self):
-#         return {
-#             "id": self.id,
-#             "user_id": self.user_id,
-#             "module_id": self.module_id,
-#             "progress": self.progress
-#         }
