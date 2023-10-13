@@ -408,10 +408,12 @@ def handle():
 
     return jsonify(response_body), 200
 
-@api.route('/progress/<int:id>', methods=['GET'])
-def progress_users(id):
+@api.route('/progress', methods=['GET'])
+@jwt_required()
+def progress_users():
     try:
-        answers_user = AnswersUser.query.filter_by(user_id=id)
+        user_id = get_jwt_identity()
+        answers_user = AnswersUser.query.filter_by(user_id=user_id)
         answers_number = answers_user.count()
         if answers_number == 0 :
             return jsonify({"progress":0}), 200
@@ -423,10 +425,12 @@ def progress_users(id):
     except Exception as e:
         return jsonify({"error":str(e)}),500
 
-@api.route('/progress/<string:module>/<int:id>', methods=['GET'])
-def progress_users_module(id,module):
+@api.route('/progress/<string:module>', methods=['GET'])
+@jwt_required()
+def progress_users_module(module):
     try:
-        answers_user = AnswersUser.query.filter_by(user_id=id).filter_by(module=module.upper())
+        user_id = get_jwt_identity()
+        answers_user = AnswersUser.query.filter_by(user_id=user_id).filter_by(module=module.upper())
         answers_number = answers_user.count()
         if answers_number == 0 :
             last_answer = Exercise.query.filter_by(module=module.upper()).first()

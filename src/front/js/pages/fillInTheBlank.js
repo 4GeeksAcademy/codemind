@@ -18,7 +18,7 @@ export const PreguntaCompletar = () => {
   },[])
 
   useEffect(()=>{
-    actions.getLastAnswerModule(store.user.id,modulo)
+    actions.getLastAnswerModule(modulo)
   },[])
   console.log(store.last_answer.id)
 
