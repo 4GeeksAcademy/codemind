@@ -60,15 +60,24 @@ const getState = ({ getStore, getActions, setStore }) => {
 				getActions().changeColor(0, "green");
 			},
 
-			getRespuestaUser: async (id) => {
-				try{
+			getRespuestaUser: async () => {
+				const url = process.env.BACKEND_URL + `api/respuestauser`
+				const token= localStorage.getItem('userToken')
+				const options = {
+						method:  'GET',
+						headers: {
+							'Content-Type': 'application/json', 
+							'Access-Control-Allow-Origin': '*',
+							'Authorization': `Bearer ${token}`
+						}
+					}
 
+				try{
 					// fetching data from the backend
-					const resp = await fetch(process.env.BACKEND_URL + `/api/respuestauser/${id}`)
+					const resp = await fetch(url,options)
 					const data = await resp.json()
 					const respuestaUser = data.respuestas
 					setStore({respuestaUser})
-					console.log(respuestaUser)
 					// don't forget to return something, that is how the async resolves
 					return data;
 				} catch (error) {
@@ -76,11 +85,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-			getProgreso: async (id) => {
-				try{
+			getProgreso: async () => {
 
+				const url = process.env.BACKEND_URL + `api/progress`
+				const token= localStorage.getItem('userToken')
+				const options = {
+						method:  'GET',
+						headers: {
+							'Content-Type': 'application/json', 
+							'Access-Control-Allow-Origin': '*',
+							'Authorization': `Bearer ${token}`
+						}
+					}
+
+				try{
 					// fetching data from the backend
-					const resp = await fetch(process.env.BACKEND_URL + `/api/progress/${id}`)
+					const resp = await fetch(url,options)
 					const data = await resp.json()
 					const progress = data.progress
 					setStore({progress})
@@ -92,12 +112,25 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-			getProgresoModulo: async (id,module) => {
+			getProgresoModulo: async (module) => {
+
+				const url = process.env.BACKEND_URL + `api/progress/${module}`
+				const token= localStorage.getItem('userToken')
+				const options = {
+						method:  'GET',
+						headers: {
+							'Content-Type': 'application/json', 
+							'Access-Control-Allow-Origin': '*',
+							'Authorization': `Bearer ${token}`
+						}
+					}
+
 				try{
 
 					// fetching data from the backend
-					const resp = await fetch(process.env.BACKEND_URL + `/api/progress/${module}/${id}`)
+					const resp = await fetch(url,options)
 					const data = await resp.json()
+					console.log(data)
 					const progressModule = data.progress
 					setStore({progressModule})
 					console.log(progressModule)
@@ -108,11 +141,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-			getLastAnswerModule: async (id,module) => {
+			getLastAnswerModule: async (module) => {
+
+				const url = process.env.BACKEND_URL + `api/progress/${module}`
+				const token= localStorage.getItem('userToken')
+				const options = {
+						method:  'GET',
+						headers: {
+							'Content-Type': 'application/json', 
+							'Access-Control-Allow-Origin': '*',
+							'Authorization': `Bearer ${token}`
+						}
+					}
 				try{
 
 					// fetching data from the backend
-					const resp = await fetch(process.env.BACKEND_URL + `/api/progress/${module}/${id}`)
+					const resp = await fetch(url,options)
 					const data = await resp.json()
 					const last_answer = data.last_answer
 					setStore({last_answer})
