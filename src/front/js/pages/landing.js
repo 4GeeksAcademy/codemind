@@ -1,25 +1,47 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useState, useEffect } from "react";
 import logoCM from "../../img/LOGO.png";
 import "../../styles/index.css";
-import "../letras.js";
-import { Link } from 'react-router-dom';
 import { Login } from './login';
 import { RoadMap } from './roadMap';
 import { CourseDescrip } from '../component/courseDescrip';
-import { Navbar } from '../component/navbar';
+import { useNavigate } from 'react-router-dom';
+import { Context } from "../store/appContext";
 
 export const Landing = () => {
+    const navigate = useNavigate();
+    const { actions } = useContext(Context);
+    const storedUserToken = localStorage.getItem('userToken');
+    const [landingRender, setLandingRender] = useState(null);
 
-    return (
+    useEffect(() => {
+        const checkToken = async () => {
+            if (storedUserToken) {
+                const data = await actions.checkToken(storedUserToken);
+                console.log("LOGIN DATA", data);
+                if ( storedUserToken === storedUserToken) {
+                    // El token es válido, redirige al usuario a la página de módulos
+                    navigate('/modules');
+                } else {
+                    setLandingRender(landing);
+                }
+            } else {
+                setLandingRender(landing);
+            }
+        };
+
+        checkToken();
+    }, [navigate, storedUserToken, actions]);
+
+    const landing = (
         <div className='vh.100'>
-            
             <div className='pb-5'>
                 <div className='container'>
                     <div className="row mt-4 pt-4 justify-content-between">
                         <div className="col-md-7 col-lg-3 col-xl-7 order-2 order-md-1">
                             <div className="p-4">
                                 <h1 className="titulo-landing text-center">
-                                    Develop yourself as a top web programmer with CodeMind.</h1>
+                                    Develop yourself as a top web programmer with CodeMind.
+                                </h1>
                             </div>
                             <div className='m-5'>
                                 <h4>
@@ -28,7 +50,6 @@ export const Landing = () => {
                                     </a>
                                 </h4>
                             </div>
-
                         </div>
                         <div className="col-md-4 col-lg-5 col-xl-5 order-1 order-md-2">
                             <Login />
@@ -40,12 +61,17 @@ export const Landing = () => {
                 <CourseDescrip />
             </div>
 
+
             <div id="roadmap-section" className="p-5">
+
                 <div className="container col-md-8 col-lg-5 col-xl-4">
                     <RoadMap />
                 </div>
             </div>
-
         </div>
-    )
-}
+    );
+
+    return (
+        <>{landingRender}</>
+    );
+};

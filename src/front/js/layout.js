@@ -16,7 +16,7 @@ import { AboutUs } from "./pages/aboutUs";
 import { RoadMap } from "./pages/roadMap";
 import { Demo } from "./pages/demo";
 import { PreguntaCompletar } from "./pages/fillInTheBlank";
-import { MultipleChoice } from "./pages/multipleChoice";
+import { SimpleChoice } from "./pages/simpleChoice";
 import { Ejercicios} from "./pages/ejercicios";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
@@ -50,6 +50,7 @@ const Layout = () => {
         
             {/* {!isLoginPage &&!isRegistroPage && !isIndexPage && !isforwotpassword && !isSendpassword && } */}
             <Navbar />
+            
             <Routes>
               <Route element={<Landing />} path="/" />
               <Route element={<Index />} path="/Index" />
@@ -66,8 +67,8 @@ const Layout = () => {
               <Route element={<Usuarios />} path="/usuarios" />
               <Route element={<AboutUs />} path="/about" />
               <Route element={<RoadMap />} path="/roadmap" />
-              <Route element={<PreguntaCompletar />} path="/preguntas/:modulo/fib/"/>
-              <Route element={<MultipleChoice />} path="/preguntas/:modulo/sc" />
+              <Route element={<PreguntaCompletar />} path="/preguntas/:modulo/:theid"/>
+              <Route element={<SimpleChoice />} path="/preguntas/:modulo/sc" />
               <Route element={<Ejercicios />} path="/preguntas/:modulo" />
               <Route element={<Demo />} path="/demo" />
               <Route element={<Single />} path="/single/:theid" />
