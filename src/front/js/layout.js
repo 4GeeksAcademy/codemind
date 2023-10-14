@@ -26,6 +26,7 @@ import { Registro } from "./pages/registro";
 import { Login } from "./pages/login";
 import { DragAndDropList } from "./pages/dragAndDropList";
 import { Landing } from "./pages/landing";
+import { Progress } from "./pages/progress";
 
 
 //create your first component
@@ -71,6 +72,7 @@ const Layout = () => {
               <Route element={<Demo />} path="/demo" />
               <Route element={<Single />} path="/single/:theid" />
               <Route element={<h1>Not found!</h1>} />
+              <Route element={<Progress />} path="/progress"/>
             </Routes>
             <Footer />
           </ScrollToTop>

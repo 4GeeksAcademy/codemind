@@ -12,16 +12,16 @@ export const Navbar = () => {
   const [navActive, setNavActive] = useState(null)
   useEffect(() => {
     setNavActive(location.pathname)
-    if(user){
+    if (user) {
       setUserImg(user.img || defaultUserImg)
-    }else{
+    } else {
       setUserImg(defaultUserImg);
     }
-    
-  },[location.pathname, user, store.user]);
+
+  }, [location.pathname, user, store.user]);
 
   const defaultNavbar = (
-    <nav className="navbar navbar-expand-lg bg-body-tertiary ms-4 me-4 mt-3 mb-4 p-2">
+    <nav id='login-section' className="navbar navbar-expand-lg bg-body-tertiary ms-4 me-4 mt-3 mb-4 p-2">
       <div className="container-fluid d-flex align-items-center">
 
 
@@ -34,7 +34,7 @@ export const Navbar = () => {
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0 d-flex align-items-end ">
 
             <li className="nav-item">
-              <Link to={"/roadmap"}><a className="nav-link" aria-current="page" href="#">Road map</a></Link>
+              <a className="nav-link scroll-smooth" aria-current="page" href="#roadmap-section">Road map</a>
             </li>
             <li className="nav-item">
               <Link to={"/about"}><a className="nav-link" href="#">About us</a></Link>
@@ -51,7 +51,7 @@ export const Navbar = () => {
       <input id="nav-toggle" type="checkbox" />
       <div id="nav-header">
         <div id="nav-title" target="_blank">
-          <Link to={"/modules"}><a className="text-primary font-weight-bold" aria-current="page" href="#">CodeMind</a></Link>
+          <Link to={"/modules"}><a className="text-primary navbar-title" aria-current="page" href="#">CodeMind</a></Link>
         </div>
         <label htmlFor="nav-toggle">
           <span id="nav-toggle-burger"></span>
@@ -60,7 +60,7 @@ export const Navbar = () => {
       </div>
       <div id="nav-content">
         <div className="nav-button">
-          <i className="fas fa-palette"></i><span>Modules</span>
+          <Link to="/modules"><i className="fas fa-palette"></i><span>Modules</span> </Link>
         </div>
         <div className="nav-button">
           <i className="fas fa-images"></i><span>Library</span>
@@ -69,14 +69,16 @@ export const Navbar = () => {
           <i className="fas fa-thumbtack"></i><span></span>
         </div> */}
         <hr />
+
         <div className="nav-button">
-          <i className="fas fa-chart-line"></i><span>Progress</span>
+          <Link to="/progress"><i className="fas fa-chart-line"></i><span>Progress</span> </Link>
+        </div>
+
+        <div className="nav-button">
+          <Link to="/roadMap"> <i className="fas fa-fire"></i><span>Road Map</span> </Link>
         </div>
         <div className="nav-button">
-          <i className="fas fa-fire"></i><span>Road Map</span>
-        </div>
-        <div className="nav-button">
-          <i className="fas fa-heart"></i><span>About Us</span>
+          <Link to="/about"><i className="fas fa-heart"></i><span>About Us</span> </Link>
         </div>
         {/* <div className="nav-button">
           <i className="fas fa-magic"></i><span>Spark</span>
@@ -87,7 +89,7 @@ export const Navbar = () => {
         </div> */}
         <div id="nav-content-highlight"></div>
       </div>
-      
+
       <input id="nav-footer-toggle" type="checkbox" />
       <div id="nav-footer">
         <div id="nav-footer-heading">
@@ -96,10 +98,10 @@ export const Navbar = () => {
           </div>
           <div id="nav-footer-titlebox d-flex justify-content-center ms-2">
             <a id="nav-footer-title d-flex justify-content-end ms-2" href="#" target="_blank">
-            <Link to={"/profile"}>{user && user.firstName ? user.firstName : null} {user && user.lastName ? user.lastName : null}</Link>
+              <Link to={"/profile"}>{user && user.firstName ? user.firstName : null} {user && user.lastName ? user.lastName : null}</Link>
             </a>
             <div>
-            <span id="nav-footer-subtitle">{user && user.role ? user.role : null}</span>
+              <span id="nav-footer-subtitle">{user && user.role ? user.role : null}</span>
             </div>
           </div>
           <label htmlFor="nav-footer-toggle">

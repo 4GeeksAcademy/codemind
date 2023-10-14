@@ -40,7 +40,7 @@ export const Landing = () => {
                 <CourseDescrip />
             </div>
 
-            <div className="p-5">
+            <div id="roadmap-section" className="p-5">
                 <div className="container col-md-8 col-lg-5 col-xl-4">
                     <RoadMap />
                 </div>
