@@ -23,7 +23,7 @@ export const CourseDescrip = () => (
             exhilarating learning journey!</p>
     </div>
     <div className="m-4 text-center">
-        <button className="btn btn-outline-info rounded-pill">start your journey now</button>
+        <a href="#login-section"><button className="btn btn-outline-info rounded-pill">Start your journey now</button></a>
     </div>
 </div>
 );
