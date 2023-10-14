@@ -1,7 +1,17 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useLocation, useSearchParams  } from 'react-router-dom';
 
 export const ChangePassword = () => {
+
+    const navigate = useNavigate();
+    const location = useLocation()
+    let [searchParams, setSearchParams] = useSearchParams();
+
+    console.log(location)
+
+
+
+
     return (
         <div className="container vh-100 align-items-center ">
             <div className="row mb-4">
@@ -18,6 +28,12 @@ export const ChangePassword = () => {
                     </div>
                 </div>
                 <div className="col-md-6 mt-4">
+                <div className="">
+                <p>{searchParams.get("token")}:</p>
+            </div>
+            <div className="">
+                <input type="email" className="form-control" id="firstName" placeholder="" />
+                </div>
                     <div className="">
                         <p>New secret Password:</p>
                     </div>

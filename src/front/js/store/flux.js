@@ -391,7 +391,55 @@ const getState = ({ getStore, getActions, setStore }) => {
 				} catch (error) {
 					console.error(error);
 				}
-			}
+			},
+			recoveryPassword: async (email)=>{
+				const url = process.env.BACKEND_URL + '/api/requestpassword';
+				const options = {
+					method: 'POST',
+					body: JSON.stringify({
+						email
+					}),
+					headers: {
+						'Content-Type': 'application/json',
+						'Access-Control-Allow-Origin': '*'
+					}
+					
+
+				}
+				try {
+					const resp = await fetch(url, options);
+					if (resp.ok) {
+						return { success: true, "msg" : "mail Enviado" };
+					} else {
+						console.error('La solicitud de logout no se realizó con éxito');
+					}
+				} catch (error) {
+					console.error(error);
+				}
+			},
+			getUser: async (userid) => {
+				let { teacherData } = getStore()
+				const url = process.env.BACKEND_URL + '/api/user/' + userid;
+				const options = {
+					method: 'GET',
+					headers: {
+						'Content-Type': 'application/json',
+						'Access-Control-Allow-Origin': '*'
+					}
+				}
+
+				try {
+					const resp = await fetch(url, options);
+					if (resp.ok) {
+						const data = await resp.json()
+						return data
+					}
+				} catch (error) {
+					console.error(error)
+				}
+			},
+
+
 		}
 	};
 };

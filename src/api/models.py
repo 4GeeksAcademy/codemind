@@ -41,6 +41,13 @@ class User(db.Model):
 
 
 
+#crear la class Studen y a la clase Teacher
+# class Teacher(db.Model):
+#     __tablename__ = 'teacher'
+#     id = db.Column(db.Integer, primary_key=True)
+#     students = db.relationship('User', back_populates='teacher')
+    
+
 class Teacher(db.Model):
     __tablename__ = 'teacher'
     id = db.Column(db.Integer, primary_key=True)
