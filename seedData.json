@@ -6,113 +6,242 @@
 			"id": 1,
 			"module": "HTML",
     		"type": "FIB",
-    		"question": "Cuanto es 3+3",
-    		"info_blog": "https://blog.hubspot.es/website/html",
-    		"info_youtube": "https://www.youtube.com/watch?v=rkxHd9SUBGU"
+    		"question": "HTML es un acrónimo que significa: Hyper Text _____ Language.",
+    		"info_blog": "https://developer.mozilla.org/es/docs/Web/HTML",
+    		"info_youtube": "https://www.youtube.com/watch?v=10GHKjgQIR0"
 		},
 		{
 			"id": 2,
 			"module": "HTML",
     		"type": "FIB",
-    		"question": "Cuanto es 3x3",
-    		"info_blog": "https://blog.hubspot.es/website/html",
-    		"info_youtube": "https://www.youtube.com/watch?v=rkxHd9SUBGU"
+    		"question": "La etiqueta <p> se utiliza para definir un _______ en HTML.",
+    		"info_blog": "https://www.w3schools.com/html/html_paragraphs.asp",
+    		"info_youtube": "https://www.youtube.com/watch?v=nJlvaFYXRzs"
 		},
 		{
 			"id": 3,
 			"module": "HTML",
     		"type": "FIB",
-    		"question": "Cuanto es 2+3",
-    		"info_blog": "https://blog.hubspot.es/website/html",
-    		"info_youtube": "https://www.youtube.com/watch?v=rkxHd9SUBGU"
+    		"question": "La etiqueta <___> se utiliza para definir un enlace de correo electrónico en HTML.",
+    		"info_blog": "https://blog.hubspot.es/website/como-crear-mailto-html",
+    		"info_youtube": "https://www.youtube.com/watch?v=Xk5Tf8F44jE"
 		},
 		{
 			"id":4,
 			"module": "HTML",
 			"type": "FIB",
-			"question": "Cuanto es 1+4",
-			"info_blog": "https://support.microsoft.com/es-es/topic/c%C3%B3mo-habilitar-javascript-en-windows-88d27b37-6484-7fc0-17df-872f65168279",
-			"info_youtube": "https://www.youtube.com/watch?v=f-lBx9Bc5HA"
+			"question": "El atributo que se utiliza para proporcionar texto alternativo para una imagen en HTML se llama _____.",
+			"info_blog": "https://www.w3schools.com/html/html_attributes.asp",
+			"info_youtube": "https://www.youtube.com/watch?v=7dgmf9TIlFM"
 		},
 		{
 			"id": 5,
 			"module": "HTML",
     		"type": "FIB",
-    		"question": "Cuanto es 3+3",
-    		"info_blog": "https://blog.hubspot.es/website/html",
-    		"info_youtube": "https://www.youtube.com/watch?v=rkxHd9SUBGU"
+    		"question": "El atributo utilizado para especificar el hipervínculo de una etiqueta <a> en HTML es _____.",
+    		"info_blog": "https://www.w3schools.com/tags/att_a_href.asp",
+    		"info_youtube": "https://www.youtube.com/watch?v=0uWnl_ptdNs&t=59s"
 		},
 		{
 			"id": 6,
 			"module": "HTML",
-    		"type": "FIB",
-    		"question": "Cuanto es 3x3",
-    		"info_blog": "https://blog.hubspot.es/website/html",
-    		"info_youtube": "https://www.youtube.com/watch?v=rkxHd9SUBGU"
+    		"type": "SC",
+    		"question": "¿Cuál es el propósito principal de las etiquetas HTML?",
+    		"info_blog": "https://blog.hubspot.es/website/etiquetas-html",
+    		"info_youtube": "https://www.youtube.com/watch?v=mwtkPVR9MgU"
 		},
 		{
 			"id": 7,
 			"module": "HTML",
-    		"type": "FIB",
-    		"question": "Cuanto es 2+3",
-    		"info_blog": "https://blog.hubspot.es/website/html",
-    		"info_youtube": "https://www.youtube.com/watch?v=rkxHd9SUBGU"
+    		"type": "SC",
+    		"question": "¿Cuál es la etiqueta utilizada para insertar un comentario en HTML?",
+    		"info_blog": "https://htmldesdecero.es/blog/colocar-comentario-html/",
+    		"info_youtube": "https://www.youtube.com/watch?v=EgMvcZaI5WM"
 		},
 		{
-			"id":8,
+			"id": 8,
 			"module": "HTML",
-			"type": "FIB",
-			"question": "Cuanto es 1+4",
-			"info_blog": "https://support.microsoft.com/es-es/topic/c%C3%B3mo-habilitar-javascript-en-windows-88d27b37-6484-7fc0-17df-872f65168279",
-			"info_youtube": "https://www.youtube.com/watch?v=f-lBx9Bc5HA"
+    		"type": "SC",
+    		"question": "¿Qué etiqueta se utiliza para crear una lista numerada en HTML?",
+    		"info_blog": "https://www.w3schools.com/HTML/html_lists.asp",
+    		"info_youtube": "https://www.youtube.com/watch?v=Mu7y1l97LNg"
 		},
 		{
 			"id":9,
 			"module": "HTML",
 			"type": "SC",
-			"question": "Cuanto es 1x4",
-			"info_blog": "https://support.microsoft.com/es-es/topic/c%C3%B3mo-habilitar-javascript-en-windows-88d27b37-6484-7fc0-17df-872f65168279",
-			"info_youtube": "https://www.youtube.com/watch?v=f-lBx9Bc5HA"
+			"question": "¿Qué etiqueta se utiliza para insertar un salto de línea en HTML?",
+			"info_blog": "https://developer.mozilla.org/es/docs/Web/HTML/Element/br",
+			"info_youtube": "https://www.youtube.com/watch?v=Q2uoWvtYPEs"
 		},
 		{
 			"id":10,
 			"module": "HTML",
 			"type": "SC",
-			"question": "Cuanto es 2x4",
-			"info_blog": "https://support.microsoft.com/es-es/topic/c%C3%B3mo-habilitar-javascript-en-windows-88d27b37-6484-7fc0-17df-872f65168279",
-			"info_youtube": "https://www.youtube.com/watch?v=f-lBx9Bc5HA"
+			"question": "¿Cuál es el elemento HTML que se utiliza para crear un enlace hipertexto?",
+			"info_blog": "https://www.w3schools.com/TAGS/tag_a.asp",
+			"info_youtube": "https://www.youtube.com/watch?v=fUW0mQ4FNOU"
 		},
 		{
-			"id": 11,
+			"id":11,
 			"module": "CSS",
-    		"type": "FIB",
-    		"question": "Cuanto es 3+3",
-    		"info_blog": "https://blog.hubspot.es/website/html",
-    		"info_youtube": "https://www.youtube.com/watch?v=rkxHd9SUBGU"
+			"type": "FIB",
+			"question": "CSS significa:Cascading _______ Sheets.",
+			"info_blog": "https://developer.mozilla.org/es/docs/Web/CSS",
+			"info_youtube": "https://www.youtube.com/watch?v=8cSo0ijtkzU"
 		},
 		{
 			"id": 12,
 			"module": "CSS",
     		"type": "FIB",
-    		"question": "Cuanto es 3x3",
-    		"info_blog": "https://blog.hubspot.es/website/html",
-    		"info_youtube": "https://www.youtube.com/watch?v=rkxHd9SUBGU"
+    		"question": "En CSS, para seleccionar todos los elementos de una página, se utiliza el selector ___.",
+    		"info_blog": "https://www.w3schools.com/CSS/css_selectors.asp",
+    		"info_youtube": "https://www.youtube.com/watch?v=sjqhxl_16Qg"
 		},
 		{
-			"id":13,
+			"id": 13,
 			"module": "CSS",
-			"type": "SC",
-			"question": "Cuanto es 1x4",
-			"info_blog": "https://support.microsoft.com/es-es/topic/c%C3%B3mo-habilitar-javascript-en-windows-88d27b37-6484-7fc0-17df-872f65168279",
-			"info_youtube": "https://www.youtube.com/watch?v=f-lBx9Bc5HA"
+    		"type": "FIB",
+    		"question": "El atributo de CSS que se utiliza para cambiar el color de fondo de un elemento se llama:background-_____.",
+    		"info_blog": "https://developer.mozilla.org/es/docs/Web/CSS/background-color",
+    		"info_youtube": "https://www.youtube.com/watch?v=SFuNzNXKS8s"
 		},
 		{
 			"id":14,
 			"module": "CSS",
+			"type": "FIB",
+			"question": "El selector CSS que se utiliza para aplicar estilos a un enlace cuando el mouse pasa por encima de él se llama:______.",
+			"info_blog": "https://www.w3schools.com/CSSref/sel_hover.php",
+			"info_youtube": "https://www.youtube.com/watch?v=zppkOvCXBIc"
+		},
+		{
+			"id":15,
+			"module": "CSS",
+			"type": "FIB",
+			"question": "El atributo de CSS que se utiliza para establecer el tamaño del texto es:font-_____.",
+			"info_blog": "https://developer.mozilla.org/es/docs/Web/CSS/font-size",
+			"info_youtube": "https://www.youtube.com/watch?v=CzU3acHs2l8"
+		},
+		{
+			"id":16,
+			"module": "CSS",
 			"type": "SC",
-			"question": "Cuanto es 2x4",
-			"info_blog": "https://support.microsoft.com/es-es/topic/c%C3%B3mo-habilitar-javascript-en-windows-88d27b37-6484-7fc0-17df-872f65168279",
-			"info_youtube": "https://www.youtube.com/watch?v=f-lBx9Bc5HA"
+			"question": "¿Cuál es el propósito principal de CSS en el diseño web?.",
+			"info_blog": "https://i.workana.com/glosario/css/",
+			"info_youtube": "https://www.youtube.com/watch?v=8cSo0ijtkzU&t=7s"
+		},
+		{
+			"id": 17,
+			"module": "CSS",
+    		"type": "SC",
+    		"question": "¿Cuál de las siguientes propiedades de CSS se utiliza para cambiar el tipo de letra de un elemento?",
+    		"info_blog": "https://developer.mozilla.org/es/docs/Web/CSS/@font-face/font-family",
+    		"info_youtube": "https://www.youtube.com/watch?v=xWZh8erE2Ps"
+		},
+		{
+			"id": 18,
+			"module": "CSS",
+    		"type": "SC",
+    		"question": " ¿Cuál de las siguientes opciones se utiliza para establecer un borde sólido de 2 píxeles alrededor de un elemento en CSS?",
+    		"info_blog": "https://www.w3schools.com/css/css_border.asp",
+    		"info_youtube": "https://www.youtube.com/watch?v=KkniilTcniM"
+		},
+		{
+			"id":19,
+			"module": "CSS",
+			"type": "SC",
+			"question": "¿Cuál de las siguientes opciones se utiliza para establecer el margen derecho de un elemento en CSS?",
+			"info_blog": "https://www.w3schools.com/Css/css_margin.asp",
+			"info_youtube": "https://www.youtube.com/watch?v=E2mps7mKPKI"
+		},
+		{
+			"id":20,
+			"module": "CSS",
+			"type": "SC",
+			"question": "¿Cuál de las siguientes opciones se utiliza para ocultar un elemento en CSS eliminándolo del diseño de la página?",
+			"info_blog": "https://www.w3schools.com/css/css_display_visibility.asp",
+			"info_youtube": "https://www.youtube.com/watch?v=VdAP97Q2MMI"
+		},
+
+		{
+			"id":21,
+			"module": "JS",
+			"type": "FIB",
+			"question": "En JavaScript, el operador ________ se utiliza para obtener el tipo de dato de una variable.",
+			"info_blog": "https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Operators/typeof",
+			"info_youtube": "https://www.youtube.com/watch?v=7J8yWV0X72U"
+		},
+		{
+			"id": 22,
+			"module": "JS",
+    		"type": "FIB",
+    		"question": "En CSS, para seleccionar todos los elementos de una página, se utiliza el selector ___.",
+    		"info_blog": "https://www.w3schools.com/CSS/css_selectors.asp",
+    		"info_youtube": "https://www.youtube.com/watch?v=sjqhxl_16Qg"
+		},
+		{
+			"id": 23,
+			"module": "JS",
+    		"type": "FIB",
+    		"question": "El atributo de CSS que se utiliza para cambiar el color de fondo de un elemento se llama:background-_____.",
+    		"info_blog": "https://developer.mozilla.org/es/docs/Web/CSS/background-color",
+    		"info_youtube": "https://www.youtube.com/watch?v=SFuNzNXKS8s"
+		},
+		{
+			"id":24,
+			"module": "JS",
+			"type": "FIB",
+			"question": "El selector CSS que se utiliza para aplicar estilos a un enlace cuando el mouse pasa por encima de él se llama:______.",
+			"info_blog": "https://www.w3schools.com/CSSref/sel_hover.php",
+			"info_youtube": "https://www.youtube.com/watch?v=zppkOvCXBIc"
+		},
+		{
+			"id":25,
+			"module": "JS",
+			"type": "FIB",
+			"question": "El atributo de CSS que se utiliza para establecer el tamaño del texto es:font-_____.",
+			"info_blog": "https://developer.mozilla.org/es/docs/Web/CSS/font-size",
+			"info_youtube": "https://www.youtube.com/watch?v=CzU3acHs2l8"
+		},
+		{
+			"id":26,
+			"module": "JS",
+			"type": "SC",
+			"question": "¿Cuál es el propósito principal de CSS en el diseño web?.",
+			"info_blog": "https://i.workana.com/glosario/css/",
+			"info_youtube": "https://www.youtube.com/watch?v=8cSo0ijtkzU&t=7s"
+		},
+		{
+			"id": 27,
+			"module": "JS",
+    		"type": "SC",
+    		"question": "¿Cuál de las siguientes propiedades de CSS se utiliza para cambiar el tipo de letra de un elemento?",
+    		"info_blog": "https://developer.mozilla.org/es/docs/Web/CSS/@font-face/font-family",
+    		"info_youtube": "https://www.youtube.com/watch?v=xWZh8erE2Ps"
+		},
+		{
+			"id": 28,
+			"module": "JS",
+    		"type": "SC",
+    		"question": " ¿Cuál de las siguientes opciones se utiliza para establecer un borde sólido de 2 píxeles alrededor de un elemento en CSS?",
+    		"info_blog": "https://www.w3schools.com/css/css_border.asp",
+    		"info_youtube": "https://www.youtube.com/watch?v=KkniilTcniM"
+		},
+		{
+			"id":29,
+			"module": "JS",
+			"type": "SC",
+			"question": "¿Cuál de las siguientes opciones se utiliza para establecer el margen derecho de un elemento en CSS?",
+			"info_blog": "https://www.w3schools.com/Css/css_margin.asp",
+			"info_youtube": "https://www.youtube.com/watch?v=E2mps7mKPKI"
+		},
+		{
+			"id":30,
+			"module": "JS",
+			"type": "SC",
+			"question": "¿Cuál de las siguientes opciones se utiliza para ocultar un elemento en CSS eliminándolo del diseño de la página?",
+			"info_blog": "https://www.w3schools.com/css/css_display_visibility.asp",
+			"info_youtube": "https://www.youtube.com/watch?v=VdAP97Q2MMI"
 		}
 	]
 	},
@@ -121,7 +250,7 @@
 	"data":[
 		{
 			"id":1,
-			"answers": "6",
+			"answers": "Markup",
 			"isCorrect": true,
 			"exercise_id":1,
 			"module": "HTML",
@@ -129,7 +258,7 @@
 		 },
 		 {
 			"id":2,
-			"answers": "9",
+			"answers": "párrafo",
 			"isCorrect": true,
 			"exercise_id":2,
 			"module": "HTML",
@@ -137,7 +266,7 @@
 		 },
 		 {
 			"id":3,
-			"answers": "5",
+			"answers": "mailto",
 			"isCorrect": true,
 			"exercise_id":3,
 			"module": "HTML",
@@ -146,7 +275,7 @@
 		
 		{
 			"id":4,
-			"answers": "5",
+			"answers": "alt",
 			"isCorrect": true,
 			"exercise_id":4,
 			"module": "HTML",
@@ -154,7 +283,7 @@
 		},
 		{
 			"id":5,
-			"answers": "6",
+			"answers": "href",
 			"isCorrect": true,
 			"exercise_id":5,
 			"module": "HTML",
@@ -162,141 +291,575 @@
 		},
 		{
 			"id":6,
-			"answers": "9",
+			"answers": "Definir la estructura y el contenido de una página web",
 			"isCorrect": true,
 			"exercise_id":6,
 			"module": "HTML",
-    		"type": "FIB"
+    		"type": "SC"
 		},
 
 		{
 			"id":7,
-			"answers": "5",
-			"isCorrect": true,
-			"exercise_id":7,
+			"answers": "Definir el estilo visual de una página web",
+			"isCorrect": false,
+			"exercise_id":6,
 			"module": "HTML",
-    		"type": "FIB"
+    		"type": "SC"
 		 },
 		 {
 			"id":8,
-			"answers": "5",
-			"isCorrect": true,
-			"exercise_id":8,
+			"answers": "Realizar cálculos matemáticos en una página web",
+			"isCorrect": false,
+			"exercise_id":6,
 			"module": "HTML",
-			"type": "FIB"
+			"type": "SC"
 		 },
 		 {
 			"id":9,
-			"answers": "5",
+			"answers": "Conectar la página web a una base de datos",
 			"isCorrect": false,
-			"exercise_id":9,
+			"exercise_id":6,
 			"module": "HTML",
 			"type": "SC"
 		 },
-		 {
+		{
 			"id":10,
-			"answers": "6",
+			"answers": "<comment>",
 			"isCorrect": false,
-			"exercise_id":9,
+			"exercise_id":7,
 			"module": "HTML",
-			"type": "SC"
-		 },
-		 {
+    		"type": "SC"
+		},
+
+		{
 			"id":11,
-			"answers": "4",
-			"isCorrect": true,
-			"exercise_id":9,
+			"answers": "<note>",
+			"isCorrect": false,
+			"exercise_id":7,
 			"module": "HTML",
-			"type": "SC"
+    		"type": "SC"
 		 },
 		 {
 			"id":12,
-			"answers": "5",
+			"answers": "<remark>",
 			"isCorrect": false,
-			"exercise_id":10,
+			"exercise_id":7,
 			"module": "HTML",
 			"type": "SC"
 		 },
 		 {
 			"id":13,
-			"answers": "8",
+			"answers": "<!-- -->",
 			"isCorrect": true,
-			"exercise_id":10,
+			"exercise_id":7,
 			"module": "HTML",
 			"type": "SC"
 		 },
 		 {
 			"id":14,
-			"answers": "4",
+			"answers": "<ul>",
+			"isCorrect": false,
+			"exercise_id":8,
+			"module": "HTML",
+			"type": "SC"
+		 },
+		 {
+			"id":15,
+			"answers": "<ol>",
+			"isCorrect": true,
+			"exercise_id":8,
+			"module": "HTML",
+			"type": "SC"
+		 },
+		 {
+			"id":16,
+			"answers": "<li>",
+			"isCorrect": false,
+			"exercise_id":8,
+			"module": "HTML",
+			"type": "SC"
+		 },
+		 {
+			"id":17,
+			"answers": "<dl>",
+			"isCorrect": false,
+			"exercise_id":8,
+			"module": "HTML",
+			"type": "SC"
+		 },
+		 {
+			"id":18,
+			"answers": "<nl>",
+			"isCorrect": false,
+			"exercise_id":9,
+			"module": "HTML",
+			"type": "SC"
+		 },
+		 {
+			"id":19,
+			"answers": "<br>",
+			"isCorrect": true,
+			"exercise_id":9,
+			"module": "HTML",
+    		"type": "SC"
+		 },
+		 {
+			"id":20,
+			"answers": "<newline>",
+			"isCorrect": false,
+			"exercise_id":9,
+			"module": "HTML",
+    		"type": "SC"
+		 },
+		 {
+			"id":21,
+			"answers": "<linebreak>",
+			"isCorrect": false,
+			"exercise_id":9,
+			"module": "HTML",
+			"type": "SC"
+		 },
+		 {
+			"id":22,
+			"answers": "<link>",
 			"isCorrect": false,
 			"exercise_id":10,
 			"module": "HTML",
 			"type": "SC"
 		 },
 		 {
-			"id":15,
-			"answers": "6",
+			"id":23,
+			"answers": "<a>",
+			"isCorrect": true,
+			"exercise_id":10,
+			"module": "HTML",
+			"type": "SC"
+		 },
+		 {
+			"id":24,
+			"answers": "<href>",
+			"isCorrect": false,
+			"exercise_id":10,
+			"module": "HTML",
+			"type": "SC"
+		 },
+		 {
+			"id":25,
+			"answers": "<url>",
+			"isCorrect": false,
+			"exercise_id":10,
+			"module": "HTML",
+			"type": "SC"
+		 },
+
+		 {
+			"id":26,
+			"answers": "Style",
 			"isCorrect": true,
 			"exercise_id":11,
 			"module": "CSS",
     		"type": "FIB"
 		 },
 		 {
-			"id":16,
-			"answers": "9",
+			"id":27,
+			"answers": "*",
 			"isCorrect": true,
 			"exercise_id":12,
 			"module": "CSS",
     		"type": "FIB"
 		 },
 		 {
-			"id":17,
-			"answers": "5",
-			"isCorrect": false,
-			"exercise_id":13,
-			"module": "CSS",
-			"type": "SC"
-		 },
-		 {
-			"id":18,
-			"answers": "6",
-			"isCorrect": false,
-			"exercise_id":13,
-			"module": "CSS",
-			"type": "SC"
-		 },
-		 {
-			"id":19,
-			"answers": "4",
+			"id":28,
+			"answers": "color",
 			"isCorrect": true,
 			"exercise_id":13,
 			"module": "CSS",
-			"type": "SC"
+    		"type": "FIB"
 		 },
-		 {
-			"id":20,
-			"answers": "5",
-			"isCorrect": false,
-			"exercise_id":14,
-			"module": "CSS",
-			"type": "SC"
-		 },
-		 {
-			"id":21,
-			"answers": "8",
+		
+		{
+			"id":29,
+			"answers": "hover",
 			"isCorrect": true,
 			"exercise_id":14,
 			"module": "CSS",
+			"type": "FIB"
+		},
+		{
+			"id":30,
+			"answers": "size",
+			"isCorrect": true,
+			"exercise_id":15,
+			"module": "CSS",
+    		"type": "FIB"
+		},
+		{
+			"id":31,
+			"answers": "Definir la estructura de la página",
+			"isCorrect": false,
+			"exercise_id":16,
+			"module": "CSS",
+    		"type": "SC"
+		},
+
+		{
+			"id":32,
+			"answers": "Agregar funcionalidad interactiva",
+			"isCorrect": false,
+			"exercise_id":16,
+			"module": "CSS",
+    		"type": "SC"
+		 },
+		 {
+			"id":33,
+			"answers": "Establecer el estilo y la presentación de la página",
+			"isCorrect": true,
+			"exercise_id":16,
+			"module": "CSS",
 			"type": "SC"
 		 },
 		 {
-			"id":22,
-			"answers": "4",
+			"id":34,
+			"answers": "Almacenar datos en la base de datos",
 			"isCorrect": false,
-			"exercise_id":14,
+			"exercise_id":16,
 			"module": "CSS",
+			"type": "SC"
+		 },
+		{
+			"id":35,
+			"answers": "text-font",
+			"isCorrect": false,
+			"exercise_id":17,
+			"module": "CSS",
+    		"type": "SC"
+		},
+
+		{
+			"id":36,
+			"answers": "font-family",
+			"isCorrect": true,
+			"exercise_id":17,
+			"module": "CSS",
+    		"type": "SC"
+		 },
+		 {
+			"id":37,
+			"answers": "font-size",
+			"isCorrect": false,
+			"exercise_id":17,
+			"module": "CSS",
+			"type": "SC"
+		 },
+		 {
+			"id":38,
+			"answers": "letter-spacing",
+			"isCorrect": true,
+			"exercise_id":17,
+			"module": "CSS",
+			"type": "SC"
+		 },
+		 {
+			"id":39,
+			"answers": "border: 2px solid;",
+			"isCorrect": true,
+			"exercise_id":18,
+			"module": "CSS",
+			"type": "SC"
+		 },
+		 {
+			"id":40,
+			"answers": "border: 2px dotted;",
+			"isCorrect": false,
+			"exercise_id":18,
+			"module": "CSS",
+			"type": "SC"
+		 },
+		 {
+			"id":41,
+			"answers": "border: 2px dashed;",
+			"isCorrect": false,
+			"exercise_id":18,
+			"module": "CSS",
+			"type": "SC"
+		 },
+		 {
+			"id":42,
+			"answers": "border: 2px double;",
+			"isCorrect": false,
+			"exercise_id":18,
+			"module": "CSS",
+			"type": "SC"
+		 },
+		 {
+			"id":43,
+			"answers": "margin-left",
+			"isCorrect": false,
+			"exercise_id":19,
+			"module": "CSS",
+			"type": "SC"
+		 },
+		 {
+			"id":44,
+			"answers": "margin-right",
+			"isCorrect": true,
+			"exercise_id":19,
+			"module": "CSS",
+    		"type": "SC"
+		 },
+		 {
+			"id":45,
+			"answers": "margin-top",
+			"isCorrect": false,
+			"exercise_id":19,
+			"module": "CSS",
+    		"type": "SC"
+		 },
+		 {
+			"id":46,
+			"answers": "margin-bottom",
+			"isCorrect": false,
+			"exercise_id":19,
+			"module": "CSS",
+			"type": "SC"
+		 },
+		 {
+			"id":47,
+			"answers": "display: none",
+			"isCorrect": true,
+			"exercise_id":20,
+			"module": "CSS",
+			"type": "SC"
+		 },
+		 {
+			"id":48,
+			"answers": "visibility: hidden",
+			"isCorrect": false,
+			"exercise_id":20,
+			"module": "CSS",
+			"type": "SC"
+		 },
+		 {
+			"id":49,
+			"answers": "opacity: 0",
+			"isCorrect": false,
+			"exercise_id":20,
+			"module": "CSS",
+			"type": "SC"
+		 },
+		 {
+			"id":50,
+			"answers": "hidden: true",
+			"isCorrect": false,
+			"exercise_id":20,
+			"module": "CSS",
+			"type": "SC"
+		 },
+
+		 {
+			"id":51,
+			"answers": "typeof",
+			"isCorrect": true,
+			"exercise_id":21,
+			"module": "JS",
+    		"type": "FIB"
+		 },
+		 {
+			"id":52,
+			"answers": "*",
+			"isCorrect": true,
+			"exercise_id":22,
+			"module": "JS",
+    		"type": "FIB"
+		 },
+		 {
+			"id":53,
+			"answers": "color",
+			"isCorrect": true,
+			"exercise_id":23,
+			"module": "JS",
+    		"type": "FIB"
+		 },
+		
+		{
+			"id":54,
+			"answers": "hover",
+			"isCorrect": true,
+			"exercise_id":24,
+			"module": "JS",
+			"type": "FIB"
+		},
+		{
+			"id":55,
+			"answers": "size",
+			"isCorrect": true,
+			"exercise_id":25,
+			"module": "JS",
+    		"type": "FIB"
+		},
+		{
+			"id":56,
+			"answers": "Definir la estructura de la página",
+			"isCorrect": false,
+			"exercise_id":26,
+			"module": "JS",
+    		"type": "SC"
+		},
+
+		{
+			"id":57,
+			"answers": "Agregar funcionalidad interactiva",
+			"isCorrect": false,
+			"exercise_id":26,
+			"module": "JS",
+    		"type": "SC"
+		 },
+		 {
+			"id":58,
+			"answers": "Establecer el estilo y la presentación de la página",
+			"isCorrect": true,
+			"exercise_id":26,
+			"module": "JS",
+			"type": "SC"
+		 },
+		 {
+			"id":59,
+			"answers": "Almacenar datos en la base de datos",
+			"isCorrect": false,
+			"exercise_id":26,
+			"module": "JS",
+			"type": "SC"
+		 },
+		{
+			"id":60,
+			"answers": "text-font",
+			"isCorrect": false,
+			"exercise_id":27,
+			"module": "JS",
+    		"type": "SC"
+		},
+
+		{
+			"id":61,
+			"answers": "font-family",
+			"isCorrect": true,
+			"exercise_id":27,
+			"module": "JS",
+    		"type": "SC"
+		 },
+		 {
+			"id":62,
+			"answers": "font-size",
+			"isCorrect": false,
+			"exercise_id":27,
+			"module": "JS",
+			"type": "SC"
+		 },
+		 {
+			"id":63,
+			"answers": "letter-spacing",
+			"isCorrect": true,
+			"exercise_id":27,
+			"module": "JS",
+			"type": "SC"
+		 },
+		 {
+			"id":64,
+			"answers": "border: 2px solid;",
+			"isCorrect": true,
+			"exercise_id":28,
+			"module": "JS",
+			"type": "SC"
+		 },
+		 {
+			"id":65,
+			"answers": "border: 2px dotted;",
+			"isCorrect": false,
+			"exercise_id":28,
+			"module": "JS",
+			"type": "SC"
+		 },
+		 {
+			"id":66,
+			"answers": "border: 2px dashed;",
+			"isCorrect": false,
+			"exercise_id":28,
+			"module": "JS",
+			"type": "SC"
+		 },
+		 {
+			"id":67,
+			"answers": "border: 2px double;",
+			"isCorrect": false,
+			"exercise_id":28,
+			"module": "JS",
+			"type": "SC"
+		 },
+		 {
+			"id":68,
+			"answers": "margin-left",
+			"isCorrect": false,
+			"exercise_id":29,
+			"module": "JS",
+			"type": "SC"
+		 },
+		 {
+			"id":69,
+			"answers": "margin-right",
+			"isCorrect": true,
+			"exercise_id":29,
+			"module": "JS",
+    		"type": "SC"
+		 },
+		 {
+			"id":70,
+			"answers": "margin-top",
+			"isCorrect": false,
+			"exercise_id":29,
+			"module": "JS",
+    		"type": "SC"
+		 },
+		 {
+			"id":71,
+			"answers": "margin-bottom",
+			"isCorrect": false,
+			"exercise_id":29,
+			"module": "JS",
+			"type": "SC"
+		 },
+		 {
+			"id":72,
+			"answers": "display: none",
+			"isCorrect": true,
+			"exercise_id":30,
+			"module": "JS",
+			"type": "SC"
+		 },
+		 {
+			"id":73,
+			"answers": "visibility: hidden",
+			"isCorrect": false,
+			"exercise_id":30,
+			"module": "JS",
+			"type": "SC"
+		 },
+		 {
+			"id":74,
+			"answers": "opacity: 0",
+			"isCorrect": false,
+			"exercise_id":30,
+			"module": "JS",
+			"type": "SC"
+		 },
+		 {
+			"id":75,
+			"answers": "hidden: true",
+			"isCorrect": false,
+			"exercise_id":30,
+			"module": "JS",
 			"type": "SC"
 		 }
+		 
 	]
 
 	},
@@ -397,17 +960,6 @@
 					"id":2,
 					"user_id": "1",
 					"exercise_id":2
-				 },
-				{
-					"id":3,
-					"user_id": "1",
-					"exercise_id":3
-				 },
-				{
-					"id":4,
-					"user_id": "1",
-					"exercise_id":4
-
 				 }
 				 
 			]
