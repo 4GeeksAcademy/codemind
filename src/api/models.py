@@ -111,16 +111,26 @@ class Exercise(db.Model):
 
     def serialize(self):
         answers = list(map(lambda a: a.serialize(), self.answers))
-        return {
-            "id": self.id,
-            "module": self.module,
-            "type": self.type,
-            "question": self.question,
-            "info_blog": self.info_blog,
-            "info_youtube":self.info_youtube,
-            "answers": answers
+        if self.type == "SC":
+            return {
+                "id": self.id,
+                "module": self.module,
+                "type": self.type,
+                "question": self.question,
+                "info_blog": self.info_blog,
+                "info_youtube":self.info_youtube,
+                "answers": answers
 
-        }
+            }
+        else :
+            return {
+                "id": self.id,
+                "module": self.module,
+                "type": self.type,
+                "question": self.question,
+                "info_blog": self.info_blog,
+                "info_youtube":self.info_youtube,
+            }
     
     # def fill(self):
     #     answers = list(map(lambda a: a.serializes(), self.answers))
