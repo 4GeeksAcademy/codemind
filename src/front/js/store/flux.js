@@ -60,15 +60,24 @@ const getState = ({ getStore, getActions, setStore }) => {
 				getActions().changeColor(0, "green");
 			},
 
-			getRespuestaUser: async (id) => {
-				try{
+			getRespuestaUser: async () => {
+				const url = process.env.BACKEND_URL + `api/respuestauser`
+				const token= localStorage.getItem('userToken')
+				const options = {
+						method:  'GET',
+						headers: {
+							'Content-Type': 'application/json', 
+							'Access-Control-Allow-Origin': '*',
+							'Authorization': `Bearer ${token}`
+						}
+					}
 
+				try{
 					// fetching data from the backend
-					const resp = await fetch(process.env.BACKEND_URL + `/api/respuestauser/${id}`)
+					const resp = await fetch(url,options)
 					const data = await resp.json()
 					const respuestaUser = data.respuestas
 					setStore({respuestaUser})
-					console.log(respuestaUser)
 					// don't forget to return something, that is how the async resolves
 					return data;
 				} catch (error) {
@@ -76,11 +85,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-			getProgreso: async (id) => {
-				try{
+			getProgreso: async () => {
 
+				const url = process.env.BACKEND_URL + `api/progress`
+				const token= localStorage.getItem('userToken')
+				const options = {
+						method:  'GET',
+						headers: {
+							'Content-Type': 'application/json', 
+							'Access-Control-Allow-Origin': '*',
+							'Authorization': `Bearer ${token}`
+						}
+					}
+
+				try{
 					// fetching data from the backend
-					const resp = await fetch(process.env.BACKEND_URL + `/api/progress/${id}`)
+					const resp = await fetch(url,options)
 					const data = await resp.json()
 					const progress = data.progress
 					setStore({progress})
@@ -92,12 +112,25 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-			getProgresoModulo: async (id,module) => {
+			getProgresoModulo: async (module) => {
+
+				const url = process.env.BACKEND_URL + `api/progress/${module}`
+				const token= localStorage.getItem('userToken')
+				const options = {
+						method:  'GET',
+						headers: {
+							'Content-Type': 'application/json', 
+							'Access-Control-Allow-Origin': '*',
+							'Authorization': `Bearer ${token}`
+						}
+					}
+
 				try{
 
 					// fetching data from the backend
-					const resp = await fetch(process.env.BACKEND_URL + `/api/progress/${module}/${id}`)
+					const resp = await fetch(url,options)
 					const data = await resp.json()
+					console.log(data)
 					const progressModule = data.progress
 					setStore({progressModule})
 					console.log(progressModule)
@@ -108,11 +141,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-			getLastAnswerModule: async (id,module) => {
+			getLastAnswerModule: async (module) => {
+
+				const url = process.env.BACKEND_URL + `api/progress/${module}`
+				const token= localStorage.getItem('userToken')
+				const options = {
+						method:  'GET',
+						headers: {
+							'Content-Type': 'application/json', 
+							'Access-Control-Allow-Origin': '*',
+							'Authorization': `Bearer ${token}`
+						}
+					}
 				try{
 
 					// fetching data from the backend
-					const resp = await fetch(process.env.BACKEND_URL + `/api/progress/${module}/${id}`)
+					const resp = await fetch(url,options)
 					const data = await resp.json()
 					const last_answer = data.last_answer
 					setStore({last_answer})
@@ -233,6 +277,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				};
 				try {
 					const resp = await fetch(url, options);
+					console.log()
 					if (resp.ok) {
 						const data = await resp.json();
 						console.log('La solicitud se realizó con éxito');
@@ -438,9 +483,54 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.error(error)
 				}
 			},
+			decrypt: async(token)=>{
+				const url = process.env.BACKEND_URL + '/api/decrypt';
+				const options = {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+						'Access-Control-Allow-Origin': '*',
+						'Authorization': 'Bearer ' + token
+					}
+				}
+				try {
+					const resp = await fetch(url, options);
+					if (resp.ok) {
+						const data = await resp.json()
+						return data
+					}
+				} catch (error) {
+					console.error(error)
+				}
+			},
+			changePassword: async(credentials)=>{
+				const url = process.env.BACKEND_URL + '/api/changepassword';
+				console.log(credentials)
+				const options = {
+					method: 'PATCH',
+					body: JSON.stringify({
+						"email" : credentials.email,
+						"password": credentials.password
+					}),
+					headers: {
+						'Content-Type': 'application/json',
+						'Access-Control-Allow-Origin': '*'
+						
+					}
+				}
+				try {
+					const resp = await fetch(url, options);
+					if (resp.ok) {
+						const data = await resp.json()
+						return data
+					}
+				} catch (error) {
+					console.error(error)
+				}
+			}
 
 
-		}
+		},
 	};
 };
 export default getState;

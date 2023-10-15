@@ -35,8 +35,10 @@ class User(db.Model):
             "lastName": self.lastName,
             "img": self.img,
             "role": self.role,
-            "teacher": self.teacher_id
-            # No serializar la contraseña, es un problema de seguridad
+            "teacher": self.teacher_id,
+            "password": self.password
+            
+            # "No" serializar la contraseña, es un problema de seguridad
         }
 
 
@@ -70,7 +72,7 @@ class Teacher(db.Model):
             "firstName": self.firstName,
             "lastName": self.lastName,
             "role": self.role,
-            
+            "password": self.password,
             "students": students
             
         }

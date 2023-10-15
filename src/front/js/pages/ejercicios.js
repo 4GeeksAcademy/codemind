@@ -15,15 +15,15 @@ export const Ejercicios = () => {
   },[])
   
   useEffect(()=>{
-    actions.getProgresoModulo(store.user.id,modulo)
+    actions.getProgresoModulo(modulo)
   },[])
 
   useEffect(()=>{
-    actions.getLastAnswerModule(store.user.id,modulo)
+    actions.getLastAnswerModule(modulo)
   },[])
 
   useEffect(()=>{
-    actions.getRespuestaUser(store.user.id)
+    actions.getRespuestaUser()
   },[])
   
 
