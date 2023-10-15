@@ -27,7 +27,7 @@ export const Ejercicios = () => {
   },[])
   
 
-  const respuestaCorrecta = (exercise_id) => {
+  const respuestaCorrectaIncluida = (exercise_id) => {
     const respuesta = store.respuestaUser.includes(exercise_id)
     return respuesta
     };
@@ -55,10 +55,12 @@ export const Ejercicios = () => {
       Preguntas
       </div>
     {store.exercises.map((exercise, indice) =>
+      <Link to={ respuestaCorrectaIncluida(exercise.id) ? `./${indice+1}` : `#`}>
           <div key={indice} className="form-control my-2 d-flex justify-content-between">
         <span>{indice+1} - {exercise.question}</span>
-        {respuestaCorrecta(exercise.id) && (<span><i className="fas fa-check-circle" style={{color: `#1f5122`}}></i></span>)}
+        {respuestaCorrectaIncluida(exercise.id) && (<span><i className="fas fa-check-circle" style={{color: `#1f5122`}}></i></span>)}
       </div>
+      </Link>
       )}
       <div className="d-flex justify-content-between">
       <Link to="/modules" >
