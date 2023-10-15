@@ -35,20 +35,11 @@ class User(db.Model):
             "lastName": self.lastName,
             "img": self.img,
             "role": self.role,
-            "teacher": self.teacher_id,
-            "password": self.password
-            
-            # "No" serializar la contraseña, es un problema de seguridad
+            "teacher": self.teacher_id
+            # No serializar la contraseña, es un problema de seguridad
         }
 
 
-
-#crear la class Studen y a la clase Teacher
-# class Teacher(db.Model):
-#     __tablename__ = 'teacher'
-#     id = db.Column(db.Integer, primary_key=True)
-#     students = db.relationship('User', back_populates='teacher')
-    
 
 class Teacher(db.Model):
     __tablename__ = 'teacher'
@@ -72,7 +63,7 @@ class Teacher(db.Model):
             "firstName": self.firstName,
             "lastName": self.lastName,
             "role": self.role,
-            "password": self.password,
+            
             "students": students
             
         }
