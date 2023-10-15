@@ -116,6 +116,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				const url = process.env.BACKEND_URL + `api/progress/${module}`
 				const token= localStorage.getItem('userToken')
+				if(!token){
+					return false
+				}
 				const options = {
 						method:  'GET',
 						headers: {
