@@ -77,7 +77,7 @@ export const PreguntaCompletar = () => {
         <h2 className="fs-2">Pregunta N° {theid} de {modulo.toLocaleUpperCase()} </h2>
         </div>
       </div>
-      <div className="row d-flex justify-content-end my-4">
+      <div className="row d-flex justify-content-end mb-4">
         <div className='col-8 mt-3 ps-0 pt-3'>
           <h4 className='me-3 fs-5 text-white'>{exercise_actual?.question}</h4>
         </div>
