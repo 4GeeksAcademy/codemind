@@ -44,6 +44,7 @@ export const Ejercicios = () => {
       <h2 className="mb-3 text-center fs-1 mt-4">
       Cuestionario de {modulo.toLocaleUpperCase()}
       </h2>
+      <img src={store.imageModule[modulo]} />
       <h3 className="mb-3">
       Progreso
       </h3>
