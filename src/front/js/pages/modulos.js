@@ -69,7 +69,7 @@ export const Modulos = () => {
             </div>
             {descriptionsVisible.html5 && (
               <div className="card-description">
-                <p>Descripción breve del módulo HTML5.</p>
+                <p>Este módulo es fundamental para aprender a estructurar contenido web.</p>
               </div>
             )}
           </div>
@@ -101,7 +101,7 @@ export const Modulos = () => {
             </div>
             {descriptionsVisible.css && (
               <div className="card-description">
-                <p>Descripción breve del módulo CSS.</p>
+                <p>Este módulo esta diseñado para aprender y perfeccionar las habilidades de estilización web.</p>
               </div>
             )}
           </div>
@@ -133,7 +133,7 @@ export const Modulos = () => {
             </div>
             {descriptionsVisible.javascript && (
               <div className="card-description">
-                <p>Descripción breve del módulo JavaScript.</p>
+                <p>Este módulo es esencial para aprender a programar interacciones dinámicas en sitios web.</p>
               </div>
             )}
           </div>
