@@ -20,7 +20,6 @@ export const PreguntaCompletar = () => {
   useEffect(()=>{
     actions.getLastAnswerModule(modulo)
   },[])
-  console.log(store.last_answer.id)
 
 
   const handleRespuestaChange = (event) => {
@@ -28,8 +27,6 @@ export const PreguntaCompletar = () => {
     setRespuesta(event.target.value);
     setRespuestaCorrecta(false); // Reinicia la respuesta correcta al cambiar la respuesta
   };
-  console.log(exercise_actual?.id)
-  console.log(respuesta)
   
   const verificarRespuesta = async (e) => {
     e.preventDefault()

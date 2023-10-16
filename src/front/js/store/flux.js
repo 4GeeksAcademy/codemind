@@ -133,10 +133,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					// fetching data from the backend
 					const resp = await fetch(url,options)
 					const data = await resp.json()
-					console.log(data)
 					const progressModule = data.progress
 					setStore({progressModule})
-					console.log(progressModule)
 					// don't forget to return something, that is how the async resolves
 					return data;
 				} catch (error) {
@@ -163,7 +161,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					const data = await resp.json()
 					const last_answer = data.last_answer
 					setStore({last_answer})
-					console.log(last_answer)
+					
 					// don't forget to return something, that is how the async resolves
 					return data;
 				} catch (error) {
