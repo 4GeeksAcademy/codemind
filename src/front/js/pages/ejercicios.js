@@ -40,34 +40,41 @@ export const Ejercicios = () => {
   return (
     <div className="container-fluid">
       <div className="row d-flex justify-content-end">
-      <div className='col-lg-10 col-sm-10 '>
+      <div className='col-10'>
       <h2 className="mb-3 text-center fs-1 mt-4">
       Cuestionario de {modulo.toLocaleUpperCase()}
       </h2>
-      <img src={store.imageModule[modulo]} />
-      <h3 className="mb-3">
-      Progreso
-      </h3>
-      <div className="progress mb-3">
-      <div className="progress-bar bg-secondary" role="progressbar" style={{width: `${progresoActual()}%`}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{progresoActual()}%</div>
       </div>
-    {store.exercises.map((exercise, indice) =>
+      </div>
+      <div className="row d-flex justify-content-end">
+      <div className='col-7'>
+      <h4 className="mb-3">
+      Progreso
+      </h4>
+      <div className="progress mb-3">
+      <div className="progress-bar bg-primary" role="progressbar" style={{width: `${progresoActual()}%`}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{progresoActual()}%</div>
+      </div>
+     {store.exercises.map((exercise, indice) =>
       <Link to={ respuestaCorrectaIncluida(exercise.id) ? `./${indice+1}` : `#`}>
-          <div key={indice} className="form-control border border-dark mb-3 d-flex justify-content-between bg-dark text-white py-2">
+          <div key={indice} className="form-control border border-dark mb-3 d-flex justify-content-between bg-dark text-white py-1">
         <span>{indice+1} - {exercise.question}</span>
-        {respuestaCorrectaIncluida(exercise.id) && (<span className="align-items-center"><i className="fas fa-check-circle" style={{color: `#F2811D`}}></i></span>)}
+        {respuestaCorrectaIncluida(exercise.id) && (<span className="d-flex align-items-center"><i className="fas fa-check-circle" style={{color: `#00C851`}}></i></span>)}
       </div>
       </Link>
       )}
-      <div className="d-flex justify-content-between">
+      <div className="d-flex justify-content-between mt-4">
       <Link to="/modules" >
-        <button className="btn btn-secondary mt-5">Regresar a módulos</button>
+        <button className="btn btn-secondary ">Regresar a módulos</button>
       </Link>
       <Link to={ last_answer < store.exercises.length ? `./${last_answer}` : `./${store.exercises.length}`}>
-        <button className="btn btn-verificar mt-5">Continuar</button>
+        <button className="btn btn-verificar ">Continuar</button>
       </Link>
       </div>
+      
     </div>
+    <div className='col-3 d-flex align-items-center'>
+      <img className="rounded" src={store.imageModule[modulo]} />
+      </div>
     </div>
     </div>
 
