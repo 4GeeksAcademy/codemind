@@ -48,17 +48,17 @@ export const Ejercicios = () => {
       </div>
       <div className="row d-flex justify-content-end">
       <div className='col-7'>
-      <h4 className="mb-3">
+      <h4 className="mb-3" style={{color: `${store.module[modulo].color}`}}>
       Progreso
       </h4>
       <div className="progress mb-3">
-      <div className="progress-bar bg-primary" role="progressbar" style={{width: `${progresoActual()}%`}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{progresoActual()}%</div>
+      <div className="progress-bar" role="progressbar" style={{width: `${progresoActual()}%`, backgroundColor: `${store.module[modulo].color}`}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{progresoActual()}%</div>
       </div>
      {store.exercises.map((exercise, indice) =>
       <Link to={ respuestaCorrectaIncluida(exercise.id) ? `./${indice+1}` : `#`}>
           <div key={indice} className="form-control border border-dark mb-3 d-flex justify-content-between bg-dark text-white py-1">
         <span>{indice+1} - {exercise.question}</span>
-        {respuestaCorrectaIncluida(exercise.id) && (<span className="d-flex align-items-center"><i className="fas fa-check-circle" style={{color: `#00C851`}}></i></span>)}
+        {respuestaCorrectaIncluida(exercise.id) && (<span className="d-flex align-items-center"><i className="fas fa-check-circle" style={{color: `${store.module[modulo].color}`}}></i></span>)}
       </div>
       </Link>
       )}
@@ -67,13 +67,13 @@ export const Ejercicios = () => {
         <button className="btn btn-secondary ">Regresar a módulos</button>
       </Link>
       <Link to={ last_answer < store.exercises.length ? `./${last_answer}` : `./${store.exercises.length}`}>
-        <button className="btn btn-verificar ">Continuar</button>
+        <button className="btn text-white" style={{backgroundColor: `${store.module[modulo].color}`}}>Continuar</button>
       </Link>
       </div>
       
     </div>
     <div className='col-3 d-flex align-items-center'>
-      <img className="rounded" src={store.imageModule[modulo]} />
+      <img className="rounded" src={store.module[modulo].imagen} />
       </div>
     </div>
     </div>

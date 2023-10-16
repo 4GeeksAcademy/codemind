@@ -20,8 +20,6 @@ export const PreguntaCompletar = () => {
   useEffect(()=>{
     actions.getLastAnswerModule(modulo)
   },[])
-
-
   const handleRespuestaChange = (event) => {
     // e.preventDefault()
     setRespuesta(event.target.value);
@@ -74,7 +72,7 @@ export const PreguntaCompletar = () => {
         <h2 className="fs-2 d-flex align-items-center">Pregunta N° {theid} de {modulo.toLocaleUpperCase()} </h2>
         </div>
         <div className="col-2 text-center">
-        <img className="img-exercise rounded" src={store.imageModule[modulo]} />
+        <img className="img-exercise rounded" src={store.module[modulo].imagen} />
         </div>
       </div>
       <div className="row d-flex justify-content-end my-3">

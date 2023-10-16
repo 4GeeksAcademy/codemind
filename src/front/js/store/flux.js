@@ -12,11 +12,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 			respuestaUser : [],
 			progress: null,
 			progressModule: null,
-			imageModule: {
-				html: "https://generation-sessions.s3.amazonaws.com/ad60b588835c42a878fbc4ab00aaadec/img/html5-logo-and-wordmark-1@2x.png",
-				css : "https://generation-sessions.s3.amazonaws.com/ad60b588835c42a878fbc4ab00aaadec/img/1200px-css-3-1@2x.png",
-				js : "https://generation-sessions.s3.amazonaws.com/ad60b588835c42a878fbc4ab00aaadec/img/unofficial-javascript-logo-2-1@2x.png"
-			},
+			module: {
+				html:{
+					imagen:"https://generation-sessions.s3.amazonaws.com/ad60b588835c42a878fbc4ab00aaadec/img/html5-logo-and-wordmark-1@2x.png",
+					color: "#F16529"},
+				css : {
+					imagen:"https://generation-sessions.s3.amazonaws.com/ad60b588835c42a878fbc4ab00aaadec/img/1200px-css-3-1@2x.png",
+					color: "#29A9DF"},
+				js : {
+					imagen:"https://generation-sessions.s3.amazonaws.com/ad60b588835c42a878fbc4ab00aaadec/img/unofficial-javascript-logo-2-1@2x.png",
+					color: "#F7DF1E"}
+		},
 
 			demo: [
 				{
