@@ -2,7 +2,7 @@ import React, { useState,useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/index.css";
 import { Link,useParams } from "react-router-dom";
-import {PreguntaCompletar} from "./fillInTheBlank.js"
+import {PreguntaCompletar} from "./ejerciciosPorModulo.js"
 
 
 export const Ejercicios = () => {

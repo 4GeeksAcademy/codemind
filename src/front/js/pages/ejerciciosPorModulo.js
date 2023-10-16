@@ -93,7 +93,7 @@ export const PreguntaCompletar = () => {
       </div>
       {exercise_actual?.type==="FIB" ? 
       <div className="row d-flex justify-content-end">
-        <div className='col-10 ps-0'>
+        <div className='col-10 ps-0 mt-5'>
         <input className="mb-3 form-control bg-dark text-white"
         type="text"
         value={respuesta}
