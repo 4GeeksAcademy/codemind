@@ -38,36 +38,32 @@ export const Ejercicios = () => {
     };
 
   return (
-    <div className="container">
+    <div className="container-fluid">
       <div className="row d-flex justify-content-end">
       <div className='col-lg-10 col-sm-10 '>
-      <div className="mb-3 text-danger text-center fs-1">
-      Curso de {modulo.toLocaleUpperCase()}
-      </div>
-      <div className="mb-3 text-danger fs-2">
+      <h2 className="mb-3 text-center fs-1 mt-4">
+      Cuestionario de {modulo.toLocaleUpperCase()}
+      </h2>
+      <h3 className="mb-3">
       Progreso
-      </div>
+      </h3>
       <div className="progress mb-3">
-        <div></div>
-      <div className="progress-bar" role="progressbar" style={{width: `${progresoActual()}%`}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{progresoActual()}%</div>
-      </div>
-      <div className="mb-3 text-danger fs-2">
-      Preguntas
+      <div className="progress-bar bg-secondary" role="progressbar" style={{width: `${progresoActual()}%`}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{progresoActual()}%</div>
       </div>
     {store.exercises.map((exercise, indice) =>
       <Link to={ respuestaCorrectaIncluida(exercise.id) ? `./${indice+1}` : `#`}>
-          <div key={indice} className="form-control my-2 d-flex justify-content-between">
+          <div key={indice} className="form-control border border-dark mb-3 d-flex justify-content-between bg-dark text-white py-2">
         <span>{indice+1} - {exercise.question}</span>
-        {respuestaCorrectaIncluida(exercise.id) && (<span><i className="fas fa-check-circle" style={{color: `#1f5122`}}></i></span>)}
+        {respuestaCorrectaIncluida(exercise.id) && (<span className="align-items-center"><i className="fas fa-check-circle" style={{color: `#F2811D`}}></i></span>)}
       </div>
       </Link>
       )}
       <div className="d-flex justify-content-between">
       <Link to="/modules" >
-        <button className="btn btn-primary mt-5">Regresar a módulos</button>
+        <button className="btn btn-secondary mt-5">Regresar a módulos</button>
       </Link>
       <Link to={ last_answer < store.exercises.length ? `./${last_answer}` : `./${store.exercises.length}`}>
-        <button className="btn btn-primary mt-5">Continuar</button>
+        <button className="btn btn-verificar mt-5">Continuar</button>
       </Link>
       </div>
     </div>

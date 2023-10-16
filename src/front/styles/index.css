@@ -243,10 +243,14 @@ height: 180px;
 }
 
 .seleccionada { 
-  background-color: #6610F2;
+  background-color: var(--ColorSecundario);
   color : white;
 }
 
+.btn-verificar{
+  background-color: var(--ColorSecundario);
+  color : white;
+}
 /* Estilo personalizado para los radio buttons */
 
 
