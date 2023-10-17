@@ -12,6 +12,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 			respuestaUser : [],
 			progress: null,
 			progressModule: null,
+			module: {
+				html:{
+					imagen:"https://generation-sessions.s3.amazonaws.com/ad60b588835c42a878fbc4ab00aaadec/img/html5-logo-and-wordmark-1@2x.png",
+					color: "#F16529"},
+				css : {
+					imagen:"https://generation-sessions.s3.amazonaws.com/ad60b588835c42a878fbc4ab00aaadec/img/1200px-css-3-1@2x.png",
+					color: "#29A9DF"},
+				js : {
+					imagen:"https://generation-sessions.s3.amazonaws.com/ad60b588835c42a878fbc4ab00aaadec/img/unofficial-javascript-logo-2-1@2x.png",
+					color: "#F7DF1E"}
+		},
 
 			demo: [
 				{
@@ -26,34 +37,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			],
 
-
-			tipoPreguntas: [
-				{
-					name: "Fill In The Blank",
-					siglas: "fib",
-					description: "Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.",
-					src : "http://3.bp.blogspot.com/--d_5KLDVwUI/Vls88yeweUI/AAAAAAAAAqg/ISientf4PTM/s1600/DragAndDrop.png"
-				},
-				{
-					name: "Simple Choice",
-					siglas: "sc",
-					description: "Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.",
-					src : "http://3.bp.blogspot.com/--d_5KLDVwUI/Vls88yeweUI/AAAAAAAAAqg/ISientf4PTM/s1600/DragAndDrop.png"
-				},
-				{
-					name: "Drag and Drop",
-					siglas: "dd",
-					description: "Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.",
-					src : "http://3.bp.blogspot.com/--d_5KLDVwUI/Vls88yeweUI/AAAAAAAAAqg/ISientf4PTM/s1600/DragAndDrop.png"
-				},
-				
-			],
 			user: initialUser ,
-
 			teachers: null, 
 			teacherData: null,
 
 		},
+
 		actions: {
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
@@ -133,10 +122,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					// fetching data from the backend
 					const resp = await fetch(url,options)
 					const data = await resp.json()
-					console.log(data)
 					const progressModule = data.progress
 					setStore({progressModule})
-					console.log(progressModule)
 					// don't forget to return something, that is how the async resolves
 					return data;
 				} catch (error) {
@@ -163,7 +150,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					const data = await resp.json()
 					const last_answer = data.last_answer
 					setStore({last_answer})
-					console.log(last_answer)
+					
 					// don't forget to return something, that is how the async resolves
 					return data;
 				} catch (error) {
@@ -179,7 +166,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				const url = process.env.BACKEND_URL + `api/verificar-respuesta/${id}`
 				const token= localStorage.getItem('userToken')
-				console.log(JSON.stringify(token))
+				
 				const options = {
 						method:  'POST',
 						body: JSON.stringify({respuesta}),
@@ -193,7 +180,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					const resp = await fetch(url, options)
 					if(resp.ok){
 						const data = await resp.json()
-						console.log(data)
+						
 						const respuesta = data.correct
 					// don't forget to return something, that is how the async resolves
 					return respuesta;

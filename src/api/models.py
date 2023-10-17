@@ -131,19 +131,6 @@ class Exercise(db.Model):
                 "info_blog": self.info_blog,
                 "info_youtube":self.info_youtube,
             }
-    
-    # def fill(self):
-    #     answers = list(map(lambda a: a.serializes(), self.answers))
-    #     return {
-    #         "id": self.id,
-    #         "module": self.module,
-    #         "type": self.type,
-    #         "question": self.question,
-    #         "info_blog": self.info_blog,
-    #         "info_youtube":self.info_youtube,
-    #         "answers": answers
-
-    #     }
 
 class Answers(db.Model):
     __tablename__ = 'answers'
