@@ -1,47 +1,50 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link, useLocation , useNavigate} from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 export const Navbar = () => {
-  const { store , actions } = useContext(Context);
+  const { store, actions } = useContext(Context);
   const { user } = store;
   const location = useLocation()
   const navigate = useNavigate();
   const defaultUserImg = "https://images.squarespace-cdn.com/content/v1/5e6cfa89c315535aba12ee9d/1620070500897-0BUOX95Q8M9ZB3WQQPPR/Logo+-+Einstein+%282%29.png";
   const [userImg, setUserImg] = useState(user ? user.img : defaultUserImg);
- 
+
   const [navActive, setNavActive] = useState(null)
+
+  const shouldHide = !navActive; // Ocultar cuando la barra no esté desplegada
+
   useEffect(() => {
     setNavActive(location.pathname)
     if (user) {
       setUserImg(user.img || defaultUserImg)
     } else {
       setUserImg(defaultUserImg);
-      
+
     }
 
   }, [location.pathname, user, store.user]);
 
 
-const handleLogout = async (e) => {
+  const handleLogout = async (e) => {
     e.preventDefault();
     console.log("Handle logout called");
-    
+
     try {
-        const response = await actions.logout();
+      const response = await actions.logout();
 
-        if (response.success){
-            navigate("/")
+      if (response.success) {
+        navigate("/")
 
-        }else{
-            setErrorLogin("logout fallido.");
-        }
+      } else {
+        setErrorLogin("logout fallido.");
+      }
 
     } catch (error) {
-        console.log(error)
+      console.log(error)
     }
 
-};
+  };
 
 
 
@@ -91,9 +94,6 @@ const handleLogout = async (e) => {
         <div className="nav-button">
           <i className="fas fa-images"></i><span>Library</span>
         </div>
-        {/* <div className="nav-button">
-          <i className="fas fa-thumbtack"></i><span></span>
-        </div> */}
         <hr />
 
         <div className="nav-button">
@@ -106,23 +106,85 @@ const handleLogout = async (e) => {
         <div className="nav-button">
           <Link to="/about"><i className="fas fa-heart"></i><span>About Us</span> </Link>
         </div>
-        {/* <div className="nav-button">
-          <i className="fas fa-magic"></i><span>Spark</span>
-        </div> */}
-        <hr />
-        {/* <div className="nav-button">
-          <i className="fas fa-gem"></i><span>Codepen Pro</span>
-        </div> */}
         <div id="nav-content-highlight"></div>
       </div>
 
       <input id="nav-footer-toggle" type="checkbox" />
       <div id="nav-footer">
-        <div id="nav-footer-heading">
+        <div id="nav-footer-heading" className="d-flex align-items-start">
           <div id="nav-footer-avatar">
-            <Link to={"/profile"}><img src={userImg} alt="Avatar" className="rounded-circle"/></Link>
+            <Link to={"/profile"}><img src={userImg} alt="Avatar" className="rounded-circle" /></Link>
           </div>
-          <div id="nav-footer-titlebox d-flex justify-content-center ms-2">
+          <div id="nav-footer-titlebox" className={`ms-2 ${shouldHide ? 'hide-element' : ''}`}>
+            <a id="nav-footer-title" className="d-flex ms-2" href="#" target="_blank">
+              <Link to={"/profile"}>{user && user.firstName ? user.firstName : null} {user && user.lastName ? user.lastName : null}</Link>
+            </a>
+            <div>
+              <span id="nav-footer-subtitle">{user && user.role ? user.role : null}</span>
+            </div>
+          </div>
+          <label htmlFor="nav-footer-toggle">
+            <i className="fas fa-caret-up"></i>
+          </label>
+        </div>
+        <div id="nav-footer-content">
+          <div className="nav-item">
+            <Link to={"/"} className="btn btn-outline-primary" onClick={handleLogout} >Log out</Link>
+          </div>
+        </div>
+      </div>
+    </div>)
+
+
+  const teacherNavbar = (
+    <div id="nav-bar">
+      <input id="nav-toggle" type="checkbox" />
+      <div id="nav-header">
+        <div id="nav-title" target="_blank">
+          <Link to={"/modules"}><a className="text-primary font-weight-bold" aria-current="page" href="#">CodeMind</a></Link>
+        </div>
+        <label htmlFor="nav-toggle">
+          <span id="nav-toggle-burger"></span>
+        </label>
+        <hr />
+      </div>
+      <div id="nav-content">
+        <div className="nav-button">
+          <i className="fas fa-palette"></i><span>Modules</span>
+        </div>
+        <div className="nav-button">
+          <i className="fas fa-images"></i><span>Library</span>
+        </div>
+        <div className="nav-button">
+          <Link to={"/student"}><i class="fa-solid fa-user-group p-3"></i><span>Students</span></Link>
+        </div>
+        <hr />
+        <div className="nav-button">
+          <i className="fas fa-chart-line"></i><span>Progress</span>
+        </div>
+        <div className="nav-button">
+          <i className="fas fa-fire"></i><span>Road Map</span>
+        </div>
+        <div className="nav-button">
+          <i className="fas fa-heart"></i><span>About Us</span>
+        </div>
+        <div className="nav-button">
+          <i className="fas fa-magic"></i><span>Spark</span>
+        </div>
+        <hr />
+        {/* <div className="nav-button">
+        <i className="fas fa-gem"></i><span>Codepen Pro</span>
+      </div> */}
+        <div id="nav-content-highlight"></div>
+      </div>
+
+      <input id="nav-footer-toggle" type="checkbox" />
+      <div id="nav-footer">
+        <div id="nav-footer-heading" className="d-flex align-items-start">
+          <div id="nav-footer-avatar">
+            <Link to={"/profile"}><img src={userImg} alt="Avatar" className="rounded-circle" /></Link>
+          </div>
+          <div id="nav-footer-titlebox" className={`ms-2 ${shouldHide ? 'hide-element' : ''}`}>
             <a id="nav-footer-title d-flex justify-content-end ms-2" href="#" target="_blank">
               <Link to={"/profile"}>{user && user.firstName ? user.firstName : null} {user && user.lastName ? user.lastName : null}</Link>
             </a>
@@ -135,82 +197,13 @@ const handleLogout = async (e) => {
           </label>
         </div>
         <div id="nav-footer-content">
-  <div className="nav-item">
-    <Link to={"/"} className="btn btn-outline-primary" onClick={handleLogout} >Log out</Link>
-  </div>
-</div>
-      </div>
-    </div>)
-
-
-  const teacherNavbar = (
-    <div id="nav-bar">
-    <input id="nav-toggle" type="checkbox" />
-    <div id="nav-header">
-      <div id="nav-title" target="_blank">
-        <Link to={"/modules"}><a className="text-primary font-weight-bold" aria-current="page" href="#">CodeMind</a></Link>
-      </div>
-      <label htmlFor="nav-toggle">
-        <span id="nav-toggle-burger"></span>
-      </label>
-      <hr />
-    </div>
-    <div id="nav-content">
-      <div className="nav-button">
-        <i className="fas fa-palette"></i><span>Modules</span>
-      </div>
-      <div className="nav-button">
-        <i className="fas fa-images"></i><span>Library</span>
-      </div>
-      <div className="nav-button">
-        <Link to={"/student"}><i class="fa-solid fa-user-group p-3"></i><span>Students</span></Link>
-      </div> 
-      <hr />
-      <div className="nav-button">
-        <i className="fas fa-chart-line"></i><span>Progress</span>
-      </div>
-      <div className="nav-button">
-        <i className="fas fa-fire"></i><span>Road Map</span>
-      </div>
-      <div className="nav-button">
-        <i className="fas fa-heart"></i><span>About Us</span>
-      </div>
-      <div className="nav-button">
-        <i className="fas fa-magic"></i><span>Spark</span>
-      </div> 
-      <hr />
-      {/* <div className="nav-button">
-        <i className="fas fa-gem"></i><span>Codepen Pro</span>
-      </div> */}
-      <div id="nav-content-highlight"></div>
-    </div>
-    
-    <input id="nav-footer-toggle" type="checkbox" />
-    <div id="nav-footer">
-      <div id="nav-footer-heading">
-        <div id="nav-footer-avatar">
-          <Link to={"/profile"}><img src={userImg} alt="Avatar" className="rounded-circle" /></Link>
-        </div>
-        <div id="nav-footer-titlebox d-flex justify-content-center ms-2">
-          <a id="nav-footer-title d-flex justify-content-end ms-2" href="#" target="_blank">
-          <Link to={"/profile"}>{user && user.firstName ? user.firstName : null} {user && user.lastName ? user.lastName : null}</Link>
-          </a>
-          <div>
-          <span id="nav-footer-subtitle">{user && user.role ? user.role : null}</span>
+          <div className="nav-item">
+            <Link to={"/"} className="btn btn-outline-primary" onClick={handleLogout} >Log out</Link>
           </div>
-        </div>
-        <label htmlFor="nav-footer-toggle">
-          <i className="fas fa-caret-up"></i>
-        </label>
-      </div>
-   <div id="nav-footer-content">
-  <div className="nav-item">
-    <Link to={"/"} className="btn btn-outline-primary" onClick={handleLogout} >Log out</Link>
-  </div>
 
+        </div>
       </div>
     </div>
-  </div>
   )
 
 
@@ -226,9 +219,9 @@ const handleLogout = async (e) => {
 
   return (
     <>
-{renderNavbarBasedOnRole()}
-    
-{console.log(navActive)}
+      {renderNavbarBasedOnRole()}
+
+      {console.log(navActive)}
     </>
   );
 };
