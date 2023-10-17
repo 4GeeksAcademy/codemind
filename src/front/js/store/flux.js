@@ -267,6 +267,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				};
 				try {
 					const resp = await fetch(url, options);
+					console.log()
 					if (resp.ok) {
 						const data = await resp.json();
 						console.log('La solicitud se realizó con éxito');
@@ -425,8 +426,101 @@ const getState = ({ getStore, getActions, setStore }) => {
 				} catch (error) {
 					console.error(error);
 				}
+			},
+			recoveryPassword: async (email)=>{
+				const url = process.env.BACKEND_URL + '/api/requestpassword';
+				const options = {
+					method: 'POST',
+					body: JSON.stringify({
+						email
+					}),
+					headers: {
+						'Content-Type': 'application/json',
+						'Access-Control-Allow-Origin': '*'
+					}
+					
+
+				}
+				try {
+					const resp = await fetch(url, options);
+					if (resp.ok) {
+						return { success: true, "msg" : "mail Enviado" };
+					} else {
+						console.error('La solicitud de logout no se realizó con éxito');
+					}
+				} catch (error) {
+					console.error(error);
+				}
+			},
+			getUser: async (userid) => {
+				let { teacherData } = getStore()
+				const url = process.env.BACKEND_URL + '/api/user/' + userid;
+				const options = {
+					method: 'GET',
+					headers: {
+						'Content-Type': 'application/json',
+						'Access-Control-Allow-Origin': '*'
+					}
+				}
+
+				try {
+					const resp = await fetch(url, options);
+					if (resp.ok) {
+						const data = await resp.json()
+						return data
+					}
+				} catch (error) {
+					console.error(error)
+				}
+			},
+			decrypt: async(token)=>{
+				const url = process.env.BACKEND_URL + '/api/decrypt';
+				const options = {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+						'Access-Control-Allow-Origin': '*',
+						'Authorization': 'Bearer ' + token
+					}
+				}
+				try {
+					const resp = await fetch(url, options);
+					if (resp.ok) {
+						const data = await resp.json()
+						return data
+					}
+				} catch (error) {
+					console.error(error)
+				}
+			},
+			changePassword: async(credentials)=>{
+				const url = process.env.BACKEND_URL + '/api/changepassword';
+				console.log(credentials)
+				const options = {
+					method: 'PATCH',
+					body: JSON.stringify({
+						"email" : credentials.email,
+						"password": credentials.password
+					}),
+					headers: {
+						'Content-Type': 'application/json',
+						'Access-Control-Allow-Origin': '*'
+						
+					}
+				}
+				try {
+					const resp = await fetch(url, options);
+					if (resp.ok) {
+						const data = await resp.json()
+						return data
+					}
+				} catch (error) {
+					console.error(error)
+				}
 			}
-		}
+
+
+		},
 	};
 };
 export default getState;
