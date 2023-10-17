@@ -189,7 +189,8 @@ def login():
                 "teacher": user.teacher
             }
         else:
-
+            return jsonify({"message": "wrong password"}), 401
+            
     elif teacher:
         # Verifica la contraseña para profesores
         if bcrypt.check_password_hash(teacher.password, password):
@@ -289,7 +290,8 @@ def get_exercises_by_module(module):
         exercises_type = list(map(lambda a: a.type, exercises))
         print(exercises_type)
         if exercises:
-
+            exercises = [exercise.serialize() for exercise in exercises]
+            return jsonify({"exercises": exercises}), 200
         else:
             return jsonify({"msg": "No se encontraron ejercicios para el tipo de módulo especificado"}), 404
     except Exception as e:
