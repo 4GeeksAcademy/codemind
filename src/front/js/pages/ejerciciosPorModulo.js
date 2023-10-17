@@ -34,15 +34,15 @@ export const PreguntaCompletar = () => {
     if (verificacion) {
       setRespuestaCorrecta(true);
       Swal.fire(
-        'Respuesta Correcta!',
-        'Buen trabajo! Continua con la siguiente pregunta',
+        'Correct Answer!',
+        'Good job! Continues with the next question',
         'success'
       )
 
     } else {
       Swal.fire(
-        'Respuesta Incorrecta!',
-        'Intenta otra vez',
+        'Wrong Answer!',
+        'Try it again',
         'error'
       )
     }
@@ -57,8 +57,8 @@ export const PreguntaCompletar = () => {
         navigate( `/preguntas/${modulo}/${parseInt(theid) + 1}`)
       } else {
         Swal.fire(
-          'Excelente!',
-          'Has completado todas las preguntas. Continua con el siguiente módulo',
+          'Excellent!',
+          'You have completed all the questions. Continues with the next module',
           'success'
           )
           navigate('/modules')
@@ -69,7 +69,7 @@ export const PreguntaCompletar = () => {
     <div className="container">
       <div className="row d-flex justify-content-end my-3">
         <div className='col-8 my-3 px-0 d-flex justify-content-between gap-3'>
-        <h2 className="fs-2 d-flex align-items-center">Pregunta N° {theid} de {modulo.toLocaleUpperCase()} </h2>
+        <h2 className="fs-2 d-flex align-items-center"> Question N° {theid} of {modulo.toLocaleUpperCase()} </h2>
         </div>
         <div className="col-2 text-center">
         <img className="img-exercise rounded" src={store.module[modulo].imagen} />
@@ -80,12 +80,12 @@ export const PreguntaCompletar = () => {
           <h4 className='me-3 fs-5 text-white'>{exercise_actual?.question}</h4>
         </div>
         <div className="col-2 gap-2 px-0 ">
-          <h5 className="text-center mb-3 pe-2 text-white">¿Necesitas ayuda?</h5>
+          <h5 className="text-center mb-3 pe-2 text-white">Do you need help?</h5>
           <div className="d-flex justify-content-center gap-4 pe-2">
-        <a href={exercise_actual?.info_youtube} target="_blank" type="button" className="rounded-circle btn btn-dark" data-bs-toggle="tooltip" data-bs-placement="top" title="Acceso a video respecto al tema">
+        <a href={exercise_actual?.info_youtube} target="_blank" type="button" className="rounded-circle btn btn-dark" data-bs-toggle="tooltip" data-bs-placement="top" title="Video access">
           <i className="fab fa-youtube p-0"></i>
         </a>
-        <a href={exercise_actual?.info_blog} target="_blank" type="button" className="rounded-circle btn btn-dark" data-bs-toggle="tooltip" data-bs-placement="top" title="Acceso a blog respecto al tema">
+        <a href={exercise_actual?.info_blog} target="_blank" type="button" className="rounded-circle btn btn-dark" data-bs-toggle="tooltip" data-bs-placement="top" title="Blog access">
           <i className="far fa-file-alt"></i>
         </a>
         </div>
@@ -98,7 +98,7 @@ export const PreguntaCompletar = () => {
         type="text"
         value={respuesta}
         onChange={e=>handleRespuestaChange(e)}
-        placeholder="Escribe tu respuesta aquí"
+        placeholder="Type your answer here"
         />
         </div>
       </div>
@@ -115,16 +115,16 @@ export const PreguntaCompletar = () => {
       <div className="row d-flex justify-content-end mt-3">
         <div className="col-10 mt-4 d-flex justify-content-between ps-0">
         <Link to = {`/preguntas/${modulo}`}> 
-          <button className="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="Volver a Cuestionario">
-          Volver <i className="fas fa-undo"></i>
+          <button className="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="Back to questionnaire">
+           Back 
           </button>
         </Link>
         
         {respuestaCorrecta ? (
-           <button className="btn btn-verificar" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Continua con la siguiente pregunta" onClick={avanzarPregunta}>
-            Siguiente
+           <button className="btn btn-verificar" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Continues with the next question" onClick={avanzarPregunta}>
+            Next
           </button>
-          ):(<button className="btn btn-verificar" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Verifica tu respuesta para avanzar" onClick={verificarRespuesta}>Verificar</button>)}
+          ):(<button className="btn btn-verificar" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Check your answer to advance" onClick={verificarRespuesta}>Check</button>)}
         </div>
       </div>
     </div>       

@@ -42,21 +42,21 @@ export const Ejercicios = () => {
       <div className="row d-flex justify-content-end">
       <div className='col-10'>
       <h2 className="mb-3 text-center fs-1 mt-4">
-      Cuestionario de {modulo.toLocaleUpperCase()}
+      {modulo.toLocaleUpperCase()} Questionnaire
       </h2>
       </div>
       </div>
       <div className="row d-flex justify-content-end">
       <div className='col-7'>
       <h4 className="mb-3" style={{color: `${store.module[modulo].color}`}}>
-      Progreso
+      Progress
       </h4>
       <div className="progress mb-3">
       <div className="progress-bar" role="progressbar" style={{width: `${progresoActual()}%`, backgroundColor: `${store.module[modulo].color}`}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{progresoActual()}%</div>
       </div>
      {store.exercises.map((exercise, indice) =>
-      <Link to={ respuestaCorrectaIncluida(exercise.id) ? `./${indice+1}` : `#`}>
-          <div key={indice} className="form-control border border-dark mb-3 d-flex justify-content-between bg-dark text-white py-1">
+      <Link key={indice} to={ respuestaCorrectaIncluida(exercise.id) ? `./${indice+1}` : `#`}>
+          <div  className="form-control border border-dark mb-3 d-flex justify-content-between bg-dark text-white py-1">
         <span>{indice+1} - {exercise.question}</span>
         {respuestaCorrectaIncluida(exercise.id) && (<span className="d-flex align-items-center"><i className="fas fa-check-circle" style={{color: `${store.module[modulo].color}`}}></i></span>)}
       </div>
@@ -64,10 +64,10 @@ export const Ejercicios = () => {
       )}
       <div className="d-flex justify-content-between mt-4">
       <Link to="/modules" >
-        <button className="btn btn-secondary ">Regresar a módulos</button>
+        <button className="btn btn-secondary ">Back to modules</button>
       </Link>
       <Link to={ last_answer < store.exercises.length ? `./${last_answer}` : `./${store.exercises.length}`}>
-        <button className="btn text-white" style={{backgroundColor: `${store.module[modulo].color}`}}>Continuar</button>
+        <button className="btn text-white" style={{backgroundColor: `${store.module[modulo].color}`}}>Continue</button>
       </Link>
       </div>
       
