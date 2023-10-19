@@ -15,6 +15,7 @@ const handleRecovery = async(e) =>{
     try{
         const response = await actions.recoveryPassword(email)
         if (response.success){
+            store.email = email
             navigate('/sendpassword')
         }
     }catch{
@@ -23,13 +24,14 @@ const handleRecovery = async(e) =>{
         
 }
 return (
-    <div className="container vh-100 d-flex align-items-center">
-      <div className="row justify-content-center d-flex justify-content-around align-items-center">
-        <div className="mb-5">
+    <div className="container vh-100 mt-5 d-flex">
+      <div className="">
           <Link to="/">
             <i className="fa-solid fa-arrow-left arrow-back"></i>
           </Link>
         </div>
+      <div className="row justify-content-center  mt-5 d-flex justify-content-around">
+      
         <div className="col-md-5 text-start">
           <div className="embed-responsive embed-responsive-16by9">
             <h2 className="bigtext text-line text-break">
@@ -37,7 +39,7 @@ return (
             </h2>
           </div>
         </div>
-        <div className="col-md-6 mt-4">
+        <div className="col-md-6 mt-4 pt-4 ">
           <div className="text-center">
             <p>Enter your email, and we will send you an email to reset your password.</p>
           </div>
