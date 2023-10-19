@@ -76,10 +76,10 @@ export const PreguntaCompletar = () => {
         </div>
       </div>
       <div className="row d-flex justify-content-end my-3">
-        <div className='col-7 col-md-8 mt-3 ps-0'>
+        <div className='col-10 col-md-8 mt-3 ps-0'>
           <h4 className='me-3 fs-5 text-white'>{exercise_actual?.question}</h4>
         </div>
-        <div className="col-3 col-md-2 gap-2 px-0 ">
+        <div className="col-10 col-md-2 gap-2 px-0 ">
           <h5 className="text-center mb-3 pe-2 text-white">Do you need help?</h5>
           <div className="d-flex justify-content-center gap-4 pe-2">
         <a href={exercise_actual?.info_youtube} target="_blank" type="button" className="rounded-circle btn btn-dark" data-bs-toggle="tooltip" data-bs-placement="top" title="Video access">
