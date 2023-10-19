@@ -40,7 +40,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			user: initialUser ,
 			teachers: null, 
 			teacherData: null,
-
+			email: null
 		},
 
 		actions: {
