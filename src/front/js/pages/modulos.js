@@ -37,7 +37,7 @@ export const Modulos = () => {
             <FontAwesomeIcon icon={faCode} className="mr-2 animated bounceInLeft" />
             <FontAwesomeIcon icon={faPaintBrush} className="mr-2 animated bounceInUp" />
             <FontAwesomeIcon icon={faLaptopCode} className="mr-2 animated bounceInRight" />
-            ¡Explora Nuestros Módulos!
+            Explore Our Modules!
           </h2>
         </div>
       </div>
@@ -64,12 +64,12 @@ export const Modulos = () => {
                 onClick={() => toggleDescription("html5")}
                 className="btn btn-link"
               >
-                {descriptionsVisible.html5 ? "Ocultar Descripción" : "Mostrar Descripción"}
+                {descriptionsVisible.html5 ? "Hide Description" : "Show Description"}
               </button>
             </div>
             {descriptionsVisible.html5 && (
               <div className="card-description">
-                <p>Este módulo es fundamental para aprender a estructurar contenido web.</p>
+                <p>This module is fundamental to learn how to structure web content.</p>
               </div>
             )}
           </div>
@@ -96,12 +96,12 @@ export const Modulos = () => {
                 onClick={() => toggleDescription("css")}
                 className="btn btn-link"
               >
-                {descriptionsVisible.css ? "Ocultar Descripción" : "Mostrar Descripción"}
+                {descriptionsVisible.css ?  "Hide Description" : "Show Description"}
               </button>
             </div>
             {descriptionsVisible.css && (
               <div className="card-description">
-                <p>Este módulo esta diseñado para aprender y perfeccionar las habilidades de estilización web.</p>
+                <p>This module is designed to learn and perfect web styling skills.</p>
               </div>
             )}
           </div>
@@ -128,12 +128,12 @@ export const Modulos = () => {
                 onClick={() => toggleDescription("javascript")}
                 className="btn btn-link"
               >
-                {descriptionsVisible.javascript ? "Ocultar Descripción" : "Mostrar Descripción"}
+                {descriptionsVisible.javascript ?  "Hide Description" : "Show Description"}
               </button>
             </div>
             {descriptionsVisible.javascript && (
               <div className="card-description">
-                <p>Este módulo es esencial para aprender a programar interacciones dinámicas en sitios web.</p>
+                <p>This module is essential to learn how to program dynamic interactions in web sites.</p>
               </div>
             )}
           </div>

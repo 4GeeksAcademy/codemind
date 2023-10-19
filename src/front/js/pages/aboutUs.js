@@ -6,9 +6,8 @@ export const AboutUs = () => {
 
     return (
         <div className="container vh-100 m-5">
-            <div className='p-5'></div>
             <div>
-                <h2 className='bigtext text-line'>
+                <h2 className='text-line'>
                     Welcome!</h2>
                 <p> To CodeMind! We are a dedicated team working to provide an innovative learning platform that empowers individuals to become proficient in full-stack development and programming. Our platform is designed to cater to both aspiring students and experienced professionals, offering a comprehensive range of resources and tools to enhance your coding journey.</p>
             </div>

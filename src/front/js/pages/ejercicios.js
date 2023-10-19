@@ -47,7 +47,7 @@ export const Ejercicios = () => {
       </div>
       </div>
       <div className="row d-flex justify-content-end">
-      <div className='col-7'>
+      <div className='col-12 col-md-7 ps-5'>
       <h4 className="mb-3" style={{color: `${store.module[modulo].color}`}}>
       Progress
       </h4>
@@ -62,7 +62,7 @@ export const Ejercicios = () => {
       </div>
       </Link>
       )}
-      <div className="d-flex justify-content-between mt-4">
+      <div className="d-flex justify-content-between mt-4 gap-2">
       <Link to="/modules" >
         <button className="btn btn-secondary ">Back to modules</button>
       </Link>
@@ -72,8 +72,8 @@ export const Ejercicios = () => {
       </div>
       
     </div>
-    <div className='col-3 d-flex align-items-center'>
-      <img className="rounded" src={store.module[modulo].imagen} />
+    <div className='col-12 col-md-3 d-flex align-items-center'>
+      <img className="rounded w-100 h-50" src={store.module[modulo].imagen} />
       </div>
     </div>
     </div>

@@ -93,7 +93,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					const data = await resp.json()
 					const progress = data.progress
 					setStore({progress})
-					console.log(progress)
 					// don't forget to return something, that is how the async resolves
 					return data;
 				} catch (error) {
