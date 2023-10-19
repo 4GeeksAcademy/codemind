@@ -680,3 +680,9 @@ input[type="text"]:focus {
 .teachersname{
   cursor:pointer;
 }
+
+.table-hover:hover{
+  background-color: #fdfdfcb7;
+  color: black;
+  cursor: pointer;
+}
