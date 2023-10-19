@@ -677,3 +677,6 @@ input[type="text"]:focus {
     background-color: #D62929;
   }
 
+.teachersname{
+  cursor:pointer;
+}
