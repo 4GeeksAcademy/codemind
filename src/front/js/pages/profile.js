@@ -100,12 +100,12 @@ export const Profile = () => {
     return (
         <div className="container vh-100 align-items-center">
             <div className="row mb-4">
-                <div className="col">
+                <div className="col mt-5">
                     <Link to="/modules"><i className="fa-solid fa-arrow-left arrow-back"></i></Link>
                 </div>
             </div>
             <div className="row justify-content-center d-flex justify-content-between">
-                <div className="col-sm-12 col-md-6 text-start">
+                <div className="col-sm-12 col-md-6 text-start pe-4 ">
                     <div className="embed-responsive embed-responsive-16by9">
                         <h2 className='bigtext text-line text-break'>
                             Hi <span className='text-color-primary'>{store.user.firstName}</span>! This is your profile
@@ -134,46 +134,40 @@ export const Profile = () => {
                             <input type="text" className="form-control" id="email" name="email" value={formData.email} onChange={handleChange} style={{ maxWidth: "60%" }} disabled={true}></input>
                         </div>
                         {
-                            store.user.role === "alumno" &&(
-                                <div className='d-flex justify-content-between  mb-2'>
-                                <p className='my-0 '>Teacher:</p>
-                                <div className="h-25 px-5  ">
-                                    <div className="btn-group dropdown-center" >
-                                        <button className="btn btn-secondary dropdown-toggle " type="button" data-bs-toggle="dropdown" aria-expanded="false" disabled={!!store.user.teacher} >
-                                            {selectedTeacher.firstName && selectedTeacher.lastName
-                                                ? `${selectedTeacher.firstName} ${selectedTeacher.lastName}`
-                                                : "Select Your Teacher"}
-                                        </button>
-                                        <ul className="dropdown-menu dropdown-menu-dark">
-                                            {store.teachers && store.teachers.map((teacher, index) => (
-                                                <li key={index}>
-                                                    <p className="dropdown-item" onClick={(e) => handleTeacherSelect(teacher, e)}>
-                                                        {teacher.firstName + " " + teacher.lastName}
-                                                    </p>
-                                                </li>
-                                            ))}
-                                        </ul>
+                            store.user.role === "alumno" && (
+                                <div className='d-flex justify-content-between'>
+                                    <p className='my-0 '>Teacher:</p>
+                                    <div className="">
+                                        <div className="btn-group dropdown-center" >
+                                            <button className="btn btn-secondary dropdown-toggle " type="button" data-bs-toggle="dropdown" aria-expanded="false" disabled={!!store.user.teacher} >
+                                                {selectedTeacher.firstName && selectedTeacher.lastName
+                                                    ? `${selectedTeacher.firstName} ${selectedTeacher.lastName}`
+                                                    : "Select Your Teacher"}
+                                            </button>
+                                            <ul className="dropdown-menu dropdown-menu-dark">
+                                                {store.teachers && store.teachers.map((teacher, index) => (
+                                                    <span key={index} className='w-100'>
+                                                        <p className="px-2 text-white w-100 teachersname" onClick={(e) => handleTeacherSelect(teacher, e)}>
+                                                            {teacher.firstName + " " + teacher.lastName}
+                                                        </p>
+                                                    </span>
+                                                ))}
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
                             )
                         }
-                        <div className="row  align-items-center mt-4 justify-content-end">
-                            <div className=" col-sm-12 col-md-6  text-center">
-                                <button type="submit" className="btn btn-primary">
+                        <div className="row mt-5 d-flex justify-content-end">
+                            <div className=" col-sm-12 col-md-6">
+                                <button type="submit" className="btn btn-primary mx-2">
                                     Update User
                                 </button>
+                                <Link to={"/changepassword"}><a href="#" className="btn btn-outline-secondary text-black ">Change password</a></Link>
+
                             </div>
                         </div>
                     </form>
-                </div>
-            </div>
-            <div className='row h-25 d-flex justify-content-end align-items-center'>
-                <div className="col-sm-1 col-md-4  text-sm-end justify-content-between">
-                    <div className="d-flex justify-content-between ">
-                        <Link to={"/changepassword"}><a href="#" className="btn btn-outline-secondary">Change password</a></Link>
-                        <Link to={"/student"} className="">Student</Link>
-                    </div>
                 </div>
             </div>
         </div>
