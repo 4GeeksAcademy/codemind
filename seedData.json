@@ -3,7 +3,6 @@
 	"target_class":"Exercise",
 	"data":[
 		{
-			"id": 1,
 			"module": "HTML",
     		"type": "FIB",
     		"question": "HTML es un acrónimo que significa: Hyper Text _____ Language.",
@@ -11,7 +10,6 @@
     		"info_youtube": "https://www.youtube.com/watch?v=10GHKjgQIR0"
 		},
 		{
-			"id": 2,
 			"module": "HTML",
     		"type": "FIB",
     		"question": "La etiqueta <p> se utiliza para definir un _______ en HTML.",
@@ -19,7 +17,7 @@
     		"info_youtube": "https://www.youtube.com/watch?v=nJlvaFYXRzs"
 		},
 		{
-			"id": 3,
+			
 			"module": "HTML",
     		"type": "FIB",
     		"question": "La etiqueta <___> se utiliza para definir un enlace de correo electrónico en HTML.",
@@ -27,7 +25,7 @@
     		"info_youtube": "https://www.youtube.com/watch?v=Xk5Tf8F44jE"
 		},
 		{
-			"id":4,
+			
 			"module": "HTML",
 			"type": "FIB",
 			"question": "El atributo que se utiliza para proporcionar texto alternativo para una imagen en HTML se llama _____.",
@@ -35,7 +33,7 @@
 			"info_youtube": "https://www.youtube.com/watch?v=7dgmf9TIlFM"
 		},
 		{
-			"id": 5,
+		
 			"module": "HTML",
     		"type": "FIB",
     		"question": "El atributo utilizado para especificar el hipervínculo de una etiqueta <a> en HTML es _____.",
@@ -43,7 +41,7 @@
     		"info_youtube": "https://www.youtube.com/watch?v=0uWnl_ptdNs&t=59s"
 		},
 		{
-			"id": 6,
+			
 			"module": "HTML",
     		"type": "SC",
     		"question": "¿Cuál es el propósito principal de las etiquetas HTML?",
@@ -51,7 +49,7 @@
     		"info_youtube": "https://www.youtube.com/watch?v=mwtkPVR9MgU"
 		},
 		{
-			"id": 7,
+			
 			"module": "HTML",
     		"type": "SC",
     		"question": "¿Cuál es la etiqueta utilizada para insertar un comentario en HTML?",
@@ -59,7 +57,7 @@
     		"info_youtube": "https://www.youtube.com/watch?v=EgMvcZaI5WM"
 		},
 		{
-			"id": 8,
+			
 			"module": "HTML",
     		"type": "SC",
     		"question": "¿Qué etiqueta se utiliza para crear una lista numerada en HTML?",
@@ -67,7 +65,7 @@
     		"info_youtube": "https://www.youtube.com/watch?v=Mu7y1l97LNg"
 		},
 		{
-			"id":9,
+			
 			"module": "HTML",
 			"type": "SC",
 			"question": "¿Qué etiqueta se utiliza para insertar un salto de línea en HTML?",
@@ -75,7 +73,7 @@
 			"info_youtube": "https://www.youtube.com/watch?v=Q2uoWvtYPEs"
 		},
 		{
-			"id":10,
+			
 			"module": "HTML",
 			"type": "SC",
 			"question": "¿Cuál es el elemento HTML que se utiliza para crear un enlace hipertexto?",
@@ -83,7 +81,7 @@
 			"info_youtube": "https://www.youtube.com/watch?v=fUW0mQ4FNOU"
 		},
 		{
-			"id":11,
+			
 			"module": "CSS",
 			"type": "FIB",
 			"question": "CSS significa:Cascading _______ Sheets.",
@@ -91,7 +89,7 @@
 			"info_youtube": "https://www.youtube.com/watch?v=8cSo0ijtkzU"
 		},
 		{
-			"id": 12,
+			
 			"module": "CSS",
     		"type": "FIB",
     		"question": "En CSS, para seleccionar todos los elementos de una página, se utiliza el selector ___.",
@@ -99,7 +97,7 @@
     		"info_youtube": "https://www.youtube.com/watch?v=sjqhxl_16Qg"
 		},
 		{
-			"id": 13,
+			
 			"module": "CSS",
     		"type": "FIB",
     		"question": "El atributo de CSS que se utiliza para cambiar el color de fondo de un elemento se llama:background-_____.",
@@ -107,7 +105,7 @@
     		"info_youtube": "https://www.youtube.com/watch?v=SFuNzNXKS8s"
 		},
 		{
-			"id":14,
+			
 			"module": "CSS",
 			"type": "FIB",
 			"question": "El selector CSS que se utiliza para aplicar estilos a un enlace cuando el mouse pasa por encima de él se llama:______.",
@@ -115,7 +113,7 @@
 			"info_youtube": "https://www.youtube.com/watch?v=zppkOvCXBIc"
 		},
 		{
-			"id":15,
+			
 			"module": "CSS",
 			"type": "FIB",
 			"question": "El atributo de CSS que se utiliza para establecer el tamaño del texto es:font-_____.",
@@ -123,7 +121,7 @@
 			"info_youtube": "https://www.youtube.com/watch?v=CzU3acHs2l8"
 		},
 		{
-			"id":16,
+			
 			"module": "CSS",
 			"type": "SC",
 			"question": "¿Cuál es el propósito principal de CSS en el diseño web?.",
@@ -131,7 +129,7 @@
 			"info_youtube": "https://www.youtube.com/watch?v=8cSo0ijtkzU&t=7s"
 		},
 		{
-			"id": 17,
+			
 			"module": "CSS",
     		"type": "SC",
     		"question": "¿Cuál de las siguientes propiedades de CSS se utiliza para cambiar el tipo de letra de un elemento?",
@@ -139,7 +137,7 @@
     		"info_youtube": "https://www.youtube.com/watch?v=xWZh8erE2Ps"
 		},
 		{
-			"id": 18,
+			
 			"module": "CSS",
     		"type": "SC",
     		"question": " ¿Cuál de las siguientes opciones se utiliza para establecer un borde sólido de 2 píxeles alrededor de un elemento en CSS?",
@@ -147,7 +145,7 @@
     		"info_youtube": "https://www.youtube.com/watch?v=KkniilTcniM"
 		},
 		{
-			"id":19,
+			
 			"module": "CSS",
 			"type": "SC",
 			"question": "¿Cuál de las siguientes opciones se utiliza para establecer el margen derecho de un elemento en CSS?",
@@ -155,7 +153,7 @@
 			"info_youtube": "https://www.youtube.com/watch?v=E2mps7mKPKI"
 		},
 		{
-			"id":20,
+			
 			"module": "CSS",
 			"type": "SC",
 			"question": "¿Cuál de las siguientes opciones se utiliza para ocultar un elemento en CSS eliminándolo del diseño de la página?",
@@ -164,7 +162,7 @@
 		},
 
 		{
-			"id":21,
+			
 			"module": "JS",
 			"type": "FIB",
 			"question": "En JavaScript, el operador ________ se utiliza para obtener el tipo de dato de una variable.",
@@ -172,7 +170,7 @@
 			"info_youtube": "https://www.youtube.com/watch?v=7J8yWV0X72U"
 		},
 		{
-			"id": 22,
+			
 			"module": "JS",
     		"type": "FIB",
     		"question": "El operador % se utiliza en JavaScript para calcular el ________ de una división.",
@@ -180,7 +178,7 @@
     		"info_youtube": "https://www.youtube.com/watch?v=xCNkp3UxQ3M"
 		},
 		{
-			"id": 23,
+			
 			"module": "JS",
     		"type": "FIB",
     		"question": "El objeto Math en JavaScript proporciona muchas funciones matemáticas útiles, como: _____ , la cual nos permite redondear un número hacia arriba",
@@ -188,7 +186,7 @@
     		"info_youtube": "https://www.youtube.com/watch?v=4fThZ3reBRE"
 		},
 		{
-			"id":24,
+			
 			"module": "JS",
 			"type": "FIB",
 			"question": "El método push se utiliza en JavaScript para agregar un elemento a un ________",
@@ -196,7 +194,7 @@
 			"info_youtube": "https://www.youtube.com/watch?v=RN3gsslypjQ"
 		},
 		{
-			"id":25,
+			
 			"module": "JS",
 			"type": "FIB",
 			"question": "El método addEventListener se utiliza en JavaScript para registrar ________ a un elemento HTML.",
@@ -204,7 +202,7 @@
 			"info_youtube": "https://www.youtube.com/watch?v=KyX2dIwHssQ"
 		},
 		{
-			"id":26,
+			
 			"module": "JS",
 			"type": "SC",
 			"question": "¿Cuál es el operador lógico AND en JavaScript?",
@@ -212,7 +210,7 @@
 			"info_youtube": "https://www.youtube.com/watch?v=JvWYpzNq0i0"
 		},
 		{
-			"id": 27,
+			
 			"module": "JS",
     		"type": "SC",
     		"question": " ¿Cuál es el propósito del método JSON.stringify() en JavaScript?",
@@ -220,7 +218,7 @@
     		"info_youtube": "https://www.youtube.com/watch?v=RnP19QXkY5M"
 		},
 		{
-			"id": 28,
+		
 			"module": "JS",
     		"type": "SC",
     		"question": " ¿Cuál de los siguientes métodos se utiliza para eliminar el último elemento de un array en JavaScript?",
@@ -228,7 +226,7 @@
     		"info_youtube": "https://www.youtube.com/watch?v=kLKh_GagQtk"
 		},
 		{
-			"id":29,
+			
 			"module": "JS",
 			"type": "SC",
 			"question": "¿Cuál de las siguientes opciones se utiliza para ejecutar una función después de un retraso de tiempo en milisegundos en JavaScript?",
@@ -236,7 +234,7 @@
 			"info_youtube": "https://www.youtube.com/watch?v=0w2TXEzjjZ8"
 		},
 		{
-			"id":30,
+			
 			"module": "JS",
 			"type": "SC",
 			"question": "¿Qué método se utiliza para convertir una cadena a un número entero en JavaScript?",
@@ -249,7 +247,7 @@
 	"target_class":"Answers",
 	"data":[
 		{
-			"id":1,
+			
 			"answers": "Markup",
 			"isCorrect": true,
 			"exercise_id":1,
@@ -257,7 +255,7 @@
     		"type": "FIB"
 		 },
 		 {
-			"id":2,
+			
 			"answers": "párrafo",
 			"isCorrect": true,
 			"exercise_id":2,
@@ -265,7 +263,7 @@
     		"type": "FIB"
 		 },
 		 {
-			"id":3,
+			
 			"answers": "mailto",
 			"isCorrect": true,
 			"exercise_id":3,
@@ -274,7 +272,7 @@
 		 },
 		
 		{
-			"id":4,
+			
 			"answers": "alt",
 			"isCorrect": true,
 			"exercise_id":4,
@@ -282,7 +280,7 @@
 			"type": "FIB"
 		},
 		{
-			"id":5,
+			
 			"answers": "href",
 			"isCorrect": true,
 			"exercise_id":5,
@@ -290,7 +288,7 @@
     		"type": "FIB"
 		},
 		{
-			"id":6,
+			
 			"answers": "Definir la estructura y el contenido de una página web",
 			"isCorrect": true,
 			"exercise_id":6,
@@ -299,7 +297,7 @@
 		},
 
 		{
-			"id":7,
+			
 			"answers": "Definir el estilo visual de una página web",
 			"isCorrect": false,
 			"exercise_id":6,
@@ -307,7 +305,7 @@
     		"type": "SC"
 		 },
 		 {
-			"id":8,
+			
 			"answers": "Realizar cálculos matemáticos en una página web",
 			"isCorrect": false,
 			"exercise_id":6,
@@ -315,7 +313,7 @@
 			"type": "SC"
 		 },
 		 {
-			"id":9,
+			
 			"answers": "Conectar la página web a una base de datos",
 			"isCorrect": false,
 			"exercise_id":6,
@@ -323,7 +321,7 @@
 			"type": "SC"
 		 },
 		{
-			"id":10,
+			
 			"answers": "<comment>",
 			"isCorrect": false,
 			"exercise_id":7,
@@ -332,7 +330,7 @@
 		},
 
 		{
-			"id":11,
+			
 			"answers": "<note>",
 			"isCorrect": false,
 			"exercise_id":7,
@@ -340,7 +338,7 @@
     		"type": "SC"
 		 },
 		 {
-			"id":12,
+			
 			"answers": "<remark>",
 			"isCorrect": false,
 			"exercise_id":7,
@@ -348,7 +346,7 @@
 			"type": "SC"
 		 },
 		 {
-			"id":13,
+			
 			"answers": "<!-- -->",
 			"isCorrect": true,
 			"exercise_id":7,
@@ -356,7 +354,7 @@
 			"type": "SC"
 		 },
 		 {
-			"id":14,
+			
 			"answers": "<ul>",
 			"isCorrect": false,
 			"exercise_id":8,
@@ -364,7 +362,7 @@
 			"type": "SC"
 		 },
 		 {
-			"id":15,
+			
 			"answers": "<ol>",
 			"isCorrect": true,
 			"exercise_id":8,
@@ -372,7 +370,7 @@
 			"type": "SC"
 		 },
 		 {
-			"id":16,
+			
 			"answers": "<li>",
 			"isCorrect": false,
 			"exercise_id":8,
@@ -380,7 +378,7 @@
 			"type": "SC"
 		 },
 		 {
-			"id":17,
+			
 			"answers": "<dl>",
 			"isCorrect": false,
 			"exercise_id":8,
@@ -388,7 +386,7 @@
 			"type": "SC"
 		 },
 		 {
-			"id":18,
+			
 			"answers": "<nl>",
 			"isCorrect": false,
 			"exercise_id":9,
@@ -396,7 +394,7 @@
 			"type": "SC"
 		 },
 		 {
-			"id":19,
+			
 			"answers": "<br>",
 			"isCorrect": true,
 			"exercise_id":9,
@@ -404,7 +402,7 @@
     		"type": "SC"
 		 },
 		 {
-			"id":20,
+			
 			"answers": "<newline>",
 			"isCorrect": false,
 			"exercise_id":9,
@@ -412,7 +410,7 @@
     		"type": "SC"
 		 },
 		 {
-			"id":21,
+			
 			"answers": "<linebreak>",
 			"isCorrect": false,
 			"exercise_id":9,
@@ -420,7 +418,7 @@
 			"type": "SC"
 		 },
 		 {
-			"id":22,
+			
 			"answers": "<link>",
 			"isCorrect": false,
 			"exercise_id":10,
@@ -428,7 +426,7 @@
 			"type": "SC"
 		 },
 		 {
-			"id":23,
+			
 			"answers": "<a>",
 			"isCorrect": true,
 			"exercise_id":10,
@@ -436,7 +434,7 @@
 			"type": "SC"
 		 },
 		 {
-			"id":24,
+			
 			"answers": "<href>",
 			"isCorrect": false,
 			"exercise_id":10,
@@ -444,7 +442,7 @@
 			"type": "SC"
 		 },
 		 {
-			"id":25,
+			
 			"answers": "<url>",
 			"isCorrect": false,
 			"exercise_id":10,
@@ -453,7 +451,7 @@
 		 },
 
 		 {
-			"id":26,
+			
 			"answers": "Style",
 			"isCorrect": true,
 			"exercise_id":11,
@@ -461,7 +459,7 @@
     		"type": "FIB"
 		 },
 		 {
-			"id":27,
+			
 			"answers": "*",
 			"isCorrect": true,
 			"exercise_id":12,
@@ -469,7 +467,7 @@
     		"type": "FIB"
 		 },
 		 {
-			"id":28,
+			
 			"answers": "color",
 			"isCorrect": true,
 			"exercise_id":13,
@@ -478,7 +476,7 @@
 		 },
 		
 		{
-			"id":29,
+			
 			"answers": "hover",
 			"isCorrect": true,
 			"exercise_id":14,
@@ -486,7 +484,7 @@
 			"type": "FIB"
 		},
 		{
-			"id":30,
+			
 			"answers": "size",
 			"isCorrect": true,
 			"exercise_id":15,
@@ -494,7 +492,7 @@
     		"type": "FIB"
 		},
 		{
-			"id":31,
+			
 			"answers": "Definir la estructura de la página",
 			"isCorrect": false,
 			"exercise_id":16,
@@ -503,7 +501,7 @@
 		},
 
 		{
-			"id":32,
+			
 			"answers": "Agregar funcionalidad interactiva",
 			"isCorrect": false,
 			"exercise_id":16,
@@ -511,7 +509,7 @@
     		"type": "SC"
 		 },
 		 {
-			"id":33,
+			
 			"answers": "Establecer el estilo y la presentación de la página",
 			"isCorrect": true,
 			"exercise_id":16,
@@ -519,7 +517,7 @@
 			"type": "SC"
 		 },
 		 {
-			"id":34,
+			
 			"answers": "Almacenar datos en la base de datos",
 			"isCorrect": false,
 			"exercise_id":16,
@@ -527,7 +525,7 @@
 			"type": "SC"
 		 },
 		{
-			"id":35,
+			
 			"answers": "text-font",
 			"isCorrect": false,
 			"exercise_id":17,
@@ -536,7 +534,7 @@
 		},
 
 		{
-			"id":36,
+			
 			"answers": "font-family",
 			"isCorrect": true,
 			"exercise_id":17,
@@ -544,7 +542,7 @@
     		"type": "SC"
 		 },
 		 {
-			"id":37,
+			
 			"answers": "font-size",
 			"isCorrect": false,
 			"exercise_id":17,
@@ -552,7 +550,7 @@
 			"type": "SC"
 		 },
 		 {
-			"id":38,
+			
 			"answers": "letter-spacing",
 			"isCorrect": true,
 			"exercise_id":17,
@@ -560,7 +558,7 @@
 			"type": "SC"
 		 },
 		 {
-			"id":39,
+			
 			"answers": "border: 2px solid;",
 			"isCorrect": true,
 			"exercise_id":18,
@@ -568,7 +566,7 @@
 			"type": "SC"
 		 },
 		 {
-			"id":40,
+			
 			"answers": "border: 2px dotted;",
 			"isCorrect": false,
 			"exercise_id":18,
@@ -576,7 +574,7 @@
 			"type": "SC"
 		 },
 		 {
-			"id":41,
+			
 			"answers": "border: 2px dashed;",
 			"isCorrect": false,
 			"exercise_id":18,
@@ -584,7 +582,7 @@
 			"type": "SC"
 		 },
 		 {
-			"id":42,
+			
 			"answers": "border: 2px double;",
 			"isCorrect": false,
 			"exercise_id":18,
@@ -592,7 +590,7 @@
 			"type": "SC"
 		 },
 		 {
-			"id":43,
+			
 			"answers": "margin-left",
 			"isCorrect": false,
 			"exercise_id":19,
@@ -600,7 +598,7 @@
 			"type": "SC"
 		 },
 		 {
-			"id":44,
+			
 			"answers": "margin-right",
 			"isCorrect": true,
 			"exercise_id":19,
@@ -608,7 +606,7 @@
     		"type": "SC"
 		 },
 		 {
-			"id":45,
+			
 			"answers": "margin-top",
 			"isCorrect": false,
 			"exercise_id":19,
@@ -616,7 +614,7 @@
     		"type": "SC"
 		 },
 		 {
-			"id":46,
+			
 			"answers": "margin-bottom",
 			"isCorrect": false,
 			"exercise_id":19,
@@ -624,7 +622,7 @@
 			"type": "SC"
 		 },
 		 {
-			"id":47,
+			
 			"answers": "display: none",
 			"isCorrect": true,
 			"exercise_id":20,
@@ -632,7 +630,7 @@
 			"type": "SC"
 		 },
 		 {
-			"id":48,
+			
 			"answers": "visibility: hidden",
 			"isCorrect": false,
 			"exercise_id":20,
@@ -640,7 +638,7 @@
 			"type": "SC"
 		 },
 		 {
-			"id":49,
+			
 			"answers": "opacity: 0",
 			"isCorrect": false,
 			"exercise_id":20,
@@ -648,7 +646,7 @@
 			"type": "SC"
 		 },
 		 {
-			"id":50,
+			
 			"answers": "hidden: true",
 			"isCorrect": false,
 			"exercise_id":20,
@@ -657,7 +655,7 @@
 		 },
 
 		 {
-			"id":51,
+			
 			"answers": "typeof",
 			"isCorrect": true,
 			"exercise_id":21,
@@ -665,7 +663,7 @@
     		"type": "FIB"
 		 },
 		 {
-			"id":52,
+			
 			"answers": "residuo",
 			"isCorrect": true,
 			"exercise_id":22,
@@ -673,7 +671,7 @@
     		"type": "FIB"
 		 },
 		 {
-			"id":53,
+			
 			"answers": "Math.ceil()",
 			"isCorrect": true,
 			"exercise_id":23,
@@ -682,7 +680,7 @@
 		 },
 		
 		{
-			"id":54,
+			
 			"answers": "array",
 			"isCorrect": true,
 			"exercise_id":24,
@@ -690,7 +688,7 @@
 			"type": "FIB"
 		},
 		{
-			"id":55,
+			
 			"answers": "eventos",
 			"isCorrect": true,
 			"exercise_id":25,
@@ -698,7 +696,7 @@
     		"type": "FIB"
 		},
 		{
-			"id":56,
+			
 			"answers": "&&",
 			"isCorrect": true,
 			"exercise_id":26,
@@ -707,7 +705,7 @@
 		},
 
 		{
-			"id":57,
+			
 			"answers": "||",
 			"isCorrect": false,
 			"exercise_id":26,
@@ -715,7 +713,7 @@
     		"type": "SC"
 		 },
 		 {
-			"id":58,
+			
 			"answers": "!",
 			"isCorrect": true,
 			"exercise_id":26,
@@ -723,7 +721,7 @@
 			"type": "SC"
 		 },
 		 {
-			"id":59,
+			
 			"answers": "&",
 			"isCorrect": false,
 			"exercise_id":26,
@@ -731,7 +729,7 @@
 			"type": "SC"
 		 },
 		{
-			"id":60,
+			
 			"answers": "Realizar una solicitud HTTP",
 			"isCorrect": false,
 			"exercise_id":27,
@@ -740,7 +738,7 @@
 		},
 
 		{
-			"id":61,
+			
 			"answers": "Convertir un objeto a una cadena JSON",
 			"isCorrect": true,
 			"exercise_id":27,
@@ -748,7 +746,7 @@
     		"type": "SC"
 		 },
 		 {
-			"id":62,
+			
 			"answers": "Analizar una cadena JSON",
 			"isCorrect": false,
 			"exercise_id":27,
@@ -756,7 +754,7 @@
 			"type": "SC"
 		 },
 		 {
-			"id":63,
+			
 			"answers": "Crear un nuevo objeto",
 			"isCorrect": true,
 			"exercise_id":27,
@@ -764,7 +762,7 @@
 			"type": "SC"
 		 },
 		 {
-			"id":64,
+			
 			"answers": "remove()",
 			"isCorrect": false,
 			"exercise_id":28,
@@ -772,7 +770,7 @@
 			"type": "SC"
 		 },
 		 {
-			"id":65,
+		
 			"answers": "delete()",
 			"isCorrect": false,
 			"exercise_id":28,
@@ -780,7 +778,7 @@
 			"type": "SC"
 		 },
 		 {
-			"id":66,
+			
 			"answers": "pop()",
 			"isCorrect": true,
 			"exercise_id":28,
@@ -788,7 +786,7 @@
 			"type": "SC"
 		 },
 		 {
-			"id":67,
+			
 			"answers": "unshift()",
 			"isCorrect": false,
 			"exercise_id":28,
@@ -796,7 +794,7 @@
 			"type": "SC"
 		 },
 		 {
-			"id":68,
+			
 			"answers": "runTimeout()",
 			"isCorrect": false,
 			"exercise_id":29,
@@ -804,7 +802,7 @@
 			"type": "SC"
 		 },
 		 {
-			"id":69,
+			
 			"answers": "sleep()",
 			"isCorrect": false,
 			"exercise_id":29,
@@ -812,7 +810,7 @@
     		"type": "SC"
 		 },
 		 {
-			"id":70,
+			
 			"answers": "setTimeout()",
 			"isCorrect": true,
 			"exercise_id":29,
@@ -820,7 +818,7 @@
     		"type": "SC"
 		 },
 		 {
-			"id":71,
+			
 			"answers": "delay()",
 			"isCorrect": false,
 			"exercise_id":29,
@@ -828,7 +826,7 @@
 			"type": "SC"
 		 },
 		 {
-			"id":72,
+			
 			"answers": " toFloat()",
 			"isCorrect": false,
 			"exercise_id":30,
@@ -836,7 +834,7 @@
 			"type": "SC"
 		 },
 		 {
-			"id":73,
+			
 			"answers": "parseInt()",
 			"isCorrect": true,
 			"exercise_id":30,
@@ -844,7 +842,7 @@
 			"type": "SC"
 		 },
 		 {
-			"id":74,
+			
 			"answers": "parseNumber()",
 			"isCorrect": false,
 			"exercise_id":30,
@@ -852,7 +850,7 @@
 			"type": "SC"
 		 },
 		 {
-			"id":75,
+			
 			"answers": "parseFloat()",
 			"isCorrect": false,
 			"exercise_id":30,
@@ -862,6 +860,109 @@
 		 
 	]
 
+	},
+	{
+		"target_class":"User",
+		"data":[
+			{
+				"firstName":"Jorge",
+				"lastName": "Coto",
+				"email": "jcoto@gmail.com",
+				"password":"$2b$10$9g2w9XOeW9US6yiMXu/ReO2foc6hl9HN4FjRPBgO7gR801II524LS",
+				"role" : "alumno",
+				"img" : "x"
+			 },
+			 {
+				"firstName":"Javier",
+				"lastName": "Paredes",
+				"email": "jparedes@gmail.com",
+				"password":"$2b$10$9g2w9XOeW9US6yiMXu/ReO2foc6hl9HN4FjRPBgO7gR801II524LS",
+				"role" : "alumno",
+				"img" : "x"
+			 },
+			 {
+				"firstName":"Pedro",
+				"lastName": "Gutierrez",
+				"email": "pgutierrez@gmail.com",
+				"password":"$2b$10$9g2w9XOeW9US6yiMXu/ReO2foc6hl9HN4FjRPBgO7gR801II524LS",
+				"role" : "alumno",
+				"img" : "x"
+			 }
+			 
+		]
+	
+	},
+	{
+		"target_class":"AnswersUser",
+		"data":[
+			{
+				"user_id": "1",
+				"exercise_id":"1",
+				"module" : "HTML",
+				"type" : "FIB"
+			 },
+			{
+				"user_id": "1",
+				"exercise_id":2,
+				"module" : "HTML",
+				"type" : "FIB"
+			 },
+			{
+				"user_id": "1",
+				"exercise_id":3,
+				"module" : "HTML",
+				"type" : "FIB"
+			 },
+			{
+				"user_id": "1",
+				"exercise_id":4,
+				"module" : "HTML",
+				"type" : "FIB"
+			 },
+			 {
+				"user_id": "1",
+				"exercise_id":5,
+				"module" : "HTML",
+				"type" : "FIB"
+			 }
+			 
+		]
+	
+	},
+	{
+		"target_class":"Teacher",
+		"data":[
+			{
+				"firstName":"Albert",
+				"lastName": "yopmail",
+				"email": "emc2@yopmail.com",
+				"password": "$2b$10$9g2w9XOeW9US6yiMXu/ReO2foc6hl9HN4FjRPBgO7gR801II524LS",
+				"role": "teacher"
+			 },
+			
+			 {
+				"firstName":"Juan",
+				"lastName": "yopmail",
+				"email": "jc@yopmail.com",
+				"password": "$2b$10$9g2w9XOeW9US6yiMXu/ReO2foc6hl9HN4FjRPBgO7gR801II524LS",
+				"role": "teacher"
+			 },
+			 {
+				"firstName":"Max",
+				"lastName": "yopmail",
+				"email": "max@yopmail.com",
+				"password": "$2b$10$9g2w9XOeW9US6yiMXu/ReO2foc6hl9HN4FjRPBgO7gR801II524LS",
+				"role": "teacher"
+			 },
+			 {
+				"firstName":"Alexander",
+				"lastName": "yopmail",
+				"email": "alex@yopmail.com",
+				"password": "$2b$10$9g2w9XOeW9US6yiMXu/ReO2foc6hl9HN4FjRPBgO7gR801II524LS",
+				"role": "teacher"
+			 }
+			 
+		]
+	
 	}
-
 ]
