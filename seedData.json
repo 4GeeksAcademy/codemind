@@ -870,7 +870,7 @@
 				"email": "jcoto@gmail.com",
 				"password":"$2b$10$9g2w9XOeW9US6yiMXu/ReO2foc6hl9HN4FjRPBgO7gR801II524LS",
 				"role" : "alumno",
-				"img" : "x"
+				"img" : "https://ui-avatars.com/api/?name=Jorge Coto&size=200&rounded=true&background=random"
 			 },
 			 {
 				"firstName":"Javier",
@@ -878,7 +878,7 @@
 				"email": "jparedes@gmail.com",
 				"password":"$2b$10$9g2w9XOeW9US6yiMXu/ReO2foc6hl9HN4FjRPBgO7gR801II524LS",
 				"role" : "alumno",
-				"img" : "x"
+				"img" : "https://ui-avatars.com/api/?name=Javier Paredes&size=200&rounded=true&background=random"
 			 },
 			 {
 				"firstName":"Pedro",
@@ -886,7 +886,7 @@
 				"email": "pgutierrez@gmail.com",
 				"password":"$2b$10$9g2w9XOeW9US6yiMXu/ReO2foc6hl9HN4FjRPBgO7gR801II524LS",
 				"role" : "alumno",
-				"img" : "x"
+				"img" : "https://ui-avatars.com/api/?name=Pedro Gutierrez&size=200&rounded=true&background=random"
 			 }
 			 
 		]
