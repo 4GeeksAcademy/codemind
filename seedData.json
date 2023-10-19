@@ -5,14 +5,14 @@
 		{
 			"module": "HTML",
     		"type": "FIB",
-    		"question": "HTML es un acrónimo que significa: Hyper Text _____ Language.",
+    		"question": "HTML is an acronym that stands for Hyper Text _______ Language.",
     		"info_blog": "https://developer.mozilla.org/es/docs/Web/HTML",
     		"info_youtube": "https://www.youtube.com/watch?v=10GHKjgQIR0"
 		},
 		{
 			"module": "HTML",
     		"type": "FIB",
-    		"question": "La etiqueta <p> se utiliza para definir un _______ en HTML.",
+    		"question": "The <p> tag is used to define a _______  in HTML.",
     		"info_blog": "https://www.w3schools.com/html/html_paragraphs.asp",
     		"info_youtube": "https://www.youtube.com/watch?v=nJlvaFYXRzs"
 		},
@@ -20,7 +20,7 @@
 			
 			"module": "HTML",
     		"type": "FIB",
-    		"question": "La etiqueta <___> se utiliza para definir un enlace de correo electrónico en HTML.",
+    		"question": "The <______> tag is used to define an e-mail link in HTML.",
     		"info_blog": "https://blog.hubspot.es/website/como-crear-mailto-html",
     		"info_youtube": "https://www.youtube.com/watch?v=Xk5Tf8F44jE"
 		},
@@ -28,7 +28,7 @@
 			
 			"module": "HTML",
 			"type": "FIB",
-			"question": "El atributo que se utiliza para proporcionar texto alternativo para una imagen en HTML se llama _____.",
+			"question": "The attribute used to provide alternative text for an image in HTML is called _____.",
 			"info_blog": "https://www.w3schools.com/html/html_attributes.asp",
 			"info_youtube": "https://www.youtube.com/watch?v=7dgmf9TIlFM"
 		},
@@ -36,7 +36,7 @@
 		
 			"module": "HTML",
     		"type": "FIB",
-    		"question": "El atributo utilizado para especificar el hipervínculo de una etiqueta <a> en HTML es _____.",
+    		"question": "The attribute used to specify the hyperlink of an <a> tag in HTML is _____.",
     		"info_blog": "https://www.w3schools.com/tags/att_a_href.asp",
     		"info_youtube": "https://www.youtube.com/watch?v=0uWnl_ptdNs&t=59s"
 		},
@@ -44,7 +44,7 @@
 			
 			"module": "HTML",
     		"type": "SC",
-    		"question": "¿Cuál es el propósito principal de las etiquetas HTML?",
+    		"question": "What is the primary purpose of HTML tags?",
     		"info_blog": "https://blog.hubspot.es/website/etiquetas-html",
     		"info_youtube": "https://www.youtube.com/watch?v=mwtkPVR9MgU"
 		},
@@ -52,7 +52,7 @@
 			
 			"module": "HTML",
     		"type": "SC",
-    		"question": "¿Cuál es la etiqueta utilizada para insertar un comentario en HTML?",
+    		"question": "What is the tag used to insert a comment in HTML?",
     		"info_blog": "https://htmldesdecero.es/blog/colocar-comentario-html/",
     		"info_youtube": "https://www.youtube.com/watch?v=EgMvcZaI5WM"
 		},
@@ -60,7 +60,7 @@
 			
 			"module": "HTML",
     		"type": "SC",
-    		"question": "¿Qué etiqueta se utiliza para crear una lista numerada en HTML?",
+    		"question": "What tag is used to create a numbered list in HTML?",
     		"info_blog": "https://www.w3schools.com/HTML/html_lists.asp",
     		"info_youtube": "https://www.youtube.com/watch?v=Mu7y1l97LNg"
 		},
@@ -68,7 +68,7 @@
 			
 			"module": "HTML",
 			"type": "SC",
-			"question": "¿Qué etiqueta se utiliza para insertar un salto de línea en HTML?",
+			"question": "What tag is used to insert a line break in HTML?",
 			"info_blog": "https://developer.mozilla.org/es/docs/Web/HTML/Element/br",
 			"info_youtube": "https://www.youtube.com/watch?v=Q2uoWvtYPEs"
 		},
@@ -76,7 +76,7 @@
 			
 			"module": "HTML",
 			"type": "SC",
-			"question": "¿Cuál es el elemento HTML que se utiliza para crear un enlace hipertexto?",
+			"question": "What is the HTML element used to create a hypertext link?",
 			"info_blog": "https://www.w3schools.com/TAGS/tag_a.asp",
 			"info_youtube": "https://www.youtube.com/watch?v=fUW0mQ4FNOU"
 		},
@@ -84,7 +84,7 @@
 			
 			"module": "CSS",
 			"type": "FIB",
-			"question": "CSS significa:Cascading _______ Sheets.",
+			"question": "CSS stands for: Cascading _______ Sheets.",
 			"info_blog": "https://developer.mozilla.org/es/docs/Web/CSS",
 			"info_youtube": "https://www.youtube.com/watch?v=8cSo0ijtkzU"
 		},
@@ -92,7 +92,7 @@
 			
 			"module": "CSS",
     		"type": "FIB",
-    		"question": "En CSS, para seleccionar todos los elementos de una página, se utiliza el selector ___.",
+    		"question": "In CSS, to select all the elements of a page, the selector ______ is used.",
     		"info_blog": "https://www.w3schools.com/CSS/css_selectors.asp",
     		"info_youtube": "https://www.youtube.com/watch?v=sjqhxl_16Qg"
 		},
@@ -100,7 +100,7 @@
 			
 			"module": "CSS",
     		"type": "FIB",
-    		"question": "El atributo de CSS que se utiliza para cambiar el color de fondo de un elemento se llama:background-_____.",
+    		"question": "The CSS attribute used to change the background color of an element is called:background-_____.",
     		"info_blog": "https://developer.mozilla.org/es/docs/Web/CSS/background-color",
     		"info_youtube": "https://www.youtube.com/watch?v=SFuNzNXKS8s"
 		},
@@ -108,7 +108,7 @@
 			
 			"module": "CSS",
 			"type": "FIB",
-			"question": "El selector CSS que se utiliza para aplicar estilos a un enlace cuando el mouse pasa por encima de él se llama:______.",
+			"question": "The CSS selector used to apply styles to a link when the mouse hovers over it is called:______.",
 			"info_blog": "https://www.w3schools.com/CSSref/sel_hover.php",
 			"info_youtube": "https://www.youtube.com/watch?v=zppkOvCXBIc"
 		},
@@ -116,7 +116,7 @@
 			
 			"module": "CSS",
 			"type": "FIB",
-			"question": "El atributo de CSS que se utiliza para establecer el tamaño del texto es:font-_____.",
+			"question": "The CSS attribute used to set the text size is:font-_____.",
 			"info_blog": "https://developer.mozilla.org/es/docs/Web/CSS/font-size",
 			"info_youtube": "https://www.youtube.com/watch?v=CzU3acHs2l8"
 		},
@@ -124,7 +124,7 @@
 			
 			"module": "CSS",
 			"type": "SC",
-			"question": "¿Cuál es el propósito principal de CSS en el diseño web?.",
+			"question": "What is the main purpose of CSS in web design?.",
 			"info_blog": "https://i.workana.com/glosario/css/",
 			"info_youtube": "https://www.youtube.com/watch?v=8cSo0ijtkzU&t=7s"
 		},
@@ -132,7 +132,7 @@
 			
 			"module": "CSS",
     		"type": "SC",
-    		"question": "¿Cuál de las siguientes propiedades de CSS se utiliza para cambiar el tipo de letra de un elemento?",
+    		"question": "Which of the following CSS properties is used to change the font of an element?.",
     		"info_blog": "https://developer.mozilla.org/es/docs/Web/CSS/@font-face/font-family",
     		"info_youtube": "https://www.youtube.com/watch?v=xWZh8erE2Ps"
 		},
@@ -140,7 +140,7 @@
 			
 			"module": "CSS",
     		"type": "SC",
-    		"question": " ¿Cuál de las siguientes opciones se utiliza para establecer un borde sólido de 2 píxeles alrededor de un elemento en CSS?",
+    		"question": "Which of the following is used to set a 2 pixel solid border around an element in CSS?.",
     		"info_blog": "https://www.w3schools.com/css/css_border.asp",
     		"info_youtube": "https://www.youtube.com/watch?v=KkniilTcniM"
 		},
@@ -148,7 +148,7 @@
 			
 			"module": "CSS",
 			"type": "SC",
-			"question": "¿Cuál de las siguientes opciones se utiliza para establecer el margen derecho de un elemento en CSS?",
+			"question": "Which of the following is used to set the right margin of an element in CSS?.",
 			"info_blog": "https://www.w3schools.com/Css/css_margin.asp",
 			"info_youtube": "https://www.youtube.com/watch?v=E2mps7mKPKI"
 		},
@@ -156,7 +156,7 @@
 			
 			"module": "CSS",
 			"type": "SC",
-			"question": "¿Cuál de las siguientes opciones se utiliza para ocultar un elemento en CSS eliminándolo del diseño de la página?",
+			"question": "Which of the following is used to hide an element in CSS by removing it from the page layout?.",
 			"info_blog": "https://www.w3schools.com/css/css_display_visibility.asp",
 			"info_youtube": "https://www.youtube.com/watch?v=VdAP97Q2MMI"
 		},
@@ -165,7 +165,7 @@
 			
 			"module": "JS",
 			"type": "FIB",
-			"question": "En JavaScript, el operador ________ se utiliza para obtener el tipo de dato de una variable.",
+			"question": "In JavaScript, the ______ operator is used to get the data type of a variable.",
 			"info_blog": "https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Operators/typeof",
 			"info_youtube": "https://www.youtube.com/watch?v=7J8yWV0X72U"
 		},
@@ -173,7 +173,7 @@
 			
 			"module": "JS",
     		"type": "FIB",
-    		"question": "El operador % se utiliza en JavaScript para calcular el ________ de una división.",
+    		"question": "The % operator is used in JavaScript to calculate the ______ of a division.",
     		"info_blog": "https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Operators/Remainder",
     		"info_youtube": "https://www.youtube.com/watch?v=xCNkp3UxQ3M"
 		},
@@ -181,7 +181,7 @@
 			
 			"module": "JS",
     		"type": "FIB",
-    		"question": "El objeto Math en JavaScript proporciona muchas funciones matemáticas útiles, como: _____ , la cual nos permite redondear un número hacia arriba",
+    		"question": "The Math object in JavaScript provides many useful mathematical functions, such as: ______ , which allows us to round up a number.",
     		"info_blog": "https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Math/ceil",
     		"info_youtube": "https://www.youtube.com/watch?v=4fThZ3reBRE"
 		},
@@ -189,7 +189,7 @@
 			
 			"module": "JS",
 			"type": "FIB",
-			"question": "El método push se utiliza en JavaScript para agregar un elemento a un ________",
+			"question": "The push method is used in JavaScript to add an element to an ________",
 			"info_blog": "https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/push",
 			"info_youtube": "https://www.youtube.com/watch?v=RN3gsslypjQ"
 		},
@@ -197,7 +197,7 @@
 			
 			"module": "JS",
 			"type": "FIB",
-			"question": "El método addEventListener se utiliza en JavaScript para registrar ________ a un elemento HTML.",
+			"question": "The addEventListener method is used in JavaScript to register ______ to an HTML element.",
 			"info_blog": "https://developer.mozilla.org/es/docs/Web/API/EventTarget/addEventListener",
 			"info_youtube": "https://www.youtube.com/watch?v=KyX2dIwHssQ"
 		},
@@ -205,7 +205,7 @@
 			
 			"module": "JS",
 			"type": "SC",
-			"question": "¿Cuál es el operador lógico AND en JavaScript?",
+			"question": "Which is the logical AND operator in JavaScript?.",
 			"info_blog": "https://www.freecodecamp.org/espanol/news/operadores-logicos-javascript/",
 			"info_youtube": "https://www.youtube.com/watch?v=JvWYpzNq0i0"
 		},
@@ -213,7 +213,7 @@
 			
 			"module": "JS",
     		"type": "SC",
-    		"question": " ¿Cuál es el propósito del método JSON.stringify() en JavaScript?",
+    		"question": "What is the purpose of the JSON.stringify() method in JavaScript?.",
     		"info_blog": "https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify",
     		"info_youtube": "https://www.youtube.com/watch?v=RnP19QXkY5M"
 		},
@@ -221,7 +221,7 @@
 		
 			"module": "JS",
     		"type": "SC",
-    		"question": " ¿Cuál de los siguientes métodos se utiliza para eliminar el último elemento de un array en JavaScript?",
+    		"question": "Which of the following methods is used to remove the last element of an array in JavaScript?.",
     		"info_blog": "https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/pop",
     		"info_youtube": "https://www.youtube.com/watch?v=kLKh_GagQtk"
 		},
@@ -229,7 +229,7 @@
 			
 			"module": "JS",
 			"type": "SC",
-			"question": "¿Cuál de las siguientes opciones se utiliza para ejecutar una función después de un retraso de tiempo en milisegundos en JavaScript?",
+			"question": "Which of the following options is used to execute a function after a time delay in milliseconds in JavaScript?.",
 			"info_blog": "https://www.w3schools.com/jsref/met_win_settimeout.asp",
 			"info_youtube": "https://www.youtube.com/watch?v=0w2TXEzjjZ8"
 		},
@@ -237,7 +237,7 @@
 			
 			"module": "JS",
 			"type": "SC",
-			"question": "¿Qué método se utiliza para convertir una cadena a un número entero en JavaScript?",
+			"question": "Which method is used to convert a string to an integer in JavaScript?.",
 			"info_blog": "https://www.w3schools.com/JSREF/jsref_parseint.asp",
 			"info_youtube": "https://www.youtube.com/watch?v=2KtDK1PiEiI"
 		}
@@ -256,7 +256,7 @@
 		 },
 		 {
 			
-			"answers": "párrafo",
+			"answers": "paragraph",
 			"isCorrect": true,
 			"exercise_id":2,
 			"module": "HTML",
@@ -289,7 +289,7 @@
 		},
 		{
 			
-			"answers": "Definir la estructura y el contenido de una página web",
+			"answers": "Define the structure and content of a website",
 			"isCorrect": true,
 			"exercise_id":6,
 			"module": "HTML",
@@ -298,7 +298,7 @@
 
 		{
 			
-			"answers": "Definir el estilo visual de una página web",
+			"answers": "Define the visual style of a website",
 			"isCorrect": false,
 			"exercise_id":6,
 			"module": "HTML",
@@ -306,7 +306,7 @@
 		 },
 		 {
 			
-			"answers": "Realizar cálculos matemáticos en una página web",
+			"answers": "Perform mathematical calculations on a web page",
 			"isCorrect": false,
 			"exercise_id":6,
 			"module": "HTML",
@@ -314,7 +314,7 @@
 		 },
 		 {
 			
-			"answers": "Conectar la página web a una base de datos",
+			"answers": "Connect the web page to a database",
 			"isCorrect": false,
 			"exercise_id":6,
 			"module": "HTML",
@@ -493,7 +493,7 @@
 		},
 		{
 			
-			"answers": "Definir la estructura de la página",
+			"answers": "Define the page structure",
 			"isCorrect": false,
 			"exercise_id":16,
 			"module": "CSS",
@@ -502,7 +502,7 @@
 
 		{
 			
-			"answers": "Agregar funcionalidad interactiva",
+			"answers": "Add interactive functionality",
 			"isCorrect": false,
 			"exercise_id":16,
 			"module": "CSS",
@@ -510,7 +510,7 @@
 		 },
 		 {
 			
-			"answers": "Establecer el estilo y la presentación de la página",
+			"answers": "Set the page style and presentation",
 			"isCorrect": true,
 			"exercise_id":16,
 			"module": "CSS",
@@ -518,7 +518,7 @@
 		 },
 		 {
 			
-			"answers": "Almacenar datos en la base de datos",
+			"answers": "Storing data in the database",
 			"isCorrect": false,
 			"exercise_id":16,
 			"module": "CSS",
@@ -664,7 +664,7 @@
 		 },
 		 {
 			
-			"answers": "residuo",
+			"answers": "rest",
 			"isCorrect": true,
 			"exercise_id":22,
 			"module": "JS",
@@ -689,7 +689,7 @@
 		},
 		{
 			
-			"answers": "eventos",
+			"answers": "events",
 			"isCorrect": true,
 			"exercise_id":25,
 			"module": "JS",
@@ -730,7 +730,7 @@
 		 },
 		{
 			
-			"answers": "Realizar una solicitud HTTP",
+			"answers": "Make a HTTP request",
 			"isCorrect": false,
 			"exercise_id":27,
 			"module": "JS",
@@ -739,7 +739,7 @@
 
 		{
 			
-			"answers": "Convertir un objeto a una cadena JSON",
+			"answers": "Convert an object to a JSON string",
 			"isCorrect": true,
 			"exercise_id":27,
 			"module": "JS",
@@ -747,7 +747,7 @@
 		 },
 		 {
 			
-			"answers": "Analizar una cadena JSON",
+			"answers": "Parse a JSON string",
 			"isCorrect": false,
 			"exercise_id":27,
 			"module": "JS",
@@ -755,7 +755,7 @@
 		 },
 		 {
 			
-			"answers": "Crear un nuevo objeto",
+			"answers": "Create a new object",
 			"isCorrect": true,
 			"exercise_id":27,
 			"module": "JS",
