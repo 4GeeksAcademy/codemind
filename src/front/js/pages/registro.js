@@ -65,8 +65,7 @@ export const Registro = () => {
 
   return (
     <>
-      
-    <div className="container mt-5">
+    <div className="container">
     <div className="row mb-4">
                 <div className="col">
                     <Link to="/"><i className="fa-solid fa-arrow-left arrow-back"></i></Link>
