@@ -142,11 +142,11 @@ export const Profile = () => {
                                     </button>
                                     <ul className="dropdown-menu dropdown-menu-dark">
                                         {store.teachers && store.teachers.map((teacher, index) => (
-                                            <li key={index} className='w-100'>
+                                            <span key={index} className='w-100'>
                                                 <p className="px-2 text-white w-100 teachersname" onClick={(e) => handleTeacherSelect(teacher, e)}>
                                                     {teacher.firstName + " " + teacher.lastName}
                                                 </p>
-                                            </li>
+                                            </span>
                                         ))}
                                     </ul>
                                 </div>
