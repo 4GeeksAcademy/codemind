@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 export const Navbar = () => {
@@ -34,23 +34,19 @@ export const Navbar = () => {
     }
   }
 
+useEffect(()=>{
+  if(!store.token){
+    navigate("/")
+  }
+},[store.token])
+
+
   const handleLogout = async (e) => {
     e.preventDefault();
     console.log("Handle logout called");
+    actions.logout();
+     
 
-    try {
-      const response = await actions.logout();
-
-      if (response.success) {
-        navigate("/")
-
-      } else {
-        setErrorLogin("logout fallido.");
-      }
-
-    } catch (error) {
-      console.log(error)
-    }
 
   };
 
@@ -269,7 +265,7 @@ export const Navbar = () => {
         </div>
         <div id="nav-footer-content">
           <div className="nav-item">
-            <Link to={"/"} className="btn btn-outline-primary" onClick={handleLogout} >Log out</Link>
+            <button className="btn btn-outline-primary" onClick={handleLogout} >Log out</button>
           </div>
 
         </div>

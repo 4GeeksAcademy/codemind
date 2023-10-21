@@ -497,16 +497,15 @@ def progress_users_module(module):
 def progress_users_modules():
     try:
         user_id = get_jwt_identity()
-        answers_user_html = AnswersUser.query.filter_by(
-            user_id=user_id).filter_by(module="HTML")
+
+
+        answers_user_html = AnswersUser.query.filter_by(user_id=user_id).filter_by(module="HTML")
         answers_number_html = answers_user_html.count()
 
-        answers_user_css = AnswersUser.query.filter_by(
-            user_id=user_id).filter_by(module="CSS")
+        answers_user_css = AnswersUser.query.filter_by(user_id=user_id).filter_by(module="CSS")
         answers_number_css = answers_user_css.count()
 
-        answers_user_js = AnswersUser.query.filter_by(
-            user_id=user_id).filter_by(module="JS")
+        answers_user_js = AnswersUser.query.filter_by(user_id=user_id).filter_by(module="JS")
         answers_number_js = answers_user_js.count()
 
         question_all_html = Exercise.query.filter_by(module="HTML").count()
@@ -517,10 +516,9 @@ def progress_users_modules():
         progreso_css = answers_number_css/question_all_css * 100
         progreso_js = answers_number_js/question_all_js * 100
 
-        return jsonify({"progress_html": progreso_html, "progress_css": progreso_css, "progress_js": progreso_js}), 200
+        return jsonify({"progress_html": progreso_html,"progress_css": progreso_css,"progress_js": progreso_js}), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
-
 
 @api.route('/requestpassword', methods=["POST"])
 def endpoint_mail():

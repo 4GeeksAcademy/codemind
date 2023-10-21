@@ -15,11 +15,10 @@ export const PreguntaCompletar = () => {
   
   useEffect(()=>{
     actions.getExercises(modulo)
-  },[])
-
-  useEffect(()=>{
     actions.getLastAnswerModule(modulo)
   },[])
+
+
   const handleRespuestaChange = (event) => {
     // e.preventDefault()
     setRespuesta(event.target.value);
@@ -68,18 +67,18 @@ export const PreguntaCompletar = () => {
   return (
     <div className="container">
       <div className="row d-flex justify-content-end my-3">
-        <div className='col-8 my-3 px-0 d-flex justify-content-between gap-3'>
+        <div className='col-7 col-md-8 my-3 px-0 d-flex justify-content-between gap-3'>
         <h2 className="fs-2 d-flex align-items-center"> Question N° {theid} of {modulo.toLocaleUpperCase()} </h2>
         </div>
-        <div className="col-2 text-center">
-        <img className="img-exercise rounded" src={store.module[modulo].imagen} />
+        <div className="col-3 col-md-2 text-center">
+        <img className="img-exercise rounded w-100" src={store.module[modulo].imagen} />
         </div>
       </div>
       <div className="row d-flex justify-content-end my-3">
-        <div className='col-8 mt-3 ps-0 pt-3'>
+        <div className='col-10 col-md-8 mt-3 ps-0'>
           <h4 className='me-3 fs-5 text-white'>{exercise_actual?.question}</h4>
         </div>
-        <div className="col-2 gap-2 px-0 ">
+        <div className="col-10 col-md-2 gap-2 px-0 ">
           <h5 className="text-center mb-3 pe-2 text-white">Do you need help?</h5>
           <div className="d-flex justify-content-center gap-4 pe-2">
         <a href={exercise_actual?.info_youtube} target="_blank" type="button" className="rounded-circle btn btn-dark" data-bs-toggle="tooltip" data-bs-placement="top" title="Video access">

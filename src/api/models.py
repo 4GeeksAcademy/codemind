@@ -187,6 +187,7 @@ def seed():
     seeder.register(Answers)
     seeder.register(AnswersUser)
     seeder.register(User)
+    seeder.register(Teacher)
     seeder.load_entities_from_json_file("seedData.json")
     db.session.commit()
 

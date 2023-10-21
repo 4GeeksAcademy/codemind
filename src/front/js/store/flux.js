@@ -44,7 +44,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			user: initialUser,
 			teachers: null,
 			teacherData: null,
-
+			email: null
 		},
 
 		actions: {
@@ -80,8 +80,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			getProgreso: async () => {
 
+
 				const url = process.env.BACKEND_URL + `api/progress`
 				const token = localStorage.getItem('userToken')
+        
 				const options = {
 					method: 'GET',
 					headers: {
@@ -96,8 +98,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					const resp = await fetch(url, options)
 					const data = await resp.json()
 					const progress = data.progress
-					setStore({ progress })
-					console.log(progress)
+
+					setStore({progress})
+
 					// don't forget to return something, that is how the async resolves
 					return data;
 				} catch (error) {
@@ -158,6 +161,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					const data = await resp.json()
 					const progressGeneral = data
 					setStore({ progressGeneral })
+				
 					// don't forget to return something, that is how the async resolves
 					return data;
 				} catch (error) {
@@ -166,6 +170,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			getLastAnswerModule: async (module) => {
+
 
 				const url = process.env.BACKEND_URL + `api/progress/${module}`
 				const token = localStorage.getItem('userToken')
@@ -198,9 +203,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			getVerificar: async (id, respuesta) => {
 
+
 				const url = process.env.BACKEND_URL + `api/verificar-respuesta/${id}`
 				const token = localStorage.getItem('userToken')
-
+        
 				const options = {
 					method: 'POST',
 					body: JSON.stringify({ respuesta }),
@@ -306,7 +312,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 						const data = await resp.json();
 						console.log('La solicitud se realizó con éxito');
 						localStorage.setItem('userToken', data.token);
-						await setStore({ user: data.user })
+						
+						await setStore({ user: data.user, token: data.token });
 						localStorage.setItem('userData', JSON.stringify(data.user));
 						let { user } = getStore()
 						console.log("loginuserdata" + JSON.stringify(user))
@@ -429,6 +436,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					if (resp.ok) {
 						localStorage.removeItem('userToken');
 						localStorage.removeItem('userData');
+						await setStore({ user: null, token: null });
 						return { success: true };
 					} else {
 						console.error('La solicitud de logout no se realizó con éxito');
@@ -551,6 +559,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				} catch (error) {
 					console.error(error)
 				}
+			},
+			rechargeToken: ()=>{
+				setStore({ token: localStorage.getItem('userToken') })
 			}
 
 

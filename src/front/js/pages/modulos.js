@@ -37,6 +37,7 @@ export const Modulos = () => {
   return (
     <div className="container vh-100 align-items-center text-break">
       <div className="row mb-4">
+
         <div className="col text-center">
           <h2 className="module-title mb-4">
             ¡Explore Our Modules!
