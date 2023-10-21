@@ -469,6 +469,26 @@ def progress_users():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
+@api.route('/progressall', methods=['GET'])
+@jwt_required()
+def progress_users_all():
+    try:
+        teacher_id = get_jwt_identity()
+        users_progress=[]
+        user_list= User.query.filter_by(teacher_id=teacher_id)
+        for user in user_list:
+            answers_user = AnswersUser.query.filter_by(user_id= user.id)
+            answers_number = answers_user.count()
+            if answers_number == 0:
+                users_progress.append(0)
+                continue
+            question_all = Exercise.query.count()
+            progreso = answers_number/question_all * 100
+            users_progress.append(round(progreso,1))
+        return jsonify(users_progress), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
 
 @api.route('/progress/<string:module>', methods=['GET'])
 @jwt_required()
