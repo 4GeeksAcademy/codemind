@@ -303,7 +303,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 						const data = await resp.json();
 						console.log('La solicitud se realizó con éxito');
 						localStorage.setItem('userToken', data.token);
-						await setStore({ user: data.user })
+						
+						await setStore({ user: data.user, token: data.token });
 						localStorage.setItem('userData', JSON.stringify(data.user));
 						let { user } = getStore()
 						console.log("loginuserdata" + JSON.stringify(user))
@@ -426,6 +427,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					if (resp.ok) {
 						localStorage.removeItem('userToken');
 						localStorage.removeItem('userData');
+						await setStore({ user: null, token: null });
 						return { success: true };
 					} else {
 						console.error('La solicitud de logout no se realizó con éxito');
@@ -548,6 +550,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				} catch (error) {
 					console.error(error)
 				}
+			},
+			rechargeToken: ()=>{
+				setStore({ token: localStorage.getItem('userToken') })
 			}
 
 
