@@ -1,28 +1,32 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	const storedUserData = localStorage.getItem('userData');
-  const initialUser = storedUserData ? JSON.parse(storedUserData) : null;
+	const initialUser = storedUserData ? JSON.parse(storedUserData) : null;
 
 	return {
 		store: {
 			token: null,
 			message: null,
-			exercises : [],
-			simpleChoice:[],
-			last_answer:[],
-			respuestaUser : [],
+			exercises: [],
+			simpleChoice: [],
+			last_answer: [],
+			respuestaUser: [],
 			progress: null,
 			progressModule: null,
+			progressGeneral: {},
 			module: {
-				html:{
-					imagen:"https://generation-sessions.s3.amazonaws.com/ad60b588835c42a878fbc4ab00aaadec/img/html5-logo-and-wordmark-1@2x.png",
-					color: "#F16529"},
-				css : {
-					imagen:"https://generation-sessions.s3.amazonaws.com/ad60b588835c42a878fbc4ab00aaadec/img/1200px-css-3-1@2x.png",
-					color: "#29A9DF"},
-				js : {
-					imagen:"https://generation-sessions.s3.amazonaws.com/ad60b588835c42a878fbc4ab00aaadec/img/unofficial-javascript-logo-2-1@2x.png",
-					color: "#F7DF1E"}
-		},
+				html: {
+					imagen: "https://generation-sessions.s3.amazonaws.com/ad60b588835c42a878fbc4ab00aaadec/img/html5-logo-and-wordmark-1@2x.png",
+					color: "#F16529"
+				},
+				css: {
+					imagen: "https://generation-sessions.s3.amazonaws.com/ad60b588835c42a878fbc4ab00aaadec/img/1200px-css-3-1@2x.png",
+					color: "#29A9DF"
+				},
+				js: {
+					imagen: "https://generation-sessions.s3.amazonaws.com/ad60b588835c42a878fbc4ab00aaadec/img/unofficial-javascript-logo-2-1@2x.png",
+					color: "#F7DF1E"
+				}
+			},
 
 			demo: [
 				{
@@ -37,8 +41,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			],
 
-			user: initialUser ,
-			teachers: null, 
+			user: initialUser,
+			teachers: null,
 			teacherData: null,
 
 		},
@@ -51,22 +55,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			getRespuestaUser: async () => {
 				const url = process.env.BACKEND_URL + `api/respuestauser`
-				const token= localStorage.getItem('userToken')
+				const token = localStorage.getItem('userToken')
 				const options = {
-						method:  'GET',
-						headers: {
-							'Content-Type': 'application/json', 
-							'Access-Control-Allow-Origin': '*',
-							'Authorization': `Bearer ${token}`
-						}
+					method: 'GET',
+					headers: {
+						'Content-Type': 'application/json',
+						'Access-Control-Allow-Origin': '*',
+						'Authorization': `Bearer ${token}`
 					}
+				}
 
-				try{
+				try {
 					// fetching data from the backend
-					const resp = await fetch(url,options)
+					const resp = await fetch(url, options)
 					const data = await resp.json()
 					const respuestaUser = data.respuestas
-					setStore({respuestaUser})
+					setStore({ respuestaUser })
 					// don't forget to return something, that is how the async resolves
 					return data;
 				} catch (error) {
@@ -77,22 +81,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 			getProgreso: async () => {
 
 				const url = process.env.BACKEND_URL + `api/progress`
-				const token= localStorage.getItem('userToken')
+				const token = localStorage.getItem('userToken')
 				const options = {
-						method:  'GET',
-						headers: {
-							'Content-Type': 'application/json', 
-							'Access-Control-Allow-Origin': '*',
-							'Authorization': `Bearer ${token}`
-						}
+					method: 'GET',
+					headers: {
+						'Content-Type': 'application/json',
+						'Access-Control-Allow-Origin': '*',
+						'Authorization': `Bearer ${token}`
 					}
+				}
 
-				try{
+				try {
 					// fetching data from the backend
-					const resp = await fetch(url,options)
+					const resp = await fetch(url, options)
 					const data = await resp.json()
 					const progress = data.progress
-					setStore({progress})
+					setStore({ progress })
 					console.log(progress)
 					// don't forget to return something, that is how the async resolves
 					return data;
@@ -104,26 +108,56 @@ const getState = ({ getStore, getActions, setStore }) => {
 			getProgresoModulo: async (module) => {
 
 				const url = process.env.BACKEND_URL + `api/progress/${module}`
-				const token= localStorage.getItem('userToken')
-				if(!token){
+				const token = localStorage.getItem('userToken')
+				if (!token) {
 					return false
 				}
 				const options = {
-						method:  'GET',
-						headers: {
-							'Content-Type': 'application/json', 
-							'Access-Control-Allow-Origin': '*',
-							'Authorization': `Bearer ${token}`
-						}
+					method: 'GET',
+					headers: {
+						'Content-Type': 'application/json',
+						'Access-Control-Allow-Origin': '*',
+						'Authorization': `Bearer ${token}`
 					}
+				}
 
-				try{
+				try {
 
 					// fetching data from the backend
-					const resp = await fetch(url,options)
+					const resp = await fetch(url, options)
 					const data = await resp.json()
 					const progressModule = data.progress
-					setStore({progressModule})
+					setStore({ progressModule })
+					// don't forget to return something, that is how the async resolves
+					return data;
+				} catch (error) {
+					console.log("Error loading message from backend", error)
+				}
+			},
+
+			getProgresoGeneral: async () => {
+
+				const url = process.env.BACKEND_URL + `/api/progressgeneral`
+				const token = localStorage.getItem('userToken')
+				if (!token) {
+					return false
+				}
+				const options = {
+					method: 'GET',
+					headers: {
+						'Content-Type': 'application/json',
+						'Access-Control-Allow-Origin': '*',
+						'Authorization': `Bearer ${token}`
+					}
+				}
+
+				try {
+
+					// fetching data from the backend
+					const resp = await fetch(url, options)
+					const data = await resp.json()
+					const progressGeneral = data
+					setStore({ progressGeneral })
 					// don't forget to return something, that is how the async resolves
 					return data;
 				} catch (error) {
@@ -134,23 +168,23 @@ const getState = ({ getStore, getActions, setStore }) => {
 			getLastAnswerModule: async (module) => {
 
 				const url = process.env.BACKEND_URL + `api/progress/${module}`
-				const token= localStorage.getItem('userToken')
+				const token = localStorage.getItem('userToken')
 				const options = {
-						method:  'GET',
-						headers: {
-							'Content-Type': 'application/json', 
-							'Access-Control-Allow-Origin': '*',
-							'Authorization': `Bearer ${token}`
-						}
+					method: 'GET',
+					headers: {
+						'Content-Type': 'application/json',
+						'Access-Control-Allow-Origin': '*',
+						'Authorization': `Bearer ${token}`
 					}
-				try{
+				}
+				try {
 
 					// fetching data from the backend
-					const resp = await fetch(url,options)
+					const resp = await fetch(url, options)
 					const data = await resp.json()
 					const last_answer = data.last_answer
-					setStore({last_answer})
-					
+					setStore({ last_answer })
+
 					// don't forget to return something, that is how the async resolves
 					return data;
 				} catch (error) {
@@ -158,42 +192,42 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-			UpdateLastAnswer: (pregunta) =>{
-					setStore({last_answer : pregunta})
+			UpdateLastAnswer: (pregunta) => {
+				setStore({ last_answer: pregunta })
 			},
-			
-			getVerificar : async(id,respuesta)=>{	
+
+			getVerificar: async (id, respuesta) => {
 
 				const url = process.env.BACKEND_URL + `api/verificar-respuesta/${id}`
-				const token= localStorage.getItem('userToken')
-				
+				const token = localStorage.getItem('userToken')
+
 				const options = {
-						method:  'POST',
-						body: JSON.stringify({respuesta}),
-						headers: {
-							'Content-Type': 'application/json', 
-							'Access-Control-Allow-Origin': '*',
-							'Authorization': `Bearer ${token}`
-						}
+					method: 'POST',
+					body: JSON.stringify({ respuesta }),
+					headers: {
+						'Content-Type': 'application/json',
+						'Access-Control-Allow-Origin': '*',
+						'Authorization': `Bearer ${token}`
 					}
+				}
 				try {
 					const resp = await fetch(url, options)
-					if(resp.ok){
+					if (resp.ok) {
 						const data = await resp.json()
-						
+
 						const respuesta = data.correct
-					// don't forget to return something, that is how the async resolves
-					return respuesta;
-					}else {
+						// don't forget to return something, that is how the async resolves
+						return respuesta;
+					} else {
 						console.error('La solicitud no se realizó con éxito');
 					}
 				} catch (error) {
-						console.error(error)
-					}
-				},
+					console.error(error)
+				}
+			},
 
 			getExercises: async (module) => {
-				try{
+				try {
 
 					// fetching data from the backend
 					const resp = await fetch(process.env.BACKEND_URL + `/api/exercises/${module}`)
@@ -209,7 +243,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log("Error loading message from backend", error)
 				}
 			},
-			
+
 			getMessage: async () => {
 				try {
 					// fetching data from the backend
@@ -316,16 +350,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 				console.log(role)
 				let url;
 				if (role === 'teacher') {
-					
+
 					url = process.env.BACKEND_URL + '/api/teacher/' + data.id;
 				} else if (role === 'alumno') {
-					
+
 					url = process.env.BACKEND_URL + '/api/user/' + data.id;
 				} else {
 					console.error('Rol de usuario no válido');
-					return; 
+					return;
 				}
-				
+
 				const options = {
 					method: 'PATCH',
 					body: JSON.stringify(data),
@@ -374,7 +408,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.error(error)
 				}
 			},
-			logout: async()=>{
+			logout: async () => {
 				const token = localStorage.getItem('userToken');
 				if (!token) {
 					console.error('No se encontró un token en localStorage');
@@ -386,9 +420,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					headers: {
 						'Content-Type': 'application/json',
 						'Access-Control-Allow-Origin': '*',
-						'Authorization' : 'Bearer ' + token
+						'Authorization': 'Bearer ' + token
 					}
-					
+
 				}
 				try {
 					const resp = await fetch(url, options);
@@ -403,7 +437,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.error(error);
 				}
 			},
-			checkToken: async(token)=>{
+			checkToken: async (token) => {
 
 				const url = process.env.BACKEND_URL + '/api/check-token';
 				const options = {
@@ -411,9 +445,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					headers: {
 						'Content-Type': 'application/json',
 						'Access-Control-Allow-Origin': '*',
-						'Authorization' : 'Bearer ' + token
+						'Authorization': 'Bearer ' + token
 					}
-					
+
 				}
 				try {
 					const resp = await fetch(url, options);
@@ -427,7 +461,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.error(error);
 				}
 			},
-			recoveryPassword: async (email)=>{
+			recoveryPassword: async (email) => {
 				const url = process.env.BACKEND_URL + '/api/requestpassword';
 				const options = {
 					method: 'POST',
@@ -438,13 +472,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 						'Content-Type': 'application/json',
 						'Access-Control-Allow-Origin': '*'
 					}
-					
+
 
 				}
 				try {
 					const resp = await fetch(url, options);
 					if (resp.ok) {
-						return { success: true, "msg" : "mail Enviado" };
+						return { success: true, "msg": "mail Enviado" };
 					} else {
 						console.error('La solicitud de logout no se realizó con éxito');
 					}
@@ -473,7 +507,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.error(error)
 				}
 			},
-			decrypt: async(token)=>{
+			decrypt: async (token) => {
 				const url = process.env.BACKEND_URL + '/api/decrypt';
 				const options = {
 					method: 'POST',
@@ -493,19 +527,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.error(error)
 				}
 			},
-			changePassword: async(credentials)=>{
+			changePassword: async (credentials) => {
 				const url = process.env.BACKEND_URL + '/api/changepassword';
 				console.log(credentials)
 				const options = {
 					method: 'PATCH',
 					body: JSON.stringify({
-						"email" : credentials.email,
+						"email": credentials.email,
 						"password": credentials.password
 					}),
 					headers: {
 						'Content-Type': 'application/json',
 						'Access-Control-Allow-Origin': '*'
-						
+
 					}
 				}
 				try {
