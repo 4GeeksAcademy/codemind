@@ -11,6 +11,10 @@ export const Student = () => {
     actions.getTeachersStudents(store.user.id);
   }, [store.user.id]);
 
+  useEffect(() => {
+    actions.getProgresoStudents();
+  }, []);
+
   return (
     <div className="container mt-5">
     <div className="row mb-4">
@@ -28,6 +32,7 @@ export const Student = () => {
               <th scope="col">First Name</th>
               <th scope="col">Last Name</th>
               <th scope="col">E-mail</th>
+              <th scope="col">Progress</th>
             </tr>
           </thead>
           <tbody className="">
@@ -37,6 +42,7 @@ export const Student = () => {
                 <td>{student.firstName}</td>
                 <td>{student.lastName}</td>
                 <td>{student.email}</td>
+                <td>{store.progressStudents[index]} %</td>
               </tr>
             ))}
           </tbody>

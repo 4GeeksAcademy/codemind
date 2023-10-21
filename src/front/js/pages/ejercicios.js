@@ -15,8 +15,8 @@ export const Ejercicios = () => {
     actions.getProgresoModulo(modulo)
     actions.getLastAnswerModule(modulo)
     actions.getRespuestaUser()
+    actions.getProgresoGeneral()
   },[])
-  
 
   const respuestaCorrectaIncluida = (exercise_id) => {
     const respuesta = store.respuestaUser.includes(exercise_id)
