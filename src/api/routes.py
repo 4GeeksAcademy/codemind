@@ -40,27 +40,27 @@ def send_email(asunto, destinatario, body):
     <body>
     <div>
     <h1></h1>
-    ''' +  body + '''
+    ''' + body + '''
     </div>
     </body>
     </html> 
     '''
-    
-    #Crear elemento MIME
-    html_mime =MIMEText(html, 'html' )
-    #adjuntamos el codigo del mensaje
+
+    # Crear elemento MIME
+    html_mime = MIMEText(html, 'html')
+    # adjuntamos el codigo del mensaje
     message.attach(html_mime)
-    
-    #Enviar el correo
+
+    # Enviar el correo
     try:
         context = ssl.create_default_context()
         with smtplib.SMTP_SSL(smtp_address, smtp_port, context=context) as server:
             server.login(email_address, email_password)
-            server.sendmail( email_address, destinatario, message.as_string())
+            server.sendmail(email_address, destinatario, message.as_string())
         return True
     except Exception as error:
         print(str(error))
-        return False  
+        return False
 
 
 @api.route('/hello', methods=['POST', 'GET'])
@@ -190,7 +190,7 @@ def login():
             }
         else:
             return jsonify({"message": "wrong password"}), 401
-            
+
     elif teacher:
         # Verifica la contraseña para profesores
         if bcrypt.check_password_hash(teacher.password, password):
@@ -203,9 +203,9 @@ def login():
                 "role": teacher.role
             }
         else:
-            return jsonify({"message": "Wrong password"}),401
+            return jsonify({"message": "Wrong password"}), 401
     else:
-        return jsonify({"message": "User not found"}),404
+        return jsonify({"message": "User not found"}), 404
 
     # Genera el token basado en el rol
     role = "teacher" if teacher else "user"
@@ -298,8 +298,6 @@ def get_exercises_by_module(module):
         return jsonify({"error": str(e)}), 500
 
 
-
-
 @api.route('/verificar-respuesta/<int:id>', methods=['POST'])
 @jwt_required()
 def verificar_respuesta(id):
@@ -332,7 +330,8 @@ def verificar_respuesta(id):
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500
-    
+
+
 @api.route('/respuestauser', methods=['GET'])
 @jwt_required()
 def verifica():
@@ -340,7 +339,8 @@ def verifica():
         user_id = get_jwt_identity()
         # print(user_id)
         users = AnswersUser.query.filter_by(user_id=user_id).all()
-        id_respuestas = list(map(lambda respuesta: respuesta.exercise_id, users))
+        id_respuestas = list(
+            map(lambda respuesta: respuesta.exercise_id, users))
         return jsonify({"respuestas": id_respuestas}), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
@@ -452,6 +452,7 @@ def handle():
 
     return jsonify(response_body), 200
 
+
 @api.route('/progress', methods=['GET'])
 @jwt_required()
 def progress_users():
@@ -475,7 +476,8 @@ def progress_users():
 def progress_users_module(module):
     try:
         user_id = get_jwt_identity()
-        answers_user = AnswersUser.query.filter_by(user_id=user_id).filter_by(module=module.upper())
+        answers_user = AnswersUser.query.filter_by(
+            user_id=user_id).filter_by(module=module.upper())
         answers_number = answers_user.count()
         if answers_number == 0:
             last_answer = Exercise.query.filter_by(
@@ -495,6 +497,8 @@ def progress_users_module(module):
 def progress_users_modules():
     try:
         user_id = get_jwt_identity()
+
+
         answers_user_html = AnswersUser.query.filter_by(user_id=user_id).filter_by(module="HTML")
         answers_number_html = answers_user_html.count()
 
@@ -518,31 +522,32 @@ def progress_users_modules():
 
 @api.route('/requestpassword', methods=["POST"])
 def endpoint_mail():
-    body=request.get_json()
-    email=body["email"]
+    body = request.get_json()
+    email = body["email"]
     print(email)
     user = User.query.filter_by(email=email).first()
     print(user)
     if user is None:
-        user =  Teacher.query.filter_by(email=email).first()
+        user = Teacher.query.filter_by(email=email).first()
         if user is None:
-            print(jsonify({"message": "El usuario no existe"})) 
-    
-    
-    token = create_access_token(identity=email, additional_claims={"type": "password" , "email": email})
-    
+            print(jsonify({"message": "El usuario no existe"}))
+
+    token = create_access_token(identity=email, additional_claims={
+                                "type": "password", "email": email})
+
     cuerpo = os.getenv("FRONTEND_URL") + '/changepassword?token=' + token
     verificar = send_email("Recuperacion de Clave", email, cuerpo)
-    
+
     if verificar == True:
-        return jsonify({"message": "Gmail Enviado"})  , 200 
+        return jsonify({"message": "Gmail Enviado"}), 200
     else:
-        return jsonify({"message": "No se pudo enviar el correo"}) , 400 
-    
+        return jsonify({"message": "No se pudo enviar el correo"}), 400
+
+
 @api.route('/changepassword', methods=['PATCH'])
 def change_password():
     try:
-        body=request.get_json()
+        body = request.get_json()
         email = body["email"]
         user = User.query.filter_by(email=email).first()
         if user is None:
@@ -567,16 +572,14 @@ def change_password():
             return jsonify({"message": "La nueva contraseña no se proporcionó"}), 400
     except Exception as e:
         return jsonify({"error": str(e)}), 500
-    
-    
+
+
 @api.route('/decrypt', methods=['POST'])
 @jwt_required()
 def decrypt():
     try:
-        email = get_jwt().get('email',None)
-        
-        return jsonify({"email": email }), 200
+        email = get_jwt().get('email', None)
+
+        return jsonify({"email": email}), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
-
-
