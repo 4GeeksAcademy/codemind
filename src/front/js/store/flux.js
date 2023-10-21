@@ -54,7 +54,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			getRespuestaUser: async () => {
-				const url = process.env.BACKEND_URL + `api/respuestauser`
+				const url = process.env.BACKEND_URL + `/api/respuestauser`
 				const token = localStorage.getItem('userToken')
 				const options = {
 					method: 'GET',
@@ -81,7 +81,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			getProgreso: async () => {
 
 
-				const url = process.env.BACKEND_URL + `api/progress`
+				const url = process.env.BACKEND_URL + `/api/progress`
 				const token = localStorage.getItem('userToken')
         
 				const options = {
@@ -110,7 +110,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			getProgresoModulo: async (module) => {
 
-				const url = process.env.BACKEND_URL + `api/progress/${module}`
+				const url = process.env.BACKEND_URL + `/api/progress/${module}`
 				const token = localStorage.getItem('userToken')
 				if (!token) {
 					return false
@@ -172,7 +172,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			getLastAnswerModule: async (module) => {
 
 
-				const url = process.env.BACKEND_URL + `api/progress/${module}`
+				const url = process.env.BACKEND_URL + `/api/progress/${module}`
 				const token = localStorage.getItem('userToken')
 				const options = {
 					method: 'GET',
@@ -204,7 +204,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			getVerificar: async (id, respuesta) => {
 
 
-				const url = process.env.BACKEND_URL + `api/verificar-respuesta/${id}`
+				const url = process.env.BACKEND_URL + `/api/verificar-respuesta/${id}`
 				const token = localStorage.getItem('userToken')
         
 				const options = {
