@@ -15,11 +15,10 @@ export const PreguntaCompletar = () => {
   
   useEffect(()=>{
     actions.getExercises(modulo)
-  },[])
-
-  useEffect(()=>{
     actions.getLastAnswerModule(modulo)
   },[])
+
+
   const handleRespuestaChange = (event) => {
     // e.preventDefault()
     setRespuesta(event.target.value);

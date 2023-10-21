@@ -12,6 +12,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			respuestaUser : [],
 			progress: null,
 			progressModule: null,
+			progressGeneral : {},
 			module: {
 				html:{
 					imagen:"https://generation-sessions.s3.amazonaws.com/ad60b588835c42a878fbc4ab00aaadec/img/html5-logo-and-wordmark-1@2x.png",
@@ -124,6 +125,36 @@ const getState = ({ getStore, getActions, setStore }) => {
 					const progressModule = data.progress
 					setStore({progressModule})
 
+					// don't forget to return something, that is how the async resolves
+					return data;
+				} catch (error) {
+					console.log("Error loading message from backend", error)
+				}
+			},
+
+			getProgresoGeneral: async () => {
+
+				const url = process.env.BACKEND_URL + `/api/progressgeneral`
+				const token= localStorage.getItem('userToken')
+				if(!token){
+					return false
+				}
+				const options = {
+						method:  'GET',
+						headers: {
+							'Content-Type': 'application/json', 
+							'Access-Control-Allow-Origin': '*',
+							'Authorization': `Bearer ${token}`
+						}
+					}
+
+				try{
+
+					// fetching data from the backend
+					const resp = await fetch(url,options)
+					const data = await resp.json()
+					const progressGeneral= data
+					setStore({progressGeneral})
 					// don't forget to return something, that is how the async resolves
 					return data;
 				} catch (error) {

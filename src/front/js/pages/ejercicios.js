@@ -12,17 +12,8 @@ export const Ejercicios = () => {
 
   useEffect(()=>{
     actions.getExercises(modulo)
-  },[])
-  
-  useEffect(()=>{
     actions.getProgresoModulo(modulo)
-  },[])
-
-  useEffect(()=>{
     actions.getLastAnswerModule(modulo)
-  },[])
-
-  useEffect(()=>{
     actions.getRespuestaUser()
   },[])
   
