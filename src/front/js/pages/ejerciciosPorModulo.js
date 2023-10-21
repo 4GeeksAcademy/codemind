@@ -67,7 +67,7 @@ export const PreguntaCompletar = () => {
   return (
     <div className="container">
       <div className="row d-flex justify-content-end my-3">
-        <div className='col-7 col-md-8 my-3 px-0 d-flex justify-content-between gap-3'>
+        <div className='col-8 col-md-9 my-3 px-0 d-flex justify-content-between gap-3'>
         <h2 className="fs-2 d-flex align-items-center"> Question N° {theid} of {modulo.toLocaleUpperCase()} </h2>
         </div>
         <div className="col-3 col-md-2 text-center">
@@ -75,10 +75,10 @@ export const PreguntaCompletar = () => {
         </div>
       </div>
       <div className="row d-flex justify-content-end my-3">
-        <div className='col-10 col-md-8 mt-3 ps-0'>
+        <div className='col-11 col-md-9 mt-3 ps-0'>
           <h4 className='me-3 fs-5 text-white'>{exercise_actual?.question}</h4>
         </div>
-        <div className="col-10 col-md-2 gap-2 px-0 ">
+        <div className="col-11 col-md-2 gap-2 px-0 ">
           <h5 className="text-center mb-3 pe-2 text-white">Do you need help?</h5>
           <div className="d-flex justify-content-center gap-4 pe-2">
         <a href={exercise_actual?.info_youtube} target="_blank" type="button" className="rounded-circle btn btn-dark" data-bs-toggle="tooltip" data-bs-placement="top" title="Video access">
@@ -92,7 +92,7 @@ export const PreguntaCompletar = () => {
       </div>
       {exercise_actual?.type==="FIB" ? 
       <div className="row d-flex justify-content-end">
-        <div className='col-10 ps-0 mt-5'>
+        <div className='col-11 ps-0 mt-5'>
         <input className="mb-3 form-control bg-dark text-white"
         type="text"
         value={respuesta}
@@ -103,7 +103,7 @@ export const PreguntaCompletar = () => {
       </div>
         :
       <div className="row d-flex justify-content-end">  
-      <ul className="col-10 ps-0">
+      <ul className="col-11 ps-0">
                   {exercise_actual?.answers.map((alternativa, indice) => <p key={indice} onClick={() => setRespuesta(alternativa.answers)}
                     className={`form-control border border-dark rounded py-2 ps-4 fs-5 ${respuesta === alternativa.answers ? "seleccionada":"bg-dark text-white"}`} >{alternativa.answers}</p>)}
                     
@@ -112,7 +112,7 @@ export const PreguntaCompletar = () => {
                 }
 
       <div className="row d-flex justify-content-end mt-3">
-        <div className="col-10 mt-4 d-flex justify-content-between ps-0">
+        <div className="col-11 mt-4 d-flex justify-content-between ps-0">
         <Link to = {`/preguntas/${modulo}`}> 
           <button className="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="Back to questionnaire">
            Back 

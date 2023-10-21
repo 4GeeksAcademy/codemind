@@ -321,7 +321,8 @@ input[type="text"]:focus {
   background: #212529;
 }
 .css-button-shadow-border--black:hover {
-  background-color: #343a40;
+  background-color: #9b05af;
+  color: black;
 }
 .css-button-shadow-border--black:active {
   top: 2px;
@@ -337,6 +338,9 @@ input[type="text"]:focus {
     --navbar-light-primary: #f5f6fa;
     --navbar-light-secondary: var(--ColorSecundario);
   }
+  .orange-hr{
+    color: var(--ColorSecundario);
+  }
   #nav-bar{
     z-index: 1;
   }
@@ -350,7 +354,7 @@ input[type="text"]:focus {
   #nav-toggle:checked ~ #nav-header #nav-title {
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.1s;
+    transition: opacity 0.2s;
   }
   #nav-toggle:checked ~ #nav-header label[for=nav-toggle] {
     left: calc(50% - 8px);
@@ -366,7 +370,7 @@ input[type="text"]:focus {
   }
   #nav-toggle:checked ~ #nav-content .nav-button span {
     opacity: 0;
-    transition: opacity 0.1s;
+    transition: opacity;
   }
   #nav-toggle:checked ~ #nav-content .nav-button .fas {
     min-width: calc(100% - 16px);
@@ -522,10 +526,11 @@ input[type="text"]:focus {
   
   .nav-button {
     position: relative;
-    margin-left: 16px;
+    margin: 2px 0 0 16px;
     height: 54px;
     display: flex;
     align-items: center;
+    justify-items: center;
     color: var(--navbar-light-secondary);
     direction: ltr;
     cursor: pointer;

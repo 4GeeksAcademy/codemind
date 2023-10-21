@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 export const Navbar = () => {
@@ -25,24 +25,28 @@ export const Navbar = () => {
 
   }, [location.pathname, user, store.user]);
 
+  const [checked, setChecked] = useState(true)
+  const [checkedTwo, setCheckedTwo] = useState(false)
+  const toggleLogOut = (active) => {
+    setChecked(active)
+    if (active === true) {
+      setCheckedTwo(false)
+    }
+  }
+
+useEffect(()=>{
+  if(!store.token){
+    navigate("/")
+  }
+},[store.token])
+
 
   const handleLogout = async (e) => {
     e.preventDefault();
     console.log("Handle logout called");
+    actions.logout();
+     
 
-    try {
-      const response = await actions.logout();
-
-      if (response.success) {
-        navigate("/")
-
-      } else {
-        setErrorLogin("logout fallido.");
-      }
-
-    } catch (error) {
-      console.log(error)
-    }
 
   };
 
@@ -77,10 +81,10 @@ export const Navbar = () => {
 
   const userNavbar = (
     <div id="nav-bar">
-      <input id="nav-toggle" type="checkbox" />
+      <input id="nav-toggle" checked={checked} type="checkbox" onClick={() => toggleLogOut(!checked)} />
       <div id="nav-header">
         <div id="nav-title" target="_blank">
-          <Link to={"/modules"}><a className="text-primary navbar-title" aria-current="page" href="#">CodeMind</a></Link>
+          <Link to={"/modules"} className="text-primary navbar-title" aria-current="page" href="#">CodeMind</Link>
         </div>
         <label htmlFor="nav-toggle">
           <span id="nav-toggle-burger"></span>
@@ -91,9 +95,9 @@ export const Navbar = () => {
         <div className="nav-button">
           <Link to="/modules"><i className="fas fa-palette"></i><span>Modules</span> </Link>
         </div>
-        <div className="nav-button">
+        {/* <div className="nav-button">
           <i className="fas fa-images"></i><span>Library</span>
-        </div>
+        </div> */}
         <hr />
 
         <div className="nav-button">
@@ -109,7 +113,7 @@ export const Navbar = () => {
         <div id="nav-content-highlight"></div>
       </div>
 
-      <input id="nav-footer-toggle" type="checkbox" />
+      <input id="nav-footer-toggle" type="checkbox" checked={checkedTwo} onClick={() => setCheckedTwo(!checkedTwo)} />
       <div id="nav-footer">
         <div id="nav-footer-heading" className="d-flex align-items-start">
           <div id="nav-footer-avatar">
@@ -128,12 +132,75 @@ export const Navbar = () => {
           </label>
         </div>
         <div id="nav-footer-content">
-          <div className="nav-item">
-            <Link to={"/"} className="btn btn-outline-primary" onClick={handleLogout} >Log out</Link>
+          <div className="nav-item pt-4">
+            <Link to={"/"} className="btn btn-outline-primary d-flex justify-content-center" onClick={handleLogout} >Log out</Link>
           </div>
         </div>
       </div>
     </div>)
+
+  const navbarlite = (
+    <div className="sticky-top d-flex justify-content-end">
+      <button
+        id="nav-toggle"
+        style={{ backgroundColor: 'rgba(0, 0, 0, 0)', border: 'none' }}
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasTop"
+        aria-controls="offcanvasTop"
+      >
+        <i className="fas fa-bars btn rounded-3 bg-primary" style={{ minWidth: "50px", minHeight: "30px" }}></i>
+      </button>
+
+      <div
+        className="offcanvas offcanvas-top"
+        tabIndex="-1"
+        id="offcanvasTop"
+        aria-labelledby="offcanvasTopLabel"
+        style={{ height: '40vh', backgroundColor: '#333' }}
+      >
+        <div className="offcanvas-header">
+          <Link to={"/modules"} className="text-primary navbar-title" aria-current="page" href="#">
+            CodeMind
+          </Link>
+          <hr />
+          <Link to={"/profile"}>
+            {user && user.firstName ? user.firstName : null} {user && user.lastName ? user.lastName : null}
+          </Link>
+          <button
+            type="button"
+            className="btn-close text-reset"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+          ></button>
+        </div>
+        <hr className="orange-hr" />
+        <div className="offcanvas-body">
+          <div className="d-flex flex-wrap">
+            <div className="nav-button col-4 col-md-3">
+              <Link to="/modules"><i className="fas fa-palette"></i><span>Modules</span></Link>
+            </div>
+            {/* <div className="nav-button col-4 col-md-3">
+            <i className="fas fa-images"></i><span>Library</span>
+          </div> */}
+            <div className="nav-button col-4 col-md-3">
+              <Link to="/progress"><i className="fas fa-chart-line"></i><span>Progress</span></Link>
+            </div>
+            <div className="nav-button col-4 col-md-3">
+              <Link to="/roadMap"><i className="fas fa-fire"></i><span>Road Map</span></Link>
+            </div>
+            <div className="nav-button col-4 col-md-3">
+              <Link to="/about"><i className="fas fa-heart"></i><span>About Us</span></Link>
+            </div>
+            <hr />
+            <Link to={"/"} className="btn btn-outline-primary d-flex justify-content-center" onClick={handleLogout}>
+              Log out
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
 
 
   const teacherNavbar = (
@@ -198,7 +265,7 @@ export const Navbar = () => {
         </div>
         <div id="nav-footer-content">
           <div className="nav-item">
-            <Link to={"/"} className="btn btn-outline-primary" onClick={handleLogout} >Log out</Link>
+            <button className="btn btn-outline-primary" onClick={handleLogout} >Log out</button>
           </div>
 
         </div>
@@ -208,8 +275,11 @@ export const Navbar = () => {
 
 
   const renderNavbarBasedOnRole = () => {
+    const screenWidth = window.innerWidth;
     if (['/registro', '/', '/login', '/forwotpassword', '/sendpassword'].includes(navActive)) {
       return defaultNavbar;
+    } else if (user && user.role === 'alumno' && screenWidth <= 768) {
+      return navbarlite;
     } else if (user && user.role === 'alumno') {
       return userNavbar;
     } else if (user && user.role === 'teacher') {
