@@ -9,12 +9,14 @@ import { Context } from "../store/appContext";
 
 export const Landing = () => {
     const navigate = useNavigate();
-    const { actions } = useContext(Context);
+    const { store, actions } = useContext(Context);
   
     const [landingRender, setLandingRender] = useState(null);
 
     useEffect(() => {
- 
+            if (store.token){
+                navigate('/modules');
+            }
                 setLandingRender(landing);
    
     }, [navigate, actions]);
