@@ -62,7 +62,7 @@ export const Progress = () => {
               aria-valuenow={store.progressGeneral.progress_html}
               aria-valuemin="0"
               aria-valuemax="100"
-            ></div>
+            >{store.progressGeneral.progress_html} %</div>
           </div>
         </div>
       </div>
@@ -92,7 +92,7 @@ export const Progress = () => {
               aria-valuenow={store.progressGeneral.progress_css}
               aria-valuemin="0"
               aria-valuemax="100"
-            ></div>
+            >{store.progressGeneral.progress_css} %</div>
           </div>
         </div>
       </div>
@@ -120,7 +120,7 @@ export const Progress = () => {
               aria-valuenow={store.progressGeneral.progress_js}
               aria-valuemin="0"
               aria-valuemax="100"
-            ></div>
+            >{store.progressGeneral.progress_js} %</div>
           </div>
         </div>
       </div>

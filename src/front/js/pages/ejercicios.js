@@ -38,7 +38,7 @@ export const Ejercicios = () => {
       </div>
       </div>
       <div className="row d-flex justify-content-end">
-      <div className='col-12 col-md-7 ps-5'>
+      <div className='col-12 col-md-7'>
       <h4 className="mb-3" style={{color: `${store.module[modulo].color}`}}>
       Progress
       </h4>
