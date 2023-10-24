@@ -72,7 +72,7 @@ export const Modulos = () => {
                 onClick={() => toggleDescription("html5")}
                 className="btn btn-outline-primary text-decoration-none"
                 data-bs-toggle="button"
-                autocomplete="off"
+                autoComplete="off"
 
               >
                 {descriptionsVisible.html5 ? "Hide Description" : "Show Description"}
@@ -107,7 +107,7 @@ export const Modulos = () => {
                 onClick={() => toggleDescription("css")}
                 className="btn btn-outline-primary text-decoration-none"
                 data-bs-toggle="button"
-                autocomplete="off"
+                autoComplete="off"
               >
                 {descriptionsVisible.css ? "Hide Description" : "Show Description"}
               </button>
@@ -141,7 +141,7 @@ export const Modulos = () => {
                 onClick={() => toggleDescription("javascript")}
                 className="btn btn-outline-primary text-decoration-none"
                 data-bs-toggle="button"
-                autocomplete="off"
+                autoComplete="off"
 
               >
                 {descriptionsVisible.javascript ? "Hide Description" : "Show Description"}

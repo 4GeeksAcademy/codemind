@@ -67,7 +67,7 @@ export const Profile = () => {
             const name = formData.firstName + " " + formData.lastName
             const imgURL = `${baseUrl}/?name=${encodeURIComponent(name)}&size=${size}&rounded=${rounded}&background=${background}`
             const updatedFormData = { ...formData, img: imgURL, teacher: selectedTeacher.id };
-            console.log(updatedFormData)
+            
             await actions.updateUser(updatedFormData);
             setErrorMessage("");
             setShowAlert(true);

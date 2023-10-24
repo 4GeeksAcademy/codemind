@@ -34,11 +34,8 @@ export const Navbar = () => {
     }
   }
 
-
-
-
   useEffect(() => {
-    console.log(location)
+    // console.log(location)
   if(location.pathname == '/changepassword'){
       
       return
@@ -92,7 +89,7 @@ export const Navbar = () => {
               <a className="nav-link scroll-smooth" aria-current="page" href="#roadmap-section">Road map</a>
             </li>
             <li className="nav-item">
-              <Link to={"/about"}><a className="nav-link" href="#">About us</a></Link>
+              <Link to={"/about"} className="nav-link">About us</Link>
             </li>
 
           </ul>
@@ -106,7 +103,7 @@ export const Navbar = () => {
       <input id="nav-toggle" checked={checked} type="checkbox" onClick={() => toggleLogOut(!checked)} />
       <div id="nav-header">
         <div id="nav-title" target="_blank">
-          <Link to={"/modules"} className="text-primary navbar-title" aria-current="page" href="#">CodeMind</Link>
+          <Link to={"/modules"} className="text-primary navbar-title ms-2" aria-current="page" href="#">CodeMind</Link>
         </div>
         <label htmlFor="nav-toggle">
           <span id="nav-toggle-burger"></span>
@@ -142,9 +139,9 @@ export const Navbar = () => {
             <Link to={"/profile"}><img src={userImg} alt="Avatar" className="rounded-circle" /></Link>
           </div>
           <div id="nav-footer-titlebox" className={`ms-2 ${shouldHide ? 'hide-element' : ''}`}>
-            <a id="nav-footer-title" className="d-flex ms-2" href="#" target="_blank">
-              <Link to={"/profile"}>{user && user.firstName ? user.firstName : null} {user && user.lastName ? user.lastName : null}</Link>
-            </a>
+        
+            <Link to={"/profile"}>{user && user.firstName ? user.firstName : null} {user && user.lastName ? user.lastName : null}</Link>
+      
             <div>
               <span id="nav-footer-subtitle">{user && user.role ? user.role : null}</span>
             </div>
@@ -230,7 +227,7 @@ export const Navbar = () => {
       <input id="nav-toggle" type="checkbox" />
       <div id="nav-header">
         <div id="nav-title" target="_blank">
-          <Link to={"/modules"}><a className="text-primary font-weight-bold" aria-current="page" href="#">CodeMind</a></Link>
+          <Link to={"/modules"} className="text-primary font-weight-bold ms-3" aria-current="page" href="#">CodeMind</Link>
         </div>
         <label htmlFor="nav-toggle">
           <span id="nav-toggle-burger"></span>
@@ -239,23 +236,23 @@ export const Navbar = () => {
       </div>
       <div id="nav-content">
         <div className="nav-button">
-          <i className="fas fa-palette"></i><span>Modules</span>
+        <Link to={"/modules"}><i className="fas fa-palette"></i><span>Modules</span></Link>
         </div>
         {/* <div className="nav-button">
           <i className="fas fa-images"></i><span>Library</span>
         </div> */}
         <div className="nav-button">
-          <Link to={"/student"}><i class="fa-solid fa-user-group p-3"></i><span>Students</span></Link>
+          <Link to={"/student"}><i className="fa-solid fa-user-group p-3"></i><span>Students</span></Link>
         </div>
         <hr />
         {/* <div className="nav-button">
           <i className="fas fa-chart-line"></i><span>Progress</span>
         </div> */}
         <div className="nav-button">
-          <i className="fas fa-fire"></i><span>Road Map</span>
+        <Link to={"/roadmap"}><i className="fas fa-fire"></i><span>Road Map</span></Link>
         </div>
         <div className="nav-button">
-          <i className="fas fa-heart"></i><span>About Us</span>
+        <Link to={"/about"}><i className="fas fa-heart"></i><span>About Us</span></Link>
         </div>
         {/* <div className="nav-button">
           <i className="fas fa-magic"></i><span>Spark</span>
@@ -274,9 +271,9 @@ export const Navbar = () => {
             <Link to={"/profile"}><img src={userImg} alt="Avatar" className="rounded-circle" /></Link>
           </div>
           <div id="nav-footer-titlebox" className={`ms-2 ${shouldHide ? 'hide-element' : ''}`}>
-            <a id="nav-footer-title d-flex justify-content-end ms-2" href="#" target="_blank">
+            
               <Link to={"/profile"}>{user && user.firstName ? user.firstName : null} {user && user.lastName ? user.lastName : null}</Link>
-            </a>
+        
             <div>
               <span id="nav-footer-subtitle">{user && user.role ? user.role : null}</span>
             </div>
@@ -337,7 +334,7 @@ export const Navbar = () => {
               <Link to="/modules"><i className="fas fa-palette"></i><span>Modules</span></Link>
             </div>
             <div className="nav-button col-4 col-md-3">
-              <Link to={"/student"}><i class="fa-solid fa-user-group"></i><span>Students</span></Link>
+              <Link to={"/student"}><i className="fa-solid fa-user-group"></i><span>Students</span></Link>
             </div>
             {/* <div className="nav-button col-4 col-md-3">
             <i className="fas fa-images"></i><span>Library</span>

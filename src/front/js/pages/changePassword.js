@@ -61,13 +61,11 @@ export const ChangePassword = () => {
       if (token) {
         try {
           const response = await actions.decrypt(token);
-          console.log(response);
 
           if (response && response.email) {
             // Set the extracted email in the Email state
             setEmail(response.email);
             setRenderComp("changePasswordComp");
-            console.log(response.email);
           }
         } catch (error) {
           console.error("Error while decoding token:", error);
