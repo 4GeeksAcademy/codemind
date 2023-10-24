@@ -40,6 +40,7 @@ const Layout = () => {
   useEffect(() => {
     if (!store.token) {
       setToken(store.token);
+      
     }
   }, [store.token]);
 
@@ -54,7 +55,7 @@ const Layout = () => {
             <Route element={<Index />} path="/Index" />
             <Route element={<Registro />} path="/registro" />
             <Route element={<Login />} path="/login" />
-            <Route element={<ChangePassword />} path="/changepassword" />
+            <Route element={<ChangePassword />} path="/changepassword"/>
             <Route element={<ForwotPassword />} path="/forwotpassword" />
             <Route element={<SendPassword />} path="/sendpassword" />
             <Route element={<AboutUs />} path="/about" />

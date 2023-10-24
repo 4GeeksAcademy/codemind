@@ -34,9 +34,19 @@ export const Navbar = () => {
     }
   }
 
+
+
+
   useEffect(() => {
-    if (!store.token) {
+    console.log(location)
+  if(location.pathname == '/changepassword'){
+      
+      return
+    }
+
+  if(!store.token) {
       navigate("/")
+
     }
   }, [store.token])
 
@@ -354,7 +364,7 @@ export const Navbar = () => {
 
   const renderNavbarBasedOnRole = () => {
     const screenWidth = window.innerWidth;
-    if (['/registro', '/', '/login', '/forwotpassword', '/sendpassword'].includes(navActive)) {
+    if (['/registro', '/', '/login', '/forwotpassword', '/sendpassword', '/changepassword'].includes(navActive)) {
       return defaultNavbar;
     } else if (user && user.role === 'alumno' && screenWidth <= 768) {
       return navbarlite;
