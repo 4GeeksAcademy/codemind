@@ -290,8 +290,6 @@ useEffect(()=>{
   return (
     <>
       {renderNavbarBasedOnRole()}
-
-      {console.log(navActive)}
     </>
   );
 };

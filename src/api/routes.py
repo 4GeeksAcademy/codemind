@@ -93,7 +93,6 @@ def create_user():
         db.session.commit()
         return jsonify({"msg": "Usuario registrado"}), 201
     except Exception as e:
-        print(e)
         return jsonify({"error": str(e)}), 500
 
 
@@ -254,7 +253,6 @@ def create_excercise():
         db.session.add(new_exercise)
         db.session.flush()
         exercise_id = new_exercise.id
-        print(exercise_id)
 
         for answer_data in request.json.get("answers"):
             new_answer = Answers(
@@ -287,8 +285,6 @@ def get_exercise():
 def get_exercises_by_module(module):
     try:
         exercises = Exercise.query.filter_by(module=module.upper()).all()
-        exercises_type = list(map(lambda a: a.type, exercises))
-        print(exercises_type)
         if exercises:
             exercises = [exercise.serialize() for exercise in exercises]
             return jsonify({"exercises": exercises}), 200
@@ -303,18 +299,16 @@ def get_exercises_by_module(module):
 def verificar_respuesta(id):
     try:
         user_id = get_jwt_identity()
-        # print(user_id)
         correctAnswers = Answers.query.filter_by(
             exercise_id=id).filter_by(isCorrect=True).first()
         user_answer_exist = AnswersUser.query.filter_by(
             user_id=user_id).filter_by(exercise_id=id).first()
-        print(user_answer_exist)
+        
 
         if correctAnswers is None:
             return {"msg": "No existe el ejercicio"}
 
         data = request.json
-        print(data)
         correct = data["respuesta"] == correctAnswers.answers
 
         if user_answer_exist is None and correct is True:
@@ -337,7 +331,6 @@ def verificar_respuesta(id):
 def verifica():
     try:
         user_id = get_jwt_identity()
-        # print(user_id)
         users = AnswersUser.query.filter_by(user_id=user_id).all()
         id_respuestas = list(
             map(lambda respuesta: respuesta.exercise_id, users))
@@ -463,7 +456,6 @@ def progress_users():
         if answers_number == 0:
             return jsonify({"progress": 0}), 200
         last_answer = answers_user.order_by(AnswersUser.id.desc()).first()
-        print(last_answer)
         question_all = Exercise.query.count()
         progreso = answers_number/question_all * 100
         return jsonify({"progress": progreso, "last_answer": last_answer.serialize()}), 200
@@ -502,7 +494,6 @@ def progress_users_module(module):
         if answers_number == 0:
             last_answer = Exercise.query.filter_by(
                 module=module.upper()).first()
-            print(last_answer)
             return jsonify({"progress": 0, "last_answer": last_answer.serialize()}), 200
         last_answer = answers_user.order_by(AnswersUser.id.desc()).first()
         question_all_module = Exercise.query.filter_by(
@@ -544,9 +535,7 @@ def progress_users_modules():
 def endpoint_mail():
     body = request.get_json()
     email = body["email"]
-    print(email)
     user = User.query.filter_by(email=email).first()
-    print(user)
     if user is None:
         user = Teacher.query.filter_by(email=email).first()
         if user is None:

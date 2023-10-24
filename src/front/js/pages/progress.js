@@ -10,9 +10,6 @@ export const Progress = () => {
     actions.getProgresoGeneral();
   }, []);
 
-  useEffect(() => {
-    console.log(store.progressGeneral.progress_html);
-  }, [store.progressGeneral]);
 
 
   const roundedProgress = Math.round(store.progress);

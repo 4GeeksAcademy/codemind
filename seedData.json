@@ -918,14 +918,7 @@
 				"exercise_id":4,
 				"module" : "HTML",
 				"type" : "FIB"
-			 },
-			 {
-				"user_id": "1",
-				"exercise_id":5,
-				"module" : "HTML",
-				"type" : "FIB"
-			 }
-			 
+			 }	 
 		]
 	
 	},
