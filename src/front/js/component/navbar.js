@@ -34,23 +34,35 @@ export const Navbar = () => {
     }
   }
 
-useEffect(()=>{
-  if(!store.token){
-    navigate("/")
-  }
-},[store.token])
+  useEffect(() => {
+    if (!store.token) {
+      navigate("/")
+    }
+  }, [store.token])
 
 
   const handleLogout = async (e) => {
     e.preventDefault();
     console.log("Handle logout called");
     actions.logout();
-     
+
 
 
   };
 
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
+  const handleResize = () => {
+    setWindowWidth(window.innerWidth);
+  };
+
+  useEffect(() => {
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
 
   const defaultNavbar = (
@@ -219,25 +231,25 @@ useEffect(()=>{
         <div className="nav-button">
           <i className="fas fa-palette"></i><span>Modules</span>
         </div>
-        <div className="nav-button">
+        {/* <div className="nav-button">
           <i className="fas fa-images"></i><span>Library</span>
-        </div>
+        </div> */}
         <div className="nav-button">
           <Link to={"/student"}><i class="fa-solid fa-user-group p-3"></i><span>Students</span></Link>
         </div>
         <hr />
-        <div className="nav-button">
+        {/* <div className="nav-button">
           <i className="fas fa-chart-line"></i><span>Progress</span>
-        </div>
+        </div> */}
         <div className="nav-button">
           <i className="fas fa-fire"></i><span>Road Map</span>
         </div>
         <div className="nav-button">
           <i className="fas fa-heart"></i><span>About Us</span>
         </div>
-        <div className="nav-button">
+        {/* <div className="nav-button">
           <i className="fas fa-magic"></i><span>Spark</span>
-        </div>
+        </div> */}
         <hr />
         {/* <div className="nav-button">
         <i className="fas fa-gem"></i><span>Codepen Pro</span>
@@ -273,6 +285,72 @@ useEffect(()=>{
     </div>
   )
 
+  const navbarliteTeacher = (
+    <div className="sticky-top d-flex justify-content-end">
+      <button
+        id="nav-toggle"
+        style={{ backgroundColor: 'rgba(0, 0, 0, 0)', border: 'none' }}
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasTop"
+        aria-controls="offcanvasTop"
+      >
+        <i className="fas fa-bars btn rounded-3 bg-primary" style={{ minWidth: "50px", minHeight: "30px" }}></i>
+      </button>
+
+      <div
+        className="offcanvas offcanvas-top"
+        tabIndex="-1"
+        id="offcanvasTop"
+        aria-labelledby="offcanvasTopLabel"
+        style={{ height: '40vh', backgroundColor: '#333' }}
+      >
+        <div className="offcanvas-header">
+          <Link to={"/modules"} className="text-primary navbar-title" aria-current="page" href="#">
+            CodeMind
+          </Link>
+          <hr />
+          <Link to={"/profile"}>
+            {user && user.firstName ? user.firstName : null} {user && user.lastName ? user.lastName : null}
+          </Link>
+          <button
+            type="button"
+            className="btn-close text-reset"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+          ></button>
+        </div>
+        <hr className="orange-hr" />
+        <div className="offcanvas-body">
+          <div className="d-flex flex-wrap">
+            <div className="nav-button col-4 col-md-3">
+              <Link to="/modules"><i className="fas fa-palette"></i><span>Modules</span></Link>
+            </div>
+            <div className="nav-button col-4 col-md-3">
+              <Link to={"/student"}><i class="fa-solid fa-user-group"></i><span>Students</span></Link>
+            </div>
+            {/* <div className="nav-button col-4 col-md-3">
+            <i className="fas fa-images"></i><span>Library</span>
+          </div> */}
+            {/* <div className="nav-button col-4 col-md-3">
+              <Link to="/progress"><i className="fas fa-chart-line"></i><span>Progress</span></Link>
+            </div> */}
+            <div className="nav-button col-4 col-md-3">
+              <Link to="/roadMap"><i className="fas fa-fire"></i><span>Road Map</span></Link>
+            </div>
+            <div className="nav-button col-4 col-md-3">
+              <Link to="/about"><i className="fas fa-heart"></i><span>About Us</span></Link>
+            </div>
+            <hr />
+            <Link to={"/"} className="btn btn-outline-primary d-flex justify-content-center" onClick={handleLogout}>
+              Log out
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+
 
   const renderNavbarBasedOnRole = () => {
     const screenWidth = window.innerWidth;
@@ -282,7 +360,9 @@ useEffect(()=>{
       return navbarlite;
     } else if (user && user.role === 'alumno') {
       return userNavbar;
-    } else if (user && user.role === 'teacher') {
+    }  else if (user && user.role === 'teacher' && screenWidth <= 768) {
+      return navbarliteTeacher;
+    }else if (user && user.role === 'teacher') {
       return teacherNavbar;
     }
   };
