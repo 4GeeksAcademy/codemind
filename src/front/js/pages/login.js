@@ -103,7 +103,7 @@ export const Login = () => {
 
                                     <div className="text-center mt-3">
                                         <Link to="/forwotpassword">
-                                            <p><a>Forgot your password?</a></p>
+                                            Forgot your password?
                                         </Link>
                                     </div>
                                 </form>
