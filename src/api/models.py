@@ -36,7 +36,7 @@ class User(db.Model):
             "img": self.img,
             "role": self.role,
             "teacher": self.teacher_id,
-            "password": self.password
+
             
             # "No" serializar la contraseña, es un problema de seguridad
         }
@@ -66,13 +66,11 @@ class Teacher(db.Model):
 
     def serialize(self):
         students = list(map  (lambda a:  a.serialize(), self.students))
-        
         return {
             "id": self.id,
             "firstName": self.firstName,
             "lastName": self.lastName,
             "role": self.role,
-            "password": self.password,
             "students": students
             
         }
@@ -86,7 +84,8 @@ class Teacher(db.Model):
             
         }
 
-
+    def student_teacher(self):
+        return self.firstName + " " + self.lastName
 
 
 class TokenBlockedList(db.Model):

@@ -184,8 +184,7 @@ def login():
                 "email": user.email,
                 "role": user.role,
                 "img": user.img,
-                "password": user.password,
-                "teacher": user.teacher
+                 "teacher": user.teacher.student_teacher() if user.teacher else None
             }
         else:
             return jsonify({"message": "wrong password"}), 401
@@ -194,13 +193,7 @@ def login():
         # Verifica la contraseña para profesores
         if bcrypt.check_password_hash(teacher.password, password):
             identity = teacher.id
-            user_data = {
-                "id": teacher.id,
-                "firstName": teacher.firstName,
-                "lastName": teacher.lastName,
-                "email": teacher.email,
-                "role": teacher.role
-            }
+            user_data = teacher.serialize()
         else:
             return jsonify({"message": "Wrong password"}), 401
     else:
