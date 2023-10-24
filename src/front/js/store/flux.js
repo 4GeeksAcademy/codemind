@@ -347,7 +347,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						await setStore({ user: data.user, token: data.token });
 						localStorage.setItem('userData', JSON.stringify(data.user));
 						let { user } = getStore()
-						console.log("loginuserdata" + JSON.stringify(user))
+						// console.log("loginuserdata" + JSON.stringify(user))
 						return { success: true };
 
 
@@ -383,9 +383,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			updateUser: async (data) => {
 
-				console.log("new User Data " + JSON.stringify(data) + "userId " + data.id)
+				// console.log("new User Data " + JSON.stringify(data) + "userId " + data.id)
 				const role = data.role;
-				console.log(role)
+				// console.log(role)
 				let url;
 				if (role === 'teacher') {
 
@@ -414,7 +414,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						const updatedUser = { ...user, ...data };
 						await setStore({ user: updatedUser });
 						localStorage.setItem('userData', JSON.stringify(updatedUser));
-						console.log(user)
+					
 					} else {
 						console.error('La solicitud no se realizó con éxito');
 					}
@@ -439,7 +439,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						const data = await resp.json()
 						const updatedTeacherData = { ...teacherData, ...data };
 						await setStore({ teacherData: updatedTeacherData })
-						console.log("getTeacherStflux" + JSON.stringify(updatedTeacherData));
+						// console.log("getTeacherStflux" + JSON.stringify(updatedTeacherData));
 						return data
 					}
 				} catch (error) {
