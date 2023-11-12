@@ -9,28 +9,17 @@ import { Context } from "../store/appContext";
 
 export const Landing = () => {
     const navigate = useNavigate();
-    const { actions } = useContext(Context);
-    const storedUserToken = localStorage.getItem('userToken');
+    const { store, actions } = useContext(Context);
+  
     const [landingRender, setLandingRender] = useState(null);
 
     useEffect(() => {
-        const checkToken = async () => {
-            if (storedUserToken) {
-                const data = await actions.checkToken(storedUserToken);
-                console.log("LOGIN DATA", data);
-                if ( storedUserToken === storedUserToken) {
-                    // El token es válido, redirige al usuario a la página de módulos
-                    navigate('/modules');
-                } else {
-                    setLandingRender(landing);
-                }
-            } else {
-                setLandingRender(landing);
+            if (store.token){
+                navigate('/modules');
             }
-        };
-
-        checkToken();
-    }, [navigate, storedUserToken, actions]);
+                setLandingRender(landing);
+   
+    }, [navigate, actions]);
 
     const landing = (
         <div className='vh.100'>
@@ -60,7 +49,10 @@ export const Landing = () => {
             <div className='bg-dark pt-5'>
                 <CourseDescrip />
             </div>
-            <div className="p-5">
+
+
+            <div id="roadmap-section" className="p-5">
+
                 <div className="container col-md-8 col-lg-5 col-xl-4">
                     <RoadMap />
                 </div>

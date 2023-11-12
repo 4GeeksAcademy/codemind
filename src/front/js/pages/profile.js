@@ -3,11 +3,7 @@ import { Link } from 'react-router-dom';
 import { Context } from "../store/appContext";
 
 export const Profile = () => {
-    const [selectedTeacher, setSelectedTeacher] = useState({
-        id: null,
-        firstName: null,
-        lastName: null
-    });;
+    const [selectedTeacher, setSelectedTeacher] = useState(null);
     const [showAlert, setShowAlert] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
     const { store, actions } = useContext(Context);
@@ -22,21 +18,14 @@ export const Profile = () => {
     };
     const [formData, setFormData] = useState({ ...initialFormData });
 
-
     const handleTeacherSelect = (teacher, e) => {
-        e.preventDefault(); // Prevenir desplazamiento automático
-        setSelectedTeacher({
-            id: parseInt(teacher.id),
-            firstName: teacher.firstName,
-            lastName: teacher.lastName
-        })
+        e.preventDefault();
+        setSelectedTeacher(teacher);
         setFormData({ ...formData, teacher: teacher.id });
-
     };
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-
         // Realiza la transformación de la primera letra en mayúscula
         const updatedValue =
             name === "firstName" || name === "lastName"
@@ -45,7 +34,6 @@ export const Profile = () => {
                     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
                     .join(" ")
                 : value;
-
         const updatedFormData = { ...formData, [name]: updatedValue };
         setFormData(updatedFormData);
     };
@@ -53,7 +41,6 @@ export const Profile = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!formData.firstName || !formData.lastName) {
-
             setErrorMessage("First Name and Last Name are required");
             setShowAlert(true);
             return;
@@ -61,19 +48,17 @@ export const Profile = () => {
 
         try {
             const baseUrl = "https://ui-avatars.com/api";
-            const size = 200; // Tamaño del avatar (píxeles)
-            const rounded = true; // Forma redondeada
-            const background = "random"; // Color de fondo aleatorio
-            const name = formData.firstName + " " + formData.lastName
-            const imgURL = `${baseUrl}/?name=${encodeURIComponent(name)}&size=${size}&rounded=${rounded}&background=${background}`
-            const updatedFormData = { ...formData, img: imgURL, teacher: selectedTeacher.id };
-            console.log(updatedFormData)
+            const size = 200;
+            const rounded = true;
+            const background = "random";
+            const name = formData.firstName + " " + formData.lastName;
+            const imgURL = `${baseUrl}/?name=${encodeURIComponent(name)}&size=${size}&rounded=${rounded}&background=${background}`;
+            const updatedFormData = { ...formData, img: imgURL, teacher: selectedTeacher ? selectedTeacher.id : null };
             await actions.updateUser(updatedFormData);
             setErrorMessage("");
             setShowAlert(true);
-
         } catch (error) {
-            console.error('Error al actualizar el usuario: ', error)
+            console.error('Error al actualizar el usuario: ', error);
         }
     };
 
@@ -83,37 +68,25 @@ export const Profile = () => {
                 teacher => teacher.id === parseInt(store.user.teacher)
             );
             if (assignedTeacher) {
-                setSelectedTeacher({
-                    id: assignedTeacher.id,
-                    firstName: assignedTeacher.firstName,
-                    lastName: assignedTeacher.lastName
-                });
+                setSelectedTeacher(assignedTeacher);
             }
         }
     }, [store.user.teacher, store.teachers]);
 
-
-
-
-
-
     return (
-        <div className="container vh-100 align-items-center">
+        <div className="container vh-100 d-flex flex-column justify-content-center">
             <div className="row mb-4">
-                <div className="col">
+                <div className="col mt-4">
                     <Link to="/modules"><i className="fa-solid fa-arrow-left arrow-back"></i></Link>
                 </div>
             </div>
-            <div className="row justify-content-center d-flex justify-content-between">
-                <div className="col-sm-12 col-md-6 text-start">
-                    <div className="embed-responsive embed-responsive-16by9">
-                        <h2 className='bigtext text-line text-break'>
-                            Hi <span className='text-color-primary'>{store.user.firstName}</span>! This is your profile
-                        </h2>
-                    </div>
+            <div className="row justify-content-center">
+                <div className="col-lg-6 text-start pe-4">
+                    <h2 className='bigtext text-line text-break'>
+                        Hi <span className='text-color-primary'>{store.user.firstName}</span>! This is your profile
+                    </h2>
                 </div>
-                <div className="col-sm-12 col-md-6 mt-4 align-items-start">
-
+                <div className="col-lg-6 mt-4">
                     {showAlert && (
                         <div className={`alert ${errorMessage ? 'alert-danger' : 'alert-success'} alert-dismissible fade show`} role="alert">
                             {errorMessage ? errorMessage : "User updated successfully!"}
@@ -121,59 +94,65 @@ export const Profile = () => {
                         </div>
                     )}
                     <form onSubmit={handleSubmit}>
-                        <div className='d-flex justify-content-between mb-2'>
-                            <p className='my-0 me-4'>First Name:</p>
-                            <input type="text" className="form-control" id="firstName" name="firstName" value={formData.firstName} onChange={handleChange} style={{ maxWidth: "60%" }}></input>
+                        <div className='mb-3'>
+                            <label className='form-label'>First Name:</label>
+                            <input type="text" className="form-control" id="firstName" name="firstName" value={formData.firstName} onChange={handleChange} />
                         </div>
-                        <div className='d-flex justify-content-between  mb-2'>
-                            <p className='my-0 me-4'>Last Name:</p>
-                            <input type="text" className="form-control" id="lastName" name="lastName" value={formData.lastName} onChange={handleChange} style={{ maxWidth: "60%" }}></input>
+                        <div className='mb-3'>
+                            <label className='form-label'>Last Name:</label>
+                            <input type="text" className="form-control" id="lastName" name="lastName" value={formData.lastName} onChange={handleChange} />
                         </div>
-                        <div className='d-flex justify-content-between  mb-2'>
-                            <p className='my-0 me-4'>E-mail:</p>
-                            <input type="text" className="form-control" id="email" name="email" value={formData.email} onChange={handleChange} style={{ maxWidth: "60%" }} disabled={true}></input>
+                        <div className='mb-3'>
+                            <label className='form-label'>E-mail:</label>
+                            <input type="text" className="form-control" id="email" name="email" value={formData.email} onChange={handleChange} disabled={true} />
                         </div>
                         {
-                            store.user.role === "alumno" &&(
-                                <div className='d-flex justify-content-between  mb-2'>
-                                <p className='my-0 '>Teacher:</p>
-                                <div className="h-25 px-5  ">
-                                    <div className="btn-group dropdown-center" >
-                                        <button className="btn btn-secondary dropdown-toggle " type="button" data-bs-toggle="dropdown" aria-expanded="false" disabled={!!store.user.teacher} >
-                                            {selectedTeacher.firstName && selectedTeacher.lastName
-                                                ? `${selectedTeacher.firstName} ${selectedTeacher.lastName}`
-                                                : "Select Your Teacher"}
+                            store.user.role === "alumno" && store.user.teacher ? (
+                                <div className='mb-3 d-flex  justify-content-between '>
+                                    <label className='form-label'>Teacher:</label>
+                                    <div>
+                                        <p>{selectedTeacher ? `${selectedTeacher.firstName} ${selectedTeacher.lastName}` : store.user.teacher}</p>
+                                    </div>
+                                </div>
+                            ) : (
+                                <div className='mb-3 d-flex  justify-content-between '>
+                                    <label className='form-label'>Teacher:</label>
+                                    <div className="btn-group dropdown-center">
+                                        <button
+                                            className="btn btn-secondary dropdown-toggle"
+                                            type="button"
+                                            data-bs-toggle="dropdown"
+                                            aria-expanded="false"
+                                            disabled={!!store.user.teacher}
+                                        >
+                                            {selectedTeacher ? `${selectedTeacher.firstName} ${selectedTeacher.lastName}` : "Select Your Teacher"}
                                         </button>
                                         <ul className="dropdown-menu dropdown-menu-dark">
                                             {store.teachers && store.teachers.map((teacher, index) => (
-                                                <li key={index}>
-                                                    <p className="dropdown-item" onClick={(e) => handleTeacherSelect(teacher, e)}>
+                                                <span key={index} className='w-100'>
+                                                    <p className="px-2 text-white w-100 teachersname" onClick={(e) => handleTeacherSelect(teacher, e)}>
                                                         {teacher.firstName + " " + teacher.lastName}
                                                     </p>
-                                                </li>
+                                                </span>
                                             ))}
                                         </ul>
                                     </div>
                                 </div>
-                            </div>
                             )
                         }
-                        <div className="row  align-items-center mt-4 justify-content-end">
-                            <div className=" col-sm-12 col-md-6  text-center">
-                                <button type="submit" className="btn btn-primary">
-                                    Update User
-                                </button>
+                        <div className='container '>
+                            <div className="row mt-5 d-flex justify-content-between">
+                                <div className="col-6">
+                                    <button type="submit" className="btn btn-primary">
+                                        Update User
+                                    </button>
+                                </div>
+                                <div className='col-6'>
+                                    <Link to={"/changepassword"} className="btn btn-outline-secondary ms-2 text-black ">Change password</Link>
+                                </div>
                             </div>
                         </div>
                     </form>
-                </div>
-            </div>
-            <div className='row h-25 d-flex justify-content-end align-items-center'>
-                <div className="col-sm-1 col-md-4  text-sm-end justify-content-between">
-                    <div className="d-flex justify-content-between ">
-                        <Link to={"/changepassword"}><a href="#" className="btn btn-outline-secondary">Change password</a></Link>
-                        <Link to={"/student"} className="">Student</Link>
-                    </div>
                 </div>
             </div>
         </div>

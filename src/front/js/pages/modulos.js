@@ -3,12 +3,17 @@ import { Context } from "../store/appContext";
 import "../../styles/index.css";
 import { Navbar } from "../component/navbar.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { library } from "@fortawesome/fontawesome-svg-core";
 import { faCode, faPaintBrush, faLaptopCode } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
 export const Modulos = () => {
   const { store, actions } = useContext(Context);
+
+  const [moduleDescriptions, setModuleDescriptions] = useState({
+    html5: "Unlock the potential of HTML5, the foundation of modern web development. Create dynamic, interactive web content and stay ahead in the digital era.",
+    css: "Discover the art of web design with CSS. Transform ordinary websites into visually stunning, stylish creations that leave a lasting impression.",
+    javascript: "Unlock the power of JavaScript and bring your websites to life with dynamic and interactive features. Join the JavaScript journey today!"
+  });
 
   // Estado para controlar la visibilidad de las descripciones de los módulos
   const [descriptionsVisible, setDescriptionsVisible] = useState({
@@ -32,20 +37,23 @@ export const Modulos = () => {
   return (
     <div className="container vh-100 align-items-center text-break">
       <div className="row mb-4">
-        <div className="col">
-          <h2 className="module-title text-center mb-4">
-            <FontAwesomeIcon icon={faCode} className="mr-2 animated bounceInLeft" />
-            <FontAwesomeIcon icon={faPaintBrush} className="mr-2 animated bounceInUp" />
-            <FontAwesomeIcon icon={faLaptopCode} className="mr-2 animated bounceInRight" />
-            ¡Explora Nuestros Módulos!
+
+        <div className="col text-center">
+          <h2 className="module-title mb-4">
+            ¡Explore Our Modules!
           </h2>
+          <div className="d-flex align-items-center justify-content-center">
+            <FontAwesomeIcon icon={faCode} className="mr-2" style={{ fontSize: '2em', color: 'blue' }} />
+            <FontAwesomeIcon icon={faPaintBrush} className="mr-2" style={{ fontSize: '2em', color: 'green' }} />
+            <FontAwesomeIcon icon={faLaptopCode} className="mr-2" style={{ fontSize: '2em', color: 'red' }} />
+          </div>
         </div>
       </div>
 
-      <div className="modules-container row align-items-start justify-content-center d-flex justify-content-around">
+      <div className="modules-container row align-items-start d-flex justify-content-around ">
         {/* Módulo HTML5 */}
-        <div className={`col-sm-12 col-md-4 ${descriptionsVisible.html5 ? 'show-description' : ''}`} style={{ width: "16rem" }}>
-          <div className="card text-center mb-3">
+        <div className={`col-sm-12 col-md-4 mb-5 ${descriptionsVisible.html5 ? 'show-description' : ''}`} style={{ width: "16rem" }}>
+          <div className="card text-center mb-3" style={{ boxShadow: "0 0 50px #4f9" }}>
             <div className="card-body d-flex justify-content-center align-items-center">
               <img
                 src="https://generation-sessions.s3.amazonaws.com/ad60b588835c42a878fbc4ab00aaadec/img/html5-logo-and-wordmark-1@2x.png"
@@ -62,22 +70,25 @@ export const Modulos = () => {
               </Link>
               <button
                 onClick={() => toggleDescription("html5")}
-                className="btn btn-link"
+                className="btn btn-outline-primary text-decoration-none"
+                data-bs-toggle="button"
+                autoComplete="off"
+
               >
-                {descriptionsVisible.html5 ? "Ocultar Descripción" : "Mostrar Descripción"}
+                {descriptionsVisible.html5 ? "Hide Description" : "Show Description"}
               </button>
             </div>
             {descriptionsVisible.html5 && (
               <div className="card-description">
-                <p>Descripción breve del módulo HTML5.</p>
+                <h5 className="p-2 fs-6 text-secondary fst-italic lh-1">{moduleDescriptions.html5}</h5>
               </div>
             )}
           </div>
         </div>
 
         {/* Módulo CSS */}
-        <div className={`col-sm-12 col-md-4 ${descriptionsVisible.css ? 'show-description' : ''}`} style={{ width: "16rem" }}>
-          <div className="card text-center mb-3">
+        <div className={`col-sm-12 col-md-4 mb-5 ${descriptionsVisible.css ? 'show-description' : ''}`} style={{ width: "16rem" }}>
+          <div className="card text-center mb-3" style={{ boxShadow: "0 0 50px #4f9" }}>
             <div className="card-body d-flex justify-content-center align-items-center">
               <img
                 src="https://generation-sessions.s3.amazonaws.com/ad60b588835c42a878fbc4ab00aaadec/img/1200px-css-3-1@2x.png"
@@ -94,22 +105,24 @@ export const Modulos = () => {
               </Link>
               <button
                 onClick={() => toggleDescription("css")}
-                className="btn btn-link"
+                className="btn btn-outline-primary text-decoration-none"
+                data-bs-toggle="button"
+                autoComplete="off"
               >
-                {descriptionsVisible.css ? "Ocultar Descripción" : "Mostrar Descripción"}
+                {descriptionsVisible.css ? "Hide Description" : "Show Description"}
               </button>
             </div>
             {descriptionsVisible.css && (
-              <div className="card-description">
-                <p>Descripción breve del módulo CSS.</p>
+              <div className="card-description ">
+                <h5 className="p-2 fs-6 text-secondary fst-italic lh-1">{moduleDescriptions.css}</h5>
               </div>
             )}
           </div>
         </div>
 
         {/* Módulo JavaScript */}
-        <div className={`col-sm-12 col-md-4 ${descriptionsVisible.javascript ? 'show-description' : ''}`} style={{ width: "16rem" }}>
-          <div className="card text-center mb-3">
+        <div className={`col-sm-12 col-md-4 mb-5 ${descriptionsVisible.javascript ? 'show-description' : ''}`} style={{ width: "16rem" }}>
+          <div className="card text-center mb-3" style={{ boxShadow: "0 0 50px #4f9" }}>
             <div className="card-body d-flex justify-content-center align-items-center">
               <img
                 src="https://generation-sessions.s3.amazonaws.com/ad60b588835c42a878fbc4ab00aaadec/img/unofficial-javascript-logo-2-1@2x.png"
@@ -126,14 +139,17 @@ export const Modulos = () => {
               </Link>
               <button
                 onClick={() => toggleDescription("javascript")}
-                className="btn btn-link"
+                className="btn btn-outline-primary text-decoration-none"
+                data-bs-toggle="button"
+                autoComplete="off"
+
               >
-                {descriptionsVisible.javascript ? "Ocultar Descripción" : "Mostrar Descripción"}
+                {descriptionsVisible.javascript ? "Hide Description" : "Show Description"}
               </button>
             </div>
             {descriptionsVisible.javascript && (
-              <div className="card-description">
-                <p>Descripción breve del módulo JavaScript.</p>
+              <div className="">
+                <h5 className="p-2 fs-6 text-secondary fst-italic lh-1">{moduleDescriptions.javascript}</h5>
               </div>
             )}
           </div>

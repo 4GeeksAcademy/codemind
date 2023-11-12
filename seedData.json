@@ -3,116 +3,243 @@
 	"target_class":"Exercise",
 	"data":[
 		{
-			"id": 1,
 			"module": "HTML",
     		"type": "FIB",
-    		"question": "Cuanto es 3+3",
-    		"info_blog": "https://blog.hubspot.es/website/html",
-    		"info_youtube": "https://www.youtube.com/watch?v=rkxHd9SUBGU"
+    		"question": "HTML is an acronym that stands for Hyper Text _______ Language.",
+    		"info_blog": "https://developer.mozilla.org/es/docs/Web/HTML",
+    		"info_youtube": "https://www.youtube.com/watch?v=10GHKjgQIR0"
 		},
 		{
-			"id": 2,
 			"module": "HTML",
     		"type": "FIB",
-    		"question": "Cuanto es 3x3",
-    		"info_blog": "https://blog.hubspot.es/website/html",
-    		"info_youtube": "https://www.youtube.com/watch?v=rkxHd9SUBGU"
+    		"question": "The <p> tag is used to define a _______  in HTML.",
+    		"info_blog": "https://www.w3schools.com/html/html_paragraphs.asp",
+    		"info_youtube": "https://www.youtube.com/watch?v=nJlvaFYXRzs"
 		},
 		{
-			"id": 3,
+			
 			"module": "HTML",
     		"type": "FIB",
-    		"question": "Cuanto es 2+3",
-    		"info_blog": "https://blog.hubspot.es/website/html",
-    		"info_youtube": "https://www.youtube.com/watch?v=rkxHd9SUBGU"
+    		"question": "The <______> tag is used to define an e-mail link in HTML.",
+    		"info_blog": "https://blog.hubspot.es/website/como-crear-mailto-html",
+    		"info_youtube": "https://www.youtube.com/watch?v=Xk5Tf8F44jE"
 		},
 		{
-			"id":4,
+			
 			"module": "HTML",
 			"type": "FIB",
-			"question": "Cuanto es 1+4",
-			"info_blog": "https://support.microsoft.com/es-es/topic/c%C3%B3mo-habilitar-javascript-en-windows-88d27b37-6484-7fc0-17df-872f65168279",
-			"info_youtube": "https://www.youtube.com/watch?v=f-lBx9Bc5HA"
+			"question": "The attribute used to provide alternative text for an image in HTML is called _____.",
+			"info_blog": "https://www.w3schools.com/html/html_attributes.asp",
+			"info_youtube": "https://www.youtube.com/watch?v=7dgmf9TIlFM"
 		},
 		{
-			"id": 5,
+		
 			"module": "HTML",
     		"type": "FIB",
-    		"question": "Cuanto es 3+3",
-    		"info_blog": "https://blog.hubspot.es/website/html",
-    		"info_youtube": "https://www.youtube.com/watch?v=rkxHd9SUBGU"
+    		"question": "The attribute used to specify the hyperlink of an <a> tag in HTML is _____.",
+    		"info_blog": "https://www.w3schools.com/tags/att_a_href.asp",
+    		"info_youtube": "https://www.youtube.com/watch?v=0uWnl_ptdNs&t=59s"
 		},
 		{
-			"id": 6,
+			
 			"module": "HTML",
-    		"type": "FIB",
-    		"question": "Cuanto es 3x3",
-    		"info_blog": "https://blog.hubspot.es/website/html",
-    		"info_youtube": "https://www.youtube.com/watch?v=rkxHd9SUBGU"
+    		"type": "SC",
+    		"question": "What is the primary purpose of HTML tags?",
+    		"info_blog": "https://blog.hubspot.es/website/etiquetas-html",
+    		"info_youtube": "https://www.youtube.com/watch?v=mwtkPVR9MgU"
 		},
 		{
-			"id": 7,
+			
 			"module": "HTML",
-    		"type": "FIB",
-    		"question": "Cuanto es 2+3",
-    		"info_blog": "https://blog.hubspot.es/website/html",
-    		"info_youtube": "https://www.youtube.com/watch?v=rkxHd9SUBGU"
+    		"type": "SC",
+    		"question": "What is the tag used to insert a comment in HTML?",
+    		"info_blog": "https://htmldesdecero.es/blog/colocar-comentario-html/",
+    		"info_youtube": "https://www.youtube.com/watch?v=EgMvcZaI5WM"
 		},
 		{
-			"id":8,
+			
 			"module": "HTML",
+    		"type": "SC",
+    		"question": "What tag is used to create a numbered list in HTML?",
+    		"info_blog": "https://www.w3schools.com/HTML/html_lists.asp",
+    		"info_youtube": "https://www.youtube.com/watch?v=Mu7y1l97LNg"
+		},
+		{
+			
+			"module": "HTML",
+			"type": "SC",
+			"question": "What tag is used to insert a line break in HTML?",
+			"info_blog": "https://developer.mozilla.org/es/docs/Web/HTML/Element/br",
+			"info_youtube": "https://www.youtube.com/watch?v=Q2uoWvtYPEs"
+		},
+		{
+			
+			"module": "HTML",
+			"type": "SC",
+			"question": "What is the HTML element used to create a hypertext link?",
+			"info_blog": "https://www.w3schools.com/TAGS/tag_a.asp",
+			"info_youtube": "https://www.youtube.com/watch?v=fUW0mQ4FNOU"
+		},
+		{
+			
+			"module": "CSS",
 			"type": "FIB",
-			"question": "Cuanto es 1+4",
-			"info_blog": "https://support.microsoft.com/es-es/topic/c%C3%B3mo-habilitar-javascript-en-windows-88d27b37-6484-7fc0-17df-872f65168279",
-			"info_youtube": "https://www.youtube.com/watch?v=f-lBx9Bc5HA"
+			"question": "CSS stands for: Cascading _______ Sheets.",
+			"info_blog": "https://developer.mozilla.org/es/docs/Web/CSS",
+			"info_youtube": "https://www.youtube.com/watch?v=8cSo0ijtkzU"
 		},
 		{
-			"id":9,
-			"module": "HTML",
-			"type": "SC",
-			"question": "Cuanto es 1x4",
-			"info_blog": "https://support.microsoft.com/es-es/topic/c%C3%B3mo-habilitar-javascript-en-windows-88d27b37-6484-7fc0-17df-872f65168279",
-			"info_youtube": "https://www.youtube.com/watch?v=f-lBx9Bc5HA"
-		},
-		{
-			"id":10,
-			"module": "HTML",
-			"type": "SC",
-			"question": "Cuanto es 2x4",
-			"info_blog": "https://support.microsoft.com/es-es/topic/c%C3%B3mo-habilitar-javascript-en-windows-88d27b37-6484-7fc0-17df-872f65168279",
-			"info_youtube": "https://www.youtube.com/watch?v=f-lBx9Bc5HA"
-		},
-		{
-			"id": 11,
+			
 			"module": "CSS",
     		"type": "FIB",
-    		"question": "Cuanto es 3+3",
-    		"info_blog": "https://blog.hubspot.es/website/html",
-    		"info_youtube": "https://www.youtube.com/watch?v=rkxHd9SUBGU"
+    		"question": "In CSS, to select all the elements of a page, the selector ______ is used.",
+    		"info_blog": "https://www.w3schools.com/CSS/css_selectors.asp",
+    		"info_youtube": "https://www.youtube.com/watch?v=sjqhxl_16Qg"
 		},
 		{
-			"id": 12,
+			
 			"module": "CSS",
     		"type": "FIB",
-    		"question": "Cuanto es 3x3",
-    		"info_blog": "https://blog.hubspot.es/website/html",
-    		"info_youtube": "https://www.youtube.com/watch?v=rkxHd9SUBGU"
+    		"question": "The CSS attribute used to change the background color of an element is called:background-_____.",
+    		"info_blog": "https://developer.mozilla.org/es/docs/Web/CSS/background-color",
+    		"info_youtube": "https://www.youtube.com/watch?v=SFuNzNXKS8s"
 		},
 		{
-			"id":13,
+			
 			"module": "CSS",
-			"type": "SC",
-			"question": "Cuanto es 1x4",
-			"info_blog": "https://support.microsoft.com/es-es/topic/c%C3%B3mo-habilitar-javascript-en-windows-88d27b37-6484-7fc0-17df-872f65168279",
-			"info_youtube": "https://www.youtube.com/watch?v=f-lBx9Bc5HA"
+			"type": "FIB",
+			"question": "The CSS selector used to apply styles to a link when the mouse hovers over it is called:______.",
+			"info_blog": "https://www.w3schools.com/CSSref/sel_hover.php",
+			"info_youtube": "https://www.youtube.com/watch?v=zppkOvCXBIc"
 		},
 		{
-			"id":14,
+			
+			"module": "CSS",
+			"type": "FIB",
+			"question": "The CSS attribute used to set the text size is:font-_____.",
+			"info_blog": "https://developer.mozilla.org/es/docs/Web/CSS/font-size",
+			"info_youtube": "https://www.youtube.com/watch?v=CzU3acHs2l8"
+		},
+		{
+			
 			"module": "CSS",
 			"type": "SC",
-			"question": "Cuanto es 2x4",
-			"info_blog": "https://support.microsoft.com/es-es/topic/c%C3%B3mo-habilitar-javascript-en-windows-88d27b37-6484-7fc0-17df-872f65168279",
-			"info_youtube": "https://www.youtube.com/watch?v=f-lBx9Bc5HA"
+			"question": "What is the main purpose of CSS in web design?.",
+			"info_blog": "https://i.workana.com/glosario/css/",
+			"info_youtube": "https://www.youtube.com/watch?v=8cSo0ijtkzU&t=7s"
+		},
+		{
+			
+			"module": "CSS",
+    		"type": "SC",
+    		"question": "Which of the following CSS properties is used to change the font of an element?.",
+    		"info_blog": "https://developer.mozilla.org/es/docs/Web/CSS/@font-face/font-family",
+    		"info_youtube": "https://www.youtube.com/watch?v=xWZh8erE2Ps"
+		},
+		{
+			
+			"module": "CSS",
+    		"type": "SC",
+    		"question": "Which of the following is used to set a 2 pixel solid border around an element in CSS?.",
+    		"info_blog": "https://www.w3schools.com/css/css_border.asp",
+    		"info_youtube": "https://www.youtube.com/watch?v=KkniilTcniM"
+		},
+		{
+			
+			"module": "CSS",
+			"type": "SC",
+			"question": "Which of the following is used to set the right margin of an element in CSS?.",
+			"info_blog": "https://www.w3schools.com/Css/css_margin.asp",
+			"info_youtube": "https://www.youtube.com/watch?v=E2mps7mKPKI"
+		},
+		{
+			
+			"module": "CSS",
+			"type": "SC",
+			"question": "Which of the following is used to hide an element in CSS by removing it from the page layout?.",
+			"info_blog": "https://www.w3schools.com/css/css_display_visibility.asp",
+			"info_youtube": "https://www.youtube.com/watch?v=VdAP97Q2MMI"
+		},
+
+		{
+			
+			"module": "JS",
+			"type": "FIB",
+			"question": "In JavaScript, the ______ operator is used to get the data type of a variable.",
+			"info_blog": "https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Operators/typeof",
+			"info_youtube": "https://www.youtube.com/watch?v=7J8yWV0X72U"
+		},
+		{
+			
+			"module": "JS",
+    		"type": "FIB",
+    		"question": "The % operator is used in JavaScript to calculate the ______ of a division.",
+    		"info_blog": "https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Operators/Remainder",
+    		"info_youtube": "https://www.youtube.com/watch?v=xCNkp3UxQ3M"
+		},
+		{
+			
+			"module": "JS",
+    		"type": "FIB",
+    		"question": "The Math object in JavaScript provides many useful mathematical functions, such as: ______ , which allows us to round up a number.",
+    		"info_blog": "https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Math/ceil",
+    		"info_youtube": "https://www.youtube.com/watch?v=4fThZ3reBRE"
+		},
+		{
+			
+			"module": "JS",
+			"type": "FIB",
+			"question": "The push method is used in JavaScript to add an element to an ________",
+			"info_blog": "https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/push",
+			"info_youtube": "https://www.youtube.com/watch?v=RN3gsslypjQ"
+		},
+		{
+			
+			"module": "JS",
+			"type": "FIB",
+			"question": "The addEventListener method is used in JavaScript to register ______ to an HTML element.",
+			"info_blog": "https://developer.mozilla.org/es/docs/Web/API/EventTarget/addEventListener",
+			"info_youtube": "https://www.youtube.com/watch?v=KyX2dIwHssQ"
+		},
+		{
+			
+			"module": "JS",
+			"type": "SC",
+			"question": "Which is the logical AND operator in JavaScript?.",
+			"info_blog": "https://www.freecodecamp.org/espanol/news/operadores-logicos-javascript/",
+			"info_youtube": "https://www.youtube.com/watch?v=JvWYpzNq0i0"
+		},
+		{
+			
+			"module": "JS",
+    		"type": "SC",
+    		"question": "What is the purpose of the JSON.stringify() method in JavaScript?.",
+    		"info_blog": "https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify",
+    		"info_youtube": "https://www.youtube.com/watch?v=RnP19QXkY5M"
+		},
+		{
+		
+			"module": "JS",
+    		"type": "SC",
+    		"question": "Which of the following methods is used to remove the last element of an array in JavaScript?.",
+    		"info_blog": "https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/pop",
+    		"info_youtube": "https://www.youtube.com/watch?v=kLKh_GagQtk"
+		},
+		{
+			
+			"module": "JS",
+			"type": "SC",
+			"question": "Which of the following options is used to execute a function after a time delay in milliseconds in JavaScript?.",
+			"info_blog": "https://www.w3schools.com/jsref/met_win_settimeout.asp",
+			"info_youtube": "https://www.youtube.com/watch?v=0w2TXEzjjZ8"
+		},
+		{
+			
+			"module": "JS",
+			"type": "SC",
+			"question": "Which method is used to convert a string to an integer in JavaScript?.",
+			"info_blog": "https://www.w3schools.com/JSREF/jsref_parseint.asp",
+			"info_youtube": "https://www.youtube.com/watch?v=2KtDK1PiEiI"
 		}
 	]
 	},
@@ -120,24 +247,24 @@
 	"target_class":"Answers",
 	"data":[
 		{
-			"id":1,
-			"answers": "6",
+			
+			"answers": "Markup",
 			"isCorrect": true,
 			"exercise_id":1,
 			"module": "HTML",
     		"type": "FIB"
 		 },
 		 {
-			"id":2,
-			"answers": "9",
+			
+			"answers": "paragraph",
 			"isCorrect": true,
 			"exercise_id":2,
 			"module": "HTML",
     		"type": "FIB"
 		 },
 		 {
-			"id":3,
-			"answers": "5",
+			
+			"answers": "mailto",
 			"isCorrect": true,
 			"exercise_id":3,
 			"module": "HTML",
@@ -145,272 +272,690 @@
 		 },
 		
 		{
-			"id":4,
-			"answers": "5",
+			
+			"answers": "alt",
 			"isCorrect": true,
 			"exercise_id":4,
 			"module": "HTML",
 			"type": "FIB"
 		},
 		{
-			"id":5,
-			"answers": "6",
+			
+			"answers": "href",
 			"isCorrect": true,
 			"exercise_id":5,
 			"module": "HTML",
     		"type": "FIB"
 		},
 		{
-			"id":6,
-			"answers": "9",
+			
+			"answers": "Define the structure and content of a website",
 			"isCorrect": true,
 			"exercise_id":6,
 			"module": "HTML",
-    		"type": "FIB"
+    		"type": "SC"
 		},
 
 		{
-			"id":7,
-			"answers": "5",
+			
+			"answers": "Define the visual style of a website",
+			"isCorrect": false,
+			"exercise_id":6,
+			"module": "HTML",
+    		"type": "SC"
+		 },
+		 {
+			
+			"answers": "Perform mathematical calculations on a web page",
+			"isCorrect": false,
+			"exercise_id":6,
+			"module": "HTML",
+			"type": "SC"
+		 },
+		 {
+			
+			"answers": "Connect the web page to a database",
+			"isCorrect": false,
+			"exercise_id":6,
+			"module": "HTML",
+			"type": "SC"
+		 },
+		{
+			
+			"answers": "<comment>",
+			"isCorrect": false,
+			"exercise_id":7,
+			"module": "HTML",
+    		"type": "SC"
+		},
+
+		{
+			
+			"answers": "<note>",
+			"isCorrect": false,
+			"exercise_id":7,
+			"module": "HTML",
+    		"type": "SC"
+		 },
+		 {
+			
+			"answers": "<remark>",
+			"isCorrect": false,
+			"exercise_id":7,
+			"module": "HTML",
+			"type": "SC"
+		 },
+		 {
+			
+			"answers": "<!-- -->",
 			"isCorrect": true,
 			"exercise_id":7,
 			"module": "HTML",
-    		"type": "FIB"
+			"type": "SC"
 		 },
 		 {
-			"id":8,
-			"answers": "5",
+			
+			"answers": "<ul>",
+			"isCorrect": false,
+			"exercise_id":8,
+			"module": "HTML",
+			"type": "SC"
+		 },
+		 {
+			
+			"answers": "<ol>",
 			"isCorrect": true,
 			"exercise_id":8,
 			"module": "HTML",
-			"type": "FIB"
+			"type": "SC"
 		 },
 		 {
-			"id":9,
-			"answers": "5",
+			
+			"answers": "<li>",
+			"isCorrect": false,
+			"exercise_id":8,
+			"module": "HTML",
+			"type": "SC"
+		 },
+		 {
+			
+			"answers": "<dl>",
+			"isCorrect": false,
+			"exercise_id":8,
+			"module": "HTML",
+			"type": "SC"
+		 },
+		 {
+			
+			"answers": "<nl>",
 			"isCorrect": false,
 			"exercise_id":9,
 			"module": "HTML",
 			"type": "SC"
 		 },
 		 {
-			"id":10,
-			"answers": "6",
-			"isCorrect": false,
-			"exercise_id":9,
-			"module": "HTML",
-			"type": "SC"
-		 },
-		 {
-			"id":11,
-			"answers": "4",
+			
+			"answers": "<br>",
 			"isCorrect": true,
 			"exercise_id":9,
 			"module": "HTML",
+    		"type": "SC"
+		 },
+		 {
+			
+			"answers": "<newline>",
+			"isCorrect": false,
+			"exercise_id":9,
+			"module": "HTML",
+    		"type": "SC"
+		 },
+		 {
+			
+			"answers": "<linebreak>",
+			"isCorrect": false,
+			"exercise_id":9,
+			"module": "HTML",
 			"type": "SC"
 		 },
 		 {
-			"id":12,
-			"answers": "5",
+			
+			"answers": "<link>",
 			"isCorrect": false,
 			"exercise_id":10,
 			"module": "HTML",
 			"type": "SC"
 		 },
 		 {
-			"id":13,
-			"answers": "8",
+			
+			"answers": "<a>",
 			"isCorrect": true,
 			"exercise_id":10,
 			"module": "HTML",
 			"type": "SC"
 		 },
 		 {
-			"id":14,
-			"answers": "4",
+			
+			"answers": "<href>",
 			"isCorrect": false,
 			"exercise_id":10,
 			"module": "HTML",
 			"type": "SC"
 		 },
 		 {
-			"id":15,
-			"answers": "6",
+			
+			"answers": "<url>",
+			"isCorrect": false,
+			"exercise_id":10,
+			"module": "HTML",
+			"type": "SC"
+		 },
+
+		 {
+			
+			"answers": "Style",
 			"isCorrect": true,
 			"exercise_id":11,
 			"module": "CSS",
     		"type": "FIB"
 		 },
 		 {
-			"id":16,
-			"answers": "9",
+			
+			"answers": "*",
 			"isCorrect": true,
 			"exercise_id":12,
 			"module": "CSS",
     		"type": "FIB"
 		 },
 		 {
-			"id":17,
-			"answers": "5",
-			"isCorrect": false,
-			"exercise_id":13,
-			"module": "CSS",
-			"type": "SC"
-		 },
-		 {
-			"id":18,
-			"answers": "6",
-			"isCorrect": false,
-			"exercise_id":13,
-			"module": "CSS",
-			"type": "SC"
-		 },
-		 {
-			"id":19,
-			"answers": "4",
+			
+			"answers": "color",
 			"isCorrect": true,
 			"exercise_id":13,
 			"module": "CSS",
-			"type": "SC"
+    		"type": "FIB"
 		 },
-		 {
-			"id":20,
-			"answers": "5",
-			"isCorrect": false,
-			"exercise_id":14,
-			"module": "CSS",
-			"type": "SC"
-		 },
-		 {
-			"id":21,
-			"answers": "8",
+		
+		{
+			
+			"answers": "hover",
 			"isCorrect": true,
 			"exercise_id":14,
 			"module": "CSS",
+			"type": "FIB"
+		},
+		{
+			
+			"answers": "size",
+			"isCorrect": true,
+			"exercise_id":15,
+			"module": "CSS",
+    		"type": "FIB"
+		},
+		{
+			
+			"answers": "Define the page structure",
+			"isCorrect": false,
+			"exercise_id":16,
+			"module": "CSS",
+    		"type": "SC"
+		},
+
+		{
+			
+			"answers": "Add interactive functionality",
+			"isCorrect": false,
+			"exercise_id":16,
+			"module": "CSS",
+    		"type": "SC"
+		 },
+		 {
+			
+			"answers": "Set the page style and presentation",
+			"isCorrect": true,
+			"exercise_id":16,
+			"module": "CSS",
 			"type": "SC"
 		 },
 		 {
-			"id":22,
-			"answers": "4",
+			
+			"answers": "Storing data in the database",
 			"isCorrect": false,
-			"exercise_id":14,
+			"exercise_id":16,
 			"module": "CSS",
+			"type": "SC"
+		 },
+		{
+			
+			"answers": "text-font",
+			"isCorrect": false,
+			"exercise_id":17,
+			"module": "CSS",
+    		"type": "SC"
+		},
+
+		{
+			
+			"answers": "font-family",
+			"isCorrect": true,
+			"exercise_id":17,
+			"module": "CSS",
+    		"type": "SC"
+		 },
+		 {
+			
+			"answers": "font-size",
+			"isCorrect": false,
+			"exercise_id":17,
+			"module": "CSS",
+			"type": "SC"
+		 },
+		 {
+			
+			"answers": "letter-spacing",
+			"isCorrect": true,
+			"exercise_id":17,
+			"module": "CSS",
+			"type": "SC"
+		 },
+		 {
+			
+			"answers": "border: 2px solid;",
+			"isCorrect": true,
+			"exercise_id":18,
+			"module": "CSS",
+			"type": "SC"
+		 },
+		 {
+			
+			"answers": "border: 2px dotted;",
+			"isCorrect": false,
+			"exercise_id":18,
+			"module": "CSS",
+			"type": "SC"
+		 },
+		 {
+			
+			"answers": "border: 2px dashed;",
+			"isCorrect": false,
+			"exercise_id":18,
+			"module": "CSS",
+			"type": "SC"
+		 },
+		 {
+			
+			"answers": "border: 2px double;",
+			"isCorrect": false,
+			"exercise_id":18,
+			"module": "CSS",
+			"type": "SC"
+		 },
+		 {
+			
+			"answers": "margin-left",
+			"isCorrect": false,
+			"exercise_id":19,
+			"module": "CSS",
+			"type": "SC"
+		 },
+		 {
+			
+			"answers": "margin-right",
+			"isCorrect": true,
+			"exercise_id":19,
+			"module": "CSS",
+    		"type": "SC"
+		 },
+		 {
+			
+			"answers": "margin-top",
+			"isCorrect": false,
+			"exercise_id":19,
+			"module": "CSS",
+    		"type": "SC"
+		 },
+		 {
+			
+			"answers": "margin-bottom",
+			"isCorrect": false,
+			"exercise_id":19,
+			"module": "CSS",
+			"type": "SC"
+		 },
+		 {
+			
+			"answers": "display: none",
+			"isCorrect": true,
+			"exercise_id":20,
+			"module": "CSS",
+			"type": "SC"
+		 },
+		 {
+			
+			"answers": "visibility: hidden",
+			"isCorrect": false,
+			"exercise_id":20,
+			"module": "CSS",
+			"type": "SC"
+		 },
+		 {
+			
+			"answers": "opacity: 0",
+			"isCorrect": false,
+			"exercise_id":20,
+			"module": "CSS",
+			"type": "SC"
+		 },
+		 {
+			
+			"answers": "hidden: true",
+			"isCorrect": false,
+			"exercise_id":20,
+			"module": "CSS",
+			"type": "SC"
+		 },
+
+		 {
+			
+			"answers": "typeof",
+			"isCorrect": true,
+			"exercise_id":21,
+			"module": "JS",
+    		"type": "FIB"
+		 },
+		 {
+			
+			"answers": "rest",
+			"isCorrect": true,
+			"exercise_id":22,
+			"module": "JS",
+    		"type": "FIB"
+		 },
+		 {
+			
+			"answers": "Math.ceil()",
+			"isCorrect": true,
+			"exercise_id":23,
+			"module": "JS",
+    		"type": "FIB"
+		 },
+		
+		{
+			
+			"answers": "array",
+			"isCorrect": true,
+			"exercise_id":24,
+			"module": "JS",
+			"type": "FIB"
+		},
+		{
+			
+			"answers": "events",
+			"isCorrect": true,
+			"exercise_id":25,
+			"module": "JS",
+    		"type": "FIB"
+		},
+		{
+			
+			"answers": "&&",
+			"isCorrect": true,
+			"exercise_id":26,
+			"module": "JS",
+    		"type": "SC"
+		},
+
+		{
+			
+			"answers": "||",
+			"isCorrect": false,
+			"exercise_id":26,
+			"module": "JS",
+    		"type": "SC"
+		 },
+		 {
+			
+			"answers": "!",
+			"isCorrect": true,
+			"exercise_id":26,
+			"module": "JS",
+			"type": "SC"
+		 },
+		 {
+			
+			"answers": "&",
+			"isCorrect": false,
+			"exercise_id":26,
+			"module": "JS",
+			"type": "SC"
+		 },
+		{
+			
+			"answers": "Make a HTTP request",
+			"isCorrect": false,
+			"exercise_id":27,
+			"module": "JS",
+    		"type": "SC"
+		},
+
+		{
+			
+			"answers": "Convert an object to a JSON string",
+			"isCorrect": true,
+			"exercise_id":27,
+			"module": "JS",
+    		"type": "SC"
+		 },
+		 {
+			
+			"answers": "Parse a JSON string",
+			"isCorrect": false,
+			"exercise_id":27,
+			"module": "JS",
+			"type": "SC"
+		 },
+		 {
+			
+			"answers": "Create a new object",
+			"isCorrect": true,
+			"exercise_id":27,
+			"module": "JS",
+			"type": "SC"
+		 },
+		 {
+			
+			"answers": "remove()",
+			"isCorrect": false,
+			"exercise_id":28,
+			"module": "JS",
+			"type": "SC"
+		 },
+		 {
+		
+			"answers": "delete()",
+			"isCorrect": false,
+			"exercise_id":28,
+			"module": "JS",
+			"type": "SC"
+		 },
+		 {
+			
+			"answers": "pop()",
+			"isCorrect": true,
+			"exercise_id":28,
+			"module": "JS",
+			"type": "SC"
+		 },
+		 {
+			
+			"answers": "unshift()",
+			"isCorrect": false,
+			"exercise_id":28,
+			"module": "JS",
+			"type": "SC"
+		 },
+		 {
+			
+			"answers": "runTimeout()",
+			"isCorrect": false,
+			"exercise_id":29,
+			"module": "JS",
+			"type": "SC"
+		 },
+		 {
+			
+			"answers": "sleep()",
+			"isCorrect": false,
+			"exercise_id":29,
+			"module": "JS",
+    		"type": "SC"
+		 },
+		 {
+			
+			"answers": "setTimeout()",
+			"isCorrect": true,
+			"exercise_id":29,
+			"module": "JS",
+    		"type": "SC"
+		 },
+		 {
+			
+			"answers": "delay()",
+			"isCorrect": false,
+			"exercise_id":29,
+			"module": "JS",
+			"type": "SC"
+		 },
+		 {
+			
+			"answers": " toFloat()",
+			"isCorrect": false,
+			"exercise_id":30,
+			"module": "JS",
+			"type": "SC"
+		 },
+		 {
+			
+			"answers": "parseInt()",
+			"isCorrect": true,
+			"exercise_id":30,
+			"module": "JS",
+			"type": "SC"
+		 },
+		 {
+			
+			"answers": "parseNumber()",
+			"isCorrect": false,
+			"exercise_id":30,
+			"module": "JS",
+			"type": "SC"
+		 },
+		 {
+			
+			"answers": "parseFloat()",
+			"isCorrect": false,
+			"exercise_id":30,
+			"module": "JS",
 			"type": "SC"
 		 }
+		 
 	]
 
 	},
-
 	{
 		"target_class":"User",
 		"data":[
 			{
-				"firstName":"JJ",
-				"lastName": "aaa",
-				"email": "j@gmail.com",
+				"firstName":"Jorge",
+				"lastName": "Coto",
+				"email": "jcoto@gmail.com",
 				"password":"$2b$10$9g2w9XOeW9US6yiMXu/ReO2foc6hl9HN4FjRPBgO7gR801II524LS",
 				"role" : "alumno",
-				"img" : "x"
+				"img" : "https://ui-avatars.com/api/?name=Jorge Coto&size=200&rounded=true&background=random"
 			 },
 			 {
-				"firstName":"JdJ",
-				"lastName": "aaaa",
-				"email": "ja@gmail.com",
+				"firstName":"Javier",
+				"lastName": "Paredes",
+				"email": "jparedes@gmail.com",
 				"password":"$2b$10$9g2w9XOeW9US6yiMXu/ReO2foc6hl9HN4FjRPBgO7gR801II524LS",
 				"role" : "alumno",
-				"img" : "x"
+				"img" : "https://ui-avatars.com/api/?name=Javier Paredes&size=200&rounded=true&background=random"
 			 },
 			 {
-				"firstName":"JaaJ",
-				"lastName": "aaa",
-				"email": "jp@gmail.com",
+				"firstName":"Pedro",
+				"lastName": "Gutierrez",
+				"email": "pgutierrez@gmail.com",
 				"password":"$2b$10$9g2w9XOeW9US6yiMXu/ReO2foc6hl9HN4FjRPBgO7gR801II524LS",
 				"role" : "alumno",
-				"img" : "x"
-			 },
-			 {
-				"firstName":"JaaaJ",
-				"lastName": "aaa",
-				"email": "j1@gmail.com",
-				"password":"$2b$10$9g2w9XOeW9US6yiMXu/ReO2foc6hl9HN4FjRPBgO7gR801II524LS",
-				"role" : "alumno",
-				"img" : "x"
+				"img" : "https://ui-avatars.com/api/?name=Pedro Gutierrez&size=200&rounded=true&background=random"
 			 }
 			 
 		]
 	
-		},
-
-		{
-		"target_class":"User",
+	},
+	{
+		"target_class":"AnswersUser",
 		"data":[
 			{
-				"id" : "1",
-				"firstName":"JJ",
-				"lastName": "aaa",
-				"email": "a@gmail.com",
-				"password":"$2b$10$9g2w9XOeW9US6yiMXu/ReO2foc6hl9HN4FjRPBgO7gR801II524LS",
-				"role" : "alumno",
-				"img" : "x"
+				"user_id": "1",
+				"exercise_id":"1",
+				"module" : "HTML",
+				"type" : "FIB"
+			 },
+			{
+				"user_id": "1",
+				"exercise_id":2,
+				"module" : "HTML",
+				"type" : "FIB"
+			 },
+			{
+				"user_id": "1",
+				"exercise_id":3,
+				"module" : "HTML",
+				"type" : "FIB"
+			 },
+			{
+				"user_id": "1",
+				"exercise_id":4,
+				"module" : "HTML",
+				"type" : "FIB"
+			 }	 
+		]
+	
+	},
+	{
+		"target_class":"Teacher",
+		"data":[
+			{
+				"firstName":"Albert",
+				"lastName": "yopmail",
+				"email": "emc2@yopmail.com",
+				"password": "$2b$10$9g2w9XOeW9US6yiMXu/ReO2foc6hl9HN4FjRPBgO7gR801II524LS",
+				"role": "teacher"
+			 },
+			
+			 {
+				"firstName":"Juan",
+				"lastName": "yopmail",
+				"email": "jc@yopmail.com",
+				"password": "$2b$10$9g2w9XOeW9US6yiMXu/ReO2foc6hl9HN4FjRPBgO7gR801II524LS",
+				"role": "teacher"
 			 },
 			 {
-				"id" : "2",
-				"firstName":"JdJ",
-				"lastName": "aaaa",
-				"email": "b@gmail.com",
-				"password":"$2b$10$9g2w9XOeW9US6yiMXu/ReO2foc6hl9HN4FjRPBgO7gR801II524LS",
-				"role" : "alumno",
-				"img" : "x"
+				"firstName":"Max",
+				"lastName": "yopmail",
+				"email": "max@yopmail.com",
+				"password": "$2b$10$9g2w9XOeW9US6yiMXu/ReO2foc6hl9HN4FjRPBgO7gR801II524LS",
+				"role": "teacher"
 			 },
 			 {
-				"id" : "3",
-				"firstName":"JaaJ",
-				"lastName": "aaa",
-				"email": "c@gmail.com",
-				"password":"$2b$10$9g2w9XOeW9US6yiMXu/ReO2foc6hl9HN4FjRPBgO7gR801II524LS",
-				"role" : "alumno",
-				"img" : "x"
-			 },
-			 {
-				"id" : "4",
-				"firstName":"JaaaJ",
-				"lastName": "aaa",
-				"email": "d@gmail.com",
-				"password":"$2b$10$9g2w9XOeW9US6yiMXu/ReO2foc6hl9HN4FjRPBgO7gR801II524LS",
-				"role" : "alumno",
-				"img" : "x"
+				"firstName":"Alexander",
+				"lastName": "yopmail",
+				"email": "alex@yopmail.com",
+				"password": "$2b$10$9g2w9XOeW9US6yiMXu/ReO2foc6hl9HN4FjRPBgO7gR801II524LS",
+				"role": "teacher"
 			 }
 			 
 		]
 	
-		},
-
-		{
-			"target_class":"AnswersUser",
-			"data":[
-				{
-					"id":1,
-					"user_id": "1",
-					"exercise_id":1
-				 },
-				{
-					"id":2,
-					"user_id": "1",
-					"exercise_id":2
-				 },
-				{
-					"id":3,
-					"user_id": "1",
-					"exercise_id":3
-				 },
-				{
-					"id":4,
-					"user_id": "1",
-					"exercise_id":4
-
-				 }
-				 
-			]
-		
-			}
+	}
 ]

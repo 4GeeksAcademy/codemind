@@ -35,11 +35,20 @@ class User(db.Model):
             "lastName": self.lastName,
             "img": self.img,
             "role": self.role,
-            "teacher": self.teacher_id
-            # No serializar la contraseña, es un problema de seguridad
+            "teacher": self.teacher_id,
+
+            
+            # "No" serializar la contraseña, es un problema de seguridad
         }
 
 
+
+#crear la class Studen y a la clase Teacher
+# class Teacher(db.Model):
+#     __tablename__ = 'teacher'
+#     id = db.Column(db.Integer, primary_key=True)
+#     students = db.relationship('User', back_populates='teacher')
+    
 
 class Teacher(db.Model):
     __tablename__ = 'teacher'
@@ -57,13 +66,11 @@ class Teacher(db.Model):
 
     def serialize(self):
         students = list(map  (lambda a:  a.serialize(), self.students))
-        
         return {
             "id": self.id,
             "firstName": self.firstName,
             "lastName": self.lastName,
             "role": self.role,
-            
             "students": students
             
         }
@@ -77,7 +84,8 @@ class Teacher(db.Model):
             
         }
 
-
+    def student_teacher(self):
+        return self.firstName + " " + self.lastName
 
 
 class TokenBlockedList(db.Model):
@@ -102,29 +110,26 @@ class Exercise(db.Model):
 
     def serialize(self):
         answers = list(map(lambda a: a.serialize(), self.answers))
-        return {
-            "id": self.id,
-            "module": self.module,
-            "type": self.type,
-            "question": self.question,
-            "info_blog": self.info_blog,
-            "info_youtube":self.info_youtube,
-            "answers": answers
+        if self.type == "SC":
+            return {
+                "id": self.id,
+                "module": self.module,
+                "type": self.type,
+                "question": self.question,
+                "info_blog": self.info_blog,
+                "info_youtube":self.info_youtube,
+                "answers": answers
 
-        }
-    
-    # def fill(self):
-    #     answers = list(map(lambda a: a.serializes(), self.answers))
-    #     return {
-    #         "id": self.id,
-    #         "module": self.module,
-    #         "type": self.type,
-    #         "question": self.question,
-    #         "info_blog": self.info_blog,
-    #         "info_youtube":self.info_youtube,
-    #         "answers": answers
-
-    #     }
+            }
+        else :
+            return {
+                "id": self.id,
+                "module": self.module,
+                "type": self.type,
+                "question": self.question,
+                "info_blog": self.info_blog,
+                "info_youtube":self.info_youtube,
+            }
 
 class Answers(db.Model):
     __tablename__ = 'answers'
@@ -181,6 +186,7 @@ def seed():
     seeder.register(Answers)
     seeder.register(AnswersUser)
     seeder.register(User)
+    seeder.register(Teacher)
     seeder.load_entities_from_json_file("seedData.json")
     db.session.commit()
 

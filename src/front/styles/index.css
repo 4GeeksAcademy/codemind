@@ -1,6 +1,9 @@
 /* 
     General Styles used on every website (Don't Repeat Yourself)
 */
+
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
+
 :root {
     /* Relación de tamaño de fuente */
     font-size: 16px;
@@ -10,11 +13,13 @@
     --ColorPrimario: #2EBBF2; /* Define una variable de color personalizada */
     --ColorSecundario: #F2811D;
     --ColorTerciario:  #E6E6FA;
+    --ColorCuaternario: #FF5349;
     --ColorBackground: black;
 
     /* Family-fonts */
     --FuentePrincipal: 'Roboto', sans-serif;
     --FuenteSecundaria: 'Inter', sans-serif;
+    --FuenteTerciaria: 'Alfa Slab One', serif;
 
     /* Relative Font-size */
 
@@ -41,8 +46,8 @@ font-size: var(--SmFontSize);
   font-size: var(--XsFontSize);
 }
 h1{
-    font-family: 'Roboto', sans-serif;
-    -webkit-text-stroke: 1px #2EBBF2;
+    font-family: var(--FuentePrincipal);
+    -webkit-text-stroke: 1px var(--ColorPrimario);
     color: transparent;
     font-size: calc(3.225rem + 5.2vw);
     font-weight: 600;
@@ -50,8 +55,8 @@ h1{
 }
 
 h2{
-    font-family: 'Roboto', sans-serif;
-    font-size: 50px;
+    font-family: var(--FuentePrincipal);
+    font-size: var(--SmFontSize);
     -webkit-text-stroke: 1px var(--ColorPrimario);
     color: transparent;
     font-weight: 900;
@@ -60,7 +65,7 @@ h2{
 
 label{
     color: var(--ColorSecundario);
-    font-family: 'Inter', sans-serif;
+    font-family: var(--FuenteSecundaria);
     font-weight:lighter;
 }
 
@@ -78,7 +83,7 @@ p{
 
 .bigtext{
     font-family: var(--FuentePrincipal);
-    font-size: 70px;
+    font-size: var(--MdFontSize);
     font-weight: 800;
     letter-spacing: 0;
     
@@ -86,18 +91,27 @@ p{
 
 .wrap, h3, a{
     text-decoration: none;
-    color: #F2811D;
-    font-family: 'Inter', sans-serif;
+    color: var(--ColorSecundario);
+    font-family: var(--FuenteSecundaria);
+    font-weight: 400;
+}
+h4{
+  text-decoration: none;
+    color: var(--ColorCuaternario);
+    font-family: var(--FuenteTerciaria);
     font-weight: 400;
 }
 .text-color-primary{
     color: var(--ColorPrimario);
 }
+.navbar-title{
+  font-family: var(--FuenteTerciaria);
+}
 .module-title{
     font-size: var(--MdFontSize);
     font-style: normal;
     font-weight: 900;
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--FuentePrincipal);
 }
 input{
     box-shadow: 0 0 5px var(--ColorPrimario);
@@ -114,11 +128,11 @@ li {
   
 /*Scroll bar ----------------------------------------------------------------------------*/
 ::-webkit-scrollbar {
-    width: 0.4rem; /* Ancho del scrollbar */
+    width: 0.5rem; /* Ancho del scrollbar */
 }
   
 ::-webkit-scrollbar-track {
-    background-color: #ffffff1a; /* Color de fondo del track del scrollbar */
+    background-color: #ffffff47; /* Color de fondo del track del scrollbar */
 }
   
 ::-webkit-scrollbar-thumb {
@@ -159,6 +173,11 @@ width: 150px;
 height: 180px;
 }
 
+.img-exercise{
+  width: 100px;
+  height: 100px;
+  }
+
 /*Menu, links and buttons-----------------------------------------------------------------*/
 .nav-link{
   font-size: var(--XxsFontSize);
@@ -172,7 +191,7 @@ height: 180px;
 }
 
 .menuBurger{
-    font-size: 30px;
+    font-size: var(--XsFontSize);
     font-weight: 9px;
     color: var(--ColorPrimario);
 }
@@ -211,7 +230,7 @@ height: 180px;
 
 .footer{
     color:var(--ColorPrimario);
-    font-family: 'Inter', sans-serif;
+    font-family: var(--FuenteSecundaria);
     font-weight:lighter;
     font-size: small;
     
@@ -219,7 +238,7 @@ height: 180px;
 
 .arrow-back{
     color: var(--ColorPrimario);
-    font-size: 30px;
+    font-size: var(--XsFontSize);
 }
 
 .seleccion:hover {
@@ -228,10 +247,14 @@ height: 180px;
 }
 
 .seleccionada { 
-  background-color: #6610F2;
+  background-color: var(--ColorSecundario);
   color : white;
 }
 
+.btn-verificar{
+  background-color: var(--ColorSecundario);
+  color : white;
+}
 /* Estilo personalizado para los radio buttons */
 
 
@@ -252,6 +275,11 @@ input[type="text"]:focus {
 
 /* Card Animation
  */
+
+.scroll-smooth {
+  scroll-behavior: smooth;
+}
+
 .card-animation {
   --g: 4px;     /* the gap */
   --b: 12px;    /* border thickness*/
@@ -293,7 +321,8 @@ input[type="text"]:focus {
   background: #212529;
 }
 .css-button-shadow-border--black:hover {
-  background-color: #343a40;
+  background-color: #9b05af;
+  color: black;
 }
 .css-button-shadow-border--black:active {
   top: 2px;
@@ -301,13 +330,16 @@ input[type="text"]:focus {
 /* Navbar */
 
 :root {
-    --background: rgba(1, 1, 255, 0.973);
-    --navbar-width: 150px;
+    --background: var(--ColorTerciario);
+    --navbar-width: 200px;
     --navbar-width-min: 80px;
     --navbar-dark-primary: #18283b;
     --navbar-dark-secondary: #2c3e50;
     --navbar-light-primary: #f5f6fa;
-    --navbar-light-secondary: #8392a5;
+    --navbar-light-secondary: var(--ColorSecundario);
+  }
+  .orange-hr{
+    color: var(--ColorSecundario);
   }
   #nav-bar{
     z-index: 1;
@@ -322,7 +354,7 @@ input[type="text"]:focus {
   #nav-toggle:checked ~ #nav-header #nav-title {
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.1s;
+    transition: opacity 0.2s;
   }
   #nav-toggle:checked ~ #nav-header label[for=nav-toggle] {
     left: calc(50% - 8px);
@@ -338,7 +370,7 @@ input[type="text"]:focus {
   }
   #nav-toggle:checked ~ #nav-content .nav-button span {
     opacity: 0;
-    transition: opacity 0.1s;
+    transition: opacity;
   }
   #nav-toggle:checked ~ #nav-content .nav-button .fas {
     min-width: calc(100% - 16px);
@@ -494,10 +526,11 @@ input[type="text"]:focus {
   
   .nav-button {
     position: relative;
-    margin-left: 16px;
+    margin: 2px 0 0 16px;
     height: 54px;
     display: flex;
     align-items: center;
+    justify-items: center;
     color: var(--navbar-light-secondary);
     direction: ltr;
     cursor: pointer;
@@ -649,3 +682,12 @@ input[type="text"]:focus {
     background-color: #D62929;
   }
 
+.teachersname{
+  cursor:pointer;
+}
+
+.table-hover:hover{
+  background-color: #fdfdfcb7;
+  color: black;
+  cursor: pointer;
+}

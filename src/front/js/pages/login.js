@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import "../../styles/index.css";
 import logoCM from "../../img/LOGO.png";
-import { Link, useNavigate, useLocation} from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Context } from "../store/appContext";
 
 export const Login = () => {
@@ -30,18 +30,17 @@ export const Login = () => {
         try {
             const response = await actions.loginUser(credentials);
 
-            if (response.success){
-                navigate("/modules")
-            }else{
+            if (response.success) {
+                navigate('/modules');
+            }
+            else {
                 setErrorLogin("Inicio de sesión fallido. Verifique sus credenciales.");
             }
-
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
-
     };
-    const storedUserToken = localStorage.getItem('userToken')
+
 
 
 
@@ -104,7 +103,7 @@ export const Login = () => {
 
                                     <div className="text-center mt-3">
                                         <Link to="/forwotpassword">
-                                            <p><a>Forgot your password?</a></p>
+                                            Forgot your password?
                                         </Link>
                                     </div>
                                 </form>
